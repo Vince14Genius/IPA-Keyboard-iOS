@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  IPA Keyboard
+
+  Created by Vincent C. on 2018/9/9.
+  Copyright © 2018 Vince14Genius. All rights reserved.
+*/
+
+"Consonants" = "Consonants";
+"Non-Pulmonic" = "Non-Pulmonic";
+"Other Symbols" = "Other Symbols";
+"Vowels" = "Vowels";
+"Suprasegmentals" = "Suprasegmentals";
+"Tones and Word Accents" = "Tones and Word Accents";
+"Diacritics" = "Diacritics";

@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  IPA Keyboard
+
+  Created by Vincent C. on 2018/9/9.
+  Copyright © 2018 Vince14Genius. All rights reserved.
+*/
+
+"ABC" = "あいう";
+
+"Consonants" = "子音";
+"NonPulmonic" = "子音（非肺臓気流）";
+"OtherSymbols" = "別の記号";
+"Vowels" = "母音";
+"Suprasegmentals" = "超分節要素";
+"TonesAndWordAccents" = "声調記号とアクセント";
+"Diacritics" = "補助記号";

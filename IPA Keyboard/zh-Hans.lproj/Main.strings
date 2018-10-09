@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "To set up the keyboard:\n1. Go to Settings\n2. Go to General > Keyboard > Keyboards\n3. Press \"Add New Keyboard...\"\n4. Add \"IPA Keyboard\" from the list"; ObjectID = "2Aq-WX-pmU"; */
+"2Aq-WX-pmU.text" = "设置键盘步骤：\n1. 打开“设置”\n2. 点击 通用 > 键盘 > 键盘\n3. 点击“添加键盘...”\n4. 从列表添加“IPA音标键盘”";
+
+/* Class = "UITextField"; placeholder = "You can test the keyboard here."; ObjectID = "4MI-KJ-UK8"; */
+"4MI-KJ-UK8.placeholder" = "可在此文本框内尝试使用IPA音标键盘";
+
+/* Class = "UITextView"; text = "To set up the keyboard:\n1. Go to Settings\n2. Go to General > Keyboard > Keyboards\n3. Press \"Add New Keyboard...\"\n4. Add \"IPA Keyboard\" from the list"; ObjectID = "unX-e1-sL2"; */
+"unX-e1-sL2.text" = "设置键盘步骤：\n1. 打开“设置”\n2. 点击 通用 > 键盘 > 键盘\n3. 点击“添加键盘...”\n4. 从列表添加“IPA音标键盘”";
+
+/* Class = "UINavigationItem"; title = "IPA Keyboard"; ObjectID = "xek-jV-h6v"; */
+"xek-jV-h6v.title" = "IPA音标键盘";

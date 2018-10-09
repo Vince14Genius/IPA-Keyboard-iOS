@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  IPA Keyboard
+
+  Created by Vincent C. on 2018/9/9.
+  Copyright © 2018 Vince14Genius. All rights reserved.
+*/
+
+"ABC" = "ABC";
+
+"Consonants" = "Konsonantoj";
+"NonPulmonic" = "Ne-Pulmona";
+"OtherSymbols" = "Altaj Simboloj";
+"Vowels" = "Vokaloj";
+"Suprasegmentals" = "Supersegmentaĵoj";
+"TonesAndWordAccents" = "Tonoj kaj akcentoj";
+"Diacritics" = "Diakritiloj";
