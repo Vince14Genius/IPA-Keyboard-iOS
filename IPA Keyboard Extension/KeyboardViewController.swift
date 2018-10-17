@@ -25,8 +25,17 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
     
     private let reuseIdentifier = "ReuseId"
     
+    private let headerViewWidth: CGFloat = 140
+    
     private let topInset: CGFloat = 24
     private let bottomInset: CGFloat = 8
+    private var leftInset: CGFloat {
+        get {
+            return -(headerViewWidth - 12)
+        }
+    }
+    private let rightInset: CGFloat = 12
+    
     private let minimumLineSpacing: CGFloat = 4
     private let minimumInteritemSpacing: CGFloat = 4
     private let cellsPerColumn = 4
@@ -71,7 +80,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         self.view.addSubview(self.topSquareBracketsButton)
         self.view.addSubview(self.topForwardSlashesButton)
         self.view.addSubview(self.topTildeButton)
-       
+        
         self.backwardDeleteButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -12).isActive = true
         self.backwardDeleteButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
         
@@ -89,7 +98,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionHeadersPinToVisibleBounds = true
-        flowLayout.headerReferenceSize = CGSize(width: 1, height: 0)
+        flowLayout.headerReferenceSize = CGSize(width: self.headerViewWidth, height: 0)
         
         self.keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
         self.keyCollection.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
@@ -255,7 +264,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         button.titleLabel?.font = button.titleLabel!.font.withSize(18)
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         button.layer.cornerRadius = 4
         button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
     }
@@ -304,6 +313,11 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
             keyButtonCell.keyExpand()
             changeKeyButtonColor(button)
+            
+            // Hide header view
+            self.keyCollection.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).forEach { header in
+                header.isHidden = true
+            }
         } else {
             fatalError("Incorrect button setup.")
         }
@@ -315,6 +329,11 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
             RunLoop.main.add(Timer(timeInterval: 0.1, repeats: false, block: {_ in
                 keyButtonCell.keyRetract()
                 self.changeKeyButtonColor(button)
+                
+                // Show header view
+                self.keyCollection.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).forEach { header in
+                    header.isHidden = false
+                }
             }), forMode: .common)
         } else {
             fatalError("Incorrect button setup.")
@@ -334,25 +353,29 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifier, for: indexPath)
         
         if let button = (cell as? KeyButtonCell)?.button {
-            let text = IPASymbols.keys[IPASymbols.sectionNames[indexPath.section]]![indexPath.item]
-            
-            (cell as! KeyButtonCell).altLabel.text = text
-            
-            button.setTitle(text, for: [])
-            button.titleLabel?.font = button.titleLabel!.font.withSize(24)
-            
-            // Reset the button's targets
-            button.removeTarget(nil, action: nil, for: .allEvents)
-            button.addTarget(self, action: #selector(addButtonTitle(from:with:)), for: .primaryActionTriggered)
-            button.addTarget(self, action: #selector(keyButtonExpand(from:with:)), for: .touchDown)
-            
-            // Add retraction targets
-            button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchCancel)
-            button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpOutside)
-            button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpInside)
- 
-            // Set color based on keyboard appearance
-            changeKeyButtonColor(button)
+            if let text = IPASymbols.keys[IPASymbols.sectionNames[indexPath.section]]![indexPath.item] {
+                cell.isHidden = false
+                
+                (cell as! KeyButtonCell).altLabel.text = text
+                
+                button.setTitle(text, for: [])
+                button.titleLabel?.font = button.titleLabel!.font.withSize(24)
+                
+                // Reset the button's targets
+                button.removeTarget(nil, action: nil, for: .allEvents)
+                button.addTarget(self, action: #selector(addButtonTitle(from:with:)), for: .primaryActionTriggered)
+                button.addTarget(self, action: #selector(keyButtonExpand(from:with:)), for: .touchDown)
+                
+                // Add retraction targets
+                button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchCancel)
+                button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpOutside)
+                button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpInside)
+                
+                // Set color based on keyboard appearance
+                changeKeyButtonColor(button)
+            } else {
+                cell.isHidden = true
+            }
         } else {
             cell.backgroundColor = UIColor.red
         }
@@ -360,7 +383,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: self.topInset, left: 12, bottom: self.bottomInset, right: 12)
+        return UIEdgeInsets(top: self.topInset, left: self.leftInset, bottom: self.bottomInset, right: self.rightInset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -370,7 +393,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return minimumInteritemSpacing
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let marginsAndInsets: CGFloat
         if #available(iOSApplicationExtension 11.0, *) {
@@ -386,6 +409,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let element = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.reuseIdentifier, for: indexPath)
         if let header = element as? SectionHeader {
+            // Pass touches to the views underneath
+            header.isUserInteractionEnabled = false
+            
+            // Set the header title
             header.label.text = NSLocalizedString(IPASymbols.sectionNames[indexPath.section], comment: "Localized versions of the section names.")
             changeSectionHeaderColor(header)
         }
