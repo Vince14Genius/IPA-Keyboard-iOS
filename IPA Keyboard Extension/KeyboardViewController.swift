@@ -17,6 +17,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
     @IBOutlet var topForwardSlashesButton: UIButton!
     @IBOutlet var topTildeButton: UIButton!
     
+    @IBOutlet var topSpaceBarButton: UIButton!
+    
     @IBOutlet var bottomStack: UIStackView!
     
     @IBOutlet var keyCollection: UICollectionView!
@@ -71,6 +73,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         setupButton(button: self.topTildeButton, title: "~")
         self.topTildeButton.addTarget(self, action: #selector(self.addTilde), for: .primaryActionTriggered)
         
+        self.topSpaceBarButton = UIButton(type: .system)
+        setupButton(button: self.topSpaceBarButton, title: NSLocalizedString("SpaceBarText", comment: "space"))
+        self.topSpaceBarButton.addTarget(self, action: #selector(self.addSpace), for: .primaryActionTriggered)
+        
         self.view.addSubview(self.nextKeyboardButton)
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 12).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
@@ -80,6 +86,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         self.view.addSubview(self.topSquareBracketsButton)
         self.view.addSubview(self.topForwardSlashesButton)
         self.view.addSubview(self.topTildeButton)
+        
+        self.view.addSubview(self.topSpaceBarButton)
         
         self.backwardDeleteButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -12).isActive = true
         self.backwardDeleteButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
@@ -92,6 +100,9 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         
         self.topTildeButton.leftAnchor.constraint(equalTo: self.topForwardSlashesButton.rightAnchor, constant: 12).isActive = true
         self.topTildeButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
+        
+        self.topSpaceBarButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
+        self.topSpaceBarButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -12).isActive = true
         
         // Set up the collection view
         
@@ -176,6 +187,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         self.topSquareBracketsButton.setTitleColor(textColor, for: [])
         self.topForwardSlashesButton.setTitleColor(textColor, for: [])
         self.topTildeButton.setTitleColor(textColor, for: [])
+        self.topSpaceBarButton.setTitleColor(textColor, for: [])
         
         for cell in self.keyCollection.visibleCells {
             guard let button = (cell as? KeyButtonCell)?.button else { continue }
@@ -289,6 +301,11 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
     @objc
     @IBAction func addTilde() {
         self.textDocumentProxy.insertText(IPASymbols.tilde)
+    }
+    
+    @objc
+    @IBAction func addSpace() {
+        self.textDocumentProxy.insertText(" ")
     }
     
     @objc
