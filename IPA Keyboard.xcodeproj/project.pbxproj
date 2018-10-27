@@ -505,14 +505,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V42Z9B58PU;
+				DEVELOPMENT_TEAM = P93MY8PTXL;
 				INFOPLIST_FILE = "IPA Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -525,14 +525,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V42Z9B58PU;
+				DEVELOPMENT_TEAM = P93MY8PTXL;
 				INFOPLIST_FILE = "IPA Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -543,7 +543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V42Z9B58PU;
+				DEVELOPMENT_TEAM = P93MY8PTXL;
 				INFOPLIST_FILE = "IPA Keyboard Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -551,7 +551,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard.IPA-Keyboard-Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS.IPA-Keyboard-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -563,7 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V42Z9B58PU;
+				DEVELOPMENT_TEAM = P93MY8PTXL;
 				INFOPLIST_FILE = "IPA Keyboard Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -571,7 +571,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard.IPA-Keyboard-Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS.IPA-Keyboard-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
