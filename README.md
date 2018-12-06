@@ -2,6 +2,8 @@
 
 An iOS keyboard for typing symbols in the International Phonetic Alphabet. 
 
+Download on the App Store: https://itunes.apple.com/us/app/ipa-phonetic-keyboard/id1440241497?ls=1&mt=8
+
 ## Purpose
 
 * Most IPA symbols cannot be typed using regular keyboards
