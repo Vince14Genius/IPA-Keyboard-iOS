@@ -18,17 +18,23 @@ Download on the App Store: https://itunes.apple.com/us/app/ipa-phonetic-keyboard
 
 ## To-Do List (for future releases)
 
+### Separate keyboard extensions
+
 * IPA Extended (extIPA)
 
-* Obsolete symbols
+* _Obsolete symbols_
 
-* Nonstandard symbols
+* _Nonstandard symbols_
 
-* Custom keyboard (custom keys and custom order)
+* _Custom keyboard (custom keys and custom order)_
+
+### All keyboard extensions
 
 * (maybe) Recently used keys
 
 * Press and hold on backspace/delete button to rapidly delete
+
+### Host app
 
 * Link to the Wikipedia IPA page in app
 
