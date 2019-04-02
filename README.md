@@ -62,7 +62,13 @@ _Some of these features might not be allowed by the keyboard extension API_
 
 ### Host app
 
-* Link to the Wikipedia IPA page in app
+* Link to the Wikipedia IPA page
 
-* Link to Bug Report / Feedback in app
+* Link to Bug Report / Feedback
+
+* Link to Donations 
+
+  * If there are enough donations, some paid features can be made free
+
+* “Rate app” (link & in-app alert view)
 
