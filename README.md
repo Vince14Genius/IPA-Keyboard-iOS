@@ -22,7 +22,7 @@ Download on the App Store: https://itunes.apple.com/us/app/ipa-phonetic-keyboard
 
 2. Add ɝ in the main IPA keyboard
 
-3. Add ◌ (dotted circle), in both the main IPA keyboard and as a display element on keys for diacritics
+3. Add ◌ (dotted circle), in both the top bar of the main IPA keyboard (alongside "\[\]", "//", and "~") and as a display element on keys for diacritics
 
 4. Make buttons on the bottom bar smaller
 
