@@ -16,7 +16,7 @@ Download on the App Store: https://itunes.apple.com/us/app/ipa-phonetic-keyboard
 
 * An relatively easily accomplishable project to boost my currently negative self-esteem
 
-# To-Do List (for future releases)
+## To-Do List (for future releases)
 
 * IPA Extended (extIPA)
 
