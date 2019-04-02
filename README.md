@@ -15,3 +15,21 @@ Download on the App Store: https://itunes.apple.com/us/app/ipa-phonetic-keyboard
 * All IPA Keyboards on the App Store right now are either non-free, full of ads, or poorly designed; this project aims to solve all three problems
 
 * An relatively easily accomplishable project to boost my currently negative self-esteem
+
+# To-Do List (for future releases)
+
+* IPA Extended (extIPA)
+
+* Obsolete symbols
+
+* Nonstandard symbols
+
+* Custom keyboard (custom keys and custom order)
+
+* (maybe) Recently used keys
+
+* Press and hold on backspace/delete button to rapidly delete
+
+* Link to the Wikipedia IPA page in app
+
+* Link to Bug Report / Feedback in app
