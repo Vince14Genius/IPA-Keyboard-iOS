@@ -40,7 +40,7 @@ Download on the App Store: https://itunes.apple.com/us/app/ipa-phonetic-keyboard
 
 _Some of these features might be charged a price using IAP (or not)_
 
-* IPA Extended (extIPA) (this one will definitely be free)
+* IPA Extended (extIPA) _(this one will definitely be free)_
 
 * _Obsolete symbols_
 
