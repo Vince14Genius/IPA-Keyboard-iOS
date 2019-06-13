@@ -14,7 +14,7 @@ Download on the App Store: https://itunes.apple.com/us/app/ipa-phonetic-keyboard
 
 * All IPA Keyboards on the App Store right now are either non-free, full of ads, or poorly designed; this project aims to solve all three problems
 
-* An relatively easily accomplishable project to boost my currently negative self-esteem
+* A relatively easily accomplishable project to boost my currently negative self-esteem
 
 ## To-Do List: Changes to be made for next release
 
