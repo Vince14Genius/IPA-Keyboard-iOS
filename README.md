@@ -62,7 +62,7 @@ _Some of these features might not be allowed by the keyboard extension API_
 
 ### Host app
 
-- [ ] Link to the Wikipedia IPA page
+- [x] Link to the Wikipedia IPA page
 
 - [ ] Link to Bug Report / Feedback
 
