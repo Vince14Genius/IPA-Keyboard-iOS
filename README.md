@@ -64,9 +64,9 @@ _Some of these features might not be allowed by the keyboard extension API_
 
 - [x] Link to the Wikipedia IPA page
 
-- [ ] Link to Bug Report / Feedback
+- [x] Link to Bug Report / Feedback
 
-- [ ] Link to Donations 
+- [ ] Donations & Link to Donations 
 
   * If there are enough donations, some paid features can be made free
 
