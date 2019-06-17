@@ -58,7 +58,7 @@ _Some of these features might not be allowed by the keyboard extension API_
 
 - [ ] **(if possible)** Hide the switch keyboard button on devices with edge-to-edge displays (e.g. iPhone X)
 
-- [ ] Press and hold on backspace/delete button to rapidly delete
+- [x] Press and hold on backspace/delete button to rapidly delete
 
 ### Host app
 
