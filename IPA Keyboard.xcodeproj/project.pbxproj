@@ -20,6 +20,7 @@
 		4E84B1B9214745CE0078AC4B /* KeyButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */; };
 		4EAA9212217F831A0015DBFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA9214217F831A0015DBFE /* InfoPlist.strings */; };
 		4EAC2B70214B5F54008CF477 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EAC2B72214B5F54008CF477 /* InfoPlist.strings */; };
+		4ED248C522B4FE630016369B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B1A921456EEB0078AC4B /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E5D16BC22B393DE00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		4E5D16BD22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		4E5D16BE22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		4E5D16BF22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "../zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4E5D16C022B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4E84B1522140E92F0078AC4B /* IPA Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E84B1552140E92F0078AC4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E84B1572140E92F0078AC4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,11 +85,11 @@
 		4EAA9215217F831D0015DBFE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4EAA9216217F831F0015DBFE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4EAA9217217F83220015DBFE /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = eo.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4EAC2B63214B5BE5008CF477 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		4EAC2B71214B5F54008CF477 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4EAC2B73214B5F59008CF477 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4EAC2B74214B5F5A008CF477 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4EAC2B75214B5F5B008CF477 /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = eo.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4ED248C722B510480016369B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,11 +243,11 @@
 				TargetAttributes = {
 					4E84B1512140E92F0078AC4B = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 					4E84B1862140E9980078AC4B = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -256,6 +262,7 @@
 				ja,
 				eo,
 				global,
+				"zh-Hant",
 			);
 			mainGroup = 4E84B1492140E92F0078AC4B;
 			productRefGroup = 4E84B1532140E92F0078AC4B /* Products */;
@@ -273,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ED248C522B4FE630016369B /* Localizable.strings in Resources */,
 				4E84B1602140E9330078AC4B /* LaunchScreen.storyboard in Resources */,
 				4EAC2B70214B5F54008CF477 /* InfoPlist.strings in Resources */,
 				4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */,
@@ -330,7 +338,8 @@
 				4E84B1AF21456F930078AC4B /* zh-Hans */,
 				4E84B1B221456FB40078AC4B /* ja */,
 				4E84B1B521456FC40078AC4B /* eo */,
-				4EAC2B63214B5BE5008CF477 /* en */,
+				4E5D16BC22B393DE00F40B13 /* zh-Hant */,
+				4ED248C722B510480016369B /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -342,6 +351,7 @@
 				4E84B1B021456F930078AC4B /* zh-Hans */,
 				4E84B1B321456FB40078AC4B /* ja */,
 				4E84B1B621456FC40078AC4B /* eo */,
+				4E5D16BD22B393DF00F40B13 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -354,6 +364,7 @@
 				4E84B1B121456F940078AC4B /* zh-Hans */,
 				4E84B1B421456FB40078AC4B /* ja */,
 				4E84B1B721456FC40078AC4B /* eo */,
+				4E5D16BF22B393DF00F40B13 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -365,6 +376,7 @@
 				4EAA9215217F831D0015DBFE /* zh-Hans */,
 				4EAA9216217F831F0015DBFE /* ja */,
 				4EAA9217217F83220015DBFE /* eo */,
+				4E5D16C022B393DF00F40B13 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -376,6 +388,7 @@
 				4EAC2B73214B5F59008CF477 /* zh-Hans */,
 				4EAC2B74214B5F5A008CF477 /* ja */,
 				4EAC2B75214B5F5B008CF477 /* eo */,
+				4E5D16BE22B393DF00F40B13 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -505,7 +518,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P93MY8PTXL;
+				DEVELOPMENT_TEAM = S5LH6VYMA5;
 				INFOPLIST_FILE = "IPA Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -514,7 +527,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -525,7 +538,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P93MY8PTXL;
+				DEVELOPMENT_TEAM = S5LH6VYMA5;
 				INFOPLIST_FILE = "IPA Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -534,7 +547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -543,7 +556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P93MY8PTXL;
+				DEVELOPMENT_TEAM = S5LH6VYMA5;
 				INFOPLIST_FILE = "IPA Keyboard Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -554,7 +567,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS.IPA-Keyboard-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -563,7 +576,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P93MY8PTXL;
+				DEVELOPMENT_TEAM = S5LH6VYMA5;
 				INFOPLIST_FILE = "IPA Keyboard Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -574,7 +587,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS.IPA-Keyboard-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

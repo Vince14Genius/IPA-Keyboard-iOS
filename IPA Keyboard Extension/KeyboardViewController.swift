@@ -16,6 +16,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
     @IBOutlet var topSquareBracketsButton: UIButton!
     @IBOutlet var topForwardSlashesButton: UIButton!
     @IBOutlet var topTildeButton: UIButton!
+    @IBOutlet var topDottedCircleButton: UIButton!
     
     @IBOutlet var topSpaceBarButton: UIButton!
     
@@ -42,6 +43,22 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
     private let minimumInteritemSpacing: CGFloat = 4
     private let cellsPerColumn = 4
     
+    let backspaceDelay: TimeInterval = 0.5
+    let backspaceRepeat: TimeInterval = 0.07
+    
+    var backspaceActive: Bool {
+        get {
+            return (backspaceDelayTimer != nil) || (backspaceRepeatTimer != nil)
+        }
+    }
+    var backspaceDelayTimer: Timer?
+    var backspaceRepeatTimer: Timer?
+    
+    deinit {
+        backspaceDelayTimer?.invalidate()
+        backspaceRepeatTimer?.invalidate()
+    }
+    
     override func updateViewConstraints() {
         super.updateViewConstraints()
         
@@ -59,7 +76,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         
         self.backwardDeleteButton = UIButton(type: .system)
         setupButton(button: self.backwardDeleteButton, title: "⌫")
-        self.backwardDeleteButton.addTarget(self, action: #selector(deleteBackward), for: .touchDown)
+        //self.backwardDeleteButton.addTarget(self, action: #selector(deleteBackward), for: .touchDown)
         
         self.topSquareBracketsButton = UIButton(type: .system)
         setupButton(button: self.topSquareBracketsButton, title: "[ ]")
@@ -72,6 +89,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         self.topTildeButton = UIButton(type: .system)
         setupButton(button: self.topTildeButton, title: "~")
         self.topTildeButton.addTarget(self, action: #selector(self.addTilde), for: .primaryActionTriggered)
+        
+        self.topDottedCircleButton = UIButton(type: .system)
+        setupButton(button: self.topDottedCircleButton, title: String(IPASymbols.dottedCircle))
+        self.topDottedCircleButton.addTarget(self, action: #selector(self.addDottedCircle), for: .primaryActionTriggered)
         
         self.topSpaceBarButton = UIButton(type: .system)
         setupButton(button: self.topSpaceBarButton, title: NSLocalizedString("SpaceBarText", comment: "space"))
@@ -86,6 +107,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         self.view.addSubview(self.topSquareBracketsButton)
         self.view.addSubview(self.topForwardSlashesButton)
         self.view.addSubview(self.topTildeButton)
+        self.view.addSubview(self.topDottedCircleButton)
         
         self.view.addSubview(self.topSpaceBarButton)
         
@@ -100,6 +122,9 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         
         self.topTildeButton.leftAnchor.constraint(equalTo: self.topForwardSlashesButton.rightAnchor, constant: 12).isActive = true
         self.topTildeButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
+        
+        self.topDottedCircleButton.leftAnchor.constraint(equalTo: self.topTildeButton.rightAnchor, constant: 12).isActive = true
+        self.topDottedCircleButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
         
         self.topSpaceBarButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
         self.topSpaceBarButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -12).isActive = true
@@ -161,6 +186,17 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         // self.bottomStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.bottomStack.leftAnchor.constraint(equalTo: self.nextKeyboardButton.rightAnchor, constant: 12).isActive = true
         self.bottomStack.rightAnchor.constraint(equalTo: self.backwardDeleteButton.leftAnchor, constant: -12).isActive = true
+        
+        // Set up backspace button
+        
+        let cancelEvents: UIControl.Event = [.touchUpInside, .touchUpInside, .touchDragExit, .touchUpOutside, .touchCancel, .touchDragOutside]
+        
+        self.backwardDeleteButton.addTarget(self,
+                          action: #selector(deleteBackward),
+                          for: .touchDown)
+        self.backwardDeleteButton.addTarget(self,
+                          action: #selector(deleteEnded),
+                          for: cancelEvents)
     }
     
     override func didReceiveMemoryWarning() {
@@ -187,6 +223,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         self.topSquareBracketsButton.setTitleColor(textColor, for: [])
         self.topForwardSlashesButton.setTitleColor(textColor, for: [])
         self.topTildeButton.setTitleColor(textColor, for: [])
+        self.topDottedCircleButton.setTitleColor(textColor, for: [])
         self.topSpaceBarButton.setTitleColor(textColor, for: [])
         
         for cell in self.keyCollection.visibleCells {
@@ -281,40 +318,67 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
     }
     
-    @objc
-    @IBAction func deleteBackward() {
+    func cancelBackspaceTimers() {
+        self.backspaceDelayTimer?.invalidate()
+        self.backspaceRepeatTimer?.invalidate()
+        self.backspaceDelayTimer = nil
+        self.backspaceRepeatTimer = nil
+    }
+    
+    @objc func backspaceDelayCallback() {
+        self.backspaceDelayTimer = nil
+        self.backspaceRepeatTimer = Timer.scheduledTimer(timeInterval: backspaceRepeat, target: self, selector: #selector(backspaceRepeatCallback), userInfo: nil, repeats: true)
+    }
+    
+    @objc func backspaceRepeatCallback() {
+        //self.playKeySound()
         self.textDocumentProxy.deleteBackward()
     }
     
-    @objc
-    @IBAction func addSquareBrackets() {
+    @objc func deleteBackward() {
+        self.cancelBackspaceTimers()
+        self.textDocumentProxy.deleteBackward()
+        
+        // trigger for subsequent deletes
+        self.backspaceDelayTimer = Timer.scheduledTimer(timeInterval: backspaceDelay - backspaceRepeat, target: self, selector: #selector(backspaceDelayCallback), userInfo: nil, repeats: false)
+    }
+    
+    @objc func deleteEnded() {
+        self.cancelBackspaceTimers()
+    }
+    
+    @objc func addSquareBrackets() {
         self.textDocumentProxy.insertText(IPASymbols.squareBrackets)
         self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
     }
     
-    @objc
-    @IBAction func addForwardSlashes() {
+    @objc func addForwardSlashes() {
         self.textDocumentProxy.insertText(IPASymbols.forwardSlashes)
         self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
     }
     
-    @objc
-    @IBAction func addTilde() {
+    @objc func addTilde() {
         self.textDocumentProxy.insertText(IPASymbols.tilde)
     }
     
-    @objc
-    @IBAction func addSpace() {
+    @objc func addDottedCircle() {
+        self.textDocumentProxy.insertText(String(IPASymbols.dottedCircle))
+    }
+    
+    @objc func addSpace() {
         self.textDocumentProxy.insertText(" ")
     }
     
-    @objc
-    @IBAction func addButtonTitle(from button: UIButton, with event: UIEvent) {
-        self.textDocumentProxy.insertText(button.currentTitle!)
+    @objc func addButtonTitle(from button: UIButton, with event: UIEvent) {
+        guard let text = button.currentTitle else { fatalError("Unable to find button title.") }
+        if let replacementOutput = IPASymbols.replacementOutputText[text] {
+            self.textDocumentProxy.insertText(replacementOutput)
+        } else {
+            self.textDocumentProxy.insertText(text)
+        }
     }
     
-    @objc
-    @IBAction func scrollToSection(from button: UIButton, with event: UIEvent) {
+    @objc func scrollToSection(from button: UIButton, with event: UIEvent) {
         UISelectionFeedbackGenerator().selectionChanged()
         guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
         for i in 0..<IPASymbols.sectionGlyphs.count {
@@ -325,8 +389,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         }
     }
     
-    @objc
-    @IBAction func keyButtonExpand(from button: UIButton, with event: UIEvent) {
+    @objc func keyButtonExpand(from button: UIButton, with event: UIEvent) {
         if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
             keyButtonCell.keyExpand()
             changeKeyButtonColor(button)
@@ -340,8 +403,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         }
     }
     
-    @objc
-    @IBAction func keyButtonRetract(from button: UIButton, with event: UIEvent) {
+    @objc func keyButtonRetract(from button: UIButton, with event: UIEvent) {
         if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
             RunLoop.main.add(Timer(timeInterval: 0.1, repeats: false, block: {_ in
                 keyButtonCell.keyRetract()

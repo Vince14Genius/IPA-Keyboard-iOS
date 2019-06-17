@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  IPA Keyboard
+
+  Created by Vincent C. on 2018/9/9.
+  Copyright © 2018 Vince14Genius. All rights reserved.
+*/
+
+"ABC" = "ABC";
+
+"Consonants" = "輔音";
+"NonPulmonic" = "非肺部氣流音";
+"OtherSymbols" = "其他符號";
+"Vowels" = "元音";
+"Suprasegmentals" = "超音段成分";
+"TonesAndWordAccents" = "聲調";
+"Diacritics" = "變音符號";
+
+"SpaceBarText" = "空格";
+
+"IPAWikipediaURL" = "https://zh.wikipedia.org/wiki/國際音標";
