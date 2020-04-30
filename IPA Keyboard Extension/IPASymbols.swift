@@ -74,7 +74,7 @@ enum IPASymbols {
         IPASymbols.sections.otherSymbols.rawValue: [
             "ʍ", "w", "ɥ", "ʜ",
             "ʢ", "ʡ", "ɕ", "ʑ",
-            "ɺ", "ɧ", "◌͡◌", "◌͜◌",
+            "ɺ", "ɧ", "◌͡", "◌͜",
         ],
         IPASymbols.sections.vowels.rawValue: [
             "i", "e", "ɛ", "æ",
@@ -127,7 +127,7 @@ enum IPASymbols {
             "◌͆", "◌̪͆", "◌͇", "◌͍",
             "◌͎", "◌̻", "◌̈", "◌̺",
             "◌͕", "◌͔", nil, nil,
-            "◌͢◌", "\\", nil, nil,
+            "◌͢", "\\", nil, nil,
             
             // CONNECTED SPEECH, UNCERTAINTY ETC.
             "𝑓", "𝑝", nil, nil,
