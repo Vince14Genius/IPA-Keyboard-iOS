@@ -8,156 +8,16 @@
 
 import UIKit
 
-class KeyboardViewController: UIInputViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    @IBOutlet var nextKeyboardButton: UIButton!
-    @IBOutlet var backwardDeleteButton: UIButton!
-    
-    @IBOutlet var topSquareBracketsButton: UIButton!
-    @IBOutlet var topForwardSlashesButton: UIButton!
-    @IBOutlet var topTildeButton: UIButton!
-    @IBOutlet var topDottedCircleButton: UIButton!
-    
-    @IBOutlet var topSpaceBarButton: UIButton!
-    
-    @IBOutlet var bottomStack: UIStackView!
-    
-    @IBOutlet var keyCollection: UICollectionView!
+class KeyboardViewController: MasterKeyboardViewController, UICollectionViewDataSource {
     
     private var bottomButtons = [UIButton]()
     
-    private let reuseIdentifier = "ReuseId"
-    
-    private let headerViewWidth: CGFloat = 140
-    
-    private let topInset: CGFloat = 24
-    private let bottomInset: CGFloat = 8
-    private var leftInset: CGFloat {
-        get {
-            return -(headerViewWidth - 12)
-        }
-    }
-    private let rightInset: CGFloat = 12
-    
-    private let minimumLineSpacing: CGFloat = 4
-    private let minimumInteritemSpacing: CGFloat = 4
-    private let cellsPerColumn = 4
-    
-    let backspaceDelay: TimeInterval = 0.5
-    let backspaceRepeat: TimeInterval = 0.07
-    
-    var backspaceActive: Bool {
-        get {
-            return (backspaceDelayTimer != nil) || (backspaceRepeatTimer != nil)
-        }
-    }
-    var backspaceDelayTimer: Timer?
-    var backspaceRepeatTimer: Timer?
-    
-    deinit {
-        backspaceDelayTimer?.invalidate()
-        backspaceRepeatTimer?.invalidate()
-    }
-    
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        
-        // Add custom view sizing constraints here
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Perform custom UI setup here
-        
-        self.nextKeyboardButton = UIButton(type: .system)
-        setupButton(button: self.nextKeyboardButton, title: NSLocalizedString("ABC", tableName: "Localizable", comment: "Switch keyboards"))
-        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents)
-        
-        self.backwardDeleteButton = UIButton(type: .system)
-        setupButton(button: self.backwardDeleteButton, title: "⌫")
-        //self.backwardDeleteButton.addTarget(self, action: #selector(deleteBackward), for: .touchDown)
-        
-        self.topSquareBracketsButton = UIButton(type: .system)
-        setupButton(button: self.topSquareBracketsButton, title: "[ ]")
-        self.topSquareBracketsButton.addTarget(self, action: #selector(self.addSquareBrackets), for: .primaryActionTriggered)
-        
-        self.topForwardSlashesButton = UIButton(type: .system)
-        setupButton(button: self.topForwardSlashesButton, title: "/ /")
-        self.topForwardSlashesButton.addTarget(self, action: #selector(self.addForwardSlashes), for: .primaryActionTriggered)
-        
-        self.topTildeButton = UIButton(type: .system)
-        setupButton(button: self.topTildeButton, title: "~")
-        self.topTildeButton.addTarget(self, action: #selector(self.addTilde), for: .primaryActionTriggered)
-        
-        self.topDottedCircleButton = UIButton(type: .system)
-        setupButton(button: self.topDottedCircleButton, title: String(IPASymbols.dottedCircle))
-        self.topDottedCircleButton.addTarget(self, action: #selector(self.addDottedCircle), for: .primaryActionTriggered)
-        
-        self.topSpaceBarButton = UIButton(type: .system)
-        setupButton(button: self.topSpaceBarButton, title: NSLocalizedString("SpaceBarText", comment: "space"))
-        self.topSpaceBarButton.addTarget(self, action: #selector(self.addSpace), for: .primaryActionTriggered)
-        
-        self.view.addSubview(self.nextKeyboardButton)
-        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 12).isActive = true
-        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
-        
-        self.view.addSubview(self.backwardDeleteButton)
-        
-        self.view.addSubview(self.topSquareBracketsButton)
-        self.view.addSubview(self.topForwardSlashesButton)
-        self.view.addSubview(self.topTildeButton)
-        self.view.addSubview(self.topDottedCircleButton)
-        
-        self.view.addSubview(self.topSpaceBarButton)
-        
-        self.backwardDeleteButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -12).isActive = true
-        self.backwardDeleteButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
-        
-        self.topSquareBracketsButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 12).isActive = true
-        self.topSquareBracketsButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        
-        self.topForwardSlashesButton.leftAnchor.constraint(equalTo: self.topSquareBracketsButton.rightAnchor, constant: 12).isActive = true
-        self.topForwardSlashesButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        
-        self.topTildeButton.leftAnchor.constraint(equalTo: self.topForwardSlashesButton.rightAnchor, constant: 12).isActive = true
-        self.topTildeButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        
-        self.topDottedCircleButton.leftAnchor.constraint(equalTo: self.topTildeButton.rightAnchor, constant: 12).isActive = true
-        self.topDottedCircleButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        
-        self.topSpaceBarButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        self.topSpaceBarButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -12).isActive = true
-        
-        // Set up the collection view
-        
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionHeadersPinToVisibleBounds = true
-        flowLayout.headerReferenceSize = CGSize(width: self.headerViewWidth, height: 0)
-        
-        self.keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
-        self.keyCollection.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
         self.keyCollection.dataSource = self
         self.keyCollection.delegate = self
-        self.keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: self.reuseIdentifier)
-        self.keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.reuseIdentifier)
-        
-        self.keyCollection.isDirectionalLockEnabled = false
-        self.keyCollection.clipsToBounds = false
-        
-        self.view.addSubview(self.keyCollection)
-        
-        self.keyCollection.translatesAutoresizingMaskIntoConstraints = false
-        self.keyCollection.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.keyCollection.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        self.keyCollection.topAnchor.constraint(equalTo: self.topSquareBracketsButton.bottomAnchor, constant: 6).isActive = true
-        self.keyCollection.bottomAnchor.constraint(equalTo: self.nextKeyboardButton.topAnchor, constant: -6).isActive = true
-        self.keyCollection.heightAnchor.constraint(equalToConstant: 192).isActive = true
         
         // Set up the bottom stack view
-        
-        bottomButtons = []
         
         for glyph in IPASymbols.sectionGlyphs {
             let glyphButton = UIButton(type: .system)
@@ -186,187 +46,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         // self.bottomStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.bottomStack.leftAnchor.constraint(equalTo: self.nextKeyboardButton.rightAnchor, constant: 12).isActive = true
         self.bottomStack.rightAnchor.constraint(equalTo: self.backwardDeleteButton.leftAnchor, constant: -12).isActive = true
-        
-        // Set up backspace button
-        
-        let cancelEvents: UIControl.Event = [.touchUpInside, .touchUpInside, .touchDragExit, .touchUpOutside, .touchCancel, .touchDragOutside]
-        
-        self.backwardDeleteButton.addTarget(self,
-                          action: #selector(deleteBackward),
-                          for: .touchDown)
-        self.backwardDeleteButton.addTarget(self,
-                          action: #selector(deleteEnded),
-                          for: cancelEvents)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated
-    }
-    
-    override func textWillChange(_ textInput: UITextInput?) {
-        // The app is about to change the document's contents. Perform any preparation here.
-    }
-    
-    override func textDidChange(_ textInput: UITextInput?) {
-        // The app has just changed the document's contents, the document context has been updated.
-        
-        var textColor: UIColor
-        if self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = .white
-        } else {
-            textColor = .black
-        }
-        
-        self.nextKeyboardButton.setTitleColor(textColor, for: [])
-        self.backwardDeleteButton.setTitleColor(textColor, for: [])
-        self.topSquareBracketsButton.setTitleColor(textColor, for: [])
-        self.topForwardSlashesButton.setTitleColor(textColor, for: [])
-        self.topTildeButton.setTitleColor(textColor, for: [])
-        self.topDottedCircleButton.setTitleColor(textColor, for: [])
-        self.topSpaceBarButton.setTitleColor(textColor, for: [])
-        
-        for cell in self.keyCollection.visibleCells {
-            guard let button = (cell as? KeyButtonCell)?.button else { continue }
-            changeKeyButtonColor(button)
-        }
-        
-        for element in self.keyCollection.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader) {
-            guard let header = element as? SectionHeader else { continue }
-            changeSectionHeaderColor(header)
-        }
-        
-        updateBottomButtons()
-    }
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return IPASymbols.sectionNames.count
-    }
-    
-    private func changeKeyButtonColor(_ button: UIButton) {
-        guard let keyButtonCell = button.superview?.superview as? KeyButtonCell else {
-            fatalError("Incorrect button setup")
-        }
-        
-        if self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            if keyButtonCell.isExpanded {
-                button.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
-                button.setTitleColor(.clear, for: [])
-            } else {
-                button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
-                button.setTitleColor(.white, for: [])
-            }
-        } else {
-            button.backgroundColor = .white
-            if keyButtonCell.isExpanded {
-                button.setTitleColor(.clear, for: [])
-            } else {
-                button.setTitleColor(.black, for: [])
-            }
-        }
-        button.setTitleColor(.clear, for: .highlighted)
-    }
-    
-    private func changeSectionHeaderColor(_ header: SectionHeader) {
-        if self.textDocumentProxy.keyboardAppearance == .dark {
-            header.label.textColor = .lightGray
-        } else {
-            header.label.textColor = .darkGray
-        }
-    }
-    
-    private func updateBottomButtons() {
-        var textColor: UIColor
-        var bottomButtonColor: UIColor
-        var supportColor: UIColor
-        
-        if self.textDocumentProxy.keyboardAppearance == .dark {
-            textColor = .white
-            bottomButtonColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
-            supportColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.25)
-        } else {
-            textColor = .black
-            bottomButtonColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-            supportColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
-        }
-        
-        var minimumSectionIndex = Int.max
-        for indexPath in self.keyCollection.indexPathsForVisibleItems {
-            if indexPath.section < minimumSectionIndex {
-                minimumSectionIndex = indexPath.section
-            }
-        }
-        
-        for element in self.bottomStack.arrangedSubviews {
-            guard let button = element as? UIButton else { continue }
-            button.setTitleColor(bottomButtonColor, for: [])
-            button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
-            if button.titleLabel?.text == IPASymbols.sectionGlyphs[minimumSectionIndex] {
-                button.setTitleColor(textColor, for: [])
-                button.backgroundColor = supportColor
-            }
-        }
-    }
-    
-    private func setupButton(button: UIButton, title: String) {
-        button.setTitle(title, for: [])
-        button.titleLabel?.font = button.titleLabel!.font.withSize(18)
-        button.sizeToFit()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.layer.cornerRadius = 4
-        button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
-    }
-    
-    func cancelBackspaceTimers() {
-        self.backspaceDelayTimer?.invalidate()
-        self.backspaceRepeatTimer?.invalidate()
-        self.backspaceDelayTimer = nil
-        self.backspaceRepeatTimer = nil
-    }
-    
-    @objc func backspaceDelayCallback() {
-        self.backspaceDelayTimer = nil
-        self.backspaceRepeatTimer = Timer.scheduledTimer(timeInterval: backspaceRepeat, target: self, selector: #selector(backspaceRepeatCallback), userInfo: nil, repeats: true)
-    }
-    
-    @objc func backspaceRepeatCallback() {
-        //self.playKeySound()
-        self.textDocumentProxy.deleteBackward()
-    }
-    
-    @objc func deleteBackward() {
-        self.cancelBackspaceTimers()
-        self.textDocumentProxy.deleteBackward()
-        
-        // trigger for subsequent deletes
-        self.backspaceDelayTimer = Timer.scheduledTimer(timeInterval: backspaceDelay - backspaceRepeat, target: self, selector: #selector(backspaceDelayCallback), userInfo: nil, repeats: false)
-    }
-    
-    @objc func deleteEnded() {
-        self.cancelBackspaceTimers()
-    }
-    
-    @objc func addSquareBrackets() {
-        self.textDocumentProxy.insertText(IPASymbols.squareBrackets)
-        self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-    }
-    
-    @objc func addForwardSlashes() {
-        self.textDocumentProxy.insertText(IPASymbols.forwardSlashes)
-        self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-    }
-    
-    @objc func addTilde() {
-        self.textDocumentProxy.insertText(IPASymbols.tilde)
-    }
-    
-    @objc func addDottedCircle() {
-        self.textDocumentProxy.insertText(String(IPASymbols.dottedCircle))
-    }
-    
-    @objc func addSpace() {
-        self.textDocumentProxy.insertText(" ")
     }
     
     @objc func addButtonTitle(from button: UIButton, with event: UIEvent) {
@@ -388,36 +71,51 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
             }
         }
     }
+
+    override func textWillChange(_ textInput: UITextInput?) {
+        // The app is about to change the document's contents. Perform any preparation here.
+    }
     
-    @objc func keyButtonExpand(from button: UIButton, with event: UIEvent) {
-        if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            keyButtonCell.keyExpand()
-            changeKeyButtonColor(button)
-            
-            // Hide header view
-            self.keyCollection.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).forEach { header in
-                header.isHidden = true
+    override func textDidChange(_ textInput: UITextInput?) {
+        // The app has just changed the document's contents, the document context has been updated.
+        generalColorUpdate()
+        updateBottomButtons()
+    }
+    
+    func updateBottomButtons() {
+        var textColor: UIColor
+        var bottomButtonColor: UIColor
+        var supportColor: UIColor
+        
+        // Update appearance
+        if self.textDocumentProxy.keyboardAppearance == .dark {
+            textColor = .white
+            bottomButtonColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+            supportColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.25)
+        } else {
+            textColor = .black
+            bottomButtonColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+            supportColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
+        }
+        
+        var minimumSectionIndex = Int.max
+        for indexPath in self.keyCollection.indexPathsForVisibleItems {
+            if indexPath.section < minimumSectionIndex {
+                minimumSectionIndex = indexPath.section
             }
-        } else {
-            fatalError("Incorrect button setup.")
+        }
+        
+        for button in bottomButtons {
+            button.setTitleColor(bottomButtonColor, for: [])
+            button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
+            if button.titleLabel?.text == IPASymbols.sectionGlyphs[minimumSectionIndex] {
+                button.setTitleColor(textColor, for: [])
+                button.backgroundColor = supportColor
+            }
         }
     }
     
-    @objc func keyButtonRetract(from button: UIButton, with event: UIEvent) {
-        if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            RunLoop.main.add(Timer(timeInterval: 0.1, repeats: false, block: {_ in
-                keyButtonCell.keyRetract()
-                self.changeKeyButtonColor(button)
-                
-                // Show header view
-                self.keyCollection.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).forEach { header in
-                    header.isHidden = false
-                }
-            }), forMode: .common)
-        } else {
-            fatalError("Incorrect button setup.")
-        }
-    }
+    // MARK: - Collection View Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let numberOfItems = IPASymbols.keys[IPASymbols.sectionNames[section]]?.count {
@@ -497,6 +195,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDataSource,
         }
         return element
     }
+    
+    // MARK: - Scroll View Action
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateBottomButtons()

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */; };
+		4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */; };
 		4E84B1562140E92F0078AC4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1552140E92F0078AC4B /* AppDelegate.swift */; };
 		4E84B1582140E92F0078AC4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1572140E92F0078AC4B /* ViewController.swift */; };
 		4E84B15B2140E92F0078AC4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B1592140E92F0078AC4B /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 		4E5D16BE22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4E5D16BF22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "../zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4E5D16C022B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterKeyboardViewController.swift; sourceTree = "<group>"; };
+		4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSymbols.swift; sourceTree = "<group>"; };
 		4E84B1522140E92F0078AC4B /* IPA Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E84B1552140E92F0078AC4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E84B1572140E92F0078AC4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,9 +114,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E6755F122EA060700DA88BB /* IPA Keyboard Shared */ = {
+			isa = PBXGroup;
+			children = (
+				4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */,
+				4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */,
+				4E84B1A121452AF00078AC4B /* SectionHeader.swift */,
+				4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */,
+			);
+			path = "IPA Keyboard Shared";
+			sourceTree = "<group>";
+		};
 		4E84B1492140E92F0078AC4B = {
 			isa = PBXGroup;
 			children = (
+				4E6755F122EA060700DA88BB /* IPA Keyboard Shared */,
 				4E84B1542140E92F0078AC4B /* IPA Keyboard */,
 				4E84B1692140E9340078AC4B /* IPA KeyboardTests */,
 				4E84B1742140E9340078AC4B /* IPA KeyboardUITests */,
@@ -167,8 +183,6 @@
 			children = (
 				4E84B1A721456EA50078AC4B /* Localization */,
 				4E84B1892140E9980078AC4B /* KeyboardViewController.swift */,
-				4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */,
-				4E84B1A121452AF00078AC4B /* SectionHeader.swift */,
 				4E84B1952142624C0078AC4B /* IPASymbols.swift */,
 				4E84B18B2140E9980078AC4B /* Info.plist */,
 			);
@@ -237,7 +251,7 @@
 		4E84B14A2140E92F0078AC4B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Vince14Genius;
 				TargetAttributes = {
@@ -314,8 +328,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */,
+				4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */,
 				4E84B18A2140E9980078AC4B /* KeyboardViewController.swift in Sources */,
 				4E84B1A221452AF00078AC4B /* SectionHeader.swift in Sources */,
+				4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */,
 				4E84B1B9214745CE0078AC4B /* KeyButtonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

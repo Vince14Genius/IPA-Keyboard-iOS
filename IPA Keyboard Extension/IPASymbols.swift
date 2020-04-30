@@ -9,11 +9,6 @@
 import Foundation
 
 enum IPASymbols {
-    static let squareBrackets = "[]"
-    static let forwardSlashes = "//"
-    static let tilde = "~"
-    static let dottedCircle: Character = "◌"
-    
     enum sections: String {
         case consonants = "Consonants"
         case nonPulmonic = "NonPulmonic"
@@ -22,6 +17,14 @@ enum IPASymbols {
         case suprasegmentals = "Suprasegmentals"
         case wordAccents = "TonesAndWordAccents"
         case diacritics = "Diacritics"
+        case extIPA = "ExtIPA"
+    }
+    
+    enum optionalPaidSections: String {
+        case allObsoleteNonstandard = "AllObsoleteAndNonstandardSymbols"
+        case obsolete = "Obsolete"
+        case sinologist = "Sinitic"
+        case americanist = "Americanist"
     }
     
     static let sectionNames = [
@@ -32,10 +35,11 @@ enum IPASymbols {
         IPASymbols.sections.suprasegmentals.rawValue,
         IPASymbols.sections.wordAccents.rawValue,
         IPASymbols.sections.diacritics.rawValue,
+        IPASymbols.sections.extIPA.rawValue,
         ]
     
     static let sectionGlyphs: [String] = [
-        "p", "ʘ", "ʍ", "i", "ː", "˥", "n̥"
+        "p", "ʘ", "ʍ", "i", "ː", "˥", "n̥", "ʭ"
     ]
     
     static let keys: [String: [String?]] = [
@@ -107,7 +111,16 @@ enum IPASymbols {
             "◌̪",  "◌̺",  "◌̻",  "◌̃",
             "◌ⁿ", "◌ˡ", "◌̚",  nil,
             
-            "ɚ", "ɝ", nil, nil,
+            "ɚ", "ɝ", "ɫ", nil,
+        ],
+        IPASymbols.sections.extIPA.rawValue: [
+            "ʪ", "ʫ", "ꞎ", "ᶚ",
+            "", "", nil, nil,
+            "ʩ", nil, nil, nil,
+            "ꞯ", nil, nil, nil,
+            "ʬ", "ʭ", "¡", nil,
+            
+            
             
             "◌ᵖ", "◌ᵗ", "◌ᶜ", "◌ᵏ",
             "◌ᵇ", "◌ᵈ", "◌ᶡ", "◌ᶢ",
@@ -180,5 +193,8 @@ enum IPASymbols {
         "◌ᶶ": "ᶶ", "◌ᶱ": "ᶱ", "◌ᵄ": "ᵄ",
         "◌ᵚ": "ᵚ", "◌ᶷ": "ᶷ", "◌ᶺ": "ᶺ", "◌ᵅ": "ᵅ",
         "◌ᵘ": "ᵘ", "◌ᵒ": "ᵒ", "◌ᵓ": "ᵓ", "◌ᶛ": "ᶛ",
+        
+        // extIPA
+        
     ]
 }
