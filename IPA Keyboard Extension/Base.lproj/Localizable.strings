@@ -15,3 +15,8 @@
 "Suprasegmentals" = "Suprasegmentals";
 "TonesAndWordAccents" = "Tones and Word Accents";
 "Diacritics" = "Diacritics";
+"ExtIPA" = "extIPA";
+
+"SpaceBarText" = "space";
+
+"IPAWikipediaURL" = "https://en.wikipedia.org/wiki/International_Phonetic_Alphabet";

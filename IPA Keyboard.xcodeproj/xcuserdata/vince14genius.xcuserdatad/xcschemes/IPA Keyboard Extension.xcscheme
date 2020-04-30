@@ -42,8 +42,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -53,14 +51,16 @@
             ReferencedContainer = "container:IPA Keyboard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      language = "ja"
       launchStyle = "0"
+      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
@@ -69,8 +69,8 @@
       launchAutomaticallySubstyle = "2">
       <RemoteRunnable
          runnableDebuggingMode = "1"
-         BundleIdentifier = "com.Vince14Genius.IPA-Keyboard"
-         RemotePath = "/Users/vince14genius/Library/Developer/CoreSimulator/Devices/070E2D04-99C5-4355-8AF1-D1B6F6D8C08C/data/Containers/Bundle/Application/05E055F9-737D-4DEA-A8E9-BE7EC6E744BA/IPA Keyboard.app">
+         BundleIdentifier = "com.Vince14Genius.IPA-Keyboard-iOS"
+         RemotePath = "/Users/vince14genius/Library/Developer/CoreSimulator/Devices/477911C1-29AA-4548-9A4D-0BD3FECCD1B1/data/Containers/Bundle/Application/8B8854C0-0B0F-4244-BA05-69454AB2DFE3/IPA Keyboard.app">
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
@@ -81,8 +81,6 @@
             ReferencedContainer = "container:IPA Keyboard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

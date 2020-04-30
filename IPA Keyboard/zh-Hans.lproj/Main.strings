@@ -1,12 +1,39 @@
 
-/* Class = "UILabel"; text = "To set up the keyboard:\n1. Go to Settings\n2. Go to General > Keyboard > Keyboards\n3. Press \"Add New Keyboard...\"\n4. Add \"IPA Keyboard\" from the list"; ObjectID = "2Aq-WX-pmU"; */
-"2Aq-WX-pmU.text" = "设置键盘步骤：\n1. 打开“设置”\n2. 点击 通用 > 键盘 > 键盘\n3. 点击“添加键盘...”\n4. 从列表添加“IPA音标键盘”";
+/* Class = "UILabel"; text = "To set up the keyboard:\n1. Go to Settings\n2. Go to General > Keyboard > Keyboards\n3. Press \"Add New Keyboard...\"\n4. Add \"IPA Keyboard\" from the list\n\n* If the option does not show up on the list, try restarting your device"; ObjectID = "2Aq-WX-pmU"; */
+"2Aq-WX-pmU.text" = "设置键盘步骤：\n1. 打开“设置”\n2. 点击 通用 > 键盘 > 键盘\n3. 点击“添加键盘...”\n4. 从列表添加“IPA键盘”\n\n* 如果列表中没有出现此选项，请尝试重启设备。";
 
 /* Class = "UITextField"; placeholder = "You can test the keyboard here."; ObjectID = "4MI-KJ-UK8"; */
 "4MI-KJ-UK8.placeholder" = "可在此文本框内尝试使用IPA音标键盘";
 
-/* Class = "UITextView"; text = "To set up the keyboard:\n1. Go to Settings\n2. Go to General > Keyboard > Keyboards\n3. Press \"Add New Keyboard...\"\n4. Add \"IPA Keyboard\" from the list"; ObjectID = "unX-e1-sL2"; */
-"unX-e1-sL2.text" = "设置键盘步骤：\n1. 打开“设置”\n2. 点击 通用 > 键盘 > 键盘\n3. 点击“添加键盘...”\n4. 从列表添加“IPA音标键盘”";
-
 /* Class = "UINavigationItem"; title = "IPA Keyboard"; ObjectID = "xek-jV-h6v"; */
 "xek-jV-h6v.title" = "IPA音标键盘";
+
+/* Class = "UITabBarItem"; title = "Instructions"; ObjectID = "cIb-tz-KMD"; */
+"cIb-tz-KMD.title" = "使用说明";
+
+/* Class = "UIBarButtonItem"; title = "Keyboards"; ObjectID = "dIz-Wi-y6s"; */
+"dIz-Wi-y6s.title" = "键盘列表";
+
+/* Class = "UILabel"; text = "extIPA (Standard, 2015)"; ObjectID = "eSv-0u-P0Z"; */
+"eSv-0u-P0Z.text" = "extIPA (标准, 2015)";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "fIB-BN-oQv"; */
+"fIB-BN-oQv.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "IPA (Standard, 2015)"; ObjectID = "fk1-4b-OnT"; */
+"fk1-4b-OnT.text" = "IPA (标准, 2015)";
+
+/* Class = "UILabel"; text = "Nonstandard/Obsolete Symbols"; ObjectID = "haq-ho-nap"; */
+"haq-ho-nap.text" = "非正规/已废弃字符";
+
+/* Class = "UIBarButtonItem"; title = "About IPA"; ObjectID = "lnH-3k-aI4"; */
+"lnH-3k-aI4.title" = "关于IPA";
+
+/* Class = "UITableViewController"; title = "Keyboards"; ObjectID = "n5w-ml-uBt"; */
+"n5w-ml-uBt.title" = "键盘列表";
+
+/* Class = "UIButton"; normalTitle = "Bug Report / Feedback"; ObjectID = "pKG-fP-2XV"; */
+"pKG-fP-2XV.normalTitle" = "问题报告/提供建议";
+
+/* Class = "UINavigationItem"; title = "Instructions"; ObjectID = "xek-jV-h6v"; */
+"xek-jV-h6v.title" = "使用说明";

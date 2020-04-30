@@ -58,7 +58,7 @@ class KeyButtonCell: UICollectionViewCell {
         self.altLabel.topAnchor.constraint(equalTo: self.button.topAnchor, constant: 2).isActive = true
         self.altLabel.widthAnchor.constraint(equalTo: self.button.widthAnchor).isActive = true
         self.altLabel.centerXAnchor.constraint(equalTo: self.button.centerXAnchor).isActive = true
- 
+        
         self.button.layer.cornerRadius = self.cornerRadius
         self.button.layer.masksToBounds = true
         
