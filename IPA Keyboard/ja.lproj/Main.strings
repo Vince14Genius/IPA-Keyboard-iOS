@@ -1,9 +1,9 @@
 
 /* Class = "UILabel"; text = "To set up the keyboard:\n1. Go to Settings\n2. Go to General > Keyboard > Keyboards\n3. Press \"Add New Keyboard...\"\n4. Add \"IPA Keyboard\" from the list\n\n* If the option does not show up on the list, try restarting your device"; ObjectID = "2Aq-WX-pmU"; */
-"2Aq-WX-pmU.text" = "このキーボードを設定する方法：\n1. 「設定」を開けてください\n2. 一般 > キーボード > キーボード　に行ってください\n3. 「新しいキーボードを追加...」を触れてください\n4. リストに「IPAキーボード」を選んでください\n\n* その選択肢がリストになければ、デバイスをリスタートしてみてください。";
+"2Aq-WX-pmU.text" = "このキーボードを追加するには：\n１. 「設定」を開けて、\n２. 「一般」>「キーボード」>「キーボード」>「新しいキーボードを追加...」の順に選択し、\n３. 「他社製キーボード」のリストから「IPAキーボード」を選んでください\n\n※ 「IPAキーボード」がリストになければ、アプリを削除して再インストールし、またはデバイスをリスタートしてみてください。";
 
 /* Class = "UITextField"; placeholder = "You can test the keyboard here."; ObjectID = "4MI-KJ-UK8"; */
-"4MI-KJ-UK8.placeholder" = "こちらでIPAキーボードを試しことができます";
+"4MI-KJ-UK8.placeholder" = "こちらでテストできます";
 
 /* Class = "UINavigationItem"; title = "IPA Keyboard"; ObjectID = "xek-jV-h6v"; */
 "xek-jV-h6v.title" = "IPAキーボード";
