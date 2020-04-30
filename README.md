@@ -26,10 +26,6 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 - [x] Add ◌ (dotted circle), in both the top bar of the main IPA keyboard (alongside "\[\]", "//", and "~") and as a display element on keys for diacritics
 
-- [ ] Make buttons on the bottom bar smaller
-
-- [ ] Replace the switch keyboard button with a globe glyph
-
 ## To-Do List: Current Bugs
 
 - [ ] If the user switched to this keyboard before using WeChat Pay, this keyboard replaces the system numerical keyboard, rendering the user unable to enter numbers for WeChat Pay's numerical field
@@ -42,7 +38,7 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 _Some of these features might be charged a price using IAP (or not)_
 
-- [ ] IPA Extended (extIPA) **(this one will definitely be free)**
+- [x] IPA Extended (extIPA) **(this one will definitely be free)**
 
 - [ ] _Obsolete symbols_
 
