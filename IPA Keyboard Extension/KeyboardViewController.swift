@@ -137,6 +137,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
                 
                 button.setTitle(text, for: [])
                 button.titleLabel?.font = button.titleLabel!.font.withSize(24)
+                button.titleLabel?.lineBreakMode = .byClipping // to make sure overflow is not hidden by ellipsis
                 
                 // Reset the button's targets
                 button.removeTarget(nil, action: nil, for: .allEvents)
