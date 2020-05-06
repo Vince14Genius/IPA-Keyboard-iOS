@@ -50,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E4C51692462C28200B9AC43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E5D16BC22B393DE00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		4E5D16BD22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		4E5D16BE22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 		4E84B1492140E92F0078AC4B = {
 			isa = PBXGroup;
 			children = (
+				4E4C51692462C28200B9AC43 /* README.md */,
 				4E6755F122EA060700DA88BB /* IPA Keyboard Shared */,
 				4E84B1542140E92F0078AC4B /* IPA Keyboard */,
 				4E84B1692140E9340078AC4B /* IPA KeyboardTests */,
