@@ -147,7 +147,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIB-BN-oQv">
-                                                    <rect key="frame" x="329" y="1" width="46" height="42"/>
+                                                    <rect key="frame" x="345" y="1" width="30" height="42"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <state key="normal" title="+"/>
                                                 </button>
@@ -156,7 +156,7 @@
                                                 <constraint firstItem="haq-ho-nap" firstAttribute="leading" secondItem="pSw-Zi-7PG" secondAttribute="leading" constant="16" id="50T-64-ujc"/>
                                                 <constraint firstAttribute="trailing" secondItem="fIB-BN-oQv" secondAttribute="trailing" id="6yw-HF-inE"/>
                                                 <constraint firstItem="fIB-BN-oQv" firstAttribute="centerY" secondItem="pSw-Zi-7PG" secondAttribute="centerY" id="QQs-Zm-oo0"/>
-                                                <constraint firstItem="fIB-BN-oQv" firstAttribute="leading" relation="lessThanOrEqual" secondItem="pSw-Zi-7PG" secondAttribute="leading" constant="329" id="cYo-ZD-r9E"/>
+                                                <constraint firstItem="fIB-BN-oQv" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="pSw-Zi-7PG" secondAttribute="trailing" constant="16" id="cYo-ZD-r9E"/>
                                                 <constraint firstItem="haq-ho-nap" firstAttribute="centerY" secondItem="pSw-Zi-7PG" secondAttribute="centerY" id="hBP-0Z-OQa"/>
                                                 <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="haq-ho-nap" secondAttribute="trailing" constant="16" id="kX6-PU-r58"/>
                                             </constraints>
