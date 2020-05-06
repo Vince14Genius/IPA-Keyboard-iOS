@@ -131,7 +131,8 @@ enum IPASymbols {
             
             // CONNECTED SPEECH, UNCERTAINTY ETC.
             "𝑓", "𝑝", nil, nil,
-            "(", ".", ")", nil,
+            "{", "⸨", "(", ".",
+            "}", "⸩", ")", nil,
             "◯", "Ⓒ", "Ⓕ", "Ⓖ",
             "Ⓚ", "Ⓛ", "Ⓝ", "Ⓟ",
             "Ⓡ", "Ⓢ", "Ⓣ", "Ⓥ",
@@ -167,6 +168,14 @@ enum IPASymbols {
             "◌ᵘ", "◌ᵒ", "◌ᵓ", "◌ᶛ",
         ],
         ]
+    
+    /**
+     - parameter displaySymbol: the symbol to check for whether it has a dotted circle
+     - returns: whether the symbol has a dotted circle
+     */
+    static func hasDottedCircle(_ displaySymbol: String) -> Bool {
+        return displaySymbol.unicodeScalars.contains("◌")
+    }
     
     static let replacementOutputText = [
         // Non-Pulmonic

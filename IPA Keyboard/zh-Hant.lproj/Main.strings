@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "To set up the keyboard:\n1. Go to Settings\n2. Go to General > Keyboard > Keyboards\n3. Press \"Add New Keyboard...\"\n4. Add \"IPA Keyboard\" from the list \n* If the option does not show up on the list, try restarting your device."; ObjectID = "2Aq-WX-pmU"; */
-"2Aq-WX-pmU.text" = "設置鍵盤步驟：\n1. 打開“設置”\n2. 點擊 通用 > 鍵盤 > 鍵盤\n3. 點擊“添加鍵盤...”\n4. 從列表添加“IPA鍵盤”\n\n* 如果列表中沒有出現此選項，請嘗試重新啟動設備。";
+"2Aq-WX-pmU.text" = "設置鍵盤步驟：\n1. 打開“設定”\n2. 點擊 一般 > 鍵盤 > 鍵盤\n3. 點擊“新增鍵盤...”\n4. 從列表添加“IPA鍵盤”\n\n* 如果列表中沒有出現此選項，請嘗試重新啟動設備。";
 
 /* Class = "UITextField"; placeholder = "You can test the keyboard here."; ObjectID = "4MI-KJ-UK8"; */
 "4MI-KJ-UK8.placeholder" = "可在此文本框內嘗試使用IPA音標鍵盤";

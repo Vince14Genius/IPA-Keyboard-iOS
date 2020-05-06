@@ -10,6 +10,13 @@ import UIKit
 
 class KeyboardViewController: MasterKeyboardViewController, UICollectionViewDataSource {
     
+    // MARK: Constants
+    
+    let defaultKeyFontSize: CGFloat = 24
+    let complexKeyFontSize: CGFloat = 20
+    
+    // MARK: Main UI Code
+    
     private var bottomButtons = [UIButton]()
     
     override func viewDidLoad() {
@@ -136,7 +143,15 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
                 (cell as! KeyButtonCell).altLabel.text = text
                 
                 button.setTitle(text, for: [])
-                button.titleLabel?.font = button.titleLabel!.font.withSize(24)
+                
+                if IPASymbols.hasDottedCircle(text) {
+                    // Set to smaller font size if there's a dotted circle
+                    button.titleLabel?.font = button.titleLabel!.font.withSize(complexKeyFontSize)
+                } else {
+                    // Default font size
+                    button.titleLabel?.font = button.titleLabel!.font.withSize(defaultKeyFontSize)
+                }
+                
                 button.titleLabel?.lineBreakMode = .byClipping // to make sure overflow is not hidden by ellipsis
                 
                 // Reset the button's targets
