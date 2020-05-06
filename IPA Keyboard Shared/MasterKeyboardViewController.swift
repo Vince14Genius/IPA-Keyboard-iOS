@@ -38,7 +38,28 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     let rightInset: CGFloat = 12
     let minimumLineSpacing: CGFloat = 4
     let minimumInteritemSpacing: CGFloat = 4
-    let cellsPerColumn = 4
+    
+    var cellSize: CGFloat {
+        get {
+            switch UIDevice.current.userInterfaceIdiom {
+            case .pad:
+                return 45
+            default:
+                return 38
+            }
+        }
+    }
+    
+    var cellsPerColumn: Int {
+        get {
+            switch UIDevice.current.userInterfaceIdiom {
+            case .pad:
+                return LargeDisplayKeyArrangement.numberOfRows
+            default:
+                return IPASymbols.numberOfRows
+            }
+        }
+    }
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -151,7 +172,12 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         self.keyCollection.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         self.keyCollection.topAnchor.constraint(equalTo: self.topSquareBracketsButton.bottomAnchor, constant: 6).isActive = true
         self.keyCollection.bottomAnchor.constraint(equalTo: self.nextKeyboardButton.topAnchor, constant: -6).isActive = true
-        self.keyCollection.heightAnchor.constraint(equalToConstant: 192).isActive = true
+        
+        let insetsTotalHeight = topInset + bottomInset
+        let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
+        let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * minimumInteritemSpacing
+        let keyCollectionHeight = insetsTotalHeight + cellTotalHeight + spacingTotalHeight
+        self.keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
         
         // Set up backspace button
         

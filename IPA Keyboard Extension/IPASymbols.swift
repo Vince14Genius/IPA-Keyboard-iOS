@@ -9,6 +9,8 @@
 import Foundation
 
 enum IPASymbols {
+    static let numberOfRows = 4
+    
     enum sections: String {
         case consonants = "Consonants"
         case nonPulmonic = "NonPulmonic"
@@ -99,7 +101,7 @@ enum IPASymbols {
             "˩", nil, nil, nil,
             "◌̌", "◌̂", "◌᷄", "◌᷅",
             "◌᷈", nil, nil, nil,
-            "↓", "↑", "↗", "↘",
+            "ꜜ", "ꜛ", "↗", "↘",
         ],
         IPASymbols.sections.diacritics.rawValue: [
             "◌̥",  "◌̬",  "◌ʰ", "◌̹",
@@ -144,6 +146,8 @@ enum IPASymbols {
             // OTHER SOUNDS
             "¡", "*", nil, nil,
             
+            nil, nil, nil, nil,
+            
             // SUPERSCRIPTS
             "◌ᵖ", "◌ᵗ", "◌ᶜ", "◌ᵏ",
             "◌ᵇ", "◌ᵈ", "◌ᶡ", "◌ᶢ",
@@ -159,6 +163,8 @@ enum IPASymbols {
             "◌ᶹ", "◌ʴ", "◌ʵ",  nil,
             "◌ᶭ",  nil, "◌ᶩ", "◌ᶫ",
             "◌ᶣ", "◌ʳ",  nil,  nil,
+            
+            nil, nil, nil, nil,
             
             "◌ⁱ", "◌ᵉ", "◌ᵋ", "◌ᵆ",
             "◌ʸ", "◌ᶦ", "◌ꟹ", "◌ᵃ",

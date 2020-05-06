@@ -122,10 +122,18 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         }
     }
     
+    // MARK: - Collection View Helper Methods
+    
+    func getKeySet(section: Int) -> [String?]? {
+        let largeDisplayKeySet = LargeDisplayKeyArrangement.keys[IPASymbols.sectionNames[section]]
+        let defaultKeySet = IPASymbols.keys[IPASymbols.sectionNames[section]]
+        return (cellsPerColumn == LargeDisplayKeyArrangement.numberOfRows) ? largeDisplayKeySet : defaultKeySet
+    }
+    
     // MARK: - Collection View Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let numberOfItems = IPASymbols.keys[IPASymbols.sectionNames[section]]?.count {
+        if let numberOfItems = getKeySet(section: section)?.count {
             return numberOfItems
         } else {
             fatalError("Section index overflow.")
@@ -136,42 +144,42 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifier, for: indexPath)
         
-        if let button = (cell as? KeyButtonCell)?.button {
-            if let text = IPASymbols.keys[IPASymbols.sectionNames[indexPath.section]]![indexPath.item] {
-                cell.isHidden = false
-                
-                (cell as! KeyButtonCell).altLabel.text = text
-                
-                button.setTitle(text, for: [])
-                
-                if IPASymbols.hasDottedCircle(text) {
-                    // Set to smaller font size if there's a dotted circle
-                    button.titleLabel?.font = button.titleLabel!.font.withSize(complexKeyFontSize)
-                } else {
-                    // Default font size
-                    button.titleLabel?.font = button.titleLabel!.font.withSize(defaultKeyFontSize)
-                }
-                
-                button.titleLabel?.lineBreakMode = .byClipping // to make sure overflow is not hidden by ellipsis
-                
-                // Reset the button's targets
-                button.removeTarget(nil, action: nil, for: .allEvents)
-                button.addTarget(self, action: #selector(addButtonTitle(from:with:)), for: .primaryActionTriggered)
-                button.addTarget(self, action: #selector(keyButtonExpand(from:with:)), for: .touchDown)
-                
-                // Add retraction targets
-                button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchCancel)
-                button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpOutside)
-                button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpInside)
-                
-                // Set color based on keyboard appearance
-                changeKeyButtonColor(button)
-            } else {
-                cell.isHidden = true
-            }
-        } else {
+        guard let button = (cell as? KeyButtonCell)?.button else {
             cell.backgroundColor = UIColor.red
+            return cell
         }
+        
+        if let text = getKeySet(section: indexPath.section)?[indexPath.item] {
+            cell.isHidden = false
+            (cell as! KeyButtonCell).altLabel.text = text
+            button.setTitle(text, for: [])
+            
+            if IPASymbols.hasDottedCircle(text) {
+                // Set to smaller font size if there's a dotted circle
+                button.titleLabel?.font = button.titleLabel!.font.withSize(complexKeyFontSize)
+            } else {
+                // Default font size
+                button.titleLabel?.font = button.titleLabel!.font.withSize(defaultKeyFontSize)
+            }
+            
+            button.titleLabel?.lineBreakMode = .byClipping // to make sure overflow is not hidden by ellipsis
+            
+            // Reset the button's targets
+            button.removeTarget(nil, action: nil, for: .allEvents)
+            button.addTarget(self, action: #selector(addButtonTitle(from:with:)), for: .primaryActionTriggered)
+            button.addTarget(self, action: #selector(keyButtonExpand(from:with:)), for: .touchDown)
+            
+            // Add retraction targets
+            button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchCancel)
+            button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpOutside)
+            button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpInside)
+            
+            // Set color based on keyboard appearance
+            changeKeyButtonColor(button)
+        } else {
+            cell.isHidden = true
+        }
+        
         return cell
     }
     
