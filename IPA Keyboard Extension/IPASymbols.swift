@@ -192,7 +192,7 @@ enum IPASymbols {
         "◌ʼ": "ʼ",
         
         // Other Symbols
-        "◌͡◌": "͡", "◌͜◌": "͜",
+        "◌͡": "͡", "◌͜": "͜",
         
         // Suprasegmentals
         "◌̆": "̆",
