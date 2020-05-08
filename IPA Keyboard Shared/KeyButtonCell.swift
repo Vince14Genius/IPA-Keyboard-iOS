@@ -20,8 +20,8 @@ class KeyButtonCell: UICollectionViewCell {
     
     private var topConstraint: NSLayoutConstraint!
     private var bottomConstraint: NSLayoutConstraint!
-    private var leftConstraint: NSLayoutConstraint!
-    private var rightConstraint: NSLayoutConstraint!
+    private var leadingConstraint: NSLayoutConstraint!
+    private var trailingConstraint: NSLayoutConstraint!
     
     var topExpandedConstraint: NSLayoutConstraint!
     
@@ -53,14 +53,14 @@ class KeyButtonCell: UICollectionViewCell {
         
         self.topConstraint = self.button.topAnchor.constraint(equalTo: self.contentView.topAnchor)
         self.bottomConstraint = self.button.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
-        self.leftConstraint = self.button.leftAnchor.constraint(equalTo: self.contentView.leftAnchor)
-        self.rightConstraint = self.button.rightAnchor.constraint(equalTo: self.contentView.rightAnchor)
+        self.leadingConstraint = self.button.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor)
+        self.trailingConstraint = self.button.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
         
         self.topExpandedConstraint = self.button.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: expansionConstant)
         
         self.addConstraint(self.bottomConstraint)
-        self.addConstraint(self.leftConstraint)
-        self.addConstraint(self.rightConstraint)
+        self.addConstraint(self.leadingConstraint)
+        self.addConstraint(self.trailingConstraint)
         
         self.altLabel.topAnchor.constraint(equalTo: self.button.topAnchor, constant: 2).isActive = true
         self.altLabel.widthAnchor.constraint(equalTo: self.button.widthAnchor).isActive = true

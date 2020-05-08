@@ -19,13 +19,13 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     @IBOutlet var nextKeyboardButton: UIButton!
     @IBOutlet var backwardDeleteButton: UIButton!
     
-    // Top left buttons
+    // Top leading buttons
     @IBOutlet var topSquareBracketsButton: UIButton!
     @IBOutlet var topForwardSlashesButton: UIButton!
     @IBOutlet var topTildeButton: UIButton!
     @IBOutlet var topDottedCircleButton: UIButton!
     
-    // Top right buttons
+    // Top trailing buttons
     @IBOutlet var topSpaceBarButton: UIButton!
     @IBOutlet var topReturnButton: UIButton!
     
@@ -126,29 +126,29 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         // MARK: - Set up constraints
         
-        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 12).isActive = true
+        self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
         
-        self.backwardDeleteButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -12).isActive = true
+        self.backwardDeleteButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -12).isActive = true
         self.backwardDeleteButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
         
-        self.topSquareBracketsButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 12).isActive = true
+        self.topSquareBracketsButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
         self.topSquareBracketsButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
         
-        self.topForwardSlashesButton.leftAnchor.constraint(equalTo: self.topSquareBracketsButton.rightAnchor, constant: 12).isActive = true
+        self.topForwardSlashesButton.leadingAnchor.constraint(equalTo: self.topSquareBracketsButton.trailingAnchor, constant: 12).isActive = true
         self.topForwardSlashesButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
         
-        self.topTildeButton.leftAnchor.constraint(equalTo: self.topForwardSlashesButton.rightAnchor, constant: 12).isActive = true
+        self.topTildeButton.leadingAnchor.constraint(equalTo: self.topForwardSlashesButton.trailingAnchor, constant: 12).isActive = true
         self.topTildeButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
         
-        self.topDottedCircleButton.leftAnchor.constraint(equalTo: self.topTildeButton.rightAnchor, constant: 12).isActive = true
+        self.topDottedCircleButton.leadingAnchor.constraint(equalTo: self.topTildeButton.trailingAnchor, constant: 12).isActive = true
         self.topDottedCircleButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
         
         self.topSpaceBarButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        self.topSpaceBarButton.rightAnchor.constraint(equalTo: self.topReturnButton.leftAnchor, constant: -12).isActive = true
+        self.topSpaceBarButton.trailingAnchor.constraint(equalTo: self.topReturnButton.leadingAnchor, constant: -12).isActive = true
         
         self.topReturnButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        self.topReturnButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -12).isActive = true
+        self.topReturnButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -12).isActive = true
         
         // MARK: - Set up the collection view
         
@@ -168,8 +168,8 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         self.view.addSubview(self.keyCollection)
         
         self.keyCollection.translatesAutoresizingMaskIntoConstraints = false
-        self.keyCollection.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.keyCollection.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.keyCollection.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        self.keyCollection.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         self.keyCollection.topAnchor.constraint(equalTo: self.topSquareBracketsButton.bottomAnchor, constant: 6).isActive = true
         self.keyCollection.bottomAnchor.constraint(equalTo: self.nextKeyboardButton.topAnchor, constant: -6).isActive = true
         

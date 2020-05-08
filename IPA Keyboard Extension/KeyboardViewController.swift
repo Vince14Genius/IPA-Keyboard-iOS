@@ -55,8 +55,8 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         self.bottomStack.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
         self.bottomStack.topAnchor.constraint(equalTo: self.keyCollection.bottomAnchor).isActive = true
         // self.bottomStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.bottomStack.leftAnchor.constraint(equalTo: self.nextKeyboardButton.rightAnchor, constant: 12).isActive = true
-        self.bottomStack.rightAnchor.constraint(equalTo: self.backwardDeleteButton.leftAnchor, constant: -12).isActive = true
+        self.bottomStack.leadingAnchor.constraint(equalTo: self.nextKeyboardButton.trailingAnchor, constant: 12).isActive = true
+        self.bottomStack.trailingAnchor.constraint(equalTo: self.backwardDeleteButton.leadingAnchor, constant: -12).isActive = true
     }
     
     // MARK: - Helper Methods
