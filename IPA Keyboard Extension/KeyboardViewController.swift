@@ -10,12 +10,12 @@ import UIKit
 
 class KeyboardViewController: MasterKeyboardViewController, UICollectionViewDataSource {
     
-    // MARK: Constants
+    // MARK: - Constants
     
     let defaultKeyFontSize: CGFloat = 24
     let complexKeyFontSize: CGFloat = 20
     
-    // MARK: Main UI Code
+    // MARK: - viewDidLoad()
     
     private var bottomButtons = [UIButton]()
     
@@ -54,37 +54,9 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         self.bottomStack.leftAnchor.constraint(equalTo: self.nextKeyboardButton.rightAnchor, constant: 12).isActive = true
         self.bottomStack.rightAnchor.constraint(equalTo: self.backwardDeleteButton.leftAnchor, constant: -12).isActive = true
     }
+    
+    // MARK: - Helper Methods
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return IPASymbols.sectionNames.count
-    }
-    
-    @objc func addButtonTitle(from button: UIButton, with event: UIEvent) {
-        guard let text = button.currentTitle else { fatalError("Unable to find button title.") }
-        self.textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
-    }
-    
-    @objc func scrollToSection(from button: UIButton, with event: UIEvent) {
-        UISelectionFeedbackGenerator().selectionChanged()
-        guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
-        for i in 0..<IPASymbols.sectionGlyphs.count {
-            if buttonTitle == IPASymbols.sectionGlyphs[i] {
-                self.keyCollection.scrollToItem(at: [i, 0], at: .left, animated: true)
-                return
-            }
-        }
-    }
-
-    override func textWillChange(_ textInput: UITextInput?) {
-        // The app is about to change the document's contents. Perform any preparation here.
-    }
-    
-    override func textDidChange(_ textInput: UITextInput?) {
-        // The app has just changed the document's contents, the document context has been updated.
-        generalColorUpdate()
-        updateBottomButtons()
-    }
-    
     func updateBottomButtons() {
         var textColor: UIColor
         var bottomButtonColor: UIColor
@@ -118,15 +90,35 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         }
     }
     
-    // MARK: - Collection View Helper Methods
-    
     func getKeySet(section: Int) -> [String?]? {
         let largeDisplayKeySet = LargeDisplayKeyArrangement.keys[IPASymbols.sectionNames[section]]
         let defaultKeySet = IPASymbols.keys[IPASymbols.sectionNames[section]]
         return (cellsPerColumn == LargeDisplayKeyArrangement.numberOfRows) ? largeDisplayKeySet : defaultKeySet
     }
     
+    // MARK: - Button Actions
+
+    @objc func addButtonTitle(from button: UIButton, with event: UIEvent) {
+        guard let text = button.currentTitle else { fatalError("Unable to find button title.") }
+        self.textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
+    }
+    
+    @objc func scrollToSection(from button: UIButton, with event: UIEvent) {
+        UISelectionFeedbackGenerator().selectionChanged()
+        guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
+        for i in 0..<IPASymbols.sectionGlyphs.count {
+            if buttonTitle == IPASymbols.sectionGlyphs[i] {
+                self.keyCollection.scrollToItem(at: [i, 0], at: .left, animated: true)
+                return
+            }
+        }
+    }
+    
     // MARK: - Collection View Methods
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return IPASymbols.sectionNames.count
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let numberOfItems = getKeySet(section: section)?.count {
@@ -214,6 +206,18 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             changeSectionHeaderColor(header)
         }
         return element
+    }
+    
+    // MARK: - Delegate Methods
+    
+    override func textWillChange(_ textInput: UITextInput?) {
+        // The app is about to change the document's contents. Perform any preparation here.
+    }
+    
+    override func textDidChange(_ textInput: UITextInput?) {
+        // The app has just changed the document's contents, the document context has been updated.
+        generalColorUpdate()
+        updateBottomButtons()
     }
     
     // MARK: - Scroll View Action
