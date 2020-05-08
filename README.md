@@ -28,11 +28,17 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 - [ ] If the user switched to this keyboard before using WeChat Pay, this keyboard replaces the system numerical keyboard, rendering the user unable to enter numbers for WeChat Pay's numerical field
 
-  * **fix** - tell the system that this keyboard cannot be used as a numerical keyboard
+  * **fix** - theoretically unfixable, as there is currently no way of indicating absence of a numerical keyboard through the iOS third-party keyboard API
+  
+- [ ] Bad support for hardware keyboards, such as Bluetooth keyboards and iPad Smart/Magic Keyboard
+
+  * **fix** - theoretically unfixable, as the iOS third-party keyboard API does not yet support ignoring the hardware keyboard
 
 ## To-Do List: Features for future releases
 
-### Separate keyboard extensions
+### Other key sets
+
+_No longer using separate keyboard extensions; integrate everything to the main keyboard extension_
 
 _Some of these features might be charged a price using IAP (or not)_
 
@@ -50,9 +56,13 @@ _Some of these features might not be allowed by the keyboard extension API_
 
 - [ ] **(if possible)** Recently used keys
 
-- [ ] **(if possible)** Ability to move the cursor using the keyboard
+- [ ] Ability to move the cursor using the keyboard
 
-- [ ] **(if possible)** Hide the switch keyboard button on devices with edge-to-edge displays (e.g. iPhone X)
+  * will not be able to 100% mimick system keyboard behavior; can only move cursor left and right
+
+- [x] Hide the switch keyboard button on devices with edge-to-edge displays (e.g. iPhone X)
+
+  * now possible to implement due to the `needsInputModeSwitchKey` property, but I've decided that it's not yet needed
 
 - [x] Press and hold on backspace/delete button to rapidly delete
 
