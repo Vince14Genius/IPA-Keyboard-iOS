@@ -10,6 +10,8 @@ import UIKit
 
 class MasterKeyboardViewController: UIInputViewController, UICollectionViewDelegateFlowLayout {
     
+    // MARK: - Constants
+    
     @IBOutlet var keyCollection: UICollectionView!
     @IBOutlet var bottomStack: UIStackView!
     
@@ -61,11 +63,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         }
     }
     
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        
-        // Add custom view sizing constraints here
-    }
+    // MARK: - setupButton()
     
     private var buttonsThatNeedColorUpdate = [UIButton]()
     
@@ -88,10 +86,12 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
     }
     
+    // MARK: - viewDidLoad()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Perform custom UI setup here
+        // MARK: - Perform custom UI setup here
         
         self.nextKeyboardButton = UIButton(type: .system)
         setupButton(button: self.nextKeyboardButton, title: NSLocalizedString("ABC", tableName: "Localizable", comment: "Switch keyboards"))
@@ -124,7 +124,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         setupButton(button: self.topReturnButton, title: "⏎")
         self.topReturnButton.addTarget(self, action: #selector(self.addReturn), for: .primaryActionTriggered)
         
-        // Set up constraints
+        // MARK: - Set up constraints
         
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 12).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
@@ -150,7 +150,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         self.topReturnButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
         self.topReturnButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -12).isActive = true
         
-        // Set up the collection view
+        // MARK: - Set up the collection view
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -179,7 +179,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         let keyCollectionHeight = insetsTotalHeight + cellTotalHeight + spacingTotalHeight
         self.keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
         
-        // Set up backspace button
+        // MARK: - Set up backspace button
         
         let cancelEvents: UIControl.Event = [.touchUpInside, .touchUpInside, .touchDragExit, .touchUpOutside, .touchCancel, .touchDragOutside]
         
@@ -190,7 +190,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
                                             action: #selector(deleteEnded),
                                             for: cancelEvents)
         
-        // Set up input mode switch button if needed
+        // MARK: - Set up input mode switch button if needed
         
         if #available(iOSApplicationExtension 11.0, *), needsInputModeSwitchKey {
             
@@ -199,16 +199,23 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         }
     }
     
+    // MARK: - Other Boilerplate Code
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
     }
     
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        
+        // Add custom view sizing constraints here
+    }
+    
+    // MARK: - Color Update Methods
+    
     /**
-    Update the colors of all buttons in the keyboard, based on the system keyboard color.
-    - Parameters:
-       - button: the `UIButton` to set up
-       - title: the text displayed on the button (use `NSLocalizedString` for all non-universally-understood strings)
+    Update the colors of all first-level UI elements, key buttons, and section headers
     */
     func generalColorUpdate() {
         var textColor: UIColor
@@ -233,6 +240,11 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         }
     }
     
+    /**
+    Update the colors of all key buttons and their labels, based on the system keyboard color.
+    - Parameters:
+       - button: the `UIButton` to set up
+    */
     func changeKeyButtonColor(_ button: UIButton) {
         guard let keyButtonCell = button.superview?.superview as? KeyButtonCell else {
             fatalError("Incorrect button setup")
@@ -257,6 +269,11 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         button.setTitleColor(.clear, for: .highlighted)
     }
     
+    /**
+    Update the colors of all section header text, based on the system keyboard color.
+    - Parameters:
+       - header: the `SectionHeader` to set up
+    */
     func changeSectionHeaderColor(_ header: SectionHeader) {
         if self.textDocumentProxy.keyboardAppearance == .dark {
             header.label.textColor = .lightGray
