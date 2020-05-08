@@ -29,6 +29,9 @@ enum IPASymbols {
         case americanist = "Americanist"
     }
     
+    /**
+    Name of section headers in the keyboard collection view
+    */
     static let sectionNames = [
         IPASymbols.sections.consonants.rawValue,
         IPASymbols.sections.nonPulmonic.rawValue,
@@ -40,10 +43,17 @@ enum IPASymbols {
         IPASymbols.sections.extIPA.rawValue,
         ]
     
+    /**
+    Glyphs representing section headers in the keyboard collection view, displayed on the bottom row
+    */
     static let sectionGlyphs: [String] = [
         "p", "ʘ", "ʍ", "i", "ː", "˥", "n̥", "ʭ"
     ]
     
+    /**
+    The arrangement of keys in a default sized display setting, with 4 rows instead of 6.
+    - note: Must be updated along with `keys` in `LargeDisplayKeyArrangement`
+    */
     static let keys: [String: [String?]] = [
         IPASymbols.sections.consonants.rawValue: [
             "p", "t", "ʈ", "c",

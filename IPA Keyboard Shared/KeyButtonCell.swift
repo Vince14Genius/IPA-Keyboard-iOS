@@ -9,6 +9,9 @@
 import UIKit
 
 class KeyButtonCell: UICollectionViewCell {
+    
+    // MARK: - Constants and Variables
+    
     let button = UIButton(type: .system)
     let altLabel = UILabel()
     
@@ -28,6 +31,8 @@ class KeyButtonCell: UICollectionViewCell {
             return isExpandedInternal
         }
     }
+    
+    // MARK: - init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,6 +81,8 @@ class KeyButtonCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Methods
     
     func keyExpand() {
         self.isExpandedInternal = true
