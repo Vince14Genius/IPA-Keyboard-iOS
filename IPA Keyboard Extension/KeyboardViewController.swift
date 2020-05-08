@@ -24,6 +24,10 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         self.keyCollection.dataSource = self
         self.keyCollection.delegate = self
         
+        // Run IPASymbols consistency checks
+        
+        LargeDisplayKeyArrangement.keyArrangementConsistencyCheck()
+        
         // Set up the bottom stack view
         
         for glyph in IPASymbols.sectionGlyphs {

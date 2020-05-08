@@ -126,4 +126,33 @@ enum LargeDisplayKeyArrangement {
             "◌ᵘ", "◌ᵒ", "◌ᵓ", nil, "◌ᶛ", nil,
         ],
         ]
+    
+    /**
+    Check whether `LargeDisplayKeyArrangement.keys` has been properly updated to match `IPASymbols.keys`
+    */
+    static func keyArrangementConsistencyCheck() {
+        for sectionName in IPASymbols.sectionNames {
+            guard let thisSectionDefault = IPASymbols.keys[sectionName] else {
+                fatalError("Missing section \"\(sectionName)\" in IPASymbols.keys")
+            }
+            
+            guard let thisSectionLD = LargeDisplayKeyArrangement.keys[sectionName] else {
+                fatalError("Missing section \"\(sectionName)\" in LargeDisplayKeyArrangement.keys")
+            }
+            
+            for keyOptional in thisSectionDefault {
+                guard let key = keyOptional else { continue }
+                if !thisSectionLD.contains(key) {
+                    fatalError("Missing key \"\(key)\" in LargeDisplayKeyArrangement.keys[\(sectionName)]")
+                }
+            }
+            
+            for keyOptional in thisSectionLD {
+                guard let key = keyOptional else { continue }
+                if !thisSectionDefault.contains(key) {
+                    fatalError("Missing key \"\(key)\" in IPASymbols.keys[\(sectionName)]")
+                }
+            }
+        }
+    }
 }
