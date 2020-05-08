@@ -61,11 +61,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     @objc func addButtonTitle(from button: UIButton, with event: UIEvent) {
         guard let text = button.currentTitle else { fatalError("Unable to find button title.") }
-        if let replacementOutput = IPASymbols.replacementOutputText[text] {
-            self.textDocumentProxy.insertText(replacementOutput)
-        } else {
-            self.textDocumentProxy.insertText(text)
-        }
+        self.textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
     }
     
     @objc func scrollToSection(from button: UIButton, with event: UIEvent) {
@@ -154,7 +150,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             (cell as! KeyButtonCell).altLabel.text = text
             button.setTitle(text, for: [])
             
-            if IPASymbols.hasDottedCircle(text) {
+            if GlobalSymbols.hasDottedCircle(text) {
                 // Set to smaller font size if there's a dotted circle
                 button.titleLabel?.font = button.titleLabel!.font.withSize(complexKeyFontSize)
             } else {
