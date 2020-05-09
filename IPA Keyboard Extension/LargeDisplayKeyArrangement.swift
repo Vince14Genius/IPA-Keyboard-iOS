@@ -47,10 +47,10 @@ enum LargeDisplayKeyArrangement {
         IPASymbols.sections.vowels.rawValue: [
             "i", "ɪ", "e", "ɛ", "æ", "a",
             "y", "ʏ", "ø", "œ", nil, "ɶ",
-            "ɨ", "ɘ", "ə", "ɜ", nil, nil,
-            "ʉ", "ɵ", nil, "ɞ", "ɐ", nil,
-            "ɯ", "ʊ", "ɤ", "ʌ", nil, "ɑ",
-            "u", nil, "o", "ɔ", nil, "ɒ",
+            "ɨ", "ɘ", "ə", "ɜ", "ɐ", nil,
+            "ʉ", "ɵ", nil, "ɞ", nil, nil,
+            "ɯ", nil, "ɤ", "ʌ", nil, "ɑ",
+            "u", "ʊ", "o", "ɔ", nil, "ɒ",
         ],
         IPASymbols.sections.suprasegmentals.rawValue: [
             "ˈ", "ˌ", "ː", "ˑ", "◌̆", nil,
