@@ -13,7 +13,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     // MARK: - Constants
     
     let defaultKeyFontSize: CGFloat = 24
-    let complexKeyFontSize: CGFloat = 20
+    let complexKeyFontSize: CGFloat = 22
     
     // MARK: - viewDidLoad()
     

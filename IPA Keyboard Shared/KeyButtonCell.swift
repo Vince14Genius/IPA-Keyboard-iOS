@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AudioToolbox
 
-class KeyButtonCell: UICollectionViewCell {
+class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
     
     // MARK: - Constants and Variables
     
@@ -95,6 +96,10 @@ class KeyButtonCell: UICollectionViewCell {
         self.layer.shadowRadius = 2
         self.layer.shadowOpacity = 0.5
         self.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: self.bounds.minX, y: self.bounds.minY + expansionConstant + 1, width: self.bounds.width, height: self.bounds.height - expansionConstant + 1), cornerRadius: self.button.layer.cornerRadius).cgPath
+        
+        // Play system click sound
+        AudioServicesPlaySystemSound(0x450)
+        //UIDevice.current.playInputClick()
     }
     
     func keyRetract() {
@@ -106,5 +111,11 @@ class KeyButtonCell: UICollectionViewCell {
         self.layer.shadowRadius = 0
         self.layer.shadowOpacity = 0.25
         self.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: self.bounds.minX, y: self.bounds.minY, width: self.bounds.width, height: self.bounds.height + 1), cornerRadius: self.button.layer.cornerRadius).cgPath
+    }
+    
+    // Protocol methods
+    
+    var enableInputClicksWhenVisible: Bool {
+        get { return true }
     }
 }
