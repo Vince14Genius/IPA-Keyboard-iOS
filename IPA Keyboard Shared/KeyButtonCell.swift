@@ -16,7 +16,7 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
     let defaultKeyFontSize: CGFloat = 24
     let complexKeyFontSize: CGFloat = 22
     
-    let button = UIButton(type: .system)
+    let button = UIButton(type: .custom) // ".custom" fixes the scroll update delay problem
     let altLabel = UILabel()
     
     private let cornerRadius: CGFloat = 4

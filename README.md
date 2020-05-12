@@ -28,7 +28,9 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 - [x] Section header width contact hitbox bugs
 
-- [ ] Delayed refresh of collection view items when scrolling
+- [x] Delayed refresh of collection view items when scrolling
+
+  * actually a UIButton problem (the .system type button has a default animation)
 
 - [ ] The bottom of "◌̩" is cut off (this is probably a font problem)
 
