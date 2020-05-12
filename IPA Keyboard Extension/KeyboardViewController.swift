@@ -118,9 +118,21 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         UISelectionFeedbackGenerator().selectionChanged()
         guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
         for i in 0..<IPASymbols.sectionGlyphs.count {
-            let middleIndex = (getKeySet(section: i)?.count ?? 0) / 2
             if buttonTitle == IPASymbols.sectionGlyphs[i] {
-                self.keyCollection.scrollToItem(at: [i, middleIndex], at: .centeredHorizontally, animated: true)
+                // Calculate middle index
+                let middleIndex = (getKeySet(section: i)?.count ?? 0) / 2
+                
+                // Calculate columns on screen
+                let visibleItemsCount = self.keyCollection.indexPathsForVisibleItems.count
+                
+                if middleIndex > visibleItemsCount / 2 + cellsPerColumn {
+                    // big section
+                    self.keyCollection.scrollToItem(at: [i, visibleItemsCount / 2 - cellsPerColumn], at: .centeredHorizontally, animated: true)
+                } else {
+                    // small section
+                    self.keyCollection.scrollToItem(at: [i, middleIndex], at: .centeredHorizontally, animated: true)
+                }
+                
                 return
             }
         }
