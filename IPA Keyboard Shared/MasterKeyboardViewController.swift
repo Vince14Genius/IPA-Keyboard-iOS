@@ -33,10 +33,10 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     let reuseIdentifier = "ReuseId"
     
     // Dimensional constants
-    let headerViewWidth: CGFloat = 140
     let topInset: CGFloat = 24
     let bottomInset: CGFloat = 8
-    var leftInset: CGFloat { get { return -(headerViewWidth - 12) } }
+    let leftInsetRaw: CGFloat = 12
+    func leftInset(headerWidth: CGFloat) -> CGFloat { return leftInsetRaw - headerWidth }
     let rightInset: CGFloat = 12
     let minimumLineSpacing: CGFloat = 4
     let minimumInteritemSpacing: CGFloat = 4
@@ -155,7 +155,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionHeadersPinToVisibleBounds = true
-        flowLayout.headerReferenceSize = CGSize(width: self.headerViewWidth, height: 0)
         
         self.keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
         self.keyCollection.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area

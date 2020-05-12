@@ -100,6 +100,20 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         return (cellsPerColumn == LargeDisplayKeyArrangement.numberOfRows) ? largeDisplayKeySet : defaultKeySet
     }
     
+    func getHeaderWidth(section: Int) -> CGFloat {
+        guard section < IPASymbols.sectionNames.count else {
+            fatalError("Index out of range for section ID: \(section)")
+        }
+        
+        // Calculate text width
+        let sectionKey = IPASymbols.sectionNames[section]
+        let sectionHeaderText = NSLocalizedString(sectionKey, comment: "Localized versions of the section names.")
+        let textSize = (sectionHeaderText as NSString).size(withAttributes: [.font: UIFont.systemFont(ofSize: UIFont.systemFontSize)])
+        let textWidth = textSize.width + leftInsetRaw + rightInset + minimumLineSpacing
+        
+        return textWidth
+    }
+    
     // MARK: - Button Actions
 
     @objc func addButtonTitle(from button: UIButton, with event: UIEvent) {
@@ -176,7 +190,12 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: self.topInset, left: self.leftInset, bottom: self.bottomInset, right: self.rightInset)
+        return UIEdgeInsets(
+            top: self.topInset,
+            left: leftInset(headerWidth: getHeaderWidth(section: section)),
+            bottom: self.bottomInset,
+            right: self.rightInset
+        )
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -210,6 +229,10 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             changeSectionHeaderColor(header)
         }
         return element
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: getHeaderWidth(section: section), height: 0)
     }
     
     // MARK: - Delegate Methods

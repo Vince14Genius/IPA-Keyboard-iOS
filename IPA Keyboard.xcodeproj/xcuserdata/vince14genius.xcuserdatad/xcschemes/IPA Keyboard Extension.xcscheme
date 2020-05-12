@@ -58,6 +58,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      language = "ja"
       launchStyle = "0"
       askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
@@ -69,7 +70,7 @@
       <RemoteRunnable
          runnableDebuggingMode = "1"
          BundleIdentifier = "com.Vince14Genius.IPA-Keyboard-iOS"
-         RemotePath = "/Users/vince14genius/Library/Developer/CoreSimulator/Devices/108DE952-4FDD-49E7-81CF-E4CFBAB6E823/data/Containers/Bundle/Application/0E75BE46-0A3A-4D50-95E2-13D825FB5F69/IPA Keyboard.app">
+         RemotePath = "/Users/vince14genius/Library/Developer/CoreSimulator/Devices/108DE952-4FDD-49E7-81CF-E4CFBAB6E823/data/Containers/Bundle/Application/B518875F-148C-4D2B-A2A7-465F10EC12AD/IPA Keyboard.app">
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
