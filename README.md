@@ -26,13 +26,19 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 ## To-Do List: Current Bugs
 
+- [x] Section header width contact hitbox bugs
+
+- [ ] Delayed refresh of collection view items when scrolling
+
+- [ ] Edges of certain larger symbols are cut off by UILabel inside KeyButtonCell
+
 - [ ] If the user switched to this keyboard before using WeChat Pay, this keyboard replaces the system numerical keyboard, rendering the user unable to enter numbers for WeChat Pay's numerical field
 
-  * **fix** - theoretically unfixable, as there is currently no way of indicating absence of a numerical keyboard through the iOS third-party keyboard API
+  * **theoretically unfixable**, as there is currently no way of indicating absence of a numerical keyboard through the iOS third-party keyboard API
   
 - [ ] Bad support for hardware keyboards, such as Bluetooth keyboards and iPad Smart/Magic Keyboard
 
-  * **fix** - theoretically unfixable, as the iOS third-party keyboard API does not yet support ignoring the hardware keyboard
+  * **theoretically unfixable**, as the iOS third-party keyboard API does not yet support ignoring the hardware keyboard
 
 ## To-Do List: Features for future releases
 
