@@ -10,11 +10,6 @@ import UIKit
 
 class KeyboardViewController: MasterKeyboardViewController, UICollectionViewDataSource {
     
-    // MARK: - Constants
-    
-    let defaultKeyFontSize: CGFloat = 24
-    let complexKeyFontSize: CGFloat = 22
-    
     // MARK: - viewDidLoad()
     
     private var bottomButtons = [UIButton]()
@@ -147,28 +142,17 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifier, for: indexPath)
-        
-        guard let button = (cell as? KeyButtonCell)?.button else {
-            cell.backgroundColor = UIColor.red
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifier, for: indexPath) as! KeyButtonCell
+        let button = cell.button
         
         if let text = getKeySet(section: indexPath.section)?[indexPath.item] {
-            cell.isHidden = false
-            (cell as! KeyButtonCell).altLabel.text = text
-            button.setTitle(text, for: [])
-            
-            if GlobalSymbols.hasDottedCircle(text) {
-                // Set to smaller font size if there's a dotted circle
-                button.titleLabel?.font = button.titleLabel!.font.withSize(complexKeyFontSize)
-            } else {
-                // Default font size
-                button.titleLabel?.font = button.titleLabel!.font.withSize(defaultKeyFontSize)
-            }
-            
-            // Reset the button's targets
-            button.removeTarget(nil, action: nil, for: .allEvents)
+            cell.setTitle(text: text)
+            changeKeyButtonColor(button) // Set color based on keyboard appearance
+        }
+        
+        if cell.requestToInitializeAction() {
+            // Will only run if targets have not been added
+            // Add targets
             button.addTarget(self, action: #selector(addButtonTitle(from:with:)), for: .primaryActionTriggered)
             button.addTarget(self, action: #selector(keyButtonExpand(from:with:)), for: .touchDown)
             
@@ -176,11 +160,6 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchCancel)
             button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpOutside)
             button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpInside)
-            
-            // Set color based on keyboard appearance
-            changeKeyButtonColor(button)
-        } else {
-            cell.isHidden = true
         }
         
         return cell

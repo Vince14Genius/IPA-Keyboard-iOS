@@ -13,6 +13,9 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
     
     // MARK: - Constants and Variables
     
+    let defaultKeyFontSize: CGFloat = 24
+    let complexKeyFontSize: CGFloat = 22
+    
     let button = UIButton(type: .system)
     let altLabel = UILabel()
     
@@ -32,6 +35,8 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
             return isExpandedInternal
         }
     }
+    
+    private var didInitializeAction = false
     
     // MARK: - init
     
@@ -80,6 +85,7 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
         self.contentView.clipsToBounds = false
         
         self.keyRetract()
+        isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -116,9 +122,34 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
         self.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: self.bounds.minX, y: self.bounds.minY, width: self.bounds.width, height: self.bounds.height + 1), cornerRadius: self.button.layer.cornerRadius).cgPath
     }
     
+    func requestToInitializeAction() -> Bool {
+        let returnValue = !didInitializeAction
+        didInitializeAction = true
+        return returnValue
+    }
+    
+    func setTitle(text: String) {
+        // Unhide if title is set
+        isHidden = false
+        
+        altLabel.text = text
+        button.setTitle(text, for: [])
+        
+        // Set to smaller font size if there's a dotted circle
+        button.titleLabel?.font = button.titleLabel!.font.withSize(
+            GlobalSymbols.hasDottedCircle(text) ? complexKeyFontSize : defaultKeyFontSize
+        )
+    }
+    
     // Protocol methods
     
     var enableInputClicksWhenVisible: Bool {
         get { return true }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        button.setTitle("", for: [])
+        isHidden = true
     }
 }

@@ -163,6 +163,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         self.keyCollection.isDirectionalLockEnabled = false
         self.keyCollection.clipsToBounds = false
+        self.keyCollection.isPrefetchingEnabled = true // this fixes the scroll update delay problem
         
         self.view.addSubview(self.keyCollection)
         
