@@ -43,6 +43,9 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
         
         self.button.sizeToFit()
         self.altLabel.sizeToFit()
+        
+        self.button.titleLabel?.frame = self.button.frame // remove "padding"
+        
         self.button.titleLabel?.lineBreakMode = .byClipping // to make sure overflow is not hidden by ellipsis
         self.altLabel.lineBreakMode = .byClipping
         
