@@ -77,17 +77,15 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             supportColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
         }
         
-        var minimumSectionIndex = Int.max
-        for indexPath in self.keyCollection.indexPathsForVisibleItems {
-            if indexPath.section < minimumSectionIndex {
-                minimumSectionIndex = indexPath.section
-            }
+        let visibleItems = self.keyCollection.indexPathsForVisibleItems.sorted {
+            return $0.section < $1.section
         }
+        let medianSectionIndex = visibleItems[visibleItems.count / 2].section
         
         for button in bottomButtons {
             button.setTitleColor(bottomButtonColor, for: [])
             button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
-            if button.titleLabel?.text == IPASymbols.sectionGlyphs[minimumSectionIndex] {
+            if button.titleLabel?.text == IPASymbols.sectionGlyphs[medianSectionIndex] {
                 button.setTitleColor(textColor, for: [])
                 button.backgroundColor = supportColor
             }
@@ -125,8 +123,9 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         UISelectionFeedbackGenerator().selectionChanged()
         guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
         for i in 0..<IPASymbols.sectionGlyphs.count {
+            let middleIndex = (getKeySet(section: i)?.count ?? 0) / 2
             if buttonTitle == IPASymbols.sectionGlyphs[i] {
-                self.keyCollection.scrollToItem(at: [i, 0], at: .left, animated: true)
+                self.keyCollection.scrollToItem(at: [i, middleIndex], at: .centeredHorizontally, animated: true)
                 return
             }
         }
