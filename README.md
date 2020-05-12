@@ -30,7 +30,7 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 - [ ] Delayed refresh of collection view items when scrolling
 
-- [ ] Edges of certain larger symbols are cut off by UILabel inside KeyButtonCell
+- [ ] The bottom of "◌̩" is cut off (this is probably a font problem)
 
 - [ ] If the user switched to this keyboard before using WeChat Pay, this keyboard replaces the system numerical keyboard, rendering the user unable to enter numbers for WeChat Pay's numerical field
 
