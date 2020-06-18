@@ -8,13 +8,13 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 ## Purpose
 
-* Most IPA symbols cannot be typed using regular keyboards
+- Most IPA symbols cannot be typed using regular keyboards
 
-* Full Unicode keyboards are too hard to navigate; an IPA-specific keyboard would have demand among linguistics hobbyists
+- Full Unicode keyboards are too hard to navigate; an IPA-specific keyboard would have demand among linguistics hobbyists
 
-* All IPA Keyboards on the App Store right now are either non-free, full of ads, or poorly designed; this project aims to solve all three problems
+- All IPA Keyboards on the App Store before mine was released were either non-free, full of ads, or poorly designed; this project aims to solve all three problems
 
-* A relatively easily accomplishable project to boost my currently negative self-esteem
+- A relatively easily accomplishable project to boost my previously negative self-esteem
 
 ## To-Do List: Changes to be made for next release
 
