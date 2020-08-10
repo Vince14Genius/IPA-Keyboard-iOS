@@ -66,7 +66,7 @@ _Some of these features might not be allowed by the keyboard extension API_
 
 - [ ] Ability to move the cursor using the keyboard
 
-  * will not be able to 100% mimick system keyboard behavior; can only move cursor left and right
+  * will not be able to mimic system keyboard behavior 100%; can only move cursor left and right
 
 - [x] Hide the switch keyboard button on devices with edge-to-edge displays (e.g. iPhone X)
 
