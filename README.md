@@ -18,7 +18,7 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 ## To-Do List: Changes to be made for next release
 
-- [ ] 
+- [ ] Add system-provided sound effects for the delete key and the symbol keys on the top
 
 - [x] Keyboard show/hide in the host app
 
@@ -29,6 +29,8 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 ## To-Do List: Current Bugs
 
 - [ ] The bottom of "◌̩" is cut off (this is probably a font problem)
+
+- [ ] Haptic feedback is not working
 
 - [ ] If the user switched to this keyboard before using WeChat Pay, this keyboard replaces the system numerical keyboard, rendering the user unable to enter numbers for WeChat Pay's numerical field
 
@@ -45,6 +47,16 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
   * actually a UIButton problem (the .system type button has a default animation)
 
 ## To-Do List: Features for future releases
+
+- [ ] Add a drag-scrolling mechanism to the bottom sections bar
+
+- [ ] **(if possible)** Section for recently used keys
+
+- [ ] Section for customized key selection & layout
+
+- [ ] Settings for turning specific sections on & off in the host app
+
+- [ ] Make host app look better using SwiftUI
 
 ### Other key sets
 
