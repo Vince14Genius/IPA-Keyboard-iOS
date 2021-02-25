@@ -18,6 +18,8 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 ## To-Do List: Changes to be made for next release
 
+- [ ] 
+
 - [x] Keyboard show/hide in the host app
 
 - [x] Add ɝ in the main IPA keyboard
@@ -25,12 +27,6 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 - [x] Add ◌ (dotted circle), in both the top bar of the main IPA keyboard (alongside "\[\]", "//", and "~") and as a display element on keys for diacritics
 
 ## To-Do List: Current Bugs
-
-- [x] Section header width contact hitbox bugs
-
-- [x] Delayed refresh of collection view items when scrolling
-
-  * actually a UIButton problem (the .system type button has a default animation)
 
 - [ ] The bottom of "◌̩" is cut off (this is probably a font problem)
 
@@ -42,6 +38,12 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
   * **theoretically unfixable**, as the iOS third-party keyboard API does not yet support ignoring the hardware keyboard
 
+- [x] Section header width contact hitbox bugs
+
+- [x] Delayed refresh of collection view items when scrolling
+
+  * actually a UIButton problem (the .system type button has a default animation)
+
 ## To-Do List: Features for future releases
 
 ### Other key sets
@@ -50,13 +52,13 @@ _No longer using separate keyboard extensions; integrate everything to the main 
 
 _Some of these features might be charged a price using IAP (or not)_
 
-- [x] IPA Extended (extIPA) **(this one will definitely be free)**
+- [ ] _Obsolete symbols (such as ʧ and ʤ)_
 
-- [ ] _Obsolete symbols_
-
-- [ ] _Nonstandard symbols_
+- [ ] _Nonstandard symbols (such as ɿ ʅ ʮ ʯ)_
 
 - [ ] _Custom keyboard (custom keys and custom order)_
+
+- [x] IPA Extended (extIPA) **(this one will definitely be free)**
 
 ### All keyboard extensions
 
@@ -76,13 +78,13 @@ _Some of these features might not be allowed by the keyboard extension API_
 
 ### Host app
 
-- [x] Link to the Wikipedia IPA page
-
-- [x] Link to Bug Report / Feedback
-
 - [ ] Donations & Link to Donations 
 
   * If there are enough donations, some paid features can be made free
 
 - [ ] “Rate app” (link & in-app alert view)
+
+- [x] Link to the Wikipedia IPA page
+
+- [x] Link to Bug Report / Feedback
 
