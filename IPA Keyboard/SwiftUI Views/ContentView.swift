@@ -9,35 +9,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var textFieldText: String = ""
-    @State private var isExtIPAOn: Bool = true
-    
     var body: some View {
         TabView {
             InstructionsView()
-            NavigationView {
-                VStack(alignment: .leading) {
-                    List {
-                        Text("ipa.text")
-                        Toggle("extipa.text", isOn: $isExtIPAOn)
-                    }
-                    
-                    Spacer()
-                    Button {
-                        
-                    } label: {
-                        Text("bugreport.normalTitle")
-                            .padding()
-                    }
-                }
-                .padding()
-                .buttonStyle(MyButtonStyle())
-                .navigationBarTitle("Settings")
-            }
-            .tabItem {
-                Image(systemName: "gear")
-                Text("Settings")
-            }
+            SettingsView()
         }
     }
 }

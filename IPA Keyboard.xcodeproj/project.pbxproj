@@ -12,6 +12,7 @@
 		4E14C3AF261E8E16001AE827 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E14C3B1261E8E16001AE827 /* Localizable.strings */; };
 		4E14C3BD261EAD6F001AE827 /* MyButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C3BC261EAD6F001AE827 /* MyButtonStyle.swift */; };
 		4E14C3D52620D0DD001AE827 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C3D42620D0DD001AE827 /* InstructionsView.swift */; };
+		4E14C3D92620D2A1001AE827 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C3D82620D2A0001AE827 /* SettingsView.swift */; };
 		4E4C516B2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */; };
 		4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */; };
 		4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */; };
@@ -64,6 +65,7 @@
 		4E14C3B7261E8E1D001AE827 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E14C3BC261EAD6F001AE827 /* MyButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButtonStyle.swift; sourceTree = "<group>"; };
 		4E14C3D42620D0DD001AE827 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
+		4E14C3D82620D2A0001AE827 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4E4C51692462C28200B9AC43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeDisplayKeyArrangement.swift; sourceTree = "<group>"; };
 		4E5D16BC22B393DE00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				4E14C3BC261EAD6F001AE827 /* MyButtonStyle.swift */,
 				4E14C383261E864C001AE827 /* ContentView.swift */,
 				4E14C3D42620D0DD001AE827 /* InstructionsView.swift */,
+				4E14C3D82620D2A0001AE827 /* SettingsView.swift */,
 			);
 			path = "SwiftUI Views";
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E14C3D92620D2A1001AE827 /* SettingsView.swift in Sources */,
 				4E84B1582140E92F0078AC4B /* ViewController.swift in Sources */,
 				4E14C3D52620D0DD001AE827 /* InstructionsView.swift in Sources */,
 				4E84B1562140E92F0078AC4B /* AppDelegate.swift in Sources */,
