@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-//@main
+@main
 struct IPAKeyboardApp: App {
     var body: some Scene {
         WindowGroup {

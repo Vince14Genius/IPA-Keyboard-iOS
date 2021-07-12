@@ -8,12 +8,17 @@
 
 import SwiftUI
 
+var isNonstandardCharsKeyboardUnlocked = false
+var isCustomIPAKeyboardUnlocked = false
+
 struct SettingsPage: View {
     @State private var isIPAKeyboardOn = true
     @State private var isExtIPAKeyboardOn = true
-    @State private var isObsoleteCharsKeyboardOn = false
+    @State private var isNonstandardCharsKeyboardOn = false
     @State private var isCustomIPAKeyboardOn = false
     @State private var isRecentsOn = false
+    
+    @State private var showingComingSoonAlert = false
     
     var body: some View {
         NavigationView {
@@ -29,16 +34,40 @@ struct SettingsPage: View {
                     Toggle("localized-keyboard-ipa", isOn: $isIPAKeyboardOn)
                         .disabled(true)
                     Toggle("localized-keyboard-extipa", isOn: $isExtIPAKeyboardOn)
-                    Toggle("localized-keyboard-nonstandard-obsolete", isOn: $isObsoleteCharsKeyboardOn)
+                    Group {
+                        if isNonstandardCharsKeyboardUnlocked {
+                            Toggle("localized-keyboard-nonstandard-obsolete", isOn: $isNonstandardCharsKeyboardOn)
+                        } else {
+                            Button {
+                                showingComingSoonAlert = true
+                            } label: {
+                                Text("localized-unlock-nonstandard-obsolete")
+                            }
+                        }
+                    }
                 }
                 Section() {
-                    Toggle("localized-keyboard-custom", isOn: $isCustomIPAKeyboardOn)
-                    NavigationLink("localized-link-customize", destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
+                    Group {
+                        if isCustomIPAKeyboardUnlocked {
+                            Toggle("localized-keyboard-custom", isOn: $isCustomIPAKeyboardOn)
+                            NavigationLink("localized-link-customize", destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
+                        } else {
+                            Button {
+                                showingComingSoonAlert = true
+                            } label: {
+                                Text("localized-unlock-custom")
+                            }
+                        }
+                    }
                 }
                 Section() {
                     Toggle("localized-keyboard-recents", isOn: $isRecentsOn)
+                        .disabled(true)
                 }
             }
+            .alert(isPresented: $showingComingSoonAlert, content: {
+                Alert(title: Text("alert-coming-soon"), message: nil, dismissButton: .default(Text("alert-dismiss")))
+            })
             .navigationBarTitle("Settings")
         }
     }

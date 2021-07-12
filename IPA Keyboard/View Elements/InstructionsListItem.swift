@@ -10,13 +10,14 @@ import SwiftUI
 
 struct InstructionsListItem: View {
     var index: Int
-    var bodyText: Text
+    var bodyText: LocalizedStringKey
     
     var body: some View {
         HStack(alignment: .top) {
             Text("\(index).")
                 .font(.title2)
-            bodyText.padding([.top], 5)
+            Text(bodyText)
+                .padding([.top], 5)
             Spacer()
         }
         .padding()
@@ -26,12 +27,12 @@ struct InstructionsListItem: View {
 }
 
 struct InstructionsListItem_Previews: PreviewProvider {
-    static private let loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque convallis ultrices enim, in porttitor ante tincidunt nec. Morbi ullamcorper lectus placerat, egestas tellus eget, condimentum arcu. Etiam cursus lacus ipsum, ac iaculis ligula lobortis et. Nulla et ultrices ipsum. Etiam suscipit auctor nisi sed vestibulum. Curabitur ac tempus lacus. Nam sit amet arcu massa."
+    static private let loremIpsum: LocalizedStringKey = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque convallis ultrices enim, in porttitor ante tincidunt nec. Morbi ullamcorper lectus placerat, egestas tellus eget, condimentum arcu. Etiam cursus lacus ipsum, ac iaculis ligula lobortis et. Nulla et ultrices ipsum. Etiam suscipit auctor nisi sed vestibulum. Curabitur ac tempus lacus. Nam sit amet arcu massa."
     
     static var previews: some View {
         VStack(alignment: .leading) {
-            InstructionsListItem(index: 1, bodyText: Text("Colorless green ideas sleep furiously."))
-            InstructionsListItem(index: 2, bodyText: Text(Self.loremIpsum))
+            InstructionsListItem(index: 1, bodyText: "Colorless green ideas sleep furiously.")
+            InstructionsListItem(index: 2, bodyText: Self.loremIpsum)
         }
         .padding()
     }

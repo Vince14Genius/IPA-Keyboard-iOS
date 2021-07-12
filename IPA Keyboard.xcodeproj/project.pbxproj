@@ -16,11 +16,10 @@
 		4E14C3AF261E8E16001AE827 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E14C3B1261E8E16001AE827 /* Localizable.strings */; };
 		4E14C3BD261EAD6F001AE827 /* DefaultButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C3BC261EAD6F001AE827 /* DefaultButtonStyle.swift */; };
 		4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */; };
+		4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */; };
 		4E4C516B2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */; };
 		4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */; };
 		4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */; };
-		4E84B1562140E92F0078AC4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1552140E92F0078AC4B /* AppDelegate.swift */; };
-		4E84B1582140E92F0078AC4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1572140E92F0078AC4B /* ViewController.swift */; };
 		4E84B15B2140E92F0078AC4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B1592140E92F0078AC4B /* Main.storyboard */; };
 		4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B15C2140E9330078AC4B /* Assets.xcassets */; };
 		4E84B1602140E9330078AC4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B15E2140E9330078AC4B /* LaunchScreen.storyboard */; };
@@ -68,6 +67,7 @@
 		4E14C3B4261E8E19001AE827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E14C3BC261EAD6F001AE827 /* DefaultButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonStyle.swift; sourceTree = "<group>"; };
 		4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCustomKeyboardPage.swift; sourceTree = "<group>"; };
+		4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationFunctions.swift; sourceTree = "<group>"; };
 		4E4C51692462C28200B9AC43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeDisplayKeyArrangement.swift; sourceTree = "<group>"; };
 		4E5D16BC22B393DE00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -78,8 +78,6 @@
 		4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterKeyboardViewController.swift; sourceTree = "<group>"; };
 		4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSymbols.swift; sourceTree = "<group>"; };
 		4E84B1522140E92F0078AC4B /* IPA Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E84B1552140E92F0078AC4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4E84B1572140E92F0078AC4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4E84B15A2140E92F0078AC4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E84B15C2140E9330078AC4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E84B15F2140E9330078AC4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -193,10 +191,9 @@
 				4EAC2B6D214B5F02008CF477 /* Localization */,
 				4E14C37F261E8624001AE827 /* IPAKeyboardApp.swift */,
 				4E14C383261E864C001AE827 /* MainTabView.swift */,
+				4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */,
 				4E0B7425269C215F0066345B /* Pages */,
 				4E0B7422269BD5210066345B /* View Elements */,
-				4E84B1552140E92F0078AC4B /* AppDelegate.swift */,
-				4E84B1572140E92F0078AC4B /* ViewController.swift */,
 				4E84B1592140E92F0078AC4B /* Main.storyboard */,
 				4E84B15C2140E9330078AC4B /* Assets.xcassets */,
 				4E84B15E2140E9330078AC4B /* LaunchScreen.storyboard */,
@@ -367,9 +364,8 @@
 			files = (
 				4E0B7429269C22390066345B /* SettingsPage.swift in Sources */,
 				4E0B7427269C21840066345B /* GettingStartedPage.swift in Sources */,
-				4E84B1582140E92F0078AC4B /* ViewController.swift in Sources */,
 				4E0B742B269C2A4A0066345B /* SupportUsPage.swift in Sources */,
-				4E84B1562140E92F0078AC4B /* AppDelegate.swift in Sources */,
+				4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */,
 				4E14C384261E864C001AE827 /* MainTabView.swift in Sources */,
 				4E14C380261E8624001AE827 /* IPAKeyboardApp.swift in Sources */,
 				4E14C3BD261EAD6F001AE827 /* DefaultButtonStyle.swift in Sources */,

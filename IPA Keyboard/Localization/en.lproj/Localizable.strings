@@ -8,6 +8,9 @@
 
 "localized-ipa-wikipedia-url" = "https://en.wikipedia.org/wiki/International_Phonetic_Alphabet";
 
+/* Basics */
+"alert-dismiss" = "Got it!";
+
 /* title = "IPA Keyboard"; */
 "ipakeyboard.title" = "IPA Keyboard";
 
@@ -45,6 +48,11 @@
 "localized-keyboard-custom" = "Custom IPA Keyboard";
 "localized-link-customize" = "Customize...";
 "localized-keyboard-recents" = "Recently used keys";
+
+/* Settings - Unlock Keyboards */
+"localized-unlock-nonstandard-obsolete" = "Unlock Nonstandard/Obsolete Symbols";
+"localized-unlock-custom" = "Unlock Custom IPA Keyboard";
+"alert-coming-soon" = "Coming Soon";
 
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "Bug Report / Feedback";
