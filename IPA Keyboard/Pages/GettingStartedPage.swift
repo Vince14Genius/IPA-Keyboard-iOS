@@ -24,12 +24,18 @@ struct GettingStartedPage: View {
                     .padding([.top])
                 Divider()
                     .padding([.bottom])
-                Text("getting-started-note")
+                HStack(alignment: .top) {
+                    Text("*")
+                    Text("getting-started-note")
+                        .foregroundColor(.secondary)
+                }
+                    .padding()
+                    .background(Color(UIColor.secondarySystemBackground))
                 Spacer()
             }
             .padding()
             .buttonStyle(BlueButtonStyle())
-            .navigationBarTitle("instructions.title")
+            .navigationBarTitle("localized-title-getting-started")
             .navigationBarItems(trailing: Button("about.ipa.title") {
                 
             })

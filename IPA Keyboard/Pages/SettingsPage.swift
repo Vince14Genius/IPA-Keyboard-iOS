@@ -9,23 +9,36 @@
 import SwiftUI
 
 struct SettingsPage: View {
+    @State private var isIPAKeyboardOn = true
+    @State private var isExtIPAKeyboardOn = true
+    @State private var isObsoleteCharsKeyboardOn = false
+    @State private var isCustomIPAKeyboardOn = false
+    @State private var isRecentsOn = false
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Text("tab_settings")
-                HStack {
-                    
+            Form {
+                Section() {
+                    Button {
+                        
+                    } label: {
+                        Text("localized-button-bugreport")
+                    }
                 }
-                Spacer()
-                Button {
-                    
-                } label: {
-                    Text("bugreport.normalTitle")
-                        .padding()
+                Section(header: Text("localized-title-keyboards")) {
+                    Toggle("localized-keyboard-ipa", isOn: $isIPAKeyboardOn)
+                        .disabled(true)
+                    Toggle("localized-keyboard-extipa", isOn: $isExtIPAKeyboardOn)
+                    Toggle("localized-keyboard-nonstandard-obsolete", isOn: $isObsoleteCharsKeyboardOn)
+                }
+                Section() {
+                    Toggle("localized-keyboard-custom", isOn: $isCustomIPAKeyboardOn)
+                    NavigationLink("localized-link-customize", destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
+                }
+                Section() {
+                    Toggle("localized-keyboard-recents", isOn: $isRecentsOn)
                 }
             }
-            .padding()
-            .buttonStyle(BlueButtonStyle())
             .navigationBarTitle("Settings")
         }
     }

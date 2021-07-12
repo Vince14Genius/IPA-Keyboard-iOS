@@ -16,12 +16,17 @@ struct MainTabView: View {
             GettingStartedPage()
                 .tabItem {
                     Image(systemName: "text.book.closed.fill")
-                    Text("instructions.title")
+                    Text("localized-title-getting-started")
+                }
+            SupportUsPage()
+                .tabItem {
+                    Image(systemName: "hand.wave.fill")
+                    Text("localized-title-support-us")
                 }
             SettingsPage()
                 .tabItem {
                     Image(systemName: "gear")
-                    Text("Settings")
+                    Text("localized-title-settings")
                 }
         }
     }
