@@ -39,9 +39,11 @@ struct GettingStartedPage: View {
                 .padding()
                 .buttonStyle(BlueButtonStyle())
                 .navigationBarTitle("localized-title-getting-started")
-                .navigationBarItems(trailing: Button("about.ipa.title") {
-                    
-                })
+                .navigationBarItems(trailing:
+                    Button("about.ipa.title") {
+                        UIApplicationFunctions.openAboutIPAPage()
+                    }
+                )
             }
             .onTapGesture {
                 UIApplicationFunctions.hideKeyboard()

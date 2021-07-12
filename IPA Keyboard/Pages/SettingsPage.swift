@@ -25,7 +25,7 @@ struct SettingsPage: View {
             Form {
                 Section() {
                     Button {
-                        
+                        UIApplicationFunctions.openFeedback()
                     } label: {
                         Text("localized-button-bugreport")
                     }

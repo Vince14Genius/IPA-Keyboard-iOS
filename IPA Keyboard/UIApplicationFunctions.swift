@@ -14,11 +14,11 @@ enum UIApplicationFunctions {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
-    static func openAboutIPAPage(_ sender: UIBarButtonItem) {
-        Self.openURL(string: NSLocalizedString("IPAWikipediaURL", comment: "URL of the Wikipedia IPA page"))
+    static func openAboutIPAPage() {
+        Self.openURL(string: NSLocalizedString("localized-ipa-wikipedia-url", comment: "URL of the Wikipedia IPA page"))
     }
     
-    static func openFeedback(_ sender: Any) {
+    static func openFeedback() {
         Self.openURL(string: "https://vince14genius.github.io/support/")
     }
     
