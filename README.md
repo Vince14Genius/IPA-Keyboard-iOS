@@ -20,13 +20,7 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 All items in the TODO list will be moved to Issues.
 
-## To-Do List: Changes to be made for next release
-
-- [ ] Add system-provided sound effects for the delete key and the symbol keys on the top
-
 ## To-Do List: Current Bugs
-
-- [ ] The bottom of "◌̩" is cut off (this is probably a font problem)
 
 - [ ] Haptic feedback is not working
 
