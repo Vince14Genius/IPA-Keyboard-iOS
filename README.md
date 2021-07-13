@@ -18,11 +18,4 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 ## TODO List
 
-All items in the TODO list will be moved to Issues.
-
-### Host app
-
-- [ ] Donations & Link to Donations 
-
-  * If there are enough donations, some paid features can be made free
-
+All items in the TODO list have been moved to Issues.
