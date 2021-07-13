@@ -22,7 +22,7 @@ struct GettingStartedPage: View {
                     InstructionsListItem(index: 3, bodyText: "getting-started-3")
                     InstructionsListItem(index: 4, bodyText: "getting-started-4")
                     HStack(alignment: .top) {
-                        Text("*")
+                        Text("getting-started-note-bullet-point")
                         Text("getting-started-note")
                             .foregroundColor(.secondary)
                         Spacer()

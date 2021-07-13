@@ -67,6 +67,10 @@
 		4E14C3BC261EAD6F001AE827 /* DefaultButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonStyle.swift; sourceTree = "<group>"; };
 		4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCustomKeyboardPage.swift; sourceTree = "<group>"; };
 		4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationFunctions.swift; sourceTree = "<group>"; };
+		4E4030EB269D0B870081E3FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4E4030EC269D0B880081E3FD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4E4030ED269D0B8A0081E3FD /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E4030EE269D0B8B0081E3FD /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = eo.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E4C51692462C28200B9AC43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeDisplayKeyArrangement.swift; sourceTree = "<group>"; };
 		4E5D16BC22B393DE00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -395,6 +399,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E14C3B4261E8E19001AE827 /* en */,
+				4E4030EB269D0B870081E3FD /* zh-Hans */,
+				4E4030EC269D0B880081E3FD /* zh-Hant */,
+				4E4030ED269D0B8A0081E3FD /* ja */,
+				4E4030EE269D0B8B0081E3FD /* eo */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
