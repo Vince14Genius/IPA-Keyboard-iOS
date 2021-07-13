@@ -20,7 +20,6 @@
 		4E4C516B2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */; };
 		4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */; };
 		4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */; };
-		4E84B15B2140E92F0078AC4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B1592140E92F0078AC4B /* Main.storyboard */; };
 		4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B15C2140E9330078AC4B /* Assets.xcassets */; };
 		4E84B18A2140E9980078AC4B /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1892140E9980078AC4B /* KeyboardViewController.swift */; };
 		4E84B18E2140E9980078AC4B /* IPA Keyboard Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E84B1872140E9980078AC4B /* IPA Keyboard Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -73,14 +72,12 @@
 		4E4030EE269D0B8B0081E3FD /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = eo.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E4C51692462C28200B9AC43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeDisplayKeyArrangement.swift; sourceTree = "<group>"; };
-		4E5D16BC22B393DE00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		4E5D16BE22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4E5D16BF22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "../zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4E5D16C022B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterKeyboardViewController.swift; sourceTree = "<group>"; };
 		4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSymbols.swift; sourceTree = "<group>"; };
 		4E84B1522140E92F0078AC4B /* IPA Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E84B15A2140E92F0078AC4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E84B15C2140E9330078AC4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E84B1612140E9330078AC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E84B16A2140E9340078AC4B /* IPA_KeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_KeyboardTests.swift; sourceTree = "<group>"; };
@@ -94,11 +91,8 @@
 		4E84B1A121452AF00078AC4B /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		4E84B1AD21456F660078AC4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = ../Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E84B1AE21456F680078AC4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4E84B1AF21456F930078AC4B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		4E84B1B121456F940078AC4B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "../zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		4E84B1B221456FB40078AC4B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		4E84B1B421456FB40078AC4B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ../ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4E84B1B521456FC40078AC4B /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = eo.lproj/Main.strings; sourceTree = "<group>"; };
 		4E84B1B721456FC40078AC4B /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = ../eo.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonCell.swift; sourceTree = "<group>"; };
 		4EAA9213217F831A0015DBFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -109,7 +103,6 @@
 		4EAC2B73214B5F59008CF477 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4EAC2B74214B5F5A008CF477 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4EAC2B75214B5F5B008CF477 /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = eo.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4ED248C722B510480016369B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +185,6 @@
 				4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */,
 				4E0B7425269C215F0066345B /* Pages */,
 				4E0B7422269BD5210066345B /* View Elements */,
-				4E84B1592140E92F0078AC4B /* Main.storyboard */,
 				4E84B15C2140E9330078AC4B /* Assets.xcassets */,
 				4E84B1612140E9330078AC4B /* Info.plist */,
 			);
@@ -338,7 +330,6 @@
 				4E14C3AF261E8E16001AE827 /* Localizable.strings in Resources */,
 				4EAC2B70214B5F54008CF477 /* InfoPlist.strings in Resources */,
 				4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */,
-				4E84B15B2140E92F0078AC4B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,19 +396,6 @@
 				4E4030EE269D0B8B0081E3FD /* eo */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		4E84B1592140E92F0078AC4B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E84B15A2140E92F0078AC4B /* Base */,
-				4E84B1AF21456F930078AC4B /* zh-Hans */,
-				4E84B1B221456FB40078AC4B /* ja */,
-				4E84B1B521456FC40078AC4B /* eo */,
-				4E5D16BC22B393DE00F40B13 /* zh-Hant */,
-				4ED248C722B510480016369B /* en */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		4E84B1A921456EEB0078AC4B /* Localizable.strings */ = {
