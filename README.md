@@ -4,7 +4,7 @@
 
 An iOS keyboard for typing symbols in the International Phonetic Alphabet. 
 
-Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/id1440241497
+Download on the App Store: https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497
 
 ## Purpose
 
