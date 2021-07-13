@@ -7,52 +7,83 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct SupportUsPage: View {
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text("Donate to the developer")
-                        .font(.title2)
-                    Button {
+                    Group {
+                        Text("Donate to the developer")
+                            .font(.title2)
                         
-                    } label: {
-                        Text("🥤 Buy me a drink")
-                    }
-                    .padding()
-                    Button {
-                    } label: {
-                        Text("🥙 Buy me a meal")
-                    }
-                    .padding()
-                    Text("Rate the app if you haven't")
-                        .font(.title2)
-                    Button {
+                        Button {
+                            
+                        } label: {
+                            Text("🥤 Buy me a drink")
+                        }
+                        .disabled(true)
+                        .padding()
                         
-                    } label: {
-                        Image(systemName: "star.fill")
-                        Text("Rate us on the App Store")
+                        Button {
+                        } label: {
+                            Text("🥙 Buy me a meal")
+                        }
+                        .disabled(true)
+                        .padding()
                     }
-                    .padding()
-                    Text("Spread the word on social media")
-                        .font(.title2)
-                    Button {
+                    
+                    Group {
+                        Text("Rate the app if you haven't")
+                            .font(.title2)
                         
-                    } label: {
-                        Image(systemName: "square.and.arrow.up")
-                        Text("Share")
+                        Button {
+                            UIApplicationFunctions.openAppStoreReview()
+                        } label: {
+                            Image(systemName: "star.fill")
+                            Text("Rate us on the App Store")
+                        }
+                        .padding()
                     }
-                    .padding()
-                    Text("Check out our friends' apps")
-                        .font(.title2)
-                    Button {
+                    
+                    Group {
+                        Text("Spread the word on social media")
+                            .font(.title2)
                         
-                    } label: {
-                        Image(systemName: "arrow.up.forward.app")
-                        Text("GoLingo")
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                            Text("Share")
+                        }
+                        .disabled(true)
+                        .padding()
                     }
-                    .padding()
+                    
+                    Group {
+                        Text("Check out our friends' apps")
+                            .font(.title2)
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "arrow.up.forward.app")
+                            Text("GoLingo")
+                        }
+                        .disabled(true)
+                        .padding()
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "arrow.up.forward.app")
+                            Text("TBD")
+                        }
+                        .disabled(true)
+                        .padding()
+                    }
+                    
                     Spacer()
                 }
                 .padding()
