@@ -20,23 +20,9 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 All items in the TODO list will be moved to Issues.
 
-### Other key sets
-
-_No longer using separate keyboard extensions; integrate everything to the main keyboard extension_
-
-_Some of these features might be charged a price using IAP (or not)_
-
-- [ ] _Obsolete symbols (such as ʧ and ʤ)_
-
-- [ ] _Nonstandard symbols (such as ɿ ʅ ʮ ʯ)_
-
-- [ ] _Custom keyboard (custom keys and custom order)_
-
 ### All keyboard extensions
 
 _Some of these features might not be allowed by the keyboard extension API_
-
-- [ ] **(if possible)** Recently used keys
 
 - [ ] Ability to move the cursor using the keyboard
 
