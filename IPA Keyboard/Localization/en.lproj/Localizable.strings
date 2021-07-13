@@ -32,7 +32,7 @@
 "getting-started-1" = "Open the Settings app";
 "getting-started-2" = "Go to General > Keyboard > Keyboards";
 "getting-started-3" = "Tap on \"Add New Keyboard...\"";
-"getting-started-4" = "Add \"IPA Keyboard\" from the list";
+"getting-started-4" = "Add \"IPA Keyboard\" from the \"Third-Party Keyboards\" list";
 
 /* Getting Started Note */
 "getting-started-note-bullet-point" = "*";
