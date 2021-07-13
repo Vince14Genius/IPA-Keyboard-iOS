@@ -20,20 +20,6 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 All items in the TODO list will be moved to Issues.
 
-### All keyboard extensions
-
-_Some of these features might not be allowed by the keyboard extension API_
-
-- [ ] Ability to move the cursor using the keyboard
-
-  * will not be able to mimic system keyboard behavior 100%; can only move cursor left and right
-
-- [ ] Hide the switch keyboard button on devices with edge-to-edge displays (e.g. iPhone X)
-
-  * now possible to implement due to the `needsInputModeSwitchKey` property
-
-  * will do after/during the SwiftUI migration
-
 ### Host app
 
 - [ ] Donations & Link to Donations 
