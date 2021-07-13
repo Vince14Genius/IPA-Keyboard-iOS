@@ -1,0 +1,60 @@
+/* 
+  Localizable.strings
+  IPA Keyboard
+
+  Created by Vincent C. on 4/7/21.
+  Copyright © 2021 Vince14Genius. All rights reserved.
+*/
+
+"localized-ipa-wikipedia-url" = "https://ja.wikipedia.org/wiki/%E5%9B%BD%E9%9A%9B%E9%9F%B3%E5%A3%B0%E8%A8%98%E5%8F%B7"; // 国際音声記号
+
+/* Basics */
+"alert-dismiss" = "OK";
+
+/* title = "IPA Keyboard"; */
+"ipakeyboard.title" = "IPAキーボード";
+
+/* Tab View tab names */
+"localized-title-getting-started" = "始めましょう";
+"localized-title-support-us" = "開発者を支援";
+"localized-title-settings" = "設定";
+
+/* Navigation titles */
+"localized-title-support-us-exclamation" = "ご支援いただけると幸いです！";
+
+/* Getting Started - About IPA */
+"about.ipa.title" = "IPAについて";
+
+/* Getting Started Description */
+"getting-started-description" = "このキーボードを追加するには：";
+
+/* Getting Started Instructions */
+"getting-started-1" = "設定アプリを開けて、";
+"getting-started-2" = "「一般」>「キーボード」>「キーボード」>「新しいキーボードを追加...」の順に選択し、";
+"getting-started-3" = "「他社製キーボード」のリストから「IPAキーボード」を選んでください";
+"getting-started-4" = "IPAキーボードを使い始めましょう！";
+
+/* Getting Started Note */
+"getting-started-note-bullet-point" = "※";
+"getting-started-note" = "「IPAキーボード」がリストになければ、アプリを削除して再インストールし、またはデバイスを再起動してみてください。";
+
+/* Getting Started TextField */
+"keyboardtest.textfield.placeholder" = "こちらでお試しいただけます";
+
+/* Settings - Keyboards */
+"localized-title-keyboards" = "キーボードリスト";
+"localized-keyboard-ipa" = "IPA (公式, 2018)";
+"localized-keyboard-extipa" = "extIPA (公式, 2016)";
+"localized-keyboard-nonstandard-obsolete" = "非公式/破棄された記号";
+"localized-keyboard-custom" = "カスタムIPAキーボード";
+"localized-link-customize" = "カスタマイズ...";
+"localized-keyboard-recents" = "よく使う記号";
+
+/* Settings - Unlock Keyboards */
+"localized-unlock-nonstandard-obsolete" = "非公式/破棄された記号をアンロック";
+"localized-unlock-custom" = "カスタムIPAキーボードをアンロック";
+"alert-coming-soon" = "近日発売";
+
+/* Settings - Bug Report / Feedback */
+"localized-button-bugreport" = "バグ報告/フィードバック";
+
