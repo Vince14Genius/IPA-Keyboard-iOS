@@ -16,15 +16,13 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 - A relatively easily accomplishable project to boost my previously negative self-esteem
 
+## TODO List
+
+All items in the TODO list will be moved to Issues.
+
 ## To-Do List: Changes to be made for next release
 
 - [ ] Add system-provided sound effects for the delete key and the symbol keys on the top
-
-- [x] Keyboard show/hide in the host app
-
-- [x] Add ɝ in the main IPA keyboard
-
-- [x] Add ◌ (dotted circle), in both the top bar of the main IPA keyboard (alongside "\[\]", "//", and "~") and as a display element on keys for diacritics
 
 ## To-Do List: Current Bugs
 
@@ -32,19 +30,13 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 - [ ] Haptic feedback is not working
 
-- [ ] If the user switched to this keyboard before using WeChat Pay, this keyboard replaces the system numerical keyboard, rendering the user unable to enter numbers for WeChat Pay's numerical field
+- [ ] If the user switched to this keyboard before tapping on any numeric input text field (e.g. LINE Pay, WeChat Pay), this keyboard replaces the system numerical keyboard, rendering the user unable to enter numbers for said text field
 
   * **theoretically unfixable**, as there is currently no way of indicating absence of a numerical keyboard through the iOS third-party keyboard API
   
 - [ ] Bad support for hardware keyboards, such as Bluetooth keyboards and iPad Smart/Magic Keyboard
 
   * **theoretically unfixable**, as the iOS third-party keyboard API does not yet support ignoring the hardware keyboard
-
-- [x] Section header width contact hitbox bugs
-
-- [x] Delayed refresh of collection view items when scrolling
-
-  * actually a UIButton problem (the .system type button has a default animation)
 
 ## To-Do List: Features for future releases
 
@@ -70,8 +62,6 @@ _Some of these features might be charged a price using IAP (or not)_
 
 - [ ] _Custom keyboard (custom keys and custom order)_
 
-- [x] IPA Extended (extIPA) **(this one will definitely be free)**
-
 ### All keyboard extensions
 
 _Some of these features might not be allowed by the keyboard extension API_
@@ -82,21 +72,15 @@ _Some of these features might not be allowed by the keyboard extension API_
 
   * will not be able to mimic system keyboard behavior 100%; can only move cursor left and right
 
-- [x] Hide the switch keyboard button on devices with edge-to-edge displays (e.g. iPhone X)
+- [ ] Hide the switch keyboard button on devices with edge-to-edge displays (e.g. iPhone X)
 
-  * now possible to implement due to the `needsInputModeSwitchKey` property, but I've decided that it's not yet needed
+  * now possible to implement due to the `needsInputModeSwitchKey` property
 
-- [x] Press and hold on backspace/delete button to rapidly delete
+  * will do after/during the SwiftUI migration
 
 ### Host app
 
 - [ ] Donations & Link to Donations 
 
   * If there are enough donations, some paid features can be made free
-
-- [ ] “Rate app” (link & in-app alert view)
-
-- [x] Link to the Wikipedia IPA page
-
-- [x] Link to Bug Report / Feedback
 
