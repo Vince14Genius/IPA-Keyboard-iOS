@@ -20,18 +20,6 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 All items in the TODO list will be moved to Issues.
 
-## To-Do List: Features for future releases
-
-- [ ] Add a drag-scrolling mechanism to the bottom sections bar
-
-- [ ] **(if possible)** Section for recently used keys
-
-- [ ] Section for customized key selection & layout
-
-- [ ] Settings for turning specific sections on & off in the host app
-
-- [ ] Make host app look better using SwiftUI
-
 ### Other key sets
 
 _No longer using separate keyboard extensions; integrate everything to the main keyboard extension_
