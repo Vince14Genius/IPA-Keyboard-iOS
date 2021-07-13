@@ -20,18 +20,6 @@ Download on the App Store: https://apps.apple.com/us/app/ipa-phonetic-keyboard/i
 
 All items in the TODO list will be moved to Issues.
 
-## To-Do List: Current Bugs
-
-- [ ] Haptic feedback is not working
-
-- [ ] If the user switched to this keyboard before tapping on any numeric input text field (e.g. LINE Pay, WeChat Pay), this keyboard replaces the system numerical keyboard, rendering the user unable to enter numbers for said text field
-
-  * **theoretically unfixable**, as there is currently no way of indicating absence of a numerical keyboard through the iOS third-party keyboard API
-  
-- [ ] Bad support for hardware keyboards, such as Bluetooth keyboards and iPad Smart/Magic Keyboard
-
-  * **theoretically unfixable**, as the iOS third-party keyboard API does not yet support ignoring the hardware keyboard
-
 ## To-Do List: Features for future releases
 
 - [ ] Add a drag-scrolling mechanism to the bottom sections bar
