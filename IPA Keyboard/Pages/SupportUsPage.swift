@@ -17,6 +17,8 @@ struct SupportUsPage: View {
                     Group {
                         Text("Donate to the developer")
                             .font(.title2)
+                        Text("Contribute to our effort to keep this IPA keyboard completely free!")
+                            .foregroundColor(.secondary)
                         
                         Button {
                             
@@ -87,9 +89,10 @@ struct SupportUsPage: View {
                     Spacer()
                 }
                 .padding()
-                .navigationBarTitle("localized-title-support-us-exclamation")
             }
+            .navigationBarTitle("localized-title-support-us-exclamation")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

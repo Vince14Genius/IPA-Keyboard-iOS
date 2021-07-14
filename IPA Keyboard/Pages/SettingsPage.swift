@@ -70,6 +70,7 @@ struct SettingsPage: View {
             })
             .navigationBarTitle("Settings")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
