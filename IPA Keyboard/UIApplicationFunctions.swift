@@ -22,6 +22,10 @@ enum UIApplicationFunctions {
         Self.openURL(string: "https://vince14genius.github.io/support/")
     }
     
+    static func openAppStoreReview() {
+        Self.openURL(string: "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497?action=write-review")
+    }
+    
     static func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }

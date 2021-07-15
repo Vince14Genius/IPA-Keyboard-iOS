@@ -17,6 +17,8 @@
 		4E14C3BD261EAD6F001AE827 /* DefaultButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C3BC261EAD6F001AE827 /* DefaultButtonStyle.swift */; };
 		4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */; };
 		4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */; };
+		4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4030EF269D456D0081E3FD /* SupportUsPageButtons.swift */; };
+		4E4030F4269FE0530081E3FD /* View+makeStackNavigationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4030F3269FE0520081E3FD /* View+makeStackNavigationPage.swift */; };
 		4E4C516B2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */; };
 		4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */; };
 		4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */; };
@@ -70,6 +72,8 @@
 		4E4030EC269D0B880081E3FD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4E4030ED269D0B8A0081E3FD /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E4030EE269D0B8B0081E3FD /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = eo.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E4030EF269D456D0081E3FD /* SupportUsPageButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportUsPageButtons.swift; sourceTree = "<group>"; };
+		4E4030F3269FE0520081E3FD /* View+makeStackNavigationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+makeStackNavigationPage.swift"; sourceTree = "<group>"; };
 		4E4C51692462C28200B9AC43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeDisplayKeyArrangement.swift; sourceTree = "<group>"; };
 		4E5D16BE22B393DF00F40B13 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			children = (
 				4E14C3BC261EAD6F001AE827 /* DefaultButtonStyle.swift */,
 				4E0B7423269BD5380066345B /* InstructionsListItem.swift */,
+				4E4030EF269D456D0081E3FD /* SupportUsPageButtons.swift */,
 			);
 			path = "View Elements";
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 		4E0B7425269C215F0066345B /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				4E4030F3269FE0520081E3FD /* View+makeStackNavigationPage.swift */,
 				4E0B7426269C21840066345B /* GettingStartedPage.swift */,
 				4E0B742A269C2A4A0066345B /* SupportUsPage.swift */,
 				4E0B7428269C22390066345B /* SettingsPage.swift */,
@@ -351,12 +357,14 @@
 			files = (
 				4E0B7429269C22390066345B /* SettingsPage.swift in Sources */,
 				4E0B7427269C21840066345B /* GettingStartedPage.swift in Sources */,
+				4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */,
 				4E0B742B269C2A4A0066345B /* SupportUsPage.swift in Sources */,
 				4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */,
 				4E14C384261E864C001AE827 /* MainTabView.swift in Sources */,
 				4E14C380261E8624001AE827 /* IPAKeyboardApp.swift in Sources */,
 				4E14C3BD261EAD6F001AE827 /* DefaultButtonStyle.swift in Sources */,
 				4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */,
+				4E4030F4269FE0530081E3FD /* View+makeStackNavigationPage.swift in Sources */,
 				4E0B7424269BD5380066345B /* InstructionsListItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
