@@ -9,25 +9,42 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     @State private var textFieldText: String = ""
     
     var body: some View {
-        TabView {
-            GettingStartedPage()
-                .tabItem {
-                    Image(systemName: "text.book.closed.fill")
-                    Text("localized-title-getting-started")
+        Group {
+            if horizontalSizeClass == .compact {
+                TabView {
+                    GettingStartedPage()
+                        .tabItem {
+                            Image(systemName: "text.book.closed.fill")
+                            Text("localized-title-getting-started")
+                        }
+                    SupportUsPage()
+                        .tabItem {
+                            Image(systemName: "hand.wave.fill")
+                            Text("localized-title-support-us")
+                        }
+                    SettingsPage()
+                        .tabItem {
+                            Image(systemName: "gear")
+                            Text("localized-title-settings")
+                        }
                 }
-            SupportUsPage()
-                .tabItem {
-                    Image(systemName: "hand.wave.fill")
-                    Text("localized-title-support-us")
+            } else {
+                NavigationView {
+                    List {
+                        NavigationLink("localized-title-getting-started", destination: GettingStartedInnerPage())
+                        NavigationLink("localized-title-support-us", destination: SupportUsInnerPage())
+                        NavigationLink("ipakeyboard.title", destination: SettingsInnerPage())
+                    }
+                    .navigationTitle("ipakeyboard.title")
+                    
+                    GettingStartedInnerPage()
                 }
-            SettingsPage()
-                .tabItem {
-                    Image(systemName: "gear")
-                    Text("localized-title-settings")
-                }
+            }
         }
     }
 }

@@ -11,88 +11,92 @@ import StoreKit
 
 struct SupportUsPage: View {
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    Group {
-                        Text("Donate to the developer")
-                            .font(.title2)
-                        Text("Contribute to our effort to keep this IPA keyboard completely free!")
-                            .foregroundColor(.secondary)
-                        
-                        Button {
-                            
-                        } label: {
-                            Text("🥤 Buy me a drink")
-                        }
-                        .disabled(true)
-                        .padding()
-                        
-                        Button {
-                        } label: {
-                            Text("🥙 Buy me a meal")
-                        }
-                        .disabled(true)
-                        .padding()
-                    }
+        SupportUsInnerPage()
+            .makeStackNavigationPage()
+    }
+}
+
+struct SupportUsInnerPage: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
+                Group {
+                    Text("Donate to the developer")
+                        .font(.title2)
+                    Text("Contribute to our effort to keep this IPA keyboard completely free!")
+                        .foregroundColor(.secondary)
                     
-                    Group {
-                        Text("Rate the app if you haven't")
-                            .font(.title2)
+                    Button {
                         
-                        Button {
-                            UIApplicationFunctions.openAppStoreReview()
-                        } label: {
-                            Image(systemName: "star.fill")
-                            Text("Rate us on the App Store")
-                        }
-                        .padding()
+                    } label: {
+                        Text("🥤 Buy me a drink")
                     }
+                    .disabled(true)
+                    .padding()
                     
-                    Group {
-                        Text("Spread the word on social media")
-                            .font(.title2)
-                        
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "square.and.arrow.up")
-                            Text("Share")
-                        }
-                        .disabled(true)
-                        .padding()
+                    Button {
+                    } label: {
+                        Text("🥙 Buy me a meal")
                     }
-                    
-                    Group {
-                        Text("Check out our friends' apps")
-                            .font(.title2)
-                        
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "arrow.up.forward.app")
-                            Text("GoLingo")
-                        }
-                        .disabled(true)
-                        .padding()
-                        
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "arrow.up.forward.app")
-                            Text("TBD")
-                        }
-                        .disabled(true)
-                        .padding()
-                    }
-                    
-                    Spacer()
+                    .disabled(true)
+                    .padding()
                 }
-                .padding()
+                
+                Group {
+                    Text("Rate the app if you haven't")
+                        .font(.title2)
+                    
+                    Button {
+                        UIApplicationFunctions.openAppStoreReview()
+                    } label: {
+                        Image(systemName: "star.fill")
+                        Text("Rate us on the App Store")
+                    }
+                    .padding()
+                }
+                
+                Group {
+                    Text("Spread the word on social media")
+                        .font(.title2)
+                    
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                        Text("Share")
+                    }
+                    .disabled(true)
+                    .padding()
+                }
+                
+                Group {
+                    Text("Check out our friends' apps")
+                        .font(.title2)
+                    
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "arrow.up.forward.app")
+                        Text("GoLingo")
+                    }
+                    .disabled(true)
+                    .padding()
+                    
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "arrow.up.forward.app")
+                        Text("TBD")
+                    }
+                    .disabled(true)
+                    .padding()
+                }
+                
+                Spacer()
             }
-            .navigationBarTitle("localized-title-support-us-exclamation")
+            .padding()
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarTitle("localized-title-support-us-exclamation")
     }
 }
 
