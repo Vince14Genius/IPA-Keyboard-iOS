@@ -47,7 +47,7 @@ struct SupportUsInnerPage: View {
                         .font(.title2)
                     
                     Button {
-                        UIApplicationFunctions.openAppStoreReview()
+                        UIApplicationFunctions.openURL(URLs.feedback)
                     } label: {
                         Image(systemName: "star.fill")
                         Text("Rate us on the App Store")
@@ -96,7 +96,7 @@ struct SupportUsInnerPage: View {
             }
             .padding()
         }
-        .navigationBarTitle("localized-title-support-us-exclamation")
+        .navigationBarTitle(Localized.navTitleSupportUs)
     }
 }
 

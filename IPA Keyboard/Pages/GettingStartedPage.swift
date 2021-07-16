@@ -21,22 +21,21 @@ struct GettingStartedInnerPage: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("getting-started-description")
+                Text(Localized.gettingStartedDescription)
                     .font(.title2)
-                InstructionsListItem(index: 1, bodyText: "getting-started-1")
-                InstructionsListItem(index: 2, bodyText: "getting-started-2")
-                InstructionsListItem(index: 3, bodyText: "getting-started-3")
-                InstructionsListItem(index: 4, bodyText: "getting-started-4")
+                ForEach(Localized.gettingStartedRange) { i in
+                    InstructionsListItem(index: i, bodyText: Localized.gettingStartedKey(i))
+                }
                 HStack(alignment: .top) {
-                    Text("getting-started-note-bullet-point")
-                    Text("getting-started-note")
+                    Text(Localized.gettingStartedNoteBullet)
+                    Text(Localized.gettingStartedNote)
                         .foregroundColor(.secondary)
                     Spacer()
                 }
                     .padding()
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(4.0)
-                TextField("keyboardtest.textfield.placeholder", text: $textFieldText)
+                TextField(Localized.gettingStartedTextField, text: $textFieldText)
                     .padding([.top])
                 Divider()
                     .padding([.bottom])
@@ -45,10 +44,10 @@ struct GettingStartedInnerPage: View {
             .padding()
             .buttonStyle(BlueButtonStyle())
         }
-        .navigationBarTitle("localized-title-getting-started")
+        .navigationBarTitle(Localized.titleGettingStarted)
         .navigationBarItems(trailing:
-            Button("about.ipa.title") {
-                UIApplicationFunctions.openAboutIPAPage()
+                                Button(Localized.aboutIPA) {
+                UIApplicationFunctions.openURL(URLs.aboutIPA)
             }
         )
         .onTapGesture {

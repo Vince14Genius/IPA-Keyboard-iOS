@@ -20,27 +20,27 @@ struct MainTabView: View {
                     GettingStartedPage()
                         .tabItem {
                             Image(systemName: "text.book.closed.fill")
-                            Text("localized-title-getting-started")
+                            Text(Localized.titleGettingStarted)
                         }
                     SupportUsPage()
                         .tabItem {
                             Image(systemName: "hand.wave.fill")
-                            Text("localized-title-support-us")
+                            Text(Localized.titleSupportUs)
                         }
                     SettingsPage()
                         .tabItem {
                             Image(systemName: "gear")
-                            Text("localized-title-settings")
+                            Text(Localized.titleSettings)
                         }
                 }
             } else {
                 NavigationView {
                     List {
-                        NavigationLink("localized-title-getting-started", destination: GettingStartedInnerPage())
-                        NavigationLink("localized-title-support-us", destination: SupportUsInnerPage())
-                        NavigationLink("ipakeyboard.title", destination: SettingsInnerPage())
+                        NavigationLink(Localized.titleGettingStarted, destination: GettingStartedInnerPage())
+                        NavigationLink(Localized.titleSupportUs, destination: SupportUsInnerPage())
+                        NavigationLink(Localized.titleSettings, destination: SettingsInnerPage())
                     }
-                    .navigationTitle("ipakeyboard.title")
+                    .navigationTitle(Localized.ipaKeyboardTitle)
                     
                     GettingStartedInnerPage()
                 }

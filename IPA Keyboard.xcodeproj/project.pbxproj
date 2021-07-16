@@ -31,6 +31,7 @@
 		4E84B1B9214745CE0078AC4B /* KeyButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */; };
 		4EAA9212217F831A0015DBFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA9214217F831A0015DBFE /* InfoPlist.strings */; };
 		4EAC2B70214B5F54008CF477 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EAC2B72214B5F54008CF477 /* InfoPlist.strings */; };
+		4ED8A73326A11C29001015B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8A73226A11C29001015B2 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		4EAC2B73214B5F59008CF477 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4EAC2B74214B5F5A008CF477 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4EAC2B75214B5F5B008CF477 /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = eo.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4ED8A73226A11C29001015B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				4E14C37F261E8624001AE827 /* IPAKeyboardApp.swift */,
 				4E14C383261E864C001AE827 /* MainTabView.swift */,
 				4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */,
+				4ED8A73226A11C29001015B2 /* Constants.swift */,
 				4E0B7425269C215F0066345B /* Pages */,
 				4E0B7422269BD5210066345B /* View Elements */,
 				4E84B15C2140E9330078AC4B /* Assets.xcassets */,
@@ -366,6 +369,7 @@
 				4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */,
 				4E4030F4269FE0530081E3FD /* View+makeStackNavigationPage.swift in Sources */,
 				4E0B7424269BD5380066345B /* InstructionsListItem.swift in Sources */,
+				4ED8A73326A11C29001015B2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

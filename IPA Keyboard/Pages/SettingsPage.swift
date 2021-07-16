@@ -31,23 +31,23 @@ struct SettingsInnerPage: View {
         Form {
             Section() {
                 Button {
-                    UIApplicationFunctions.openFeedback()
+                    UIApplicationFunctions.openURL(URLs.feedback)
                 } label: {
-                    Text("localized-button-bugreport")
+                    Text(Localized.buttonBugreport)
                 }
             }
-            Section(header: Text("localized-title-keyboards")) {
-                Toggle("localized-keyboard-ipa", isOn: $isIPAKeyboardOn)
+            Section(header: Text(Localized.titleKeyboards)) {
+                Toggle(Localized.keyboardIPA, isOn: $isIPAKeyboardOn)
                     .disabled(true)
-                Toggle("localized-keyboard-extipa", isOn: $isExtIPAKeyboardOn)
+                Toggle(Localized.keyboardExtIPA, isOn: $isExtIPAKeyboardOn)
                 Group {
                     if isNonstandardCharsKeyboardUnlocked {
-                        Toggle("localized-keyboard-nonstandard-obsolete", isOn: $isNonstandardCharsKeyboardOn)
+                        Toggle(Localized.keyboardNonstandard, isOn: $isNonstandardCharsKeyboardOn)
                     } else {
                         Button {
                             showingComingSoonAlert = true
                         } label: {
-                            Text("localized-unlock-nonstandard-obsolete")
+                            Text(Localized.unlockNonstandard)
                         }
                     }
                 }
@@ -55,26 +55,26 @@ struct SettingsInnerPage: View {
             Section() {
                 Group {
                     if isCustomIPAKeyboardUnlocked {
-                        Toggle("localized-keyboard-custom", isOn: $isCustomIPAKeyboardOn)
-                        NavigationLink("localized-link-customize", destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
+                        Toggle(Localized.keyboardCustom, isOn: $isCustomIPAKeyboardOn)
+                        NavigationLink(Localized.linkCustomize, destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
                     } else {
                         Button {
                             showingComingSoonAlert = true
                         } label: {
-                            Text("localized-unlock-custom")
+                            Text(Localized.unlockCustom)
                         }
                     }
                 }
             }
             Section() {
-                Toggle("localized-keyboard-recents", isOn: $isRecentsOn)
+                Toggle(Localized.keyboardRecents, isOn: $isRecentsOn)
                     .disabled(true)
             }
         }
         .alert(isPresented: $showingComingSoonAlert, content: {
-            Alert(title: Text("alert-coming-soon"), message: nil, dismissButton: .default(Text("alert-dismiss")))
+            Alert(title: Text(Localized.alertComingSoon), message: nil, dismissButton: .default(Text(Localized.alertDismiss)))
         })
-        .navigationBarTitle("Settings")
+        .navigationBarTitle(Localized.titleSettings)
     }
 }
 
