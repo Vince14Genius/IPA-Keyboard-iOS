@@ -15,7 +15,18 @@ struct MainTabView: View {
     
     var body: some View {
         Group {
-            if horizontalSizeClass == .compact {
+            if horizontalSizeClass == .regular {
+                NavigationView {
+                    List {
+                        NavigationLink(Localized.titleGettingStarted, destination: GettingStartedInnerPage())
+                        NavigationLink(Localized.titleSupportUs, destination: SupportUsInnerPage())
+                        NavigationLink(Localized.titleSettings, destination: SettingsInnerPage())
+                    }
+                    .navigationTitle(Localized.ipaKeyboardTitle)
+                    
+                    GettingStartedInnerPage()
+                }
+            } else {
                 TabView {
                     GettingStartedPage()
                         .tabItem {
@@ -32,17 +43,6 @@ struct MainTabView: View {
                             Image(systemName: "gear")
                             Text(Localized.titleSettings)
                         }
-                }
-            } else {
-                NavigationView {
-                    List {
-                        NavigationLink(Localized.titleGettingStarted, destination: GettingStartedInnerPage())
-                        NavigationLink(Localized.titleSupportUs, destination: SupportUsInnerPage())
-                        NavigationLink(Localized.titleSettings, destination: SettingsInnerPage())
-                    }
-                    .navigationTitle(Localized.ipaKeyboardTitle)
-                    
-                    GettingStartedInnerPage()
                 }
             }
         }
