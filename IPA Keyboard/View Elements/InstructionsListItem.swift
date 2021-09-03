@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct InstructionsListItem: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var index: Int
     var bodyText: LocalizedStringKey
     
@@ -21,8 +23,11 @@ struct InstructionsListItem: View {
             Spacer()
         }
         .padding()
-        .background(Color(UIColor.secondarySystemBackground))
+        .background(Color(colorScheme == .light ? UIColor.systemBackground : UIColor.secondarySystemBackground))
         .cornerRadius(12.0)
+        .padding([.top, .bottom], 4)
+        .padding([.leading, .trailing], 8)
+        .shadow(color: colorScheme == .light ? Color(red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear, radius: 16, x: 0, y: 4)
     }
 }
 

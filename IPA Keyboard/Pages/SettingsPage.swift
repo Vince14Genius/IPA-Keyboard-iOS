@@ -11,7 +11,7 @@ import SwiftUI
 var isNonstandardCharsKeyboardUnlocked = false
 var isCustomIPAKeyboardUnlocked = false
 
-struct SettingsPage: View {
+struct SettingsPageWrapped: View {
     var body: some View {
         SettingsInnerPage()
             .makeStackNavigationPage()
@@ -40,6 +40,7 @@ struct SettingsInnerPage: View {
                 Toggle(Localized.keyboardIPA, isOn: $isIPAKeyboardOn)
                     .disabled(true)
                 Toggle(Localized.keyboardExtIPA, isOn: $isExtIPAKeyboardOn)
+                    .disabled(true)
                 Group {
                     if isNonstandardCharsKeyboardUnlocked {
                         Toggle(Localized.keyboardNonstandard, isOn: $isNonstandardCharsKeyboardOn)
@@ -80,7 +81,7 @@ struct SettingsInnerPage: View {
 
 struct SettingsPage_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsPage()
+        SettingsPageWrapped()
     }
 }
 

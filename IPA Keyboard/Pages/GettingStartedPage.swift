@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct GettingStartedPage: View {
+struct GettingStartedPageWrapped: View {
     var body: some View {
         GettingStartedInnerPage()
             .makeStackNavigationPage()
@@ -16,37 +16,15 @@ struct GettingStartedPage: View {
 }
 
 struct GettingStartedInnerPage: View {
-    @State private var textFieldText: String = ""
-    
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
-                Text(Localized.gettingStartedDescription)
-                    .font(.title2)
-                ForEach(Localized.gettingStartedRange) { i in
-                    InstructionsListItem(index: i, bodyText: Localized.gettingStartedKey(i))
-                }
-                HStack(alignment: .top) {
-                    Text(Localized.gettingStartedNoteBullet)
-                    Text(Localized.gettingStartedNote)
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
-                    .padding()
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(4.0)
-                TextField(Localized.gettingStartedTextField, text: $textFieldText)
-                    .padding([.top])
-                Divider()
-                    .padding([.bottom])
-                Spacer()
-            }
-            .padding()
-            .buttonStyle(BlueButtonStyle())
+            // Main content
+            GettingStartedVStack()
+                .padding()
         }
         .navigationBarTitle(Localized.titleGettingStarted)
         .navigationBarItems(trailing:
-                                Button(Localized.aboutIPA) {
+            Button(Localized.aboutIPA) {
                 UIApplicationFunctions.openURL(URLs.aboutIPA)
             }
         )
@@ -56,9 +34,41 @@ struct GettingStartedInnerPage: View {
     }
 }
 
+struct GettingStartedVStack: View {
+    @State private var textFieldText: String = ""
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(Localized.gettingStartedDescription)
+                .font(.title2)
+                .padding(.bottom)
+            ForEach(Localized.gettingStartedRange) { i in
+                InstructionsListItem(index: i, bodyText: Localized.gettingStartedKey(i))
+            }
+            Group {
+                Button {
+                    UIApplicationFunctions.openURL(UIApplication.openSettingsURLString)
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.up.forward.app")
+                        Text(Localized.gettingStartedSettingsButton)
+                    }
+                }
+                    .buttonStyle(BlueButtonStyle())
+                UserTipView(bodyText: Localized.gettingStartedNote)
+                TextField(Localized.gettingStartedTextField, text: $textFieldText)
+            }
+                .padding(.top)
+            Divider()
+                .padding([.bottom])
+            Spacer()
+        }
+    }
+}
+
 struct GettingStartedPage_Previews: PreviewProvider {
     static var previews: some View {
-        GettingStartedPage()
+        GettingStartedPageWrapped()
     }
 }
 

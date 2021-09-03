@@ -34,12 +34,34 @@
 "getting-started-3" = "點一下「新增鍵盤」";
 "getting-started-4" = "從「第三方鍵盤」列表加入「IPA鍵盤」";
 
+/* Getting Started Settings Link Button */
+"getting-started-settings-button" = "啟動「設定」App...";
+
 /* Getting Started Note */
 "getting-started-note-bullet-point" = "*";
 "getting-started-note" = "如果列表中沒有出現此選項，請嘗試重新啟動設備，或者重新安裝此App。";
 
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "可以在這裡嘗試使用IPA音標鍵盤";
+
+/* Support Us - Donate to the developer */
+"support-us-donate-title" = "向開發者捐贈";
+"support-us-donate-subtitle" = "本IPA鍵盤堅持向大家免費提供，歡迎支持免費軟體的各位捐款資助！";
+"support-us-donate-buy-drink" = "🧋 幫我買杯飲料";
+"support-us-donate-buy-meal" = "🍜 給開發者投食";
+
+/* Support Us - Rate the app if you haven't */
+"support-us-rate-title" = "歡迎評價！歡迎任何好評、意見、以及建議";
+"support-us-rate-button" = "在 App Store 評價我們";
+
+/* Support Us - Spread the word on social media */
+"support-us-share-title" = "讓有需要的朋友也知道這個IPA鍵盤吧";
+"support-us-share-button" = "分享";
+
+/* Support Us - Check out our friends' apps */
+"support-us-friends-apps-title" = "友情App連結";
+"support-us-friends-apps-golingo" = "GoLingo";
+"support-us-friends-apps-tbd" = "敬請期待";
 
 /* Settings - Keyboards */
 "localized-title-keyboards" = "鍵盤列表";

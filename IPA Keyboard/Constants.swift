@@ -18,6 +18,7 @@ enum URLs {
     static let aboutIPA = Localized.ipaWikipediaURLString.localized()
     static let feedback = "https://vince14genius.github.io/support/"
     static let appStoreReview = "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497?action=write-review"
+    static let friendLinkGoLingo = "https://apps.apple.com/app/golingo/id1194977025"
 }
 
 enum Localized {
@@ -50,6 +51,9 @@ enum Localized {
         LocalizedStringKey(stringLiteral: "getting-started-\(index)")
     }
     
+    /* Getting Started Settings Link Button */
+    static let gettingStartedSettingsButton: LocalizedStringKey = "getting-started-settings-button"
+    
     /* Getting Started Note */
     static let gettingStartedNoteBullet: LocalizedStringKey = "getting-started-note-bullet-point"
     static let gettingStartedNote: LocalizedStringKey = "getting-started-note"
@@ -57,6 +61,25 @@ enum Localized {
     /* Getting Started TextField */
     static let gettingStartedTextField: LocalizedStringKey = "keyboardtest.textfield.placeholder"
 
+    /* Support Us - Donate to the developer */
+    static let supportUsDonateTitle: LocalizedStringKey = "support-us-donate-title"
+    static let supportUsDonateSubtitle: LocalizedStringKey = "support-us-donate-subtitle"
+    static let supportUsDonateBuyDrink: LocalizedStringKey = "support-us-donate-buy-drink"
+    static let supportUsDonateBuyMeal: LocalizedStringKey = "support-us-donate-buy-meal"
+
+    /* Support Us - Rate the app if you haven't */
+    static let supportUsRateTitle: LocalizedStringKey = "support-us-rate-title"
+    static let supportUsRateButton: LocalizedStringKey = "support-us-rate-button"
+
+    /* Support Us - Spread the word on social media */
+    static let supportUsShareTitle: LocalizedStringKey = "support-us-share-title"
+    static let supportUsShareButton: LocalizedStringKey = "support-us-share-button"
+
+    /* Support Us - Check out our friends' apps */
+    static let supportUsFriendsAppsTitle: LocalizedStringKey = "support-us-friends-apps-title"
+    static let supportUsFriendsAppsGoLingo: LocalizedStringKey = "support-us-friends-apps-golingo"
+    static let supportUsFriendsAppsTBD: LocalizedStringKey = "support-us-friends-apps-tbd"
+    
     /* Settings - Keyboards */
     static let titleKeyboards: LocalizedStringKey = "localized-title-keyboards"
     static let keyboardIPA: LocalizedStringKey = "localized-keyboard-ipa"
