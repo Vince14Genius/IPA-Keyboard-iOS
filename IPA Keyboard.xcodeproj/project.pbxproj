@@ -32,6 +32,7 @@
 		4EAA9212217F831A0015DBFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA9214217F831A0015DBFE /* InfoPlist.strings */; };
 		4EAC2B70214B5F54008CF477 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EAC2B72214B5F54008CF477 /* InfoPlist.strings */; };
 		4EAFA34E26E1A86700344131 /* UserTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFA34D26E1A86700344131 /* UserTipView.swift */; };
+		4EAFA35526E241A400344131 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAFA35426E241A400344131 /* StoreKit.framework */; };
 		4ED8A73326A11C29001015B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8A73226A11C29001015B2 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		4EAFA34D26E1A86700344131 /* UserTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTipView.swift; sourceTree = "<group>"; };
 		4EAFA35126E22CC700344131 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4EAFA35226E240B000344131 /* IPA Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "IPA Keyboard.entitlements"; sourceTree = "<group>"; };
+		4EAFA35426E241A400344131 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4ED8A73226A11C29001015B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EAFA35526E241A400344131 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +179,7 @@
 				4E84B1742140E9340078AC4B /* IPA KeyboardUITests */,
 				4E84B1882140E9980078AC4B /* IPA Keyboard Extension */,
 				4E84B1532140E92F0078AC4B /* Products */,
+				4EAFA35326E241A400344131 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -251,6 +255,14 @@
 				4E14C3B1261E8E16001AE827 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		4EAFA35326E241A400344131 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EAFA35426E241A400344131 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

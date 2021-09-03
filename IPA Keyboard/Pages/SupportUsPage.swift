@@ -70,9 +70,11 @@ struct SupportUsVStack: View {
             Group {
                 Text(Localized.supportUsFriendsAppsTitle)
                     .font(.title2)
+                /*
                 SupportUsDefaultButton(icon: Image(systemName: "arrow.up.forward.app"), label: Localized.supportUsFriendsAppsGoLingo) {
                     UIApplicationFunctions.openURL(URLs.friendLinkGoLingo)
                 }
+                */
                 SupportUsDefaultButton(icon: Image(systemName: "arrow.up.forward.app"), label: Localized.supportUsFriendsAppsTBD, isDisabled: true) {
                     
                 }
