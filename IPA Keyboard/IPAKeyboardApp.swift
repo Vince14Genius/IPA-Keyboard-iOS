@@ -10,6 +10,10 @@ import SwiftUI
 
 @main
 struct IPAKeyboardApp: App {
+    init() {
+        LocalStorage.setDefaultValues()
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainTabView()

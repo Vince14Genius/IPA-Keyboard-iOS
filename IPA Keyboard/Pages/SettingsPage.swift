@@ -8,8 +8,7 @@
 
 import SwiftUI
 
-var isNonstandardCharsKeyboardUnlocked = false
-var isCustomIPAKeyboardUnlocked = false
+let appGroupStorage = UserDefaults(suiteName: SharedIdentifiers.appGroup)
 
 struct SettingsPageWrapped: View {
     var body: some View {
@@ -19,13 +18,22 @@ struct SettingsPageWrapped: View {
 }
 
 struct SettingsInnerPage: View {
-    @State private var isIPAKeyboardOn = true
-    @State private var isExtIPAKeyboardOn = true
-    @State private var isNonstandardCharsKeyboardOn = false
-    @State private var isCustomIPAKeyboardOn = false
-    @State private var isRecentsOn = false
+    // On-off switches: advanced features
+    @State private var isMovableCursorOn = false
     
-    @State private var showingComingSoonAlert = false
+    // On-off switches: keyboard list
+    @AppStorage(SettingsKey.isIPAEnabled, store: appGroupStorage) private var isIPAKeyboardOn = true
+    @AppStorage(SettingsKey.isExtIPAEnabled, store: appGroupStorage) private var isExtIPAKeyboardOn = true
+    @AppStorage(SettingsKey.isNonstandardEnabled, store: appGroupStorage) private var isNonstandardCharsKeyboardOn = false
+    @AppStorage(SettingsKey.isCustomKeyboardEnabled, store: appGroupStorage) private var isCustomIPAKeyboardOn = false
+    @AppStorage(SettingsKey.isRecentsEnabled, store: appGroupStorage) private var isRecentsOn = false
+    
+    // IAP unlock states
+    @AppStorage(SettingsKey.isNonstandardUnlocked, store: appGroupStorage) private var isNonstandardCharsKeyboardUnlocked = false
+    @AppStorage(SettingsKey.isCustomKeyboardUnlocked, store: appGroupStorage) private var isCustomIPAKeyboardUnlocked = false
+    
+    // Alert states
+    @AppStorage(SettingsKey.isMovableCursorEnabled, store: appGroupStorage) private var showingComingSoonAlert = false
     
     var body: some View {
         Form {
@@ -40,7 +48,6 @@ struct SettingsInnerPage: View {
                 Toggle(Localized.keyboardIPA, isOn: $isIPAKeyboardOn)
                     .disabled(true)
                 Toggle(Localized.keyboardExtIPA, isOn: $isExtIPAKeyboardOn)
-                    .disabled(true)
                 Group {
                     if isNonstandardCharsKeyboardUnlocked {
                         Toggle(Localized.keyboardNonstandard, isOn: $isNonstandardCharsKeyboardOn)
@@ -70,6 +77,9 @@ struct SettingsInnerPage: View {
             Section() {
                 Toggle(Localized.keyboardRecents, isOn: $isRecentsOn)
                     .disabled(true)
+            }
+            Section(header: Text("Advanced Settings")) {
+                Toggle("Movable Cursor", isOn: $isMovableCursorOn)
             }
         }
         .alert(isPresented: $showingComingSoonAlert, content: {
