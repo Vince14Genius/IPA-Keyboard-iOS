@@ -16,9 +16,11 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     @IBOutlet var keyCollection: UICollectionView!
     @IBOutlet var bottomStack: UIStackView!
     
+    var toolbarRow: UIHostingController<ToolbarRow>!
+    var bottomRow: UIHostingController<BottomRow>!
+    
     // Bottom buttons
     @IBOutlet var nextKeyboardButton: UIButton!
-    @IBOutlet var backwardDeleteButton: UIButton!
     
     // Reuse identifier constant for UICollectionView
     let reuseIdentifier = "ReuseId"
@@ -84,24 +86,28 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         // MARK: - Perform custom UI setup here
         
-        self.backwardDeleteButton = UIButton(type: .system)
-        setupButton(button: self.backwardDeleteButton, title: "⌫")
+        func addHostingController<T>(_ controllerToAdd: UIHostingController<T>) {
+            self.view.addSubview(controllerToAdd.view)
+            self.addChild(controllerToAdd)
+            controllerToAdd.view.backgroundColor = .clear
+            controllerToAdd.view.sizeToFit()
+            controllerToAdd.view.translatesAutoresizingMaskIntoConstraints = false
+        }
         
-        let toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
-        self.view.addSubview(toolbarRow.view)
-        self.addChild(toolbarRow)
-        toolbarRow.view.backgroundColor = .clear
-        toolbarRow.view.sizeToFit()
-        toolbarRow.view.translatesAutoresizingMaskIntoConstraints = false
+        self.toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
+        addHostingController(self.toolbarRow)
+        
+        self.bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self))
+        addHostingController(self.bottomRow)
         
         // MARK: - Set up constraints
         
-        self.backwardDeleteButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -12).isActive = true
-        self.backwardDeleteButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
+        self.toolbarRow.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        self.toolbarRow.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        self.toolbarRow.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         
-        toolbarRow.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        toolbarRow.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        toolbarRow.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        self.bottomRow.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        self.bottomRow.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         // MARK: - Set up the collection view
         
@@ -124,24 +130,13 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         self.keyCollection.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.keyCollection.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         self.keyCollection.topAnchor.constraint(equalTo: toolbarRow.view.bottomAnchor).isActive = true
-        self.keyCollection.bottomAnchor.constraint(equalTo: self.backwardDeleteButton.topAnchor, constant: -6).isActive = true
+        self.keyCollection.bottomAnchor.constraint(equalTo: bottomRow.view.topAnchor).isActive = true
         
         let insetsTotalHeight = topInset + bottomInset
         let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
         let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * minimumInteritemSpacing
         let keyCollectionHeight = insetsTotalHeight + cellTotalHeight + spacingTotalHeight
         self.keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
-        
-        // MARK: - Set up backspace button
-        
-        let cancelEvents: UIControl.Event = [.touchUpInside, .touchUpInside, .touchDragExit, .touchUpOutside, .touchCancel, .touchDragOutside]
-        
-        self.backwardDeleteButton.addTarget(self,
-                                            action: #selector(deleteBackward),
-                                            for: .touchDown)
-        self.backwardDeleteButton.addTarget(self,
-                                            action: #selector(deleteEnded),
-                                            for: cancelEvents)
         
         // MARK: - Set up input mode switch button if needed
         
@@ -236,53 +231,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         } else {
             header.label.textColor = .darkGray
         }
-    }
-    
-    // MARK: - Backspace Repeat
-    
-    let backspaceDelay: TimeInterval = 0.5
-    let backspaceRepeat: TimeInterval = 0.07
-    
-    var backspaceActive: Bool {
-        get {
-            return (backspaceDelayTimer != nil) || (backspaceRepeatTimer != nil)
-        }
-    }
-    var backspaceDelayTimer: Timer?
-    var backspaceRepeatTimer: Timer?
-    
-    deinit {
-        backspaceDelayTimer?.invalidate()
-        backspaceRepeatTimer?.invalidate()
-    }
-    
-    func cancelBackspaceTimers() {
-        self.backspaceDelayTimer?.invalidate()
-        self.backspaceRepeatTimer?.invalidate()
-        self.backspaceDelayTimer = nil
-        self.backspaceRepeatTimer = nil
-    }
-    
-    @objc func backspaceDelayCallback() {
-        self.backspaceDelayTimer = nil
-        self.backspaceRepeatTimer = Timer.scheduledTimer(timeInterval: backspaceRepeat, target: self, selector: #selector(backspaceRepeatCallback), userInfo: nil, repeats: true)
-    }
-    
-    @objc func backspaceRepeatCallback() {
-        //self.playKeySound()
-        self.textDocumentProxy.deleteBackward()
-    }
-    
-    @objc func deleteBackward() {
-        self.cancelBackspaceTimers()
-        self.textDocumentProxy.deleteBackward()
-        
-        // trigger for subsequent deletes
-        self.backspaceDelayTimer = Timer.scheduledTimer(timeInterval: backspaceDelay - backspaceRepeat, target: self, selector: #selector(backspaceDelayCallback), userInfo: nil, repeats: false)
-    }
-    
-    @objc func deleteEnded() {
-        self.cancelBackspaceTimers()
     }
     
     // MARK: - Button Actions

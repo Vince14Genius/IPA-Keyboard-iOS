@@ -34,13 +34,14 @@ struct BottomRow: View {
                 Spacer(minLength: 0)
             }
             */
+            Spacer(minLength: 0) // remove after the above code is implemented
             HoldRepeatButton(label: Text("⌫")) {
                 inputViewController?.deleteBackwardByOne()
             }
             .buttonStyle(ToolbarButtonStyle())
         }
         .padding([.leading, .trailing])
-        .padding([.top, .bottom], 4)
+        .padding([.top, .bottom], 2)
     }
 }
 
