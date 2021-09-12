@@ -20,4 +20,8 @@ extension UIInputViewController {
     func moveCursorForwardByOne() {
         self.textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
     }
+    
+    func deleteBackwardByOne() {
+        self.textDocumentProxy.deleteBackward()
+    }
 }

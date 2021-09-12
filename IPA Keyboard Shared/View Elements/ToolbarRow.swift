@@ -21,13 +21,11 @@ struct ToolbarRow: View {
         VStack(spacing: 0) {
             if isMovableCursorOn {
                 HStack(spacing: 2) {
-                    Button("←") {
+                    HoldRepeatButton(label: Text("←")) {
                         inputViewController?.moveCursorBackByOne()
-                        playSystemKeySound()
                     }
-                    Button("→") {
+                    HoldRepeatButton(label: Text("→")) {
                         inputViewController?.moveCursorForwardByOne()
-                        playSystemKeySound()
                     }
                 }
                 .buttonStyle(CursorButtonStyle())
@@ -67,7 +65,6 @@ struct ToolbarRow: View {
             }
             .padding()
         }
-        .background(Color(UIColor.secondarySystemBackground))
         .buttonStyle(ToolbarButtonStyle())
     }
 }
@@ -75,7 +72,6 @@ struct ToolbarRow: View {
 struct ToolbarRow_Previews: PreviewProvider {
     static var previews: some View {
         ToolbarRow()
-            .preferredColorScheme(.dark)
     }
 }
 

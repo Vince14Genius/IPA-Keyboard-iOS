@@ -14,28 +14,33 @@ struct BottomRow: View {
     
     var inputViewController: UIInputViewController?
     
+    @State var highlightedSectionIndex = 0
+    
     var sectionGlyphs = ["1", "2", "3", "4", "5", "6", "7", "8"]
     
     var body: some View {
         HStack(spacing: 0) {
-            Spacer(minLength: 0)
+            /*
             ForEach(0..<sectionGlyphs.count) { i in
-                Button {
-                    
-                } label: {
-                    Text(sectionGlyphs[i])
-                }
-                .foregroundColor(Color(UIColor.secondaryLabel))
+                Text(sectionGlyphs[i])
+                    .foregroundColor(i == highlightedSectionIndex ? Color(.label) : Color(.secondaryLabel))
+                    .frame(minWidth: 20, minHeight: 20)
+                    .padding(2)
+                    .background(i == highlightedSectionIndex ? Color(white: colorScheme == .light ? 0 : 1, opacity: 0.15) : .clear)
+                    .cornerRadius(1000)
+                    .onTapGesture {
+                        highlightedSectionIndex = i
+                    }
                 Spacer(minLength: 0)
             }
-            Button("⌫") {
-                inputViewController?.insertText("\n")
-                playSystemKeySound()
+            */
+            HoldRepeatButton(label: Text("⌫")) {
+                inputViewController?.deleteBackwardByOne()
             }
             .buttonStyle(ToolbarButtonStyle())
         }
-        .padding()
-        .background(Color(UIColor.secondarySystemBackground))
+        .padding([.leading, .trailing])
+        .padding([.top, .bottom], 4)
     }
 }
 
@@ -44,22 +49,8 @@ struct BottomRow_Previews: PreviewProvider {
         HStack {
             Spacer()
             BottomRow()
+                .background(Color(.secondarySystemBackground))
         }
         .preferredColorScheme(.light)
     }
 }
-
-/*
-for glyph in IPASymbols.sectionGlyphs {
-    let glyphButton = UIButton(type: .system)
-    glyphButton.setTitle(glyph, for: [])
-    glyphButton.titleLabel?.font = glyphButton.titleLabel!.font.withSize(18)
-    
-    glyphButton.translatesAutoresizingMaskIntoConstraints = false
-    
-    glyphButton.layer.cornerRadius = 12
-    
-    glyphButton.addTarget(self, action: #selector(scrollToSection(from:with:)), for: .touchDown)
-    bottomButtons.append(glyphButton)
-}
-*/

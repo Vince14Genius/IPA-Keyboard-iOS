@@ -23,7 +23,7 @@ struct InstructionsListItem: View {
             Spacer()
         }
         .padding()
-        .background(Color(colorScheme == .light ? UIColor.systemBackground : UIColor.secondarySystemBackground))
+        .background(Color(colorScheme == .light ? .systemBackground : .secondarySystemBackground))
         .cornerRadius(12.0)
         .padding([.top, .bottom], 4)
         .padding([.leading, .trailing], 8)

@@ -18,6 +18,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         super.viewDidLoad()
         self.keyCollection.dataSource = self
         self.keyCollection.delegate = self
+        LocalStorage.setDefaultValues()
         
         // Run IPASymbols consistency checks
         
@@ -50,8 +51,13 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         self.bottomStack.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
         self.bottomStack.topAnchor.constraint(equalTo: self.keyCollection.bottomAnchor).isActive = true
         // self.bottomStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.bottomStack.leadingAnchor.constraint(equalTo: self.nextKeyboardButton.trailingAnchor, constant: 12).isActive = true
         self.bottomStack.trailingAnchor.constraint(equalTo: self.backwardDeleteButton.leadingAnchor, constant: -12).isActive = true
+        
+        if self.needsInputModeSwitchKey {
+            self.bottomStack.leadingAnchor.constraint(equalTo: self.nextKeyboardButton.trailingAnchor, constant: 12).isActive = true
+        } else {
+            self.bottomStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
+        }
     }
     
     // MARK: - Helper Methods

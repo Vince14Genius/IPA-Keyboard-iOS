@@ -15,6 +15,10 @@
 		4E14C384261E864C001AE827 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C383261E864C001AE827 /* MainTabView.swift */; };
 		4E14C3AF261E8E16001AE827 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E14C3B1261E8E16001AE827 /* Localizable.strings */; };
 		4E14C3BD261EAD6F001AE827 /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C3BC261EAD6F001AE827 /* BlueButtonStyle.swift */; };
+		4E19A47626ED4F80008F3341 /* KeyboardSectionIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19A47526ED4F80008F3341 /* KeyboardSectionIdentifiable.swift */; };
+		4E19A47726ED4F80008F3341 /* KeyboardSectionIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19A47526ED4F80008F3341 /* KeyboardSectionIdentifiable.swift */; };
+		4E19A47926EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */; };
+		4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */; };
 		4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */; };
 		4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */; };
 		4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4030EF269D456D0081E3FD /* SupportUsPageButtons.swift */; };
@@ -31,8 +35,6 @@
 		4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175A26EAED83003B5C5B /* SystemSounds.swift */; };
 		4E5D175E26EAF00E003B5C5B /* BottomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175D26EAF00E003B5C5B /* BottomRow.swift */; };
 		4E5D175F26EAF00E003B5C5B /* BottomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175D26EAF00E003B5C5B /* BottomRow.swift */; };
-		4E5D176126EAF588003B5C5B /* InputSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D176026EAF588003B5C5B /* InputSwitchButton.swift */; };
-		4E5D176226EAF588003B5C5B /* InputSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D176026EAF588003B5C5B /* InputSwitchButton.swift */; };
 		4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */; };
 		4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */; };
 		4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B15C2140E9330078AC4B /* Assets.xcassets */; };
@@ -86,6 +88,8 @@
 		4E14C383261E864C001AE827 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		4E14C3B4261E8E19001AE827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E14C3BC261EAD6F001AE827 /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
+		4E19A47526ED4F80008F3341 /* KeyboardSectionIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSectionIdentifiable.swift; sourceTree = "<group>"; };
+		4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldRepeatButton.swift; sourceTree = "<group>"; };
 		4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCustomKeyboardPage.swift; sourceTree = "<group>"; };
 		4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationFunctions.swift; sourceTree = "<group>"; };
 		4E4030EC269D0B880081E3FD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -103,7 +107,6 @@
 		4E5D175726EAEB39003B5C5B /* RepeatTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTimer.swift; sourceTree = "<group>"; };
 		4E5D175A26EAED83003B5C5B /* SystemSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSounds.swift; sourceTree = "<group>"; };
 		4E5D175D26EAF00E003B5C5B /* BottomRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomRow.swift; sourceTree = "<group>"; };
-		4E5D176026EAF588003B5C5B /* InputSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSwitchButton.swift; sourceTree = "<group>"; };
 		4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterKeyboardViewController.swift; sourceTree = "<group>"; };
 		4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSymbols.swift; sourceTree = "<group>"; };
 		4E84B1522140E92F0078AC4B /* IPA Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,7 +202,7 @@
 				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
 				4E5D175126EAE916003B5C5B /* ToolbarButtonStyles.swift */,
 				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
-				4E5D176026EAF588003B5C5B /* InputSwitchButton.swift */,
+				4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */,
 				4E5D175726EAEB39003B5C5B /* RepeatTimer.swift */,
 			);
 			path = "View Elements";
@@ -211,6 +214,7 @@
 				4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */,
 				4E5D174C26EAE8B8003B5C5B /* UIInputViewController+.swift */,
 				4E5D175A26EAED83003B5C5B /* SystemSounds.swift */,
+				4E19A47526ED4F80008F3341 /* KeyboardSectionIdentifiable.swift */,
 				4E5D175026EAE8FC003B5C5B /* View Elements */,
 				4E5D174F26EAE8DF003B5C5B /* old code */,
 				4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */,
@@ -426,7 +430,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E5D176126EAF588003B5C5B /* InputSwitchButton.swift in Sources */,
 				4EAFA35826EABD1A00344131 /* SharedConstants.swift in Sources */,
 				4E5D175826EAEB39003B5C5B /* RepeatTimer.swift in Sources */,
 				4E0B7429269C22390066345B /* SettingsPage.swift in Sources */,
@@ -435,6 +438,7 @@
 				4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */,
 				4EAFA35C26EADC6A00344131 /* ToolbarRow.swift in Sources */,
 				4E0B742B269C2A4A0066345B /* SupportUsPage.swift in Sources */,
+				4E19A47626ED4F80008F3341 /* KeyboardSectionIdentifiable.swift in Sources */,
 				4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */,
 				4E14C384261E864C001AE827 /* MainTabView.swift in Sources */,
 				4E5D175E26EAF00E003B5C5B /* BottomRow.swift in Sources */,
@@ -443,6 +447,7 @@
 				4E14C380261E8624001AE827 /* IPAKeyboardApp.swift in Sources */,
 				4E14C3BD261EAD6F001AE827 /* BlueButtonStyle.swift in Sources */,
 				4E5D175B26EAED83003B5C5B /* SystemSounds.swift in Sources */,
+				4E19A47926EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */,
 				4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */,
 				4E4030F4269FE0530081E3FD /* View+makeStackNavigationPage.swift in Sources */,
 				4E5D174D26EAE8B8003B5C5B /* UIInputViewController+.swift in Sources */,
@@ -456,11 +461,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E5D175326EAE916003B5C5B /* ToolbarButtonStyles.swift in Sources */,
-				4E5D176226EAF588003B5C5B /* InputSwitchButton.swift in Sources */,
 				4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */,
+				4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */,
 				4E5D175926EAEB39003B5C5B /* RepeatTimer.swift in Sources */,
 				4E5D175F26EAF00E003B5C5B /* BottomRow.swift in Sources */,
 				4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */,
+				4E19A47726ED4F80008F3341 /* KeyboardSectionIdentifiable.swift in Sources */,
 				4E84B18A2140E9980078AC4B /* KeyboardViewController.swift in Sources */,
 				4E84B1A221452AF00078AC4B /* SectionHeader.swift in Sources */,
 				4EAFA35926EABD7500344131 /* SharedConstants.swift in Sources */,

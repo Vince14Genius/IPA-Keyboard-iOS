@@ -11,7 +11,6 @@ import Foundation
 class RepeatTimer {
     private var timer: Timer?
     private let repeatInterval: TimeInterval
-    private let repeatCallback: () -> ()
     
     var isTimerActive: Bool {
         get {
@@ -19,16 +18,15 @@ class RepeatTimer {
         }
     }
     
-    init(repeatInterval: TimeInterval, repeatCallback: @escaping () -> ()) {
+    init(repeatInterval: TimeInterval) {
         self.repeatInterval = repeatInterval
-        self.repeatCallback = repeatCallback
     }
     
-    func fire() {
-        self.cancel()
-        self.repeatCallback()
+    func fire(repeatCallback: @escaping () -> ()) {
+        guard !isTimerActive else { return }
+        repeatCallback()
         self.timer = Timer.scheduledTimer(withTimeInterval: repeatInterval, repeats: true) { _ in
-            self.repeatCallback()
+            repeatCallback()
         }
     }
     
