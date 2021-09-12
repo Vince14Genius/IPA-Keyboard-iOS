@@ -19,7 +19,7 @@ struct UserTipView: View {
             Spacer()
         }
         .padding()
-        .background(Color(UIColor.secondarySystemBackground))
+        .background(Color(.secondarySystemBackground))
         .cornerRadius(4.0)
     }
 }

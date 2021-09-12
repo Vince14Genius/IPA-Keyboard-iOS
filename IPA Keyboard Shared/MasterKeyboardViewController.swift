@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class MasterKeyboardViewController: UIInputViewController, UICollectionViewDelegateFlowLayout {
     
@@ -18,16 +19,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     // Bottom buttons
     @IBOutlet var nextKeyboardButton: UIButton!
     @IBOutlet var backwardDeleteButton: UIButton!
-    
-    // Top leading buttons
-    @IBOutlet var topSquareBracketsButton: UIButton!
-    @IBOutlet var topForwardSlashesButton: UIButton!
-    @IBOutlet var topTildeButton: UIButton!
-    @IBOutlet var topDottedCircleButton: UIButton!
-    
-    // Top trailing buttons
-    @IBOutlet var topSpaceBarButton: UIButton!
-    @IBOutlet var topReturnButton: UIButton!
     
     // Reuse identifier constant for UICollectionView
     let reuseIdentifier = "ReuseId"
@@ -93,62 +84,24 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         // MARK: - Perform custom UI setup here
         
-        self.nextKeyboardButton = UIButton(type: .system)
-        setupButton(button: self.nextKeyboardButton, title: NSLocalizedString("ABC", tableName: "Localizable", comment: "Switch keyboards"))
-        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents)
-        
         self.backwardDeleteButton = UIButton(type: .system)
         setupButton(button: self.backwardDeleteButton, title: "⌫")
         
-        self.topSquareBracketsButton = UIButton(type: .system)
-        setupButton(button: self.topSquareBracketsButton, title: "[ ]")
-        self.topSquareBracketsButton.addTarget(self, action: #selector(self.addSquareBrackets), for: .primaryActionTriggered)
-        
-        self.topForwardSlashesButton = UIButton(type: .system)
-        setupButton(button: self.topForwardSlashesButton, title: "/ /")
-        self.topForwardSlashesButton.addTarget(self, action: #selector(self.addForwardSlashes), for: .primaryActionTriggered)
-        
-        self.topTildeButton = UIButton(type: .system)
-        setupButton(button: self.topTildeButton, title: "~")
-        self.topTildeButton.addTarget(self, action: #selector(self.addTilde), for: .primaryActionTriggered)
-        
-        self.topDottedCircleButton = UIButton(type: .system)
-        setupButton(button: self.topDottedCircleButton, title: String(GlobalSymbols.dottedCircle))
-        self.topDottedCircleButton.addTarget(self, action: #selector(self.addDottedCircle), for: .primaryActionTriggered)
-        
-        self.topSpaceBarButton = UIButton(type: .system)
-        setupButton(button: self.topSpaceBarButton, title: NSLocalizedString("SpaceBarText", comment: "space"))
-        self.topSpaceBarButton.addTarget(self, action: #selector(self.addSpace), for: .primaryActionTriggered)
-        
-        self.topReturnButton = UIButton(type: .system)
-        setupButton(button: self.topReturnButton, title: "⏎")
-        self.topReturnButton.addTarget(self, action: #selector(self.addReturn), for: .primaryActionTriggered)
+        let toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
+        self.view.addSubview(toolbarRow.view)
+        self.addChild(toolbarRow)
+        toolbarRow.view.backgroundColor = .clear
+        toolbarRow.view.sizeToFit()
+        toolbarRow.view.translatesAutoresizingMaskIntoConstraints = false
         
         // MARK: - Set up constraints
-        
-        self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
-        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
         
         self.backwardDeleteButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -12).isActive = true
         self.backwardDeleteButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
         
-        self.topSquareBracketsButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
-        self.topSquareBracketsButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        
-        self.topForwardSlashesButton.leadingAnchor.constraint(equalTo: self.topSquareBracketsButton.trailingAnchor, constant: 12).isActive = true
-        self.topForwardSlashesButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        
-        self.topTildeButton.leadingAnchor.constraint(equalTo: self.topForwardSlashesButton.trailingAnchor, constant: 12).isActive = true
-        self.topTildeButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        
-        self.topDottedCircleButton.leadingAnchor.constraint(equalTo: self.topTildeButton.trailingAnchor, constant: 12).isActive = true
-        self.topDottedCircleButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        
-        self.topSpaceBarButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        self.topSpaceBarButton.trailingAnchor.constraint(equalTo: self.topReturnButton.leadingAnchor, constant: -12).isActive = true
-        
-        self.topReturnButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 6).isActive = true
-        self.topReturnButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -12).isActive = true
+        toolbarRow.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        toolbarRow.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        toolbarRow.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         
         // MARK: - Set up the collection view
         
@@ -170,8 +123,8 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         self.keyCollection.translatesAutoresizingMaskIntoConstraints = false
         self.keyCollection.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.keyCollection.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.keyCollection.topAnchor.constraint(equalTo: self.topSquareBracketsButton.bottomAnchor, constant: 6).isActive = true
-        self.keyCollection.bottomAnchor.constraint(equalTo: self.nextKeyboardButton.topAnchor, constant: -6).isActive = true
+        self.keyCollection.topAnchor.constraint(equalTo: toolbarRow.view.bottomAnchor).isActive = true
+        self.keyCollection.bottomAnchor.constraint(equalTo: self.backwardDeleteButton.topAnchor, constant: -6).isActive = true
         
         let insetsTotalHeight = topInset + bottomInset
         let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
@@ -192,10 +145,13 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         // MARK: - Set up input mode switch button if needed
         
-        if #available(iOSApplicationExtension 11.0, *), needsInputModeSwitchKey {
+        if self.needsInputModeSwitchKey {
+            self.nextKeyboardButton = UIButton(type: .system)
+            setupButton(button: self.nextKeyboardButton, title: NSLocalizedString("ABC", tableName: "Localizable", comment: "Switch keyboards"))
+            self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents)
             
-        } else {
-            
+            self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
+            self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
         }
     }
     
@@ -330,32 +286,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     }
     
     // MARK: - Button Actions
-    
-    @objc func addSquareBrackets() {
-        self.textDocumentProxy.insertText(GlobalSymbols.squareBrackets)
-        self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-    }
-    
-    @objc func addForwardSlashes() {
-        self.textDocumentProxy.insertText(GlobalSymbols.forwardSlashes)
-        self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
-    }
-    
-    @objc func addTilde() {
-        self.textDocumentProxy.insertText(GlobalSymbols.tilde)
-    }
-    
-    @objc func addDottedCircle() {
-        self.textDocumentProxy.insertText(String(GlobalSymbols.dottedCircle))
-    }
-    
-    @objc func addSpace() {
-        self.textDocumentProxy.insertText(" ")
-    }
-    
-    @objc func addReturn() {
-        self.textDocumentProxy.insertText("\n")
-    }
     
     @objc func keyButtonExpand(from button: UIButton, with event: UIEvent) {
         if let keyButtonCell = button.superview?.superview as? KeyButtonCell {

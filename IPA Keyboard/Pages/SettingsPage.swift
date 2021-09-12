@@ -19,7 +19,7 @@ struct SettingsPageWrapped: View {
 
 struct SettingsInnerPage: View {
     // On-off switches: advanced features
-    @State private var isMovableCursorOn = false
+    @AppStorage(SettingsKey.isMovableCursorEnabled, store: appGroupStorage) private var isMovableCursorOn = false
     
     // On-off switches: keyboard list
     @AppStorage(SettingsKey.isIPAEnabled, store: appGroupStorage) private var isIPAKeyboardOn = true
@@ -33,7 +33,7 @@ struct SettingsInnerPage: View {
     @AppStorage(SettingsKey.isCustomKeyboardUnlocked, store: appGroupStorage) private var isCustomIPAKeyboardUnlocked = false
     
     // Alert states
-    @AppStorage(SettingsKey.isMovableCursorEnabled, store: appGroupStorage) private var showingComingSoonAlert = false
+    @State private var showingComingSoonAlert = false
     
     var body: some View {
         Form {

@@ -11,7 +11,7 @@ import SwiftUI
 public struct ToolbarButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .foregroundColor(Color(UIColor.label))
+            .foregroundColor(Color(.label))
             .opacity(configuration.isPressed ? 0.33 : 1)
     }
 }
@@ -21,7 +21,7 @@ public struct CursorButtonStyle: ButtonStyle {
         configuration.label
             .padding([.leading, .trailing], 20)
             .padding([.top, .bottom], 4)
-            .background(Color(UIColor.tertiarySystemBackground))
+            .background(Color(.secondarySystemBackground))
             .cornerRadius(6)
             .opacity(configuration.isPressed ? 0.67 : 1)
     }
