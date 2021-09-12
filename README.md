@@ -1,6 +1,6 @@
 # IPA-Keyboard-iOS
 
-**[NEW]** Version 1.0.2 build 1 is available for beta testing on TestFlight. [Join the beta test](https://testflight.apple.com/join/lPas1HHg)
+**[NEW]** Version 1.0.2 build 2 is available for beta testing on TestFlight. [Join the beta test](https://testflight.apple.com/join/lPas1HHg)
 
 Update 1.0.1 is available on the App Store
 
