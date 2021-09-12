@@ -199,6 +199,7 @@
 		4E5D175026EAE8FC003B5C5B /* View Elements */ = {
 			isa = PBXGroup;
 			children = (
+				4E5D174C26EAE8B8003B5C5B /* UIInputViewController+.swift */,
 				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
 				4E5D175126EAE916003B5C5B /* ToolbarButtonStyles.swift */,
 				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
@@ -212,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */,
-				4E5D174C26EAE8B8003B5C5B /* UIInputViewController+.swift */,
 				4E5D175A26EAED83003B5C5B /* SystemSounds.swift */,
 				4E19A47526ED4F80008F3341 /* KeyboardSectionIdentifiable.swift */,
 				4E5D175026EAE8FC003B5C5B /* View Elements */,
