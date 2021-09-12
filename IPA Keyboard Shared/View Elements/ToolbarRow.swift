@@ -38,29 +38,29 @@ struct ToolbarRow: View {
                 Button("[ ]") {
                     inputViewController?.insertText(GlobalSymbols.squareBrackets)
                     inputViewController?.moveCursorBackByOne()
-                    playSystemKeySound()
+                    SystemSound.playInputClick()
                 }
                 Button("/ /") {
                     inputViewController?.insertText(GlobalSymbols.forwardSlashes)
                     inputViewController?.moveCursorBackByOne()
-                    playSystemKeySound()
+                    SystemSound.playInputClick()
                 }
                 Button("~") {
                     inputViewController?.insertText(GlobalSymbols.tilde)
-                    playSystemKeySound()
+                    SystemSound.playInputClick()
                 }
                 Button("◌") {
                     inputViewController?.insertText(GlobalSymbols.dottedCircle)
-                    playSystemKeySound()
+                    SystemSound.playInputClick()
                 }
                 Spacer()
                 Button("SpaceBarText") {
                     inputViewController?.insertText(" ")
-                    playSystemKeySound()
+                    SystemSound.playInputClick()
                 }
                 Button("⏎") {
                     inputViewController?.insertText("\n")
-                    playSystemKeySound()
+                    SystemSound.playInputClick()
                 }
             }
             .padding()
