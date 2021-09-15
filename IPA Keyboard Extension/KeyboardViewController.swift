@@ -26,7 +26,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         
         // Set up the bottom stack view
         
-        for sectionName in IPASymbols.sectionNames {
+        for sectionName in IPASymbols.enabledSections {
             let glyph = IPASymbols.sectionData[sectionName]!.sectionGlyph
             
             let glyphButton = UIButton(type: .system)
@@ -89,7 +89,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             button.setTitleColor(bottomButtonColor, for: [])
             button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
             
-            if button.titleLabel?.text == IPASymbols.sectionData[IPASymbols.sectionNames[medianSectionIndex]]!.sectionGlyph {
+            if button.titleLabel?.text == IPASymbols.sectionData[IPASymbols.enabledSections[medianSectionIndex]]!.sectionGlyph {
                 button.setTitleColor(textColor, for: [])
                 button.backgroundColor = supportColor
             }
@@ -97,18 +97,18 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func getKeySet(section: Int) -> [String?]? {
-        let largeDisplayKeySet = IPASymbols.sectionData[IPASymbols.sectionNames[section]]?.largeDisplayKeys
-        let defaultKeySet = IPASymbols.sectionData[IPASymbols.sectionNames[section]]?.regularDisplayKeys
+        let largeDisplayKeySet = IPASymbols.sectionData[IPASymbols.enabledSections[section]]?.largeDisplayKeys
+        let defaultKeySet = IPASymbols.sectionData[IPASymbols.enabledSections[section]]?.regularDisplayKeys
         return UIDevice.current.userInterfaceIdiom == .pad ? largeDisplayKeySet : defaultKeySet
     }
     
     func getHeaderWidth(section: Int) -> CGFloat {
-        guard section < IPASymbols.sectionNames.count else {
+        guard section < IPASymbols.enabledSections.count else {
             fatalError("Index out of range for section ID: \(section)")
         }
         
         // Calculate text width
-        let sectionKey = IPASymbols.sectionNames[section]
+        let sectionKey = IPASymbols.enabledSections[section]
         let sectionHeaderText = NSLocalizedString(sectionKey, comment: "Localized versions of the section names.")
         let textSize = (sectionHeaderText as NSString).size(withAttributes: [.font: UIFont.systemFont(ofSize: UIFont.systemFontSize)])
         let textWidth = textSize.width + leftInsetRaw + rightInset + minimumLineSpacing
@@ -129,8 +129,8 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         hapticGenerator.selectionChanged()
         
         guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
-        for i in 0..<IPASymbols.sectionNames.count {
-            if buttonTitle == IPASymbols.sectionData[IPASymbols.sectionNames[i]]!.sectionGlyph {
+        for i in 0..<IPASymbols.enabledSections.count {
+            if buttonTitle == IPASymbols.sectionData[IPASymbols.enabledSections[i]]!.sectionGlyph {
                 // Calculate middle index
                 let middleIndex = (getKeySet(section: i)?.count ?? 0) / 2
                 
@@ -153,7 +153,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     // MARK: - Collection View Methods
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return IPASymbols.sectionNames.count
+        return IPASymbols.enabledSections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -225,7 +225,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             header.isUserInteractionEnabled = false
             
             // Set the header title
-            header.label.text = NSLocalizedString(IPASymbols.sectionNames[indexPath.section], comment: "Localized versions of the section names.")
+            header.label.text = NSLocalizedString(IPASymbols.enabledSections[indexPath.section], comment: "Localized versions of the section names.")
             changeSectionHeaderColor(header)
         }
         return element

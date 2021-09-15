@@ -53,7 +53,7 @@ enum IPASymbols: KeyboardLayout {
         IPASymbols.sections.consonants.rawValue:
             (
                 sectionGlyph: "p",
-                localStorageKey: "",
+                localStorageKey: SettingsKey.isIPAEnabled,
                 regularDisplayKeys: [
                     "p", "t", "ʈ", "c",
                     "b", "d", "ɖ", "ɟ",
@@ -95,7 +95,7 @@ enum IPASymbols: KeyboardLayout {
         IPASymbols.sections.nonPulmonic.rawValue:
             (
                 sectionGlyph: "ʘ",
-                localStorageKey: "",
+                localStorageKey: SettingsKey.isIPAEnabled,
                 regularDisplayKeys: [
                     "ʘ", "ǀ", "ǃ", "ǂ",
                     "ǁ", nil, nil, nil,
@@ -112,7 +112,7 @@ enum IPASymbols: KeyboardLayout {
         IPASymbols.sections.otherSymbols.rawValue:
             (
                 sectionGlyph: "ʍ",
-                localStorageKey: "",
+                localStorageKey: SettingsKey.isIPAEnabled,
                 regularDisplayKeys: [
                     "ʍ", "w", "ɥ", "ʜ",
                     "ʢ", "ʡ", "ɕ", "ʑ",
@@ -126,7 +126,7 @@ enum IPASymbols: KeyboardLayout {
         IPASymbols.sections.vowels.rawValue:
             (
                 sectionGlyph: "i",
-                localStorageKey: "",
+                localStorageKey: SettingsKey.isIPAEnabled,
                 regularDisplayKeys: [
                     "i", "e", "ɛ", "æ",
                     "y", "ø", "œ", "a",
@@ -150,7 +150,7 @@ enum IPASymbols: KeyboardLayout {
         IPASymbols.sections.suprasegmentals.rawValue:
             (
                 sectionGlyph: "ː",
-                localStorageKey: "",
+                localStorageKey: SettingsKey.isIPAEnabled,
                 regularDisplayKeys: [
                     "ˈ", "ˌ", "ː", "ˑ",
                     "◌̆", "|", "‖", ".",
@@ -164,7 +164,7 @@ enum IPASymbols: KeyboardLayout {
         IPASymbols.sections.wordAccents.rawValue:
             (
                 sectionGlyph: "˥",
-                localStorageKey: "",
+                localStorageKey: SettingsKey.isIPAEnabled,
                 regularDisplayKeys: [
                     "◌̋", "◌́", "◌̄", "◌̀",
                     "˥", "˦", "˧", "˨",
@@ -184,7 +184,7 @@ enum IPASymbols: KeyboardLayout {
         IPASymbols.sections.diacritics.rawValue:
             (
                 sectionGlyph: "n̥",
-                localStorageKey: "",
+                localStorageKey: SettingsKey.isIPAEnabled,
                 regularDisplayKeys: [
                     "◌̥",  "◌̬",  "◌ʰ", "◌̹",
                     "◌̊",  "◌̌",  nil,  "◌͗",
@@ -220,7 +220,7 @@ enum IPASymbols: KeyboardLayout {
         IPASymbols.sections.extIPA.rawValue:
             (
                 sectionGlyph: "ʭ",
-                localStorageKey: "",
+                localStorageKey: SettingsKey.isExtIPAEnabled,
                 regularDisplayKeys: [
                     // CONSONANTS
                     "ʪ", "ʫ", "ꞎ", "ᶚ",

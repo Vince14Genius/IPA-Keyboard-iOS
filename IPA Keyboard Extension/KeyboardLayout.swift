@@ -49,7 +49,7 @@ extension KeyboardLayout {
     /**
     Check `LocalStorage` to return a list of sections enabled by the user
     */
-    static func getAvailableSections() -> [RawSectionID] {
+    static var enabledSections: [RawSectionID] {
         var availableSections = [RawSectionID]()
         for sectionName in Self.sectionNames {
             guard let localStorageKey = Self.sectionData[sectionName]?.localStorageKey else {
