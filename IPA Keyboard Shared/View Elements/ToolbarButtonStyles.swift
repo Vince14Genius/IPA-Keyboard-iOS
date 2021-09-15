@@ -13,13 +13,16 @@ public struct ToolbarButtonStyle: ButtonStyle {
         configuration.label
             .foregroundColor(Color(.label))
             .opacity(configuration.isPressed ? 0.33 : 1)
+            .padding([.top, .bottom])
+            .padding([.leading, .trailing], 12)
+            .background(Color(white: 0.5, opacity: 0.001)) // fix tap area
     }
 }
 
 public struct CursorButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .padding([.leading, .trailing], 20)
+            .padding([.leading, .trailing], 24)
             .padding([.top, .bottom], 4)
             .background(Color(.secondarySystemBackground))
             .cornerRadius(6)
