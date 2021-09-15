@@ -26,7 +26,9 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         
         // Set up the bottom stack view
         
-        for glyph in IPASymbols.sectionGlyphs {
+        for sectionName in IPASymbols.sectionNames {
+            let glyph = IPASymbols.sectionGlyphs[sectionName]
+            
             let glyphButton = UIButton(type: .system)
             glyphButton.setTitle(glyph, for: [])
             glyphButton.titleLabel?.font = glyphButton.titleLabel!.font.withSize(18)
@@ -86,7 +88,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         for button in bottomButtons {
             button.setTitleColor(bottomButtonColor, for: [])
             button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
-            if button.titleLabel?.text == IPASymbols.sectionGlyphs[medianSectionIndex] {
+            if button.titleLabel?.text == IPASymbols.sectionGlyphs[IPASymbols.sectionNames[medianSectionIndex]] {
                 button.setTitleColor(textColor, for: [])
                 button.backgroundColor = supportColor
             }
@@ -123,8 +125,8 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     @objc func scrollToSection(from button: UIButton, with event: UIEvent) {
         UISelectionFeedbackGenerator().selectionChanged()
         guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
-        for i in 0..<IPASymbols.sectionGlyphs.count {
-            if buttonTitle == IPASymbols.sectionGlyphs[i] {
+        for i in 0..<IPASymbols.sectionNames.count {
+            if buttonTitle == IPASymbols.sectionGlyphs[IPASymbols.sectionNames[i]] {
                 // Calculate middle index
                 let middleIndex = (getKeySet(section: i)?.count ?? 0) / 2
                 

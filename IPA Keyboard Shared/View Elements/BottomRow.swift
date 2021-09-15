@@ -41,8 +41,7 @@ struct BottomRow: View {
             }
             .buttonStyle(ToolbarButtonStyle())
         }
-        .padding([.leading, .trailing])
-        .padding([.top, .bottom], 2)
+        .padding([.leading, .trailing], 6)
     }
 }
 

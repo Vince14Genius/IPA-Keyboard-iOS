@@ -44,6 +44,7 @@
 		4E84B1A221452AF00078AC4B /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1A121452AF00078AC4B /* SectionHeader.swift */; };
 		4E84B1AB21456EEB0078AC4B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B1A921456EEB0078AC4B /* Localizable.strings */; };
 		4E84B1B9214745CE0078AC4B /* KeyButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */; };
+		4EA664B626EFFF0B001588E9 /* SectionsOnOffController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA664B526EFFF0B001588E9 /* SectionsOnOffController.swift */; };
 		4EAA9212217F831A0015DBFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA9214217F831A0015DBFE /* InfoPlist.strings */; };
 		4EAC2B70214B5F54008CF477 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EAC2B72214B5F54008CF477 /* InfoPlist.strings */; };
 		4EAFA34E26E1A86700344131 /* UserTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFA34D26E1A86700344131 /* UserTipView.swift */; };
@@ -127,6 +128,7 @@
 		4E84B1B421456FB40078AC4B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ../ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E84B1B721456FC40078AC4B /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = ../eo.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonCell.swift; sourceTree = "<group>"; };
+		4EA664B526EFFF0B001588E9 /* SectionsOnOffController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsOnOffController.swift; sourceTree = "<group>"; };
 		4EAA9213217F831A0015DBFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4EAA9215217F831D0015DBFE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4EAA9216217F831F0015DBFE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				4EAFA35626E5B75E00344131 /* IPA Keyboard Extension.entitlements */,
 				4E84B1A721456EA50078AC4B /* Localization */,
 				4E84B1892140E9980078AC4B /* KeyboardViewController.swift */,
+				4EA664B526EFFF0B001588E9 /* SectionsOnOffController.swift */,
 				4E84B1952142624C0078AC4B /* IPASymbols.swift */,
 				4E4C516A2462D5DC00B9AC43 /* LargeDisplayKeyArrangement.swift */,
 				4E84B18B2140E9980078AC4B /* Info.plist */,
@@ -463,6 +466,7 @@
 				4E5D175326EAE916003B5C5B /* ToolbarButtonStyles.swift in Sources */,
 				4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */,
 				4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */,
+				4EA664B626EFFF0B001588E9 /* SectionsOnOffController.swift in Sources */,
 				4E5D175926EAEB39003B5C5B /* RepeatTimer.swift in Sources */,
 				4E5D175F26EAF00E003B5C5B /* BottomRow.swift in Sources */,
 				4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */,

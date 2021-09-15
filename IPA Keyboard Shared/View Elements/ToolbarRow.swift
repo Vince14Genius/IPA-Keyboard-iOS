@@ -34,7 +34,7 @@ struct ToolbarRow: View {
                 Divider()
             }
             
-            HStack(spacing: 24) {
+            HStack(spacing: 0) {
                 Button("[ ]") {
                     inputViewController?.insertText(GlobalSymbols.squareBrackets)
                     inputViewController?.moveCursorBackByOne()
@@ -63,7 +63,7 @@ struct ToolbarRow: View {
                     SystemSound.playInputClick()
                 }
             }
-            .padding()
+            .padding([.leading, .trailing], 6)
         }
         .buttonStyle(ToolbarButtonStyle())
     }

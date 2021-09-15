@@ -8,10 +8,12 @@
 
 import Foundation
 
+typealias RawSectionID = String
+
 enum IPASymbols {
     static let numberOfRows = 4
     
-    enum sections: String {
+    enum sections: RawSectionID {
         case consonants = "Consonants"
         case nonPulmonic = "NonPulmonic"
         case otherSymbols = "OtherSymbols"
@@ -22,7 +24,7 @@ enum IPASymbols {
         case extIPA = "ExtIPA"
     }
     
-    enum optionalPaidSections: String {
+    enum optionalPaidSections: RawSectionID {
         case allObsoleteNonstandard = "AllObsoleteAndNonstandardSymbols"
         case obsolete = "Obsolete"
         case sinologist = "Sinitic"
@@ -32,7 +34,7 @@ enum IPASymbols {
     /**
     Name of section headers in the keyboard collection view
     */
-    static let sectionNames = [
+    static let sectionNames: [RawSectionID] = [
         IPASymbols.sections.consonants.rawValue,
         IPASymbols.sections.nonPulmonic.rawValue,
         IPASymbols.sections.otherSymbols.rawValue,
@@ -46,15 +48,22 @@ enum IPASymbols {
     /**
     Glyphs representing section headers in the keyboard collection view, displayed on the bottom row
     */
-    static let sectionGlyphs: [String] = [
-        "p", "ʘ", "ʍ", "i", "ː", "˥", "n̥", "ʭ"
+    static let sectionGlyphs: [RawSectionID: String] = [
+        IPASymbols.sections.consonants.rawValue     : "p",
+        IPASymbols.sections.nonPulmonic.rawValue    : "ʘ",
+        IPASymbols.sections.otherSymbols.rawValue   : "ʍ",
+        IPASymbols.sections.vowels.rawValue         : "i",
+        IPASymbols.sections.suprasegmentals.rawValue: "ː",
+        IPASymbols.sections.wordAccents.rawValue    : "˥",
+        IPASymbols.sections.diacritics.rawValue     : "n̥",
+        IPASymbols.sections.extIPA.rawValue         : "ʭ",
     ]
     
     /**
     The arrangement of keys in a default sized display setting, with 4 rows instead of 6.
     - note: Must be updated along with `keys` in `LargeDisplayKeyArrangement`
     */
-    static let keys: [String: [String?]] = [
+    static let keys: [RawSectionID: [String?]] = [
         IPASymbols.sections.consonants.rawValue: [
             "p", "t", "ʈ", "c",
             "b", "d", "ɖ", "ɟ",

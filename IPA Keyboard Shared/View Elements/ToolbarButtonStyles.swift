@@ -13,6 +13,9 @@ public struct ToolbarButtonStyle: ButtonStyle {
         configuration.label
             .foregroundColor(Color(.label))
             .opacity(configuration.isPressed ? 0.33 : 1)
+            .padding([.top, .bottom])
+            .padding([.leading, .trailing], 12)
+            .background(Color(white: 0.5, opacity: 0.001)) // fix tap area
     }
 }
 
