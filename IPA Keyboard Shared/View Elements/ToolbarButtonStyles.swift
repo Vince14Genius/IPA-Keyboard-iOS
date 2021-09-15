@@ -22,7 +22,7 @@ public struct ToolbarButtonStyle: ButtonStyle {
 public struct CursorButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .padding([.leading, .trailing], 20)
+            .padding([.leading, .trailing], 24)
             .padding([.top, .bottom], 4)
             .background(Color(.secondarySystemBackground))
             .cornerRadius(6)

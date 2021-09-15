@@ -22,12 +22,12 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         
         // Run IPASymbols consistency checks
         
-        LargeDisplayKeyArrangement.keyArrangementConsistencyCheck()
+        IPASymbols.keyArrangementConsistencyCheck()
         
         // Set up the bottom stack view
         
         for sectionName in IPASymbols.sectionNames {
-            let glyph = IPASymbols.sectionGlyphs[sectionName]
+            let glyph = IPASymbols.sectionData[sectionName]!.sectionGlyph
             
             let glyphButton = UIButton(type: .system)
             glyphButton.setTitle(glyph, for: [])
@@ -88,7 +88,8 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         for button in bottomButtons {
             button.setTitleColor(bottomButtonColor, for: [])
             button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
-            if button.titleLabel?.text == IPASymbols.sectionGlyphs[IPASymbols.sectionNames[medianSectionIndex]] {
+            
+            if button.titleLabel?.text == IPASymbols.sectionData[IPASymbols.sectionNames[medianSectionIndex]]!.sectionGlyph {
                 button.setTitleColor(textColor, for: [])
                 button.backgroundColor = supportColor
             }
@@ -96,9 +97,9 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func getKeySet(section: Int) -> [String?]? {
-        let largeDisplayKeySet = LargeDisplayKeyArrangement.keys[IPASymbols.sectionNames[section]]
-        let defaultKeySet = IPASymbols.keys[IPASymbols.sectionNames[section]]
-        return (cellsPerColumn == LargeDisplayKeyArrangement.numberOfRows) ? largeDisplayKeySet : defaultKeySet
+        let largeDisplayKeySet = IPASymbols.sectionData[IPASymbols.sectionNames[section]]?.largeDisplayKeys
+        let defaultKeySet = IPASymbols.sectionData[IPASymbols.sectionNames[section]]?.regularDisplayKeys
+        return UIDevice.current.userInterfaceIdiom == .pad ? largeDisplayKeySet : defaultKeySet
     }
     
     func getHeaderWidth(section: Int) -> CGFloat {
@@ -123,10 +124,13 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     @objc func scrollToSection(from button: UIButton, with event: UIEvent) {
-        UISelectionFeedbackGenerator().selectionChanged()
+        let hapticGenerator = UISelectionFeedbackGenerator()
+        hapticGenerator.prepare()
+        hapticGenerator.selectionChanged()
+        
         guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
         for i in 0..<IPASymbols.sectionNames.count {
-            if buttonTitle == IPASymbols.sectionGlyphs[IPASymbols.sectionNames[i]] {
+            if buttonTitle == IPASymbols.sectionData[IPASymbols.sectionNames[i]]!.sectionGlyph {
                 // Calculate middle index
                 let middleIndex = (getKeySet(section: i)?.count ?? 0) / 2
                 

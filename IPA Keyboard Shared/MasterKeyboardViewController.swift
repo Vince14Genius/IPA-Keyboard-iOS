@@ -49,9 +49,9 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         get {
             switch UIDevice.current.userInterfaceIdiom {
             case .pad:
-                return LargeDisplayKeyArrangement.numberOfRows
+                return IPASymbols.numberOfRowsForLargeDisplay
             default:
-                return IPASymbols.numberOfRows
+                return IPASymbols.numberOfRowsForRegularDisplay
             }
         }
     }

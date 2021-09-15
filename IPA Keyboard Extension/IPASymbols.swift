@@ -8,10 +8,7 @@
 
 import Foundation
 
-typealias RawSectionID = String
-
-enum IPASymbols {
-    static let numberOfRows = 4
+enum IPASymbols: KeyboardLayout {
     
     enum sections: RawSectionID {
         case consonants = "Consonants"
@@ -31,9 +28,13 @@ enum IPASymbols {
         case americanist = "Americanist"
     }
     
+    static let numberOfRowsForRegularDisplay = 4
+    
+    static let numberOfRowsForLargeDisplay = 6
+    
     /**
-    Name of section headers in the keyboard collection view
-    */
+     An iteratable `Array` that contains an ordered list of keyboard sections
+     */
     static let sectionNames: [RawSectionID] = [
         IPASymbols.sections.consonants.rawValue,
         IPASymbols.sections.nonPulmonic.rawValue,
@@ -46,155 +47,286 @@ enum IPASymbols {
         ]
     
     /**
-    Glyphs representing section headers in the keyboard collection view, displayed on the bottom row
-    */
-    static let sectionGlyphs: [RawSectionID: String] = [
-        IPASymbols.sections.consonants.rawValue     : "p",
-        IPASymbols.sections.nonPulmonic.rawValue    : "ʘ",
-        IPASymbols.sections.otherSymbols.rawValue   : "ʍ",
-        IPASymbols.sections.vowels.rawValue         : "i",
-        IPASymbols.sections.suprasegmentals.rawValue: "ː",
-        IPASymbols.sections.wordAccents.rawValue    : "˥",
-        IPASymbols.sections.diacritics.rawValue     : "n̥",
-        IPASymbols.sections.extIPA.rawValue         : "ʭ",
+     A `Dictionary` that contains all data associated with a keyboard section
+     */
+    static let sectionData: [RawSectionID : KeyboardSectionData] = [
+        IPASymbols.sections.consonants.rawValue:
+            (
+                sectionGlyph: "p",
+                localStorageKey: "",
+                regularDisplayKeys: [
+                    "p", "t", "ʈ", "c",
+                    "b", "d", "ɖ", "ɟ",
+                    "k", "q", "ʔ", nil,
+                    "ɡ", "ɢ", nil, nil,
+                    "m", "ɱ", "n", "ɳ",
+                    "ɲ", "ŋ", "ɴ", nil,
+                    "ʙ", "r", nil, "ʀ",
+                    "ⱱ", "ɾ", "ɽ", nil,
+                    "ɸ", "f", "θ", "s",
+                    "β", "v", "ð", "z",
+                    "ʃ", "ʂ", "ç", "x",
+                    "ʒ", "ʐ", "ʝ", "ɣ",
+                    "χ", "ħ", "h", nil,
+                    "ʁ","ʕ", "ɦ", nil,
+                    "ɬ", nil, nil, nil,
+                    "ɮ", nil, nil, nil,
+                    "ʋ", "ɹ", "ɻ", "j",
+                    "ɰ", nil, nil, nil,
+                    "l", "ɭ", "ʎ", "ʟ",
+                ],
+                largeDisplayKeys: [
+                    "p", "m", "ɸ", "f", "θ", nil,
+                    "b", "ɱ", "β", "v", "ð", "ʋ",
+                    "t", nil, "s", "ɬ", nil, nil,
+                    "d", "n", "z", "ɮ", "ɹ", "l",
+                    "ʈ", nil, "ʂ", "ʃ", nil, nil,
+                    "ɖ", "ɳ", "ʐ", "ʒ", "ɻ", "ɭ",
+                    "c", nil, "ç", nil, nil, nil,
+                    "ɟ", "ɲ", "ʝ", nil, "j", "ʎ",
+                    "k", nil, "x", nil, nil, nil,
+                    "ɡ", "ŋ", "ɣ", nil, "ɰ", "ʟ",
+                    "q", nil, "χ", nil, nil, nil,
+                    "ɢ", "ɴ", "ʁ", nil, "h", "ħ",
+                    "ʔ", nil, nil, nil, "ɦ", "ʕ",
+                    "ʙ", "r", "ʀ", "ⱱ", "ɾ", "ɽ",
+                ]
+            ),
+        IPASymbols.sections.nonPulmonic.rawValue:
+            (
+                sectionGlyph: "ʘ",
+                localStorageKey: "",
+                regularDisplayKeys: [
+                    "ʘ", "ǀ", "ǃ", "ǂ",
+                    "ǁ", nil, nil, nil,
+                    "ɓ", "ɗ", "ʄ", "ɠ",
+                    "ʛ", nil, nil, nil,
+                    "◌ʼ",
+                ],
+                largeDisplayKeys:  [
+                    "ʘ", "ǀ", "ǃ", "ǂ", "ǁ", nil,
+                    "ɓ", "ɗ", "ʄ", "ɠ", "ʛ", nil,
+                    "◌ʼ",
+                ]
+            ),
+        IPASymbols.sections.otherSymbols.rawValue:
+            (
+                sectionGlyph: "ʍ",
+                localStorageKey: "",
+                regularDisplayKeys: [
+                    "ʍ", "w", "ɥ", "ʜ",
+                    "ʢ", "ʡ", "ɕ", "ʑ",
+                    "ɺ", "ɧ", "◌͡", "◌͜",
+                ],
+                largeDisplayKeys: [
+                    "ʍ", "w", "ɥ", "ʜ", "ʢ", "ʡ",
+                    "ɕ", "ʑ", "ɺ", "ɧ", "◌͡", "◌͜",
+                ]
+            ),
+        IPASymbols.sections.vowels.rawValue:
+            (
+                sectionGlyph: "i",
+                localStorageKey: "",
+                regularDisplayKeys: [
+                    "i", "e", "ɛ", "æ",
+                    "y", "ø", "œ", "a",
+                    "ɪ", nil, nil, "ɶ",
+                    "ʏ", "ɘ", "ɜ", nil,
+                    "ɨ", "ə", "ɐ", nil,
+                    "ʉ", "ɵ", "ɞ", nil,
+                    "ʊ", nil, nil, nil,
+                    "ɯ", "ɤ", "ʌ", "ɑ",
+                    "u", "o", "ɔ", "ɒ",
+                ],
+                largeDisplayKeys: [
+                    "i", "ɪ", "e", "ɛ", "æ", "a",
+                    "y", "ʏ", "ø", "œ", nil, "ɶ",
+                    "ɨ", "ɘ", "ə", "ɜ", "ɐ", nil,
+                    "ʉ", "ɵ", nil, "ɞ", nil, nil,
+                    "ɯ", nil, "ɤ", "ʌ", nil, "ɑ",
+                    "u", "ʊ", "o", "ɔ", nil, "ɒ",
+                ]
+            ),
+        IPASymbols.sections.suprasegmentals.rawValue:
+            (
+                sectionGlyph: "ː",
+                localStorageKey: "",
+                regularDisplayKeys: [
+                    "ˈ", "ˌ", "ː", "ˑ",
+                    "◌̆", "|", "‖", ".",
+                    "‿",
+                ],
+                largeDisplayKeys: [
+                    "ˈ", "ˌ", "ː", "ˑ", "◌̆", nil,
+                    "|", "‖", ".", "‿",
+                ]
+            ),
+        IPASymbols.sections.wordAccents.rawValue:
+            (
+                sectionGlyph: "˥",
+                localStorageKey: "",
+                regularDisplayKeys: [
+                    "◌̋", "◌́", "◌̄", "◌̀",
+                    "˥", "˦", "˧", "˨",
+                    "◌̏", nil, nil, nil,
+                    "˩", nil, nil, nil,
+                    "◌̌", "◌̂", "◌᷄", "◌᷅",
+                    "◌᷈", nil, nil, nil,
+                    "ꜜ", "ꜛ", "↗", "↘",
+                ],
+                largeDisplayKeys: [
+                    "◌̋", "◌́", "◌̄", "◌̀", "◌̏", nil,
+                    "˥", "˦", "˧", "˨", "˩", nil,
+                    "◌̌", "◌̂", "◌᷄", "◌᷅", "◌᷈", nil,
+                    "ꜜ", "ꜛ", "↗", "↘",
+                ]
+            ),
+        IPASymbols.sections.diacritics.rawValue:
+            (
+                sectionGlyph: "n̥",
+                localStorageKey: "",
+                regularDisplayKeys: [
+                    "◌̥",  "◌̬",  "◌ʰ", "◌̹",
+                    "◌̊",  "◌̌",  nil,  "◌͗",
+                    "◌̜",  "◌̟",  "◌̠",  "◌̈",
+                    "◌͑",  "◌˖", "◌˗", nil,
+                    "◌̽",  "◌̩",  "◌̯",  "◌˞",
+                    nil,  "◌̍",  "◌̑",  nil,
+                    "◌̤",  "◌̰",  "◌̼",  "◌ʷ",
+                    "◌ʲ", "◌ˠ", "◌ˤ", "◌̴",
+                    "◌̝",  "◌̞",  "◌̘",  "◌̙",
+                    "◌˔", "◌˕", nil,  nil,
+                    "◌̪",  "◌̺",  "◌̻",  "◌̃",
+                    "◌ⁿ", "◌ˡ", "◌̚",  nil,
+                    
+                    "ɚ", "ɝ", "ɫ", nil,
+                ],
+                largeDisplayKeys: [
+                    // TODO: fix diacritics layout
+                    
+                    "◌̥",  "◌̬", "◌̹",  "◌̜",  "◌̟",  "◌̠",
+                    "◌̊",  "◌̌", "◌͗",  "◌͑",  "◌˖", "◌˗",
+                    "◌ʰ", "◌̈", "◌̽",  "◌̩",  "◌̯",  "◌˞",
+                    nil,  nil, nil,  "◌̍",  "◌̑",  nil,
+                    "◌̤",  "◌̰", "◌̼",  "◌ʷ", "◌ʲ", "◌ˠ",
+                    "◌ˤ", "◌̴", "◌̝",  "◌̞",  "◌̘",  "◌̙",
+                    nil,  nil, "◌˔", "◌˕", nil,  nil,
+                    "◌̪",  "◌̺", "◌̻",  "◌̃",  "◌ⁿ", "◌ˡ",
+                    "◌̚",  nil, nil,  nil,  nil,  nil,
+                    
+                    "ɚ", "ɝ", "ɫ",
+                ]
+            ),
+        IPASymbols.sections.extIPA.rawValue:
+            (
+                sectionGlyph: "ʭ",
+                localStorageKey: "",
+                regularDisplayKeys: [
+                    // CONSONANTS
+                    "ʪ", "ʫ", "ꞎ", "ᶚ",
+                    "", "", nil, nil,
+                    "ʩ", nil, nil, nil,
+                    "ꞯ", nil, nil, nil,
+                    "ʬ", "ʭ", nil, nil,
+                    
+                    // DIACRITICS
+                    "◌͋", "◌͌", "◌͊", nil,
+                    "◌͈", "◌͉", nil, nil,
+                    "◌͆", "◌̪͆", "◌͇", "◌͍",
+                    "◌͎", "◌̻", "◌̈", "◌̺",
+                    "◌͕", "◌͔", nil, nil,
+                    "◌͢", "\\", nil, nil,
+                    
+                    // CONNECTED SPEECH, UNCERTAINTY ETC.
+                    "𝑓", "𝑝", nil, nil,
+                    "{", "⸨", "(", ".",
+                    "}", "⸩", ")", nil,
+                    "◯", "Ⓒ", "Ⓕ", "Ⓖ",
+                    "Ⓚ", "Ⓛ", "Ⓝ", "Ⓟ",
+                    "Ⓡ", "Ⓢ", "Ⓣ", "Ⓥ",
+                    
+                    // VOICING
+                    "ˬ", "₍◌", "◌₎", nil,
+                    "◌˭", "ʰ◌", nil, nil,
+                    
+                    // OTHER SOUNDS
+                    "¡", "*", nil, nil,
+                    
+                    nil, nil, nil, nil,
+                    
+                    // SUPERSCRIPTS
+                    "◌ᵖ", "◌ᵗ", "◌ᶜ", "◌ᵏ",
+                    "◌ᵇ", "◌ᵈ", "◌ᶡ", "◌ᶢ",
+                    "◌ˀ",  nil,  nil,  nil,
+                    "◌ᵐ", "◌ᶬ",  nil, "◌ᶯ",
+                    "◌ᶮ", "◌ᵑ", "◌ᶰ",  nil,
+                    "◌ᶲ", "◌ᶠ", "◌ᶿ", "◌ˢ",
+                    "◌ᵝ", "◌ᵛ", "◌ᶞ", "◌ᶻ",
+                    "◌ᶴ", "◌ᶝ", "◌ᶳ",  nil,
+                    "◌ᶾ", "◌ᶽ", "◌ᶼ",  nil,
+                    "◌ᶜ̧", "◌ˣ", "◌ᵡ",  nil,
+                    "◌ᶨ",  nil, "◌ʶ", "◌ʱ",
+                    "◌ᶹ", "◌ʴ", "◌ʵ",  nil,
+                    "◌ᶭ",  nil, "◌ᶩ", "◌ᶫ",
+                    "◌ᶣ", "◌ʳ",  nil,  nil,
+                    
+                    nil, nil, nil, nil,
+                    
+                    "◌ⁱ", "◌ᵉ", "◌ᵋ", "◌ᵆ",
+                    "◌ʸ", "◌ᶦ", "◌ꟹ", "◌ᵃ",
+                    "◌ᶤ", "◌ᵊ", "◌ᵌ", nil,
+                    "◌ᶶ", "◌ᶱ", "◌ᵄ", nil,
+                    "◌ᵚ", "◌ᶷ", "◌ᶺ", "◌ᵅ",
+                    "◌ᵘ", "◌ᵒ", "◌ᵓ", "◌ᶛ",
+                ],
+                largeDisplayKeys: [
+                    // CONSONANTS
+                    "ʪ", "ʫ", "ꞎ", "ᶚ", "", "",
+                    "ʩ", "ꞯ", "ʬ", "ʭ", nil, nil,
+                    
+                    // DIACRITICS
+                    "◌͋", "◌͌", "◌͊", "◌͈", "◌͉", nil,
+                    "◌͆", "◌̪͆", "◌͇", "◌͍", "◌͎", "◌̻",
+                    "◌̈", "◌̺", "◌͕", "◌͔", "◌͢", "\\",
+                    
+                    // CONNECTED SPEECH, UNCERTAINTY ETC.
+                    "𝑓", "{", "⸨", "(", ".", nil,
+                    "𝑝", "}", "⸩", ")", nil, nil,
+                    "◯", "Ⓒ", "Ⓕ", "Ⓖ", "Ⓚ", "Ⓛ",
+                    "Ⓝ", "Ⓟ", "Ⓡ", "Ⓢ", "Ⓣ", "Ⓥ",
+                    
+                    // VOICING
+                    "ˬ", "₍◌", "◌₎", "◌˭", "ʰ◌", nil,
+                    
+                    // OTHER SOUNDS
+                    "¡", "*", nil, nil, nil, nil,
+                    
+                    nil, nil, nil, nil, nil, nil,
+                    
+                    // SUPERSCRIPTS
+                    "◌ᵖ", "◌ᵐ", "◌ᶲ", "◌ᶠ", "◌ᶿ", nil,
+                    "◌ᵇ", "◌ᶬ", "◌ᵝ", "◌ᵛ", "◌ᶞ", "◌ᶹ",
+                    "◌ᵗ", nil,  "◌ˢ", "◌ᶝ", nil,  nil,
+                    "◌ᵈ", nil,  "◌ᶻ", "◌ᶽ", "◌ʴ", "◌ʳ",
+                    nil,  nil,  "◌ᶳ", "◌ᶴ", nil,  "◌ᶩ",
+                    nil,  "◌ᶯ", "◌ᶼ", "◌ᶾ", "◌ʵ", nil,
+                    "◌ᶜ", nil,  "◌ᶜ̧", nil,  nil,  nil,
+                    "◌ᶡ", "◌ᶮ", "◌ᶨ", nil,  "◌ᶣ", nil,
+                    "◌ᵏ", nil,  "◌ˣ", nil,  nil,  nil,
+                    "◌ᶢ", "◌ᵑ", nil,  nil,  "◌ᶭ", "◌ᶫ",
+                    nil,  nil,  "◌ᵡ", nil,  nil,  nil,
+                    nil,  "◌ᶰ", "◌ʶ", nil,  nil,  nil,
+                    "◌ˀ", nil,  nil,  nil,  "◌ʱ", nil,
+                    
+                    nil, nil, nil, nil, nil, nil,
+                    
+                    "◌ⁱ", "◌ᵉ", "◌ᵋ", "◌ᵆ", "◌ᵃ", nil,
+                    "◌ʸ", "◌ᶦ", "◌ꟹ", nil, nil, nil,
+                    "◌ᶤ", "◌ᵊ", "◌ᵌ", nil, nil, nil,
+                    "◌ᶶ", "◌ᶱ", "◌ᵄ", nil, nil, nil,
+                    "◌ᵚ", "◌ᶷ", "◌ᶺ", nil, "◌ᵅ", nil,
+                    "◌ᵘ", "◌ᵒ", "◌ᵓ", nil, "◌ᶛ", nil,
+                ]
+            ),
     ]
-    
-    /**
-    The arrangement of keys in a default sized display setting, with 4 rows instead of 6.
-    - note: Must be updated along with `keys` in `LargeDisplayKeyArrangement`
-    */
-    static let keys: [RawSectionID: [String?]] = [
-        IPASymbols.sections.consonants.rawValue: [
-            "p", "t", "ʈ", "c",
-            "b", "d", "ɖ", "ɟ",
-            "k", "q", "ʔ", nil,
-            "ɡ", "ɢ", nil, nil,
-            "m", "ɱ", "n", "ɳ",
-            "ɲ", "ŋ", "ɴ", nil,
-            "ʙ", "r", nil, "ʀ",
-            "ⱱ", "ɾ", "ɽ", nil,
-            "ɸ", "f", "θ", "s",
-            "β", "v", "ð", "z",
-            "ʃ", "ʂ", "ç", "x",
-            "ʒ", "ʐ", "ʝ", "ɣ",
-            "χ", "ħ", "h", nil,
-            "ʁ","ʕ", "ɦ", nil,
-            "ɬ", nil, nil, nil,
-            "ɮ", nil, nil, nil,
-            "ʋ", "ɹ", "ɻ", "j",
-            "ɰ", nil, nil, nil,
-            "l", "ɭ", "ʎ", "ʟ",
-        ],
-        IPASymbols.sections.nonPulmonic.rawValue: [
-            "ʘ", "ǀ", "ǃ", "ǂ",
-            "ǁ", nil, nil, nil,
-            "ɓ", "ɗ", "ʄ", "ɠ",
-            "ʛ", nil, nil, nil,
-            "◌ʼ",
-        ],
-        IPASymbols.sections.otherSymbols.rawValue: [
-            "ʍ", "w", "ɥ", "ʜ",
-            "ʢ", "ʡ", "ɕ", "ʑ",
-            "ɺ", "ɧ", "◌͡", "◌͜",
-        ],
-        IPASymbols.sections.vowels.rawValue: [
-            "i", "e", "ɛ", "æ",
-            "y", "ø", "œ", "a",
-            "ɪ", nil, nil, "ɶ",
-            "ʏ", "ɘ", "ɜ", nil,
-            "ɨ", "ə", "ɐ", nil,
-            "ʉ", "ɵ", "ɞ", nil,
-            "ʊ", nil, nil, nil,
-            "ɯ", "ɤ", "ʌ", "ɑ",
-            "u", "o", "ɔ", "ɒ",
-        ],
-        IPASymbols.sections.suprasegmentals.rawValue: [
-            "ˈ", "ˌ", "ː", "ˑ",
-            "◌̆", "|", "‖", ".",
-            "‿",
-        ],
-        IPASymbols.sections.wordAccents.rawValue: [
-            "◌̋", "◌́", "◌̄", "◌̀",
-            "˥", "˦", "˧", "˨",
-            "◌̏", nil, nil, nil,
-            "˩", nil, nil, nil,
-            "◌̌", "◌̂", "◌᷄", "◌᷅",
-            "◌᷈", nil, nil, nil,
-            "ꜜ", "ꜛ", "↗", "↘",
-        ],
-        IPASymbols.sections.diacritics.rawValue: [
-            "◌̥",  "◌̬",  "◌ʰ", "◌̹",
-            "◌̊",  "◌̌",  nil,  "◌͗",
-            "◌̜",  "◌̟",  "◌̠",  "◌̈",
-            "◌͑",  "◌˖", "◌˗", nil,
-            "◌̽",  "◌̩",  "◌̯",  "◌˞",
-            nil,  "◌̍",  "◌̑",  nil,
-            "◌̤",  "◌̰",  "◌̼",  "◌ʷ",
-            "◌ʲ", "◌ˠ", "◌ˤ", "◌̴",
-            "◌̝",  "◌̞",  "◌̘",  "◌̙",
-            "◌˔", "◌˕", nil,  nil,
-            "◌̪",  "◌̺",  "◌̻",  "◌̃",
-            "◌ⁿ", "◌ˡ", "◌̚",  nil,
-            
-            "ɚ", "ɝ", "ɫ", nil,
-        ],
-        IPASymbols.sections.extIPA.rawValue: [
-            // CONSONANTS
-            "ʪ", "ʫ", "ꞎ", "ᶚ",
-            "", "", nil, nil,
-            "ʩ", nil, nil, nil,
-            "ꞯ", nil, nil, nil,
-            "ʬ", "ʭ", nil, nil,
-            
-            // DIACRITICS
-            "◌͋", "◌͌", "◌͊", nil,
-            "◌͈", "◌͉", nil, nil,
-            "◌͆", "◌̪͆", "◌͇", "◌͍",
-            "◌͎", "◌̻", "◌̈", "◌̺",
-            "◌͕", "◌͔", nil, nil,
-            "◌͢", "\\", nil, nil,
-            
-            // CONNECTED SPEECH, UNCERTAINTY ETC.
-            "𝑓", "𝑝", nil, nil,
-            "{", "⸨", "(", ".",
-            "}", "⸩", ")", nil,
-            "◯", "Ⓒ", "Ⓕ", "Ⓖ",
-            "Ⓚ", "Ⓛ", "Ⓝ", "Ⓟ",
-            "Ⓡ", "Ⓢ", "Ⓣ", "Ⓥ",
-            
-            // VOICING
-            "ˬ", "₍◌", "◌₎", nil,
-            "◌˭", "ʰ◌", nil, nil,
-            
-            // OTHER SOUNDS
-            "¡", "*", nil, nil,
-            
-            nil, nil, nil, nil,
-            
-            // SUPERSCRIPTS
-            "◌ᵖ", "◌ᵗ", "◌ᶜ", "◌ᵏ",
-            "◌ᵇ", "◌ᵈ", "◌ᶡ", "◌ᶢ",
-            "◌ˀ",  nil,  nil,  nil,
-            "◌ᵐ", "◌ᶬ",  nil, "◌ᶯ",
-            "◌ᶮ", "◌ᵑ", "◌ᶰ",  nil,
-            "◌ᶲ", "◌ᶠ", "◌ᶿ", "◌ˢ",
-            "◌ᵝ", "◌ᵛ", "◌ᶞ", "◌ᶻ",
-            "◌ᶴ", "◌ᶝ", "◌ᶳ",  nil,
-            "◌ᶾ", "◌ᶽ", "◌ᶼ",  nil,
-            "◌ᶜ̧", "◌ˣ", "◌ᵡ",  nil,
-            "◌ᶨ",  nil, "◌ʶ", "◌ʱ",
-            "◌ᶹ", "◌ʴ", "◌ʵ",  nil,
-            "◌ᶭ",  nil, "◌ᶩ", "◌ᶫ",
-            "◌ᶣ", "◌ʳ",  nil,  nil,
-            
-            nil, nil, nil, nil,
-            
-            "◌ⁱ", "◌ᵉ", "◌ᵋ", "◌ᵆ",
-            "◌ʸ", "◌ᶦ", "◌ꟹ", "◌ᵃ",
-            "◌ᶤ", "◌ᵊ", "◌ᵌ", nil,
-            "◌ᶶ", "◌ᶱ", "◌ᵄ", nil,
-            "◌ᵚ", "◌ᶷ", "◌ᶺ", "◌ᵅ",
-            "◌ᵘ", "◌ᵒ", "◌ᵓ", "◌ᶛ",
-        ],
-        ]
 }
