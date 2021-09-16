@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AudioToolbox
 
 class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
     
@@ -107,8 +106,7 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
         self.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: self.bounds.minX, y: self.bounds.minY + expansionConstant + 1, width: self.bounds.width, height: self.bounds.height - expansionConstant + 1), cornerRadius: self.button.layer.cornerRadius).cgPath
         
         // Play system click sound
-        AudioServicesPlaySystemSound(0x450)
-        //UIDevice.current.playInputClick()
+        SystemSound.playInputClick()
     }
     
     func keyRetract() {

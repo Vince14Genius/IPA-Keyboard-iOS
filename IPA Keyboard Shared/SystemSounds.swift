@@ -11,11 +11,13 @@ import AudioToolbox
 
 enum SystemSound: UInt32 {
     
+    case inputClick = 1104
     case delete = 1155
     case modify = 1156
     
     static func playInputClick() {
-        UIDevice.current.playInputClick()
+        SystemSound.inputClick.play()
+        //UIDevice.current.playInputClick()
     }
     
     func play() {

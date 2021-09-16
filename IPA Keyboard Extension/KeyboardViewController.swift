@@ -12,6 +12,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     // MARK: - viewDidLoad()
     
+    private let hapticGenerator = UISelectionFeedbackGenerator()
     private var bottomButtons = [UIButton]()
     
     override func viewDidLoad() {
@@ -37,7 +38,8 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             
             glyphButton.layer.cornerRadius = 12
             
-            glyphButton.addTarget(self, action: #selector(scrollToSection(from:with:)), for: .touchDown)
+            glyphButton.addTarget(self, action: #selector(prepareHapticGenerator), for: .touchDown)
+            glyphButton.addTarget(self, action: #selector(scrollToSection(from:with:)), for: .primaryActionTriggered)
             bottomButtons.append(glyphButton)
         }
         
@@ -119,10 +121,13 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         self.textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
     }
     
-    @objc func scrollToSection(from button: UIButton, with event: UIEvent) {
-        let hapticGenerator = UISelectionFeedbackGenerator()
+    @objc func prepareHapticGenerator() {
         hapticGenerator.prepare()
+    }
+    
+    @objc func scrollToSection(from button: UIButton, with event: UIEvent) {
         hapticGenerator.selectionChanged()
+        SystemSound.playInputClick()
         
         guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
         for i in 0..<IPASymbols.enabledSections.count {
