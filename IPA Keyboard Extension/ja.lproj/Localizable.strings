@@ -6,8 +6,6 @@
   Copyright © 2018 Vince14Genius. All rights reserved.
 */
 
-"ABC" = "あいう";
-
 "Consonants" = "子音";
 "NonPulmonic" = "子音（非肺臓気流）";
 "OtherSymbols" = "別の記号";

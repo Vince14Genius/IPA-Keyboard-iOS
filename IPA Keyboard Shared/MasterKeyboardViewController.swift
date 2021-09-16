@@ -56,28 +56,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         }
     }
     
-    // MARK: - setupButton()
-    
     private var buttonsThatNeedColorUpdate = [UIButton]()
-    
-    /**
-     A reusable setup process for UI buttons in the keyboard.
-     - Parameters:
-        - button: the `UIButton` to set up
-        - title: the text displayed on the button (use `NSLocalizedString` for all non-universally-understood strings)
-     */
-    private func setupButton(button: UIButton, title: String) {
-        self.view.addSubview(button)
-        buttonsThatNeedColorUpdate.append(button)
-        
-        button.setTitle(title, for: [])
-        button.titleLabel?.font = button.titleLabel!.font.withSize(18)
-        button.sizeToFit()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.layer.cornerRadius = 4
-        button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
-    }
     
     // MARK: - viewDidLoad()
     
@@ -142,11 +121,22 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         if self.needsInputModeSwitchKey {
             self.nextKeyboardButton = UIButton(type: .system)
-            setupButton(button: self.nextKeyboardButton, title: NSLocalizedString("ABC", tableName: "Localizable", comment: "Switch keyboards"))
+            
+            self.view.addSubview(self.nextKeyboardButton)
+            buttonsThatNeedColorUpdate.append(self.nextKeyboardButton)
+            
+            self.nextKeyboardButton.setImage(UIImage(systemName: "globe"), for: [])
+            
+            self.nextKeyboardButton.sizeToFit()
+            self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
+            
+            self.nextKeyboardButton.layer.cornerRadius = 4
+            self.nextKeyboardButton.backgroundColor = UIColor(white: 0.5, alpha: 0.001) // To fix touch hittest area
+                
             self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents)
             
             self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
-            self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
+            self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -14).isActive = true
         }
     }
     
@@ -178,6 +168,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         for buttonToUpdate in buttonsThatNeedColorUpdate {
             buttonToUpdate.setTitleColor(textColor, for: [])
+            buttonToUpdate.tintColor = textColor
         }
         
         for cell in self.keyCollection.visibleCells {
