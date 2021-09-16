@@ -161,11 +161,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
             guard let button = (cell as? KeyButtonCell)?.button else { continue }
             changeKeyButtonColor(button)
         }
-        
-        for element in self.keyCollection.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader) {
-            guard let header = element as? SectionHeader else { continue }
-            changeSectionHeaderColor(header)
-        }
     }
     
     /**
@@ -202,12 +197,8 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     - Parameters:
        - header: the `SectionHeader` to set up
     */
-    func changeSectionHeaderColor(_ header: SectionHeader) {
-        if self.textDocumentProxy.keyboardAppearance == .dark {
-            header.label.textColor = .lightGray
-        } else {
-            header.label.textColor = .darkGray
-        }
+    func setSectionHeaderColor(_ header: SectionHeader) {
+        header.label.textColor = .secondaryLabel
     }
     
     // MARK: - Button Actions

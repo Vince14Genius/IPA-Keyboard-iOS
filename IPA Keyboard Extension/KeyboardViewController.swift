@@ -65,18 +65,14 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     // MARK: - Helper Methods
 
     func updateBottomButtons() {
-        var textColor: UIColor
-        var bottomButtonColor: UIColor
+        let textColor = UIColor.label
+        let bottomButtonColor = UIColor.secondaryLabel
         var supportColor: UIColor
         
         // Update appearance
         if self.textDocumentProxy.keyboardAppearance == .dark {
-            textColor = .white
-            bottomButtonColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
             supportColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.25)
         } else {
-            textColor = .black
-            bottomButtonColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
             supportColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
         }
         
@@ -226,7 +222,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             
             // Set the header title
             header.label.text = NSLocalizedString(IPASymbols.enabledSections[indexPath.section], comment: "Localized versions of the section names.")
-            changeSectionHeaderColor(header)
+            setSectionHeaderColor(header)
         }
         return element
     }
