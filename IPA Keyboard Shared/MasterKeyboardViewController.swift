@@ -56,8 +56,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         }
     }
     
-    private var buttonsThatNeedColorUpdate = [UIButton]()
-    
     // MARK: - viewDidLoad()
     
     override func viewDidLoad() {
@@ -123,9 +121,9 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
             self.nextKeyboardButton = UIButton(type: .system)
             
             self.view.addSubview(self.nextKeyboardButton)
-            buttonsThatNeedColorUpdate.append(self.nextKeyboardButton)
             
             self.nextKeyboardButton.setImage(UIImage(systemName: "globe"), for: [])
+            self.nextKeyboardButton.tintColor = .label
             
             self.nextKeyboardButton.sizeToFit()
             self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
@@ -159,18 +157,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     Update the colors of all first-level UI elements, key buttons, and section headers
     */
     func generalColorUpdate() {
-        var textColor: UIColor
-        if self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = .white
-        } else {
-            textColor = .black
-        }
-        
-        for buttonToUpdate in buttonsThatNeedColorUpdate {
-            buttonToUpdate.setTitleColor(textColor, for: [])
-            buttonToUpdate.tintColor = textColor
-        }
-        
         for cell in self.keyCollection.visibleCells {
             guard let button = (cell as? KeyButtonCell)?.button else { continue }
             changeKeyButtonColor(button)

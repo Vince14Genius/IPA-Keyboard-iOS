@@ -35,7 +35,7 @@ struct BottomRow: View {
             }
             */
             Spacer(minLength: 0) // remove after the above code is implemented
-            HoldRepeatButton(label: Text("⌫")) {
+            HoldRepeatButton(label: Image(systemName: "delete.left")) {
                 inputViewController?.deleteBackwardByOne()
                 SystemSound.delete.play()
             }

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct HoldRepeatButton: View {
-    var label: Text
+    var label: Image
     var repeatCallback: () -> ()
     
     let repeatTimer = RepeatTimer(repeatInterval: 0.07)

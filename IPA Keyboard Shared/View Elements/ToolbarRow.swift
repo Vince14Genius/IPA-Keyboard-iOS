@@ -21,10 +21,10 @@ struct ToolbarRow: View {
         VStack(spacing: 0) {
             if isMovableCursorOn {
                 HStack(spacing: 2) {
-                    HoldRepeatButton(label: Text("←")) {
+                    HoldRepeatButton(label: Image(systemName: "arrow.backward")) {
                         inputViewController?.moveCursorBackByOne()
                     }
-                    HoldRepeatButton(label: Text("→")) {
+                    HoldRepeatButton(label: Image(systemName: "arrow.forward")) {
                         inputViewController?.moveCursorForwardByOne()
                     }
                 }
