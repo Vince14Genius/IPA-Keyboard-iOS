@@ -23,7 +23,7 @@ public struct CursorButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding([.leading, .trailing], 24)
-            .padding([.top, .bottom], 4)
+            .padding([.top, .bottom], 8)
             .background(Color(.secondarySystemBackground))
             .cornerRadius(6)
             .opacity(configuration.isPressed ? 0.67 : 1)
