@@ -19,6 +19,6 @@ extension Color {
 
 extension UIColor {
     static var clearInteractable: UIColor {
-        return UIColor(white: 0.5, opacity: interactableClearOpacity)
+        return UIColor(white: 0.5, alpha: CGFloat(interactableClearOpacity))
     }
 }
