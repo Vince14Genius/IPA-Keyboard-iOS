@@ -28,6 +28,8 @@ class ExpandedKeyOverlay: UIView {
         
         let hostingController = UIHostingController(rootView: ExpandedKeyBezierPathView(titleText: titleText, baseWidth: frame.width, baseHeight: frame.height))
         self.addSubview(hostingController.view)
+        
+        SystemSound.playInputClick()
     }
     
     func hide() {

@@ -119,7 +119,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
 
     @objc func insertKeyButtonText(from button: UIButton, with event: UIEvent) {
         guard let text = (button.superview?.superview as? KeyButtonCell)?.delegate.title else {
-            fatalError("Unable to find button title.")
+            return
         }
         self.textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
     }
@@ -249,6 +249,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateBottomButtons()
+        self.expandedKeyOverlay.hide()
         
         for cell in self.keyCollection.visibleCells {
             guard let buttonCell = cell as? KeyButtonCell else { continue }
