@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class KeyboardViewController: MasterKeyboardViewController, UICollectionViewDataSource {
     
@@ -85,7 +86,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         
         for button in bottomButtons {
             button.setTitleColor(bottomButtonColor, for: [])
-            button.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
+            button.backgroundColor = .clearInteractable
             
             if button.titleLabel?.text == IPASymbols.sectionData[IPASymbols.enabledSections[medianSectionIndex]]!.sectionGlyph {
                 button.setTitleColor(textColor, for: [])
@@ -116,8 +117,10 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     // MARK: - Button Actions
 
-    @objc func addButtonTitle(from button: UIButton, with event: UIEvent) {
-        guard let text = button.currentTitle else { fatalError("Unable to find button title.") }
+    @objc func insertKeyButtonText(from button: UIButton, with event: UIEvent) {
+        guard let text = (button.superview?.superview as? KeyButtonCell)?.delegate.title else {
+            fatalError("Unable to find button title.")
+        }
         self.textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
     }
     
@@ -166,19 +169,14 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifier, for: indexPath) as! KeyButtonCell
         let button = cell.button
-        
-        if let text = getKeySet(section: indexPath.section)?[indexPath.item] {
-            cell.setTitle(text: text)
-            changeKeyButtonColor(button) // Set color based on keyboard appearance
-        }
+        cell.delegate.title = getKeySet(section: indexPath.section)?[indexPath.item]
         
         if cell.requestToInitializeAction() {
             // Will only run if targets have not been added
             // Add targets
-            button.addTarget(self, action: #selector(addButtonTitle(from:with:)), for: .primaryActionTriggered)
+            button.addTarget(self, action: #selector(insertKeyButtonText(from:with:)), for: .primaryActionTriggered)
             button.addTarget(self, action: #selector(keyButtonExpand(from:with:)), for: .touchDown)
             
             // Add retraction targets
@@ -244,7 +242,6 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-        generalColorUpdate()
         updateBottomButtons()
     }
     
@@ -252,5 +249,10 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateBottomButtons()
+        
+        for cell in self.keyCollection.visibleCells {
+            guard let buttonCell = cell as? KeyButtonCell else { continue }
+            buttonCell.delegate.isPressed = false
+        }
     }
 }

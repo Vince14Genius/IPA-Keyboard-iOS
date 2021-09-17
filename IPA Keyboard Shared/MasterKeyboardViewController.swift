@@ -19,6 +19,8 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     var toolbarRow: UIHostingController<ToolbarRow>!
     var bottomRow: UIHostingController<BottomRow>!
     
+    var expandedKeyOverlay: ExpandedKeyOverlay!
+    
     // Bottom buttons
     @IBOutlet var nextKeyboardButton: UIButton!
     
@@ -93,12 +95,11 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         flowLayout.sectionHeadersPinToVisibleBounds = true
         
         self.keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
-        self.keyCollection.backgroundColor = UIColor(white: 0, alpha: 0.001) // To fix touch hittest area
+        self.keyCollection.backgroundColor = .clearInteractable
         self.keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: self.reuseIdentifier)
         self.keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.reuseIdentifier)
         
         self.keyCollection.isDirectionalLockEnabled = false
-        self.keyCollection.clipsToBounds = false
         self.keyCollection.isPrefetchingEnabled = true // this doesn't fix the scroll update delay problem
         
         self.view.addSubview(self.keyCollection)
@@ -129,13 +130,18 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
             self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
             
             self.nextKeyboardButton.layer.cornerRadius = 4
-            self.nextKeyboardButton.backgroundColor = UIColor(white: 0.5, alpha: 0.001) // To fix touch hittest area
+            self.nextKeyboardButton.backgroundColor = .clearInteractable
                 
             self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents)
             
             self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
             self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -14).isActive = true
         }
+        
+        // MARK: - Set up the expanded key overlay
+        
+        self.expandedKeyOverlay = ExpandedKeyOverlay()
+        self.view.addSubview(self.expandedKeyOverlay)
     }
     
     // MARK: - Other Boilerplate Code
@@ -151,47 +157,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         // Add custom view sizing constraints here
     }
     
-    // MARK: - Color Update Methods
-    
-    /**
-    Update the colors of all first-level UI elements, key buttons, and section headers
-    */
-    func generalColorUpdate() {
-        for cell in self.keyCollection.visibleCells {
-            guard let button = (cell as? KeyButtonCell)?.button else { continue }
-            changeKeyButtonColor(button)
-        }
-    }
-    
-    /**
-    Update the colors of all key buttons and their labels, based on the system keyboard color.
-    - Parameters:
-       - button: the `UIButton` to set up
-    */
-    func changeKeyButtonColor(_ button: UIButton) {
-        guard let keyButtonCell = button.superview?.superview as? KeyButtonCell else {
-            fatalError("Incorrect button setup")
-        }
-        
-        if self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            if keyButtonCell.isExpanded {
-                button.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
-                button.setTitleColor(.clear, for: []) // if keyButtonCell.isExpanded
-            } else {
-                button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
-                button.setTitleColor(.white, for: [])
-            }
-        } else if self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearance.light {
-            button.backgroundColor = .white
-            button.setTitleColor(.clear, for: []) // if keyButtonCell.isExpanded
-            if !keyButtonCell.isExpanded {
-                button.setTitleColor(.black, for: [])
-            }
-        }
-        
-        button.setTitleColor(.clear, for: .highlighted)
-    }
-    
     /**
     Update the colors of all section header text, based on the system keyboard color.
     - Parameters:
@@ -205,13 +170,14 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     
     @objc func keyButtonExpand(from button: UIButton, with event: UIEvent) {
         if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            keyButtonCell.keyExpand()
-            changeKeyButtonColor(button)
+            keyButtonCell.delegate.isPressed = true
             
-            // Hide header view
-            self.keyCollection.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).forEach { header in
-                header.isHidden = true
-            }
+            let originalRect = self.keyCollection.convert(keyButtonCell.frame, to: self.expandedKeyOverlay.superview)
+            
+            self.expandedKeyOverlay.show(
+                title: keyButtonCell.delegate.title,
+                frame: CGRect(x: originalRect.midX, y: originalRect.midY, width: originalRect.width, height: originalRect.height)
+            )
         } else {
             fatalError("Incorrect button setup.")
         }
@@ -219,18 +185,12 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     
     @objc func keyButtonRetract(from button: UIButton, with event: UIEvent) {
         if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            RunLoop.main.add(Timer(timeInterval: 0.1, repeats: false, block: {_ in
-                keyButtonCell.keyRetract()
-                self.changeKeyButtonColor(button)
-                
-                // Show header view
-                self.keyCollection.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).forEach { header in
-                    header.isHidden = false
-                }
-            }), forMode: .common)
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+                keyButtonCell.delegate.isPressed = false
+                self.expandedKeyOverlay.hide()
+            }
         } else {
             fatalError("Incorrect button setup.")
         }
     }
-    
 }
