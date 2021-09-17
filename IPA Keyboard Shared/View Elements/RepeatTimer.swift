@@ -22,7 +22,7 @@ class RepeatTimer {
         self.repeatInterval = repeatInterval
     }
     
-    func fire(repeatCallback: @escaping () -> ()) {
+    func schedule(repeatCallback: @escaping () -> ()) {
         guard !isTimerActive else { return }
         repeatCallback()
         self.timer = Timer.scheduledTimer(withTimeInterval: repeatInterval, repeats: true) { _ in
