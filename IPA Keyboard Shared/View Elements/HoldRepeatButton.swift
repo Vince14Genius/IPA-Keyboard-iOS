@@ -25,7 +25,7 @@ struct HoldRepeatButton: View {
     var longHold: some Gesture {
         LongPressGesture(minimumDuration: 0.5)
             .onEnded { _ in
-                repeatTimer.fire(repeatCallback: repeatCallback)
+                repeatTimer.schedule(repeatCallback: repeatCallback)
             }
     }
     
@@ -37,7 +37,7 @@ struct HoldRepeatButton: View {
     }
     
     var body: some View {
-        Button() {} label: { label }
+        Button {} label: { label }
             .simultaneousGesture(tap)
             .simultaneousGesture(longHold)
             .simultaneousGesture(touchEnded)
