@@ -16,16 +16,15 @@ struct BottomRow: View {
     
     @State var highlightedSectionIndex = 0
     
-    var sectionGlyphs = ["1", "2", "3", "4", "5", "6", "7", "8"]
+    var sectionGlyphs = [String]()
     
     var body: some View {
         HStack(spacing: 0) {
-            /*
             ForEach(0..<sectionGlyphs.count) { i in
                 Text(sectionGlyphs[i])
                     .foregroundColor(i == highlightedSectionIndex ? Color(.label) : Color(.secondaryLabel))
                     .frame(minWidth: 20, minHeight: 20)
-                    .padding(2)
+                    .padding(6)
                     .background(i == highlightedSectionIndex ? Color(white: colorScheme == .light ? 0 : 1, opacity: 0.15) : .clear)
                     .cornerRadius(1000)
                     .onTapGesture {
@@ -33,7 +32,6 @@ struct BottomRow: View {
                     }
                 Spacer(minLength: 0)
             }
-            */
             Spacer(minLength: 0) // remove after the above code is implemented
             HoldRepeatButton(label: Image(systemName: "delete.left")) {
                 inputViewController?.deleteBackwardByOne()
@@ -49,7 +47,7 @@ struct BottomRow_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
             Spacer()
-            BottomRow()
+            BottomRow(sectionGlyphs: ["a", "b", "c", "1", "2", "3"])
                 .background(Color(.secondarySystemBackground))
         }
         .preferredColorScheme(.light)
