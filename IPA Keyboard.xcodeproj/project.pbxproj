@@ -60,6 +60,8 @@
 		4EB754C826F4310300B34608 /* KeyButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */; };
 		4EB754CA26F526B300B34608 /* ClearColorInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754C926F526B300B34608 /* ClearColorInteractable.swift */; };
 		4EB754CB26F526B300B34608 /* ClearColorInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754C926F526B300B34608 /* ClearColorInteractable.swift */; };
+		4EB754CD26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
+		4EB754CE26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
 		4ED8A73326A11C29001015B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8A73226A11C29001015B2 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +155,7 @@
 		4EAFA35726EABD1A00344131 /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarRow.swift; sourceTree = "<group>"; };
 		4EB754C926F526B300B34608 /* ClearColorInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearColorInteractable.swift; sourceTree = "<group>"; };
+		4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedKeyOverlay.swift; sourceTree = "<group>"; };
 		4ED8A73226A11C29001015B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +216,7 @@
 			children = (
 				4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */,
 				4E84B1A121452AF00078AC4B /* SectionHeader.swift */,
+				4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */,
 			);
 			path = "UIKit Wrappers";
 			sourceTree = "<group>";
@@ -472,6 +476,7 @@
 				4E14C380261E8624001AE827 /* IPAKeyboardApp.swift in Sources */,
 				4E14C3BD261EAD6F001AE827 /* BlueButtonStyle.swift in Sources */,
 				4EB754CA26F526B300B34608 /* ClearColorInteractable.swift in Sources */,
+				4EB754CD26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */,
 				4EB754C826F4310300B34608 /* KeyButtonCell.swift in Sources */,
 				4E5D175B26EAED83003B5C5B /* SystemSounds.swift in Sources */,
 				4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */,
@@ -506,6 +511,7 @@
 				4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */,
 				4E48DAC826F3ED6900F88CD9 /* VisualEffectView.swift in Sources */,
 				4E84B1B9214745CE0078AC4B /* KeyButtonCell.swift in Sources */,
+				4EB754CE26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,6 +35,7 @@ struct KeyButtonView: View {
                 .background(colorScheme == .dark ? Color(white: 1, opacity: 0.3) : .white)
                 .cornerRadius(4)
                 .shadow(color: Color(white: 0, opacity: 0.4), radius: 0.5, x: 0, y: 1)
+                .opacity(delegate.isPressed ? 0.5 : 1.0)
         }
     }
 }
