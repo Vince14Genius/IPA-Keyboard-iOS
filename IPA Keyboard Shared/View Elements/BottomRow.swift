@@ -37,7 +37,7 @@ struct BottomRow: View {
                 inputViewController?.deleteBackwardByOne()
                 SystemSound.delete.play()
             }
-            .buttonStyle(ToolbarButtonStyle())
+            .buttonStyle(BackwardDeleteButtonStyle())
         }
         .padding([.leading, .trailing], 6)
     }

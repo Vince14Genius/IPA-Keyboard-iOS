@@ -29,3 +29,13 @@ public struct CursorButtonStyle: ButtonStyle {
             .opacity(configuration.isPressed ? 0.67 : 1)
     }
 }
+
+public struct BackwardDeleteButtonStyle: ButtonStyle {
+    public func makeBody(configuration: Self.Configuration) -> some View {
+        Image(systemName: configuration.isPressed ? "delete.left.fill" : "delete.left")
+            .foregroundColor(Color(.label))
+            .padding([.top, .bottom])
+            .padding([.leading, .trailing], 12)
+            .background(Color.clearInteractable)
+    }
+}
