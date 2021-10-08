@@ -23,11 +23,13 @@ struct GettingStartedInnerPage: View {
                 .padding()
         }
         .navigationBarTitle(Localized.titleGettingStarted)
-        .navigationBarItems(trailing:
-            Button(Localized.aboutIPA) {
-                UIApplicationFunctions.openURL(URLs.aboutIPA)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Link(destination: URL(string: URLs.aboutIPA)!) {
+                    Text(Localized.aboutIPA)
+                }
             }
-        )
+        }
         .onTapGesture {
             UIApplicationFunctions.hideKeyboard()
         }
@@ -46,9 +48,7 @@ struct GettingStartedVStack: View {
                 InstructionsListItem(index: i, bodyText: Localized.gettingStartedKey(i))
             }
             Group {
-                Button {
-                    UIApplicationFunctions.openURL(UIApplication.openSettingsURLString)
-                } label: {
+                Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
                     HStack {
                         Image(systemName: "arrow.up.forward.app")
                         Text(Localized.gettingStartedSettingsButton)

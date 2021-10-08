@@ -40,20 +40,25 @@ struct SupportUsVStack: View {
                     .font(.title2)
                 Text(Localized.supportUsDonateSubtitle)
                     .foregroundColor(.secondary)
-                SupportUsDefaultButton(label: Localized.supportUsDonateBuyDrink, isDisabled: true) {
+                Button(Localized.supportUsDonateBuyDrink) {
                     
                 }
-                SupportUsDefaultButton(label: Localized.supportUsDonateBuyMeal, isDisabled: true) {
+                .disabled(true)
+                Button(Localized.supportUsDonateBuyMeal) {
                     
                 }
+                .disabled(true)
             }
             Divider()
                 .padding(.top, 8.0)
             Group {
                 Text(Localized.supportUsRateTitle)
                     .font(.title2)
-                SupportUsDefaultButton(icon: Image(systemName: "star.fill"), label: Localized.supportUsRateButton) {
-                    UIApplicationFunctions.openURL(URLs.appStoreReview)
+                Link(destination: URL(string: URLs.appStoreReview)!) {
+                    HStack {
+                        Image(systemName: "star.fill")
+                        Text(Localized.supportUsRateButton)
+                    }
                 }
             }
             Divider()
@@ -61,9 +66,13 @@ struct SupportUsVStack: View {
             Group {
                 Text(Localized.supportUsShareTitle)
                     .font(.title2)
-                SupportUsDefaultButton(icon: Image(systemName: "square.and.arrow.up"), label: Localized.supportUsShareButton, isDisabled: true) {
-                        UIApplicationFunctions.openURL(URLs.appStoreReview)
+                Link(destination: URL(string: URLs.appStoreReview)!) {
+                    HStack {
+                        Image(systemName: "square.and.arrow.up")
+                        Text(Localized.supportUsShareButton)
                     }
+                }
+                    .disabled(true)
             }
             Divider()
                 .padding(.top, 8.0)
@@ -71,18 +80,26 @@ struct SupportUsVStack: View {
                 Text(Localized.supportUsFriendsAppsTitle)
                     .font(.title2)
                 /*
-                SupportUsDefaultButton(icon: Image(systemName: "arrow.up.forward.app"), label: Localized.supportUsFriendsAppsGoLingo) {
-                    UIApplicationFunctions.openURL(URLs.friendLinkGoLingo)
+                Link(destination: URL(string: URLs.friendLinkGoLingo)!) {
+                    HStack {
+                        Image(systemName: "arrow.up.forward.app")
+                        Text(Localized.supportUsFriendsAppsGoLingo)
+                    }
                 }
                 */
-                SupportUsDefaultButton(icon: Image(systemName: "arrow.up.forward.app"), label: Localized.supportUsFriendsAppsTBD, isDisabled: true) {
-                    
+                Button {} label: {
+                    HStack {
+                        Image(systemName: "arrow.up.forward.app")
+                        Text(Localized.supportUsFriendsAppsTBD)
+                    }
                 }
+                .disabled(true)
             }
             Divider()
                 .padding(.top, 8.0)
             Spacer()
         }
+        .buttonStyle(SupportUsButtonStyle())
     }
 }
 

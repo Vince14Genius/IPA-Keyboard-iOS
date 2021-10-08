@@ -9,34 +9,48 @@
 import SwiftUI
 import StoreKit
 
-struct SupportUsDefaultButton: View {
-    var icon: Image? = nil
-    var label: LocalizedStringKey
-    var isDisabled: Bool = false
-    var action: () -> Void
+struct SupportUsButtonStyle: ButtonStyle {
+    public func makeBody(configuration: Self.Configuration) -> some View {
+        SupportUsButtonStyleView(configuration: configuration)
+    }
+}
+
+struct SupportUsButtonStyleView: View {
+    @Environment(\.isEnabled) var isEnabled
+    let configuration: SupportUsButtonStyle.Configuration
     
     var body: some View {
-        Button(action: action) {
-            HStack {
-                if let iconView = icon {
-                    iconView
-                }
-                Text(label)
-            }
-        }
-        .padding()
-        .overlay(
-            RoundedRectangle(cornerRadius: .infinity)
-                .stroke(isDisabled ? Color.gray : Color.blue, lineWidth: 1)
-        )
-        .disabled(isDisabled)
-        .padding(4.0)
+        configuration.label
+            .padding()
+            .foregroundColor(isEnabled ? .accentColor : .gray)
+            .overlay(
+                RoundedRectangle(cornerRadius: .infinity)
+                    .stroke(isEnabled ? Color.accentColor : Color.gray, lineWidth: 1)
+            )
+            .disabled(!isEnabled)
+            .padding(4.0)
     }
 }
 
 struct SupportUsPageButtons_Previews: PreviewProvider {
     static var previews: some View {
-        SupportUsDefaultButton(icon: Image(systemName: "square.and.arrow.up"), label: "Some Label") {}
+        VStack {
+            Button {} label: {
+                HStack {
+                    Image(systemName: "square.and.arrow.up")
+                    Text("Some Button")
+                }
+            }
+            
+            Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
+                HStack {
+                    Image(systemName: "link")
+                    Text("Some Link")
+                }
+            }
+        }
+        .buttonStyle(SupportUsButtonStyle())
+        
         SupportUsPageWrapped()
     }
 }

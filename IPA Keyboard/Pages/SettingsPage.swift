@@ -38,11 +38,7 @@ struct SettingsInnerPage: View {
     var body: some View {
         Form {
             Section() {
-                Button {
-                    UIApplicationFunctions.openURL(URLs.feedback)
-                } label: {
-                    Text(Localized.buttonBugreport)
-                }
+                Link(Localized.buttonBugreport, destination: URL(string: URLs.feedback)!)
             }
             Section(header: Text(Localized.titleKeyboards)) {
                 Toggle(Localized.keyboardIPA, isOn: $isIPAKeyboardOn)
