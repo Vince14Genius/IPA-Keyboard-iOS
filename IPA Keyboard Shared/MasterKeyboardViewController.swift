@@ -21,6 +21,8 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     
     var expandedKeyOverlay: ExpandedKeyOverlay!
     
+    let bottomBarDataSource = BottomRowDataSource()
+    
     // Bottom buttons
     @IBOutlet var nextKeyboardButton: UIButton!
     
@@ -76,7 +78,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         self.toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
         addHostingController(self.toolbarRow)
         
-        self.bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self))
+        self.bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: self.bottomBarDataSource))
         addHostingController(self.bottomRow)
         
         // MARK: - Set up constraints
@@ -136,6 +138,9 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
             
             self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
             self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -14).isActive = true
+            self.bottomRow.view.leadingAnchor.constraint(equalTo: self.nextKeyboardButton.trailingAnchor, constant: 12).isActive = true
+        } else {
+            self.bottomRow.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         }
         
         // MARK: - Set up the expanded key overlay

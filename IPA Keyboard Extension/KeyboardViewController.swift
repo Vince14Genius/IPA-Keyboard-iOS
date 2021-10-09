@@ -14,7 +14,6 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     // MARK: - viewDidLoad()
     
     private let hapticGenerator = UISelectionFeedbackGenerator()
-    private var bottomButtons = [UIButton]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,71 +27,28 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         
         // Set up the bottom stack view
         
+        var glyphs = [String]()
+        
         for sectionName in IPASymbols.enabledSections {
             let glyph = IPASymbols.sectionData[sectionName]!.sectionGlyph
-            
-            let glyphButton = UIButton(type: .system)
-            glyphButton.setTitle(glyph, for: [])
-            glyphButton.titleLabel?.font = glyphButton.titleLabel!.font.withSize(18)
-            
-            glyphButton.translatesAutoresizingMaskIntoConstraints = false
-            
-            glyphButton.layer.cornerRadius = 12
-            
-            glyphButton.addTarget(self, action: #selector(prepareHapticGenerator), for: .touchDown)
-            glyphButton.addTarget(self, action: #selector(scrollToSection(from:with:)), for: .primaryActionTriggered)
-            bottomButtons.append(glyphButton)
+            glyphs.append(glyph)
         }
         
-        self.bottomStack = UIStackView(arrangedSubviews: bottomButtons)
-        self.bottomStack.axis = .horizontal
-        self.bottomStack.distribution = .fillEqually
-        self.bottomStack.alignment = .fill
-        self.bottomStack.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        self.view.addSubview(self.bottomStack)
-        
-        self.bottomStack.translatesAutoresizingMaskIntoConstraints = false
-        self.bottomStack.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -6).isActive = true
-        self.bottomStack.topAnchor.constraint(equalTo: self.keyCollection.bottomAnchor).isActive = true
-        // self.bottomStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.bottomStack.trailingAnchor.constraint(equalTo: self.bottomRow.view.leadingAnchor, constant: -12).isActive = true
-        
-        if self.needsInputModeSwitchKey {
-            self.bottomStack.leadingAnchor.constraint(equalTo: self.nextKeyboardButton.trailingAnchor, constant: 12).isActive = true
-        } else {
-            self.bottomStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
+        self.bottomBarDataSource.sectionGlyphs = glyphs
+        self.bottomBarDataSource.mainAction = { index in
+            self.scrollToSection(index: index)
         }
     }
     
     // MARK: - Helper Methods
 
     func updateBottomButtons() {
-        let textColor = UIColor.label
-        let bottomButtonColor = UIColor.secondaryLabel
-        var supportColor: UIColor
-        
-        // Update appearance
-        if self.textDocumentProxy.keyboardAppearance == .dark {
-            supportColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.25)
-        } else {
-            supportColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
-        }
-        
         let visibleItems = self.keyCollection.indexPathsForVisibleItems.sorted {
             return $0.section < $1.section
         }
-        let medianSectionIndex = visibleItems[visibleItems.count / 2].section
         
-        for button in bottomButtons {
-            button.setTitleColor(bottomButtonColor, for: [])
-            button.backgroundColor = .clearInteractable
-            
-            if button.titleLabel?.text == IPASymbols.sectionData[IPASymbols.enabledSections[medianSectionIndex]]!.sectionGlyph {
-                button.setTitleColor(textColor, for: [])
-                button.backgroundColor = supportColor
-            }
-        }
+        let medianSectionIndex = visibleItems[visibleItems.count / 2].section
+        bottomBarDataSource.highlightedSectionIndex = medianSectionIndex
     }
     
     func getKeySet(section: Int) -> [String?]? {
@@ -124,33 +80,22 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         self.textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
     }
     
-    @objc func prepareHapticGenerator() {
+    func scrollToSection(index: Int) {
         hapticGenerator.prepare()
-    }
-    
-    @objc func scrollToSection(from button: UIButton, with event: UIEvent) {
         hapticGenerator.selectionChanged()
         SystemSound.playInputClick()
         
-        guard let buttonTitle = button.currentTitle else { fatalError("Wrong button.") }
-        for i in 0..<IPASymbols.enabledSections.count {
-            if buttonTitle == IPASymbols.sectionData[IPASymbols.enabledSections[i]]!.sectionGlyph {
-                // Calculate middle index
-                let middleIndex = (getKeySet(section: i)?.count ?? 0) / 2
-                
-                // Calculate columns on screen
-                let visibleItemsCount = self.keyCollection.indexPathsForVisibleItems.count
-                
-                if middleIndex > visibleItemsCount / 2 + cellsPerColumn {
-                    // big section
-                    self.keyCollection.scrollToItem(at: [i, visibleItemsCount / 2 - cellsPerColumn], at: .centeredHorizontally, animated: true)
-                } else {
-                    // small section
-                    self.keyCollection.scrollToItem(at: [i, middleIndex], at: .centeredHorizontally, animated: true)
-                }
-                
-                return
-            }
+        let middleIndex = (getKeySet(section: index)?.count ?? 0) / 2
+        
+        // Calculate columns on screen
+        let visibleItemsCount = self.keyCollection.indexPathsForVisibleItems.count
+        
+        if middleIndex > visibleItemsCount / 2 + cellsPerColumn {
+            // big section
+            self.keyCollection.scrollToItem(at: [index, visibleItemsCount / 2 - cellsPerColumn], at: .centeredHorizontally, animated: true)
+        } else {
+            // small section
+            self.keyCollection.scrollToItem(at: [index, middleIndex], at: .centeredHorizontally, animated: true)
         }
     }
     

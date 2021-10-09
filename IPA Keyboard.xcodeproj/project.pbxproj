@@ -31,6 +31,8 @@
 		4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */; };
 		4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4030EF269D456D0081E3FD /* SupportUsPageButtons.swift */; };
 		4E4030F4269FE0530081E3FD /* View+makeStackNavigationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4030F3269FE0520081E3FD /* View+makeStackNavigationPage.swift */; };
+		4E408CE827110E6700D52CE6 /* BottomRowDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E408CE727110E6700D52CE6 /* BottomRowDataSource.swift */; };
+		4E408CE927110E6700D52CE6 /* BottomRowDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E408CE727110E6700D52CE6 /* BottomRowDataSource.swift */; };
 		4E48DAC826F3ED6900F88CD9 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DAC626F3ED6900F88CD9 /* VisualEffectView.swift */; };
 		4E5D174B26EAE751003B5C5B /* GlobalSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */; };
 		4E5D174E26EAE8B8003B5C5B /* UIInputViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D174C26EAE8B8003B5C5B /* UIInputViewController+.swift */; };
@@ -106,6 +108,7 @@
 		4E4030EE269D0B8B0081E3FD /* eo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eo; path = eo.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E4030EF269D456D0081E3FD /* SupportUsPageButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportUsPageButtons.swift; sourceTree = "<group>"; };
 		4E4030F3269FE0520081E3FD /* View+makeStackNavigationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+makeStackNavigationPage.swift"; sourceTree = "<group>"; };
+		4E408CE727110E6700D52CE6 /* BottomRowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomRowDataSource.swift; sourceTree = "<group>"; };
 		4E48DABF26F3CB9B00F88CD9 /* KeyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonView.swift; sourceTree = "<group>"; };
 		4E48DAC126F3D2CC00F88CD9 /* ExpandedKeyBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedKeyBezierPath.swift; sourceTree = "<group>"; };
 		4E48DAC626F3ED6900F88CD9 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
@@ -228,6 +231,7 @@
 				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
 				4E5D175126EAE916003B5C5B /* ToolbarButtonStyles.swift */,
 				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
+				4E408CE727110E6700D52CE6 /* BottomRowDataSource.swift */,
 				4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */,
 				4E5D175726EAEB39003B5C5B /* RepeatTimer.swift */,
 			);
@@ -470,6 +474,7 @@
 				4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */,
 				4EB754C726F4310300B34608 /* SectionHeader.swift in Sources */,
 				4E14C384261E864C001AE827 /* MainTabView.swift in Sources */,
+				4E408CE827110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
 				4E5D174B26EAE751003B5C5B /* GlobalSymbols.swift in Sources */,
 				4EAFA34E26E1A86700344131 /* UserTipView.swift in Sources */,
 				4E34B56026F3FB8B00323D23 /* BottomRow.swift in Sources */,
@@ -506,6 +511,7 @@
 				4E84B1A221452AF00078AC4B /* SectionHeader.swift in Sources */,
 				4EAFA35926EABD7500344131 /* SharedConstants.swift in Sources */,
 				4EAFA35B26EADBDE00344131 /* ToolbarRow.swift in Sources */,
+				4E408CE927110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
 				4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */,
 				4E5D174E26EAE8B8003B5C5B /* UIInputViewController+.swift in Sources */,
 				4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */,
