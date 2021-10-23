@@ -20,11 +20,13 @@ public struct ToolbarButtonStyle: ButtonStyle {
 }
 
 public struct CursorButtonStyle: ButtonStyle {
+    @Environment(\.colorScheme) var colorScheme
+    
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding([.leading, .trailing], 24)
             .padding([.top, .bottom], 8)
-            .background(Color(.secondarySystemBackground))
+            .background(colorScheme == .light ? Color(.secondarySystemBackground) : .darkModeKeyBackground)
             .cornerRadius(6)
             .opacity(configuration.isPressed ? 0.67 : 1)
     }

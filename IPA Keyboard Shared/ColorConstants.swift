@@ -1,5 +1,5 @@
 //
-//  ClearColorInteractable.swift
+//  ColorConstants.swift
 //  IPA Keyboard
 //
 //  Created by Vincent C. on 9/17/21.
@@ -14,6 +14,10 @@ fileprivate let interactableClearOpacity = 0.001
 extension Color {
     static var clearInteractable: Color {
         return Color(white: 0.5, opacity: interactableClearOpacity)
+    }
+    
+    static var darkModeKeyBackground: Color {
+        return Color(white: 1, opacity: 0.3)
     }
 }
 

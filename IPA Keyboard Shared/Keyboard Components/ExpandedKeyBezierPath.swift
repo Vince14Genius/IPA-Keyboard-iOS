@@ -55,7 +55,7 @@ struct ExpandedKeyBezierPathView: View {
                             )
                         }
                         ExpandedKeyBezierPath()
-                            .fill(colorScheme == .dark ? Color(white: 1, opacity: 0.3) : .white)
+                            .fill(colorScheme == .dark ? Color.darkModeKeyBackground : .white)
                     }
                 )
                 .frame(width: baseWidth * 2, height: baseHeight * 3, alignment: .bottom)
