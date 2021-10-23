@@ -68,7 +68,7 @@ struct SupportUsVStack: View {
                     .font(.title2)
                 Link(destination: URL(string: URLs.appStoreReview)!) {
                     HStack {
-                        Image(systemName: "square.and.arrow.up")
+                        Image(systemName: "doc.on.doc")
                         Text(Localized.supportUsShareButton)
                     }
                 }
