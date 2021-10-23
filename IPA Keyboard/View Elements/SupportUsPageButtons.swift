@@ -27,6 +27,7 @@ struct SupportUsButtonStyleView: View {
                 RoundedRectangle(cornerRadius: .infinity)
                     .stroke(isEnabled ? Color.accentColor : Color.gray, lineWidth: 1)
             )
+            .opacity(configuration.isPressed ? 0.33 : 1)
             .disabled(!isEnabled)
             .padding(4.0)
     }
