@@ -13,8 +13,6 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     // MARK: - viewDidLoad()
     
-    private let hapticGenerator = UISelectionFeedbackGenerator()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.keyCollection.dataSource = self
@@ -81,10 +79,6 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func scrollToSection(index: Int) {
-        hapticGenerator.prepare()
-        hapticGenerator.selectionChanged()
-        SystemSound.playInputClick()
-        
         let middleIndex = (getKeySet(section: index)?.count ?? 0) / 2
         
         // Calculate columns on screen

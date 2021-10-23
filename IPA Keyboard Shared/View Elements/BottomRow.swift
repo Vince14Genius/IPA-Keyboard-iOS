@@ -41,6 +41,8 @@ struct BottomRow: View {
                     .cornerRadius(1000)
                     .overlay(Color.clearInteractable)
                     .onTapGesture {
+                        UISelectionFeedbackGenerator().selectionChanged()
+                        SystemSound.playInputClick()
                         dataSource.mainAction?(element.id)
                     }
                 Spacer(minLength: 0)
