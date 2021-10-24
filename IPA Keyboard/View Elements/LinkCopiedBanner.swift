@@ -25,8 +25,9 @@ struct LinkCopiedBanner: View {
             Spacer()
         }
             .transition(.move(edge: .top))
-            .transition(.opacity)
-            .animation(.spring())
+            .transition(.opacity.animation(.easeInOut.speed(0.25)))
+            .animation(.easeInOut.speed(0.25))
+            .zIndex(1)
     }
 }
 

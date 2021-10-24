@@ -23,6 +23,7 @@ struct SupportUsPageWrapped: View {
             }
             .navigationBarTitle(Localized.navTitleSupportUs)
             .makeStackNavigationPage()
+            .zIndex(0)
             
             if isLinkCopiedBannerVisible {
                 LinkCopiedBanner()
@@ -43,6 +44,8 @@ struct SupportUsInnerPage: View {
                 }
                 .padding()
             }
+            .zIndex(0)
+            
             if isLinkCopiedBannerVisible {
                 LinkCopiedBanner()
             }
