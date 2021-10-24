@@ -10,20 +10,42 @@ import SwiftUI
 import StoreKit
 
 struct SupportUsPageWrapped: View {
+    @State var isLinkCopiedBannerVisible = false
+    
     var body: some View {
-        SupportUsInnerPage()
+        ZStack {
+            ScrollView {
+                HStack(alignment: .top) {
+                    SupportUsVStack(isLinkCopiedBannerVisible: $isLinkCopiedBannerVisible)
+                    Spacer()
+                }
+                .padding()
+            }
+            .navigationBarTitle(Localized.navTitleSupportUs)
             .makeStackNavigationPage()
+            
+            if isLinkCopiedBannerVisible {
+                LinkCopiedBanner()
+            }
+        }
     }
 }
 
 struct SupportUsInnerPage: View {
+    @State var isLinkCopiedBannerVisible = false
+    
     var body: some View {
-        ScrollView {
-            HStack(alignment: .top) {
-                SupportUsVStack()
-                Spacer()
+        ZStack {
+            ScrollView {
+                HStack(alignment: .top) {
+                    SupportUsVStack(isLinkCopiedBannerVisible: $isLinkCopiedBannerVisible)
+                    Spacer()
+                }
+                .padding()
             }
-            .padding()
+            if isLinkCopiedBannerVisible {
+                LinkCopiedBanner()
+            }
         }
         .navigationBarTitle(Localized.navTitleSupportUs)
     }
@@ -31,6 +53,8 @@ struct SupportUsInnerPage: View {
 
 struct SupportUsVStack: View {
     let isDrinkIAPDisabled = true
+    
+    @Binding var isLinkCopiedBannerVisible: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12.0) {
@@ -66,13 +90,23 @@ struct SupportUsVStack: View {
             Group {
                 Text(Localized.supportUsShareTitle)
                     .font(.title2)
-                Link(destination: URL(string: URLs.appStoreReview)!) {
+                Button {
+                    // copy share link
+                    UIPasteboard.general.string = URLs.shareLink
+                    
+                    // show banner for 3 seconds
+                    if !isLinkCopiedBannerVisible {
+                        isLinkCopiedBannerVisible = true
+                        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+                            isLinkCopiedBannerVisible = false
+                        }
+                    }
+                } label: {
                     HStack {
                         Image(systemName: "doc.on.doc")
                         Text(Localized.supportUsShareButton)
                     }
                 }
-                    .disabled(true)
             }
             Divider()
                 .padding(.top, 8.0)
@@ -106,6 +140,7 @@ struct SupportUsVStack: View {
 struct SupportUsPage_Previews: PreviewProvider {
     static var previews: some View {
         SupportUsPageWrapped()
+            .preferredColorScheme(.dark)
     }
 }
 

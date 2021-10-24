@@ -41,6 +41,7 @@
 		4E5D175B26EAED83003B5C5B /* SystemSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175A26EAED83003B5C5B /* SystemSounds.swift */; };
 		4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175A26EAED83003B5C5B /* SystemSounds.swift */; };
 		4E5D175F26EAF00E003B5C5B /* BottomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175D26EAF00E003B5C5B /* BottomRow.swift */; };
+		4E65D9752724D20500E49DD7 /* LinkCopiedBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */; };
 		4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */; };
 		4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */; };
 		4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B15C2140E9330078AC4B /* Assets.xcassets */; };
@@ -121,6 +122,7 @@
 		4E5D175726EAEB39003B5C5B /* RepeatTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTimer.swift; sourceTree = "<group>"; };
 		4E5D175A26EAED83003B5C5B /* SystemSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSounds.swift; sourceTree = "<group>"; };
 		4E5D175D26EAF00E003B5C5B /* BottomRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomRow.swift; sourceTree = "<group>"; };
+		4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCopiedBanner.swift; sourceTree = "<group>"; };
 		4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterKeyboardViewController.swift; sourceTree = "<group>"; };
 		4E6755F822EA0F0E00DA88BB /* GlobalSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSymbols.swift; sourceTree = "<group>"; };
 		4E84B1522140E92F0078AC4B /* IPA Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,7 @@
 				4E0B7423269BD5380066345B /* InstructionsListItem.swift */,
 				4EAFA34D26E1A86700344131 /* UserTipView.swift */,
 				4E4030EF269D456D0081E3FD /* SupportUsPageButtons.swift */,
+				4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */,
 			);
 			path = "View Elements";
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */,
 				4E4030F4269FE0530081E3FD /* View+makeStackNavigationPage.swift in Sources */,
 				4E0B7424269BD5380066345B /* InstructionsListItem.swift in Sources */,
+				4E65D9752724D20500E49DD7 /* LinkCopiedBanner.swift in Sources */,
 				4ED8A73326A11C29001015B2 /* Constants.swift in Sources */,
 				4E34B56526F3FB8B00323D23 /* ExpandedKeyBezierPath.swift in Sources */,
 				4E34B56226F3FB8B00323D23 /* RepeatTimer.swift in Sources */,

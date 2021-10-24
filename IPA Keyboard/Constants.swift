@@ -17,6 +17,7 @@ extension String {
 enum URLs {
     static let aboutIPA = Localized.ipaWikipediaURLString.localized()
     static let feedback = "https://vince14genius.github.io/support/"
+    static let shareLink = "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497"
     static let appStoreReview = "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497?action=write-review"
     static let friendLinkGoLingo = "https://apps.apple.com/app/golingo/id1194977025"
 }
