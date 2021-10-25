@@ -19,6 +19,7 @@ enum URLs {
     static let feedback = "https://vince14genius.github.io/support/"
     static let shareLink = "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497"
     static let appStoreReview = "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497?action=write-review"
+    static let githubRepo = "https://github.com/Vince14Genius/IPA-Keyboard-iOS"
     static let friendLinkGoLingo = "https://apps.apple.com/app/golingo/id1194977025"
 }
 
@@ -97,4 +98,8 @@ enum Localized {
 
     /* Settings - Bug Report / Feedback */
     static let buttonBugreport: LocalizedStringKey = "localized-button-bugreport"
+    
+    /* Settings - Advanced Settings */
+    static let advancedSettings: LocalizedStringKey = "advanced-settings"
+    static let movableCursor: LocalizedStringKey = "settings-movable-cursor"
 }

@@ -80,3 +80,6 @@
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "Bug Report / Feedback";
 
+/* Settings - Advanced Settings */
+"advanced-settings" = "Advanced Settings";
+"settings-movable-cursor" = "Movable Cursor";

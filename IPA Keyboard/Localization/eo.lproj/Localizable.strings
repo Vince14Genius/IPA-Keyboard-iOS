@@ -80,3 +80,6 @@
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "Cimo-Raporti / Retrosciigi";
 
+/* Settings - Advanced Settings */
+"advanced-settings" = "Altgradaj Agordoj";
+"settings-movable-cursor" = "Movable Cursor";

@@ -74,8 +74,9 @@ struct SettingsInnerPage: View {
                 Toggle(Localized.keyboardRecents, isOn: $isRecentsOn)
                     .disabled(true)
             }
-            Section(header: Text("Advanced Settings")) {
-                Toggle("Movable Cursor", isOn: $isMovableCursorOn)
+            Section(header: Text(Localized.advancedSettings)) {
+                Toggle(Localized.movableCursor, isOn: $isMovableCursorOn)
+                Link("GitHub Repository", destination: URL(string: URLs.githubRepo)!)
             }
         }
         .alert(isPresented: $showingComingSoonAlert, content: {

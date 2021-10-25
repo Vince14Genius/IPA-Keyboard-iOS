@@ -80,3 +80,6 @@
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "バグ報告・フィードバック";
 
+/* Settings - Advanced Settings */
+"advanced-settings" = "詳細設定";
+"settings-movable-cursor" = "テキストカーソルを移動させるボタン";

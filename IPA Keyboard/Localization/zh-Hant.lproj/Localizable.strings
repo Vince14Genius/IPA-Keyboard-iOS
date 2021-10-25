@@ -80,3 +80,6 @@
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "問題報告/提供建議";
 
+/* Settings - Advanced Settings */
+"advanced-settings" = "高級設定";
+"settings-movable-cursor" = "可移動游標";
