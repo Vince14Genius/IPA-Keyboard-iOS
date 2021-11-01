@@ -42,7 +42,7 @@
 "getting-started-note" = "Se la IFA Klavaro ne estas en la listo, provu rekomenci vian aparaton.";
 
 /* Getting Started TextField */
-"keyboardtest.textfield.placeholder" = "Vi povas provi la klavaron ĉi tie post aldoni.";
+"keyboardtest.textfield.placeholder" = "Vi povas provi ĉi tie post aldoni.";
 
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "Donate to the developer";

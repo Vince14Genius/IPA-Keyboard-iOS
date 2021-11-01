@@ -42,7 +42,7 @@
 "getting-started-note" = "如果列表中没有出现此选项，请尝试重启设备，或者重新安装此App。";
 
 /* Getting Started TextField */
-"keyboardtest.textfield.placeholder" = "设置完毕后可在此文本框内尝试使用IPA音标键盘";
+"keyboardtest.textfield.placeholder" = "设置完毕后可在此文本框内尝试使用";
 
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "向开发者捐赠";
