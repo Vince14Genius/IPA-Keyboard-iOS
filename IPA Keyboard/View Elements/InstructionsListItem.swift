@@ -17,7 +17,7 @@ struct InstructionsListItem: View {
     var body: some View {
         HStack(alignment: .top) {
             Text("\(index).")
-                .font(.title2)
+                .font(.title2.monospacedDigit().weight(.semibold))
             Text(bodyText)
                 .padding([.top], 5)
             Spacer()

@@ -30,7 +30,7 @@
 
 /* Getting Started Instructions */
 "getting-started-1" = "啟動「設定」App";
-"getting-started-2" = "前往「一般」>「鍵盤」>「鍵盤」";
+"getting-started-2" = "前往「一般」＞「鍵盤」＞「鍵盤」";
 "getting-started-3" = "點一下「新增鍵盤」";
 "getting-started-4" = "從「第三方鍵盤」列表加入「IPA鍵盤」";
 
@@ -42,7 +42,7 @@
 "getting-started-note" = "如果列表中沒有出現此選項，請嘗試重新啟動設備，或者重新安裝此App。";
 
 /* Getting Started TextField */
-"keyboardtest.textfield.placeholder" = "可以在這裡嘗試使用IPA音標鍵盤";
+"keyboardtest.textfield.placeholder" = "設置完畢後可以在這裡嘗試使用IPA音標鍵盤";
 
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "向開發者捐贈";
