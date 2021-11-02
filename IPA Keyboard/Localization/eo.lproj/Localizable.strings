@@ -56,7 +56,8 @@
 
 /* Support Us - Spread the word on social media */
 "support-us-share-title" = "Bonvolu diskonigi tiun ĉi programeton en sociaj retejoj";
-"support-us-share-button" = "Kopii la retadreso por diskonigi";
+"support-us-share-button" = "Kopii la retadreson por diskonigi";
+"link-copied-banner" = "Kopiis la retadreson!";
 
 /* Support Us - Check out our friends' apps */
 "support-us-friends-apps-title" = "Provu la programetojn de niaj amikoj";
@@ -70,7 +71,7 @@
 "localized-keyboard-nonstandard-obsolete" = "Malvalidaj/Malaktualaj Simboloj";
 "localized-keyboard-custom" = "Laŭmenda IFA Klavaro";
 "localized-link-customize" = "Agordi...";
-"localized-keyboard-recents" = "Klavoj vi uzis lastatempe";
+"localized-keyboard-recents" = "Klavojn vi uzis lastatempe";
 
 /* Settings - Unlock Keyboards */
 "localized-unlock-nonstandard-obsolete" = "Malŝlosi Malvalidajn/Malaktualajn Simbolojn";

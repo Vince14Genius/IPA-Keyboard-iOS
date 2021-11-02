@@ -15,7 +15,7 @@ struct LinkCopiedBanner: View {
         VStack {
             HStack {
                 Image(systemName: "link")
-                Text("Link Copied!")
+                Text(Localized.linkCopiedBanner)
             }
                 .padding()
                 .padding([.leading, .trailing])

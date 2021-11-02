@@ -57,6 +57,7 @@
 /* Support Us - Spread the word on social media */
 "support-us-share-title" = "このアプリ #拡散希望";
 "support-us-share-button" = "共有リンクをコピー";
+"link-copied-banner" = "コピー済み";
 
 /* Support Us - Check out our friends' apps */
 "support-us-friends-apps-title" = "友人たちのアプリも試してご覧";

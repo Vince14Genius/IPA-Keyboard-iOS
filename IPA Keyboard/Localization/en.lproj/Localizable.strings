@@ -57,6 +57,7 @@
 /* Support Us - Spread the word on social media */
 "support-us-share-title" = "Spread the word on social media";
 "support-us-share-button" = "Copy share link";
+"link-copied-banner" = "Link Copied!";
 
 /* Support Us - Check out our friends' apps */
 "support-us-friends-apps-title" = "Check out our friends' apps";

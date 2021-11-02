@@ -76,6 +76,7 @@ enum Localized {
     /* Support Us - Spread the word on social media */
     static let supportUsShareTitle: LocalizedStringKey = "support-us-share-title"
     static let supportUsShareButton: LocalizedStringKey = "support-us-share-button"
+    static let linkCopiedBanner: LocalizedStringKey = "link-copied-banner"
 
     /* Support Us - Check out our friends' apps */
     static let supportUsFriendsAppsTitle: LocalizedStringKey = "support-us-friends-apps-title"
