@@ -77,6 +77,7 @@
 "localized-unlock-nonstandard-obsolete" = "Unlock Nonstandard/Obsolete Symbols";
 "localized-unlock-custom" = "Unlock Custom IPA Keyboard";
 "alert-coming-soon" = "Coming Soon";
+"button-restore-purchases" = "Restore Purchases";
 
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "Bug Report / Feedback";

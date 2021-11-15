@@ -77,6 +77,7 @@
 "localized-unlock-nonstandard-obsolete" = "非公式・破棄された記号をアンロック";
 "localized-unlock-custom" = "カスタムIPAキーボードをアンロック";
 "alert-coming-soon" = "近日発売";
+"button-restore-purchases" = "購入履歴復元";
 
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "バグ報告・フィードバック";

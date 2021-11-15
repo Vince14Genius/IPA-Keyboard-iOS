@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 let appGroupStorage = UserDefaults(suiteName: SharedIdentifiers.appGroup)
 
@@ -48,10 +49,8 @@ struct SettingsInnerPage: View {
                     if isNonstandardCharsKeyboardUnlocked {
                         Toggle(Localized.keyboardNonstandard, isOn: $isNonstandardCharsKeyboardOn)
                     } else {
-                        Button {
+                        Button(Localized.unlockNonstandard) {
                             showingComingSoonAlert = true
-                        } label: {
-                            Text(Localized.unlockNonstandard)
                         }
                     }
                 }
@@ -62,13 +61,17 @@ struct SettingsInnerPage: View {
                         Toggle(Localized.keyboardCustom, isOn: $isCustomIPAKeyboardOn)
                         NavigationLink(Localized.linkCustomize, destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
                     } else {
-                        Button {
+                        Button(Localized.unlockCustom) {
                             showingComingSoonAlert = true
-                        } label: {
-                            Text(Localized.unlockCustom)
                         }
                     }
                 }
+            }
+            Section() {
+                Button(Localized.restorePurchases) {
+                    
+                }
+                .disabled(true)
             }
             Section() {
                 Toggle(Localized.keyboardRecents, isOn: $isRecentsOn)

@@ -96,6 +96,7 @@ enum Localized {
     static let unlockNonstandard: LocalizedStringKey = "localized-unlock-nonstandard-obsolete"
     static let unlockCustom: LocalizedStringKey = "localized-unlock-custom"
     static let alertComingSoon: LocalizedStringKey = "alert-coming-soon"
+    static let restorePurchases: LocalizedStringKey = "button-restore-purchases"
 
     /* Settings - Bug Report / Feedback */
     static let buttonBugreport: LocalizedStringKey = "localized-button-bugreport"
@@ -103,4 +104,24 @@ enum Localized {
     /* Settings - Advanced Settings */
     static let advancedSettings: LocalizedStringKey = "advanced-settings"
     static let movableCursor: LocalizedStringKey = "settings-movable-cursor"
+}
+
+enum InAppPurchases {
+    private static let baseBundleIdentifier = "com.Vince14Genius.IPA-Keyboard-iOS"
+    private static func fullId(_ shortId: String) -> String {
+        "\(Self.baseBundleIdentifier).\(shortId)"
+    }
+    
+    static var donationSmallDrink: String {
+        fullId("donation_small_drink")
+    }
+    static var donationLargeMeal: String {
+        fullId("donation_large_meal")
+    }
+    static var unlockCustomKeyboard: String {
+        fullId("unlock_custom_ipa_keyboard")
+    }
+    static var unlockObsoleteNonstandard: String {
+        fullId("unlock_obsolete_nonstandard_symbols")
+    }
 }

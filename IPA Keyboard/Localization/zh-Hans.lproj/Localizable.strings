@@ -77,6 +77,7 @@
 "localized-unlock-nonstandard-obsolete" = "解锁非官方/已废弃字符（包括舌尖元音）";
 "localized-unlock-custom" = "解锁自定义IPA键盘";
 "alert-coming-soon" = "敬请期待";
+"button-restore-purchases" = "恢复购买记录";
 
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "问题报告/提供建议";

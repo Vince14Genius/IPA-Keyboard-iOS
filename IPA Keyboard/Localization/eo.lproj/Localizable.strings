@@ -77,6 +77,7 @@
 "localized-unlock-nonstandard-obsolete" = "Malŝlosi Malvalidajn/Malaktualajn Simbolojn";
 "localized-unlock-custom" = "Malŝlosi Custom IPA Keyboard";
 "alert-coming-soon" = "Venos baldaŭ";
+"button-restore-purchases" = "Restarigi aĉetojn";
 
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "Cimo-Raporti / Retrosciigi";

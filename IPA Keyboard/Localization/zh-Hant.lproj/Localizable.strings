@@ -77,6 +77,7 @@
 "localized-unlock-nonstandard-obsolete" = "解鎖非正規/已廢棄字符";
 "localized-unlock-custom" = "解鎖自定義IPA鍵盤";
 "alert-coming-soon" = "敬請期待";
+"button-restore-purchases" = "恢復購買記錄";
 
 /* Settings - Bug Report / Feedback */
 "localized-button-bugreport" = "問題報告/提供建議";
