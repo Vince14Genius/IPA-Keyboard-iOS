@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 @main
 struct IPAKeyboardApp: App {
@@ -17,6 +18,9 @@ struct IPAKeyboardApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .onAppear {
+                    SKPaymentQueue.default().add(StoreManager.instance)
+                }
         }
     }
 }

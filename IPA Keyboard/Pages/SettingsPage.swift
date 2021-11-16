@@ -19,6 +19,9 @@ struct SettingsPageWrapped: View {
 }
 
 struct SettingsInnerPage: View {
+    
+    @StateObject var storeManager = StoreManager.instance
+    
     // On-off switches: advanced features
     @AppStorage(SettingsKey.isMovableCursorEnabled, store: appGroupStorage) private var isMovableCursorOn = false
     
@@ -49,9 +52,12 @@ struct SettingsInnerPage: View {
                     if isNonstandardCharsKeyboardUnlocked {
                         Toggle(Localized.keyboardNonstandard, isOn: $isNonstandardCharsKeyboardOn)
                     } else {
-                        Button(Localized.unlockNonstandard) {
-                            showingComingSoonAlert = true
-                        }
+                        HorizontalIAPButton(
+                            localizedKey: Localized.unlockNonstandard,
+                            productIdentifier: InAppPurchases.unlockObsoleteNonstandard,
+                            storeManager: storeManager
+                        )
+                            .disabled(true)
                     }
                 }
             }
@@ -61,17 +67,14 @@ struct SettingsInnerPage: View {
                         Toggle(Localized.keyboardCustom, isOn: $isCustomIPAKeyboardOn)
                         NavigationLink(Localized.linkCustomize, destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
                     } else {
-                        Button(Localized.unlockCustom) {
-                            showingComingSoonAlert = true
-                        }
+                        HorizontalIAPButton(
+                            localizedKey: Localized.unlockCustom,
+                            productIdentifier: InAppPurchases.unlockCustomKeyboard,
+                            storeManager: storeManager
+                        )
+                            .disabled(true)
                     }
                 }
-            }
-            Section() {
-                Button(Localized.restorePurchases) {
-                    
-                }
-                .disabled(true)
             }
             Section() {
                 Toggle(Localized.keyboardRecents, isOn: $isRecentsOn)
@@ -86,6 +89,17 @@ struct SettingsInnerPage: View {
             Alert(title: Text(Localized.alertComingSoon), message: nil, dismissButton: .default(Text(Localized.alertDismiss)))
         })
         .navigationBarTitle(Localized.titleSettings)
+        .toolbar {
+            Button(Localized.restorePurchases) {
+                storeManager.restoreProducts()
+            }
+        }
+        .onAppear {
+            storeManager.getProducts(productIDs: [
+                InAppPurchases.unlockCustomKeyboard,
+                InAppPurchases.unlockObsoleteNonstandard,
+            ])
+        }
     }
 }
 

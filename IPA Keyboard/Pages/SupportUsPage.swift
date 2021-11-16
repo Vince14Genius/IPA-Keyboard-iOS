@@ -55,7 +55,8 @@ struct SupportUsInnerPage: View {
 }
 
 struct SupportUsVStack: View {
-    let isDrinkIAPDisabled = true
+    
+    @StateObject var storeManager = StoreManager.instance
     
     @Binding var isLinkCopiedBannerVisible: Bool
     
@@ -67,14 +68,16 @@ struct SupportUsVStack: View {
                     .font(.title2)
                 Text(Localized.supportUsDonateSubtitle)
                     .foregroundColor(.secondary)
-                Button(Localized.supportUsDonateBuyDrink) {
-                    
-                }
-                .disabled(true)
-                Button(Localized.supportUsDonateBuyMeal) {
-                    
-                }
-                .disabled(true)
+                HorizontalIAPButton(
+                    localizedKey: Localized.supportUsDonateBuyDrink,
+                    productIdentifier: InAppPurchases.donationSmallDrink,
+                    storeManager: StoreManager.instance
+                )
+                HorizontalIAPButton(
+                    localizedKey: Localized.supportUsDonateBuyMeal,
+                    productIdentifier: InAppPurchases.donationLargeMeal,
+                    storeManager: StoreManager.instance
+                )
             }
             Divider()
                 .padding(.top, 8.0)
@@ -137,6 +140,12 @@ struct SupportUsVStack: View {
             Spacer()
         }
         .buttonStyle(SupportUsButtonStyle())
+        .onAppear {
+            storeManager.getProducts(productIDs: [
+                InAppPurchases.donationLargeMeal,
+                InAppPurchases.donationSmallDrink,
+            ])
+        }
     }
 }
 

@@ -107,21 +107,13 @@ enum Localized {
 }
 
 enum InAppPurchases {
-    private static let baseBundleIdentifier = "com.Vince14Genius.IPA-Keyboard-iOS"
-    private static func fullId(_ shortId: String) -> String {
-        "\(Self.baseBundleIdentifier).\(shortId)"
-    }
+    static let donationSmallDrink = "donation_small_drink"
+    static let donationLargeMeal = "donation_large_meal"
+    static let unlockCustomKeyboard = "unlock_custom_ipa_keyboard"
+    static let unlockObsoleteNonstandard = "unlock_obsolete_nonstandard_symbols"
     
-    static var donationSmallDrink: String {
-        fullId("donation_small_drink")
-    }
-    static var donationLargeMeal: String {
-        fullId("donation_large_meal")
-    }
-    static var unlockCustomKeyboard: String {
-        fullId("unlock_custom_ipa_keyboard")
-    }
-    static var unlockObsoleteNonstandard: String {
-        fullId("unlock_obsolete_nonstandard_symbols")
-    }
+    static let productIdToStorageKey = [
+        Self.unlockCustomKeyboard: SettingsKey.isCustomKeyboardUnlocked,
+        Self.unlockObsoleteNonstandard: SettingsKey.isNonstandardUnlocked,
+    ]
 }
