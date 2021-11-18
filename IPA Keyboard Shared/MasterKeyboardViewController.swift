@@ -131,14 +131,16 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
             self.nextKeyboardButton.sizeToFit()
             self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
             
-            self.nextKeyboardButton.layer.cornerRadius = 4
             self.nextKeyboardButton.backgroundColor = .clearInteractable
                 
             self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents)
             
-            self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
-            self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -14).isActive = true
-            self.bottomRow.view.leadingAnchor.constraint(equalTo: self.nextKeyboardButton.trailingAnchor, constant: 12).isActive = true
+            let nextKeyboardButtonHorizontalInset: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 18 : 12
+            self.nextKeyboardButton.contentEdgeInsets = UIEdgeInsets(top: 12, left: nextKeyboardButtonHorizontalInset, bottom: 12, right: nextKeyboardButtonHorizontalInset)
+            
+            self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            self.nextKeyboardButton.centerYAnchor.constraint(equalTo: self.bottomRow.view.centerYAnchor).isActive = true
+            self.bottomRow.view.leadingAnchor.constraint(equalTo: self.nextKeyboardButton.trailingAnchor).isActive = true
         } else {
             self.bottomRow.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         }
