@@ -49,6 +49,7 @@
 "support-us-donate-subtitle" = "このIPAキーボードはこれからもみんなに無料で提供し続けますので、寄贈していただけると大変助かります。";
 "support-us-donate-buy-drink" = "🧋 飲み物をおごってあげる";
 "support-us-donate-buy-meal" = "🍱 食事代をおごってあげる";
+"support-us-donate-total-count: %lld" = "%lld回ご寄贈いただき、誠にありがとうございました！";
 
 /* Support Us - Rate the app if you haven't */
 "support-us-rate-title" = "評価もお願い致します";

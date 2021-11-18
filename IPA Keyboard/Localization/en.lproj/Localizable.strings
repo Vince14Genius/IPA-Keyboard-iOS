@@ -49,6 +49,7 @@
 "support-us-donate-subtitle" = "Contribute to our effort to keep this IPA keyboard completely free!";
 "support-us-donate-buy-drink" = "🥤 Buy me a drink";
 "support-us-donate-buy-meal" = "🥙 Buy me a meal";
+"support-us-donate-total-count: %lld" = "Thank you for donating %lld times!";
 
 /* Support Us - Rate the app if you haven't */
 "support-us-rate-title" = "Rate the app if you haven't";

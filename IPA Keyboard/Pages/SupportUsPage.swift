@@ -68,6 +68,7 @@ struct SupportUsVStack: View {
                     .font(.title2)
                 Text(Localized.supportUsDonateSubtitle)
                     .foregroundColor(.secondary)
+                    .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
                 HorizontalIAPButton(
                     localizedKey: Localized.supportUsDonateBuyDrink,
                     productIdentifier: InAppPurchases.donationSmallDrink,
@@ -78,6 +79,12 @@ struct SupportUsVStack: View {
                     productIdentifier: InAppPurchases.donationLargeMeal,
                     storeManager: StoreManager.instance
                 )
+                if let drinkCount = appGroupStorage?.integer(forKey: SupportUsKey.timesDonatedSmallDrink),
+                   let mealCount = appGroupStorage?.integer(forKey: SupportUsKey.timesDonatedLargeMeal), drinkCount + mealCount > 0 {
+                    Text(Localized.supportUsDonateTotalCount(drinkCount + mealCount))
+                        .foregroundColor(.secondary)
+                        .fontWeight(.semibold)
+                }
             }
             Divider()
                 .padding(.top, 8.0)

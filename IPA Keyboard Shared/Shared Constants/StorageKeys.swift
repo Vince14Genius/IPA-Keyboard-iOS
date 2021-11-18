@@ -13,7 +13,7 @@ enum LocalStorage {
         guard let userDefaults = UserDefaults(suiteName: SharedIdentifiers.appGroup) else {
             fatalError("Unable to retrieve UserDefaults/AppStorage.")
         }
-        userDefaults.register(defaults: settingsDefaultValues)
+        userDefaults.register(defaults: defaultValues)
     }
     
     static func getBool(for key: String) -> Bool {
@@ -45,7 +45,12 @@ enum SettingsKey {
     static let isMovableCursorEnabled = "isMovableCursorEnabled"
 }
 
-let settingsDefaultValues: [String: Any] = [
+enum SupportUsKey {
+    static let timesDonatedSmallDrink = "timesDonatedSmallDrink"
+    static let timesDonatedLargeMeal = "timesDonatedLargeMeal"
+}
+
+fileprivate let defaultValues: [String: Any] = [
     SettingsKey.isIPAEnabled: true,
     SettingsKey.isExtIPAEnabled: false,
     
@@ -60,4 +65,7 @@ let settingsDefaultValues: [String: Any] = [
     SettingsKey.isRecentsEnabled: false, // TODO: set value to true once implemented
     
     SettingsKey.isMovableCursorEnabled: false,
+    
+    SupportUsKey.timesDonatedSmallDrink: 0,
+    SupportUsKey.timesDonatedLargeMeal: 0,
 ]

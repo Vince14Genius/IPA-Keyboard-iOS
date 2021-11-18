@@ -49,6 +49,7 @@
 "support-us-donate-subtitle" = "本IPA鍵盤堅持向大家免費提供，歡迎支持免費軟體的各位捐款資助！";
 "support-us-donate-buy-drink" = "🧋 幫我買杯飲料";
 "support-us-donate-buy-meal" = "🍜 給開發者投食";
+"support-us-donate-total-count: %lld" = "非常感謝捐贈%lld次！";
 
 /* Support Us - Rate the app if you haven't */
 "support-us-rate-title" = "歡迎評價！歡迎任何好評、意見、以及建議";

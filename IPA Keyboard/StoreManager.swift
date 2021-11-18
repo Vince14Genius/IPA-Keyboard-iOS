@@ -71,11 +71,11 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
             case .purchasing:
                 transactionState = .purchasing
             case .purchased:
-                handleNonconsumablePurchaseSuccess(transaction: transaction)
+                handlePurchaseSuccess(transaction: transaction)
                 queue.finishTransaction(transaction)
                 transactionState = .purchased
             case .restored:
-                handleNonconsumablePurchaseSuccess(transaction: transaction)
+                handlePurchaseSuccess(transaction: transaction)
                 queue.finishTransaction(transaction)
                 transactionState = .restored
             case .failed, .deferred:
@@ -90,10 +90,15 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
 }
 
 fileprivate extension StoreManager {
-    func handleNonconsumablePurchaseSuccess(transaction: SKPaymentTransaction) {
-        if let storageKey = InAppPurchases.productIdToStorageKey[transaction.payment.productIdentifier] {
+    func handlePurchaseSuccess(transaction: SKPaymentTransaction) {
+        if let storageKey = InAppPurchases.nonconsumableProductIdToStorageKey[transaction.payment.productIdentifier] {
+            // Nonconsumable Products
             appGroupStorage?.set(true, forKey: storageKey)
             print("Did set \(storageKey)")
+        } else if let storageKey = InAppPurchases.simpleIncrementProductIdToStorageKey[transaction.payment.productIdentifier] {
+            // Consumable products that are simple +1 increments
+            let oldValue = appGroupStorage?.integer(forKey: storageKey) ?? 0
+            appGroupStorage?.set(oldValue + 1, forKey: storageKey)
         } else {
             print("Purchase did not require updating UserDefaults")
         }

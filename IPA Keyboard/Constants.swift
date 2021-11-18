@@ -68,6 +68,9 @@ enum Localized {
     static let supportUsDonateSubtitle: LocalizedStringKey = "support-us-donate-subtitle"
     static let supportUsDonateBuyDrink: LocalizedStringKey = "support-us-donate-buy-drink"
     static let supportUsDonateBuyMeal: LocalizedStringKey = "support-us-donate-buy-meal"
+    static func supportUsDonateTotalCount(_ count: Int) -> LocalizedStringKey {
+        "support-us-donate-total-count: \(count, specifier: "%lld")"
+    }
 
     /* Support Us - Rate the app if you haven't */
     static let supportUsRateTitle: LocalizedStringKey = "support-us-rate-title"
@@ -112,8 +115,19 @@ enum InAppPurchases {
     static let unlockCustomKeyboard = "unlock_custom_ipa_keyboard"
     static let unlockObsoleteNonstandard = "unlock_obsolete_nonstandard_symbols"
     
-    static let productIdToStorageKey = [
+    /**
+     Holds product ID to storage key pairs for nonconsumable IAP items
+     */
+    static let nonconsumableProductIdToStorageKey = [
         Self.unlockCustomKeyboard: SettingsKey.isCustomKeyboardUnlocked,
         Self.unlockObsoleteNonstandard: SettingsKey.isNonstandardUnlocked,
+    ]
+    
+    /**
+     Holds product ID to storage key pairs for consumable IAP items that use simple +1 increments
+     */
+    static let simpleIncrementProductIdToStorageKey = [
+        Self.donationSmallDrink: SupportUsKey.timesDonatedSmallDrink,
+        Self.donationLargeMeal: SupportUsKey.timesDonatedLargeMeal,
     ]
 }

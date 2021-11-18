@@ -45,10 +45,11 @@
 "keyboardtest.textfield.placeholder" = "Vi povas provi ĉi tie post aldoni.";
 
 /* Support Us - Donate to the developer */
-"support-us-donate-title" = "Donate to the developer";
+"support-us-donate-title" = "Donaci al la programisto";
 "support-us-donate-subtitle" = "Contribute to our effort to keep this IPA keyboard completely free!";
 "support-us-donate-buy-drink" = "🥤 Aĉeti trinkaĵon por mi";
 "support-us-donate-buy-meal" = "🥙 Aĉeti manĝon por mi";
+"support-us-donate-total-count: %lld" = "Koran dankon por donaci %lld fojojn!";
 
 /* Support Us - Rate the app if you haven't */
 "support-us-rate-title" = "Rate the app if you haven't";
