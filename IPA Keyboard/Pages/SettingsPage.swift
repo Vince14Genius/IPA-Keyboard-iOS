@@ -55,9 +55,9 @@ struct SettingsInnerPage: View {
                         HorizontalIAPButton(
                             localizedKey: Localized.unlockNonstandard,
                             productIdentifier: InAppPurchases.unlockObsoleteNonstandard,
-                            storeManager: storeManager
+                            storeManager: storeManager,
+                            disabledLabel: Localized.alertComingSoon
                         )
-                            .disabled(true)
                     }
                 }
             }
@@ -70,9 +70,9 @@ struct SettingsInnerPage: View {
                         HorizontalIAPButton(
                             localizedKey: Localized.unlockCustom,
                             productIdentifier: InAppPurchases.unlockCustomKeyboard,
-                            storeManager: storeManager
+                            storeManager: storeManager,
+                            disabledLabel: Localized.alertComingSoon
                         )
-                            .disabled(true)
                     }
                 }
             }
