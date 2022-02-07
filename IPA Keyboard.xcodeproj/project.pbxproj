@@ -738,7 +738,7 @@
 				CODE_SIGN_ENTITLEMENTS = "IPA Keyboard/IPA Keyboard.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S5LH6VYMA5;
 				INFOPLIST_FILE = "IPA Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -763,7 +763,7 @@
 				CODE_SIGN_ENTITLEMENTS = "IPA Keyboard/IPA Keyboard.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S5LH6VYMA5;
 				INFOPLIST_FILE = "IPA Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -785,7 +785,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IPA Keyboard Extension/IPA Keyboard Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S5LH6VYMA5;
 				INFOPLIST_FILE = "IPA Keyboard Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -808,7 +808,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IPA Keyboard Extension/IPA Keyboard Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S5LH6VYMA5;
 				INFOPLIST_FILE = "IPA Keyboard Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
