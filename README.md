@@ -1,8 +1,6 @@
 # IPA-Keyboard-iOS
 
-**[NEW]** Version 1.1 build 2 is available for beta testing on TestFlight. [Join the beta test](https://testflight.apple.com/join/lPas1HHg)
-
-Update 1.0.1 is available on the App Store
+[NEW] Update 1.1.1 is available on the App Store
 
 An iOS keyboard for typing symbols in the International Phonetic Alphabet. 
 
