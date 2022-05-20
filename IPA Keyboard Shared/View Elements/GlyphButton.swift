@@ -33,7 +33,9 @@ struct GlyphButton_Previews: PreviewProvider {
         HStack {
             Spacer()
             GlyphButton(label: Text("x"), isSelected: true) {}
+            Spacer()
             GlyphButton(label: Text("x"), isSelected: false) {}
+            Spacer()
         }
         .padding([.leading, .trailing], 6)
         .background(Color(.secondarySystemBackground))

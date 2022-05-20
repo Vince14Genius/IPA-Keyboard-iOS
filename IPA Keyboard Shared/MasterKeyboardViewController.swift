@@ -65,7 +65,7 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: - Perform custom UI setup here
+        // MARK: - Set up hosting controllers
         
         func addHostingController<T>(_ controllerToAdd: UIHostingController<T>) {
             view.addSubview(controllerToAdd.view)
@@ -83,22 +83,26 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         // MARK: - Set up the collection view
         
+        // setup flow layout
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionHeadersPinToVisibleBounds = true
         
+        // make UICollectionView
         keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
+        view.addSubview(keyCollection)
+        keyCollection.translatesAutoresizingMaskIntoConstraints = false
+        
+        // UICollectionView settings
         keyCollection.backgroundColor = .clearInteractable
+        keyCollection.isDirectionalLockEnabled = false
+        keyCollection.isPrefetchingEnabled = true
+        
+        // register reusable views
         keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
         
-        keyCollection.isDirectionalLockEnabled = false
-        keyCollection.isPrefetchingEnabled = true // this doesn't fix the scroll update delay problem
-        
-        view.addSubview(keyCollection)
-        
-        keyCollection.translatesAutoresizingMaskIntoConstraints = false
-        
+        // calculate height constraint
         let insetsTotalHeight = topInset + bottomInset
         let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
         let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * minimumInteritemSpacing

@@ -23,31 +23,30 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(button)
-        button.sizeToFit()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
         button.backgroundColor = .clearInteractable
         
-        button.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        
         let hostingController = UIHostingController(rootView: KeyButtonView(delegate: delegate))
-        
-        contentView.addSubview(hostingController.view)
-        
-        hostingController.view.sizeToFit()
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        hostingController.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        hostingController.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        hostingController.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        hostingController.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        
         hostingController.view.backgroundColor = .clear
         hostingController.view.isUserInteractionEnabled = false
+        
+        func setupView(_ view: UIView) {
+            contentView.addSubview(view)
+            contentView.sizeToFit()
+            contentView.translatesAutoresizingMaskIntoConstraints = false
+            
+            Constraints.applyEqual(pairs: [
+                (contentView.topAnchor, view.topAnchor),
+                (contentView.bottomAnchor, view.bottomAnchor),
+            ])
+            
+            Constraints.applyEqual(pairs: [
+                (contentView.leadingAnchor, view.leadingAnchor),
+                (contentView.trailingAnchor, view.trailingAnchor),
+            ])
+        }
+        
+        setupView(button)
+        setupView(hostingController.view)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,6 +55,10 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
     
     // MARK: - Methods
     
+    /**
+    - returns: `true` if initialize action successful, `false` if this method has ever been run on this
+     instance of `KeyButtonCell` previously
+     */
     func requestToInitializeAction() -> Bool {
         let returnValue = !didInitializeAction
         didInitializeAction = true
@@ -64,9 +67,7 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
     
     // Protocol methods
     
-    var enableInputClicksWhenVisible: Bool {
-        get { return true }
-    }
+    var enableInputClicksWhenVisible: Bool { true }
     
     override func prepareForReuse() {
         super.prepareForReuse()
