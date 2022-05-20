@@ -61,6 +61,12 @@
 		4EAFA35826EABD1A00344131 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFA35726EABD1A00344131 /* StorageKeys.swift */; };
 		4EAFA35926EABD7500344131 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFA35726EABD1A00344131 /* StorageKeys.swift */; };
 		4EAFA35B26EADBDE00344131 /* ToolbarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */; };
+		4EB2E6E42836E2E90048C926 /* InputSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6E32836E2E90048C926 /* InputSwitchButton.swift */; };
+		4EB2E6E52836E2E90048C926 /* InputSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6E32836E2E90048C926 /* InputSwitchButton.swift */; };
+		4EB2E6E72836E32A0048C926 /* UIKitComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6E62836E32A0048C926 /* UIKitComponents.swift */; };
+		4EB2E6E82836E32A0048C926 /* UIKitComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6E62836E32A0048C926 /* UIKitComponents.swift */; };
+		4EB2E6EE28372F420048C926 /* UIKitHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */; };
+		4EB2E6EF28372F420048C926 /* UIKitHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */; };
 		4EB754C726F4310300B34608 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1A121452AF00078AC4B /* SectionHeader.swift */; };
 		4EB754C826F4310300B34608 /* KeyButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */; };
 		4EB754CA26F526B300B34608 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754C926F526B300B34608 /* ColorConstants.swift */; };
@@ -163,6 +169,9 @@
 		4EAFA35626E5B75E00344131 /* IPA Keyboard Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "IPA Keyboard Extension.entitlements"; sourceTree = "<group>"; };
 		4EAFA35726EABD1A00344131 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarRow.swift; sourceTree = "<group>"; };
+		4EB2E6E32836E2E90048C926 /* InputSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSwitchButton.swift; sourceTree = "<group>"; };
+		4EB2E6E62836E32A0048C926 /* UIKitComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitComponents.swift; sourceTree = "<group>"; };
+		4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitHelperFunctions.swift; sourceTree = "<group>"; };
 		4EB754C926F526B300B34608 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedKeyOverlay.swift; sourceTree = "<group>"; };
 		4ED8A73226A11C29001015B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -269,6 +278,8 @@
 			isa = PBXGroup;
 			children = (
 				4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */,
+				4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */,
+				4EB2E6DF2836DDFA0048C926 /* UIKit Components */,
 				4E5D175026EAE8FC003B5C5B /* View Elements */,
 				4E48DABE26F31A3000F88CD9 /* Keyboard Components */,
 				4E5D174F26EAE8DF003B5C5B /* UIKit Wrappers */,
@@ -373,6 +384,15 @@
 				4EAFA35426E241A400344131 /* StoreKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4EB2E6DF2836DDFA0048C926 /* UIKit Components */ = {
+			isa = PBXGroup;
+			children = (
+				4EB2E6E62836E32A0048C926 /* UIKitComponents.swift */,
+				4EB2E6E32836E2E90048C926 /* InputSwitchButton.swift */,
+			);
+			path = "UIKit Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,6 +513,7 @@
 				4E0B7427269C21840066345B /* GettingStartedPage.swift in Sources */,
 				4E34B55C26F3F64600323D23 /* VisualEffectView.swift in Sources */,
 				4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */,
+				4EB2E6E42836E2E90048C926 /* InputSwitchButton.swift in Sources */,
 				4E34B56626F3FB8B00323D23 /* UIInputViewController+.swift in Sources */,
 				4E0B742B269C2A4A0066345B /* SupportUsPage.swift in Sources */,
 				4E34B56326F3FB8B00323D23 /* ToolbarRow.swift in Sources */,
@@ -506,11 +527,13 @@
 				4E34B56026F3FB8B00323D23 /* BottomRow.swift in Sources */,
 				4E14C380261E8624001AE827 /* IPAKeyboardApp.swift in Sources */,
 				4E14C3BD261EAD6F001AE827 /* BlueButtonStyle.swift in Sources */,
+				4EB2E6E72836E32A0048C926 /* UIKitComponents.swift in Sources */,
 				4EB754CA26F526B300B34608 /* ColorConstants.swift in Sources */,
 				4E4D98FA2742FAE2001E701B /* StoreManager.swift in Sources */,
 				4EB754CD26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */,
 				4EB754C826F4310300B34608 /* KeyButtonCell.swift in Sources */,
 				4E5D175B26EAED83003B5C5B /* SystemSounds.swift in Sources */,
+				4EB2E6EE28372F420048C926 /* UIKitHelperFunctions.swift in Sources */,
 				4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */,
 				4E4030F4269FE0530081E3FD /* View+makeStackNavigationPage.swift in Sources */,
 				4E0B7424269BD5380066345B /* InstructionsListItem.swift in Sources */,
@@ -525,9 +548,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EB2E6E52836E2E90048C926 /* InputSwitchButton.swift in Sources */,
 				4E5D175326EAE916003B5C5B /* ToolbarButtonStyles.swift in Sources */,
 				4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */,
 				4E34B55826F3F62E00323D23 /* KeyButtonView.swift in Sources */,
+				4EB2E6EF28372F420048C926 /* UIKitHelperFunctions.swift in Sources */,
 				4E34B55926F3F63600323D23 /* ExpandedKeyBezierPath.swift in Sources */,
 				4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */,
 				4EB754CB26F526B300B34608 /* ColorConstants.swift in Sources */,
@@ -541,6 +566,7 @@
 				4EAFA35B26EADBDE00344131 /* ToolbarRow.swift in Sources */,
 				4E408CE927110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
 				4E6755F922EA0F0E00DA88BB /* GlobalSymbols.swift in Sources */,
+				4EB2E6E82836E32A0048C926 /* UIKitComponents.swift in Sources */,
 				4E5D174E26EAE8B8003B5C5B /* UIInputViewController+.swift in Sources */,
 				4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */,
 				4E48DAC826F3ED6900F88CD9 /* VisualEffectView.swift in Sources */,
@@ -746,7 +772,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -771,7 +797,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -794,7 +820,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS.IPA-Keyboard-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -817,7 +843,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-Keyboard-iOS.IPA-Keyboard-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

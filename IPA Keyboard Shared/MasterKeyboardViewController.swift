@@ -81,15 +81,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         self.bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: self.bottomBarDataSource))
         addHostingController(self.bottomRow)
         
-        // MARK: - Set up constraints
-        
-        self.toolbarRow.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        self.toolbarRow.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.toolbarRow.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        
-        self.bottomRow.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.bottomRow.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
         // MARK: - Set up the collection view
         
         let flowLayout = UICollectionViewFlowLayout()
@@ -107,10 +98,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         self.view.addSubview(self.keyCollection)
         
         self.keyCollection.translatesAutoresizingMaskIntoConstraints = false
-        self.keyCollection.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        self.keyCollection.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.keyCollection.topAnchor.constraint(equalTo: toolbarRow.view.bottomAnchor).isActive = true
-        self.keyCollection.bottomAnchor.constraint(equalTo: bottomRow.view.topAnchor).isActive = true
         
         let insetsTotalHeight = topInset + bottomInset
         let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
@@ -118,33 +105,41 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         let keyCollectionHeight = insetsTotalHeight + cellTotalHeight + spacingTotalHeight
         self.keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
         
+        // MARK: - Set up constraints
+        
+        Constraints.applyEqual(pairs: [
+            (self.toolbarRow.view.leadingAnchor, self.view.leadingAnchor),
+            (self.toolbarRow.view.trailingAnchor, self.view.trailingAnchor),
+            (self.bottomRow.view.trailingAnchor, self.view.trailingAnchor),
+            (self.keyCollection.leadingAnchor, self.view.leadingAnchor),
+            (self.keyCollection.trailingAnchor, self.view.trailingAnchor),
+        ])
+        
+        Constraints.applyEqual(pairs: [
+            (self.toolbarRow.view.topAnchor, self.view.topAnchor),
+            (self.bottomRow.view.bottomAnchor, self.view.bottomAnchor),
+            (self.keyCollection.topAnchor, self.toolbarRow.view.bottomAnchor),
+            (self.keyCollection.bottomAnchor, self.bottomRow.view.topAnchor),
+        ])
+        
         // MARK: - Set up input mode switch button if needed
         
         let actuallyNeedsInputModeSwitchKey = self.needsInputModeSwitchKey || UIDevice.current.userInterfaceIdiom != .phone
         
         if actuallyNeedsInputModeSwitchKey {
-            self.nextKeyboardButton = UIButton(type: .system)
-            
+            self.nextKeyboardButton = UIKitComponents.inputSwitchButton()
             self.view.addSubview(self.nextKeyboardButton)
-            
-            self.nextKeyboardButton.setImage(UIImage(systemName: "globe"), for: [])
-            self.nextKeyboardButton.tintColor = .label
-            
-            self.nextKeyboardButton.sizeToFit()
-            self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-            
-            self.nextKeyboardButton.backgroundColor = .clearInteractable
                 
-            self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents)
+            self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
             
-            let nextKeyboardButtonHorizontalInset: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 18 : 12
-            self.nextKeyboardButton.contentEdgeInsets = UIEdgeInsets(top: 12, left: nextKeyboardButtonHorizontalInset, bottom: 12, right: nextKeyboardButtonHorizontalInset)
+            Constraints.applyEqual(pairs: [
+                (self.nextKeyboardButton.leadingAnchor, self.view.leadingAnchor),
+                (self.bottomRow.view.leadingAnchor, self.nextKeyboardButton.trailingAnchor),
+            ])
             
-            self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-            self.nextKeyboardButton.centerYAnchor.constraint(equalTo: self.bottomRow.view.centerYAnchor).isActive = true
-            self.bottomRow.view.leadingAnchor.constraint(equalTo: self.nextKeyboardButton.trailingAnchor).isActive = true
+            Constraints.applyEqual(self.nextKeyboardButton.centerYAnchor, self.bottomRow.view.centerYAnchor)
         } else {
-            self.bottomRow.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            Constraints.applyEqual(self.bottomRow.view.leadingAnchor, self.view.leadingAnchor)
         }
         
         // MARK: - Set up the expanded key overlay
