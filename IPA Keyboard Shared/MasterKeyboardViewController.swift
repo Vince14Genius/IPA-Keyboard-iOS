@@ -68,18 +68,18 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         // MARK: - Perform custom UI setup here
         
         func addHostingController<T>(_ controllerToAdd: UIHostingController<T>) {
-            self.view.addSubview(controllerToAdd.view)
-            self.addChild(controllerToAdd)
+            view.addSubview(controllerToAdd.view)
+            addChild(controllerToAdd)
             controllerToAdd.view.backgroundColor = .clear
             controllerToAdd.view.sizeToFit()
             controllerToAdd.view.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        self.toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
-        addHostingController(self.toolbarRow)
+        toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
+        addHostingController(toolbarRow)
         
-        self.bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: self.bottomBarDataSource))
-        addHostingController(self.bottomRow)
+        bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: bottomBarDataSource))
+        addHostingController(bottomRow)
         
         // MARK: - Set up the collection view
         
@@ -87,65 +87,65 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionHeadersPinToVisibleBounds = true
         
-        self.keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
-        self.keyCollection.backgroundColor = .clearInteractable
-        self.keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: self.reuseIdentifier)
-        self.keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.reuseIdentifier)
+        keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
+        keyCollection.backgroundColor = .clearInteractable
+        keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
         
-        self.keyCollection.isDirectionalLockEnabled = false
-        self.keyCollection.isPrefetchingEnabled = true // this doesn't fix the scroll update delay problem
+        keyCollection.isDirectionalLockEnabled = false
+        keyCollection.isPrefetchingEnabled = true // this doesn't fix the scroll update delay problem
         
-        self.view.addSubview(self.keyCollection)
+        view.addSubview(keyCollection)
         
-        self.keyCollection.translatesAutoresizingMaskIntoConstraints = false
+        keyCollection.translatesAutoresizingMaskIntoConstraints = false
         
         let insetsTotalHeight = topInset + bottomInset
         let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
         let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * minimumInteritemSpacing
         let keyCollectionHeight = insetsTotalHeight + cellTotalHeight + spacingTotalHeight
-        self.keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
+        keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
         
         // MARK: - Set up constraints
         
         Constraints.applyEqual(pairs: [
-            (self.toolbarRow.view.leadingAnchor, self.view.leadingAnchor),
-            (self.toolbarRow.view.trailingAnchor, self.view.trailingAnchor),
-            (self.bottomRow.view.trailingAnchor, self.view.trailingAnchor),
-            (self.keyCollection.leadingAnchor, self.view.leadingAnchor),
-            (self.keyCollection.trailingAnchor, self.view.trailingAnchor),
+            (toolbarRow.view.leadingAnchor, view.leadingAnchor),
+            (toolbarRow.view.trailingAnchor, view.trailingAnchor),
+            (bottomRow.view.trailingAnchor, view.trailingAnchor),
+            (keyCollection.leadingAnchor, view.leadingAnchor),
+            (keyCollection.trailingAnchor, view.trailingAnchor),
         ])
         
         Constraints.applyEqual(pairs: [
-            (self.toolbarRow.view.topAnchor, self.view.topAnchor),
-            (self.bottomRow.view.bottomAnchor, self.view.bottomAnchor),
-            (self.keyCollection.topAnchor, self.toolbarRow.view.bottomAnchor),
-            (self.keyCollection.bottomAnchor, self.bottomRow.view.topAnchor),
+            (toolbarRow.view.topAnchor, view.topAnchor),
+            (bottomRow.view.bottomAnchor, view.bottomAnchor),
+            (keyCollection.topAnchor, toolbarRow.view.bottomAnchor),
+            (keyCollection.bottomAnchor, bottomRow.view.topAnchor),
         ])
         
         // MARK: - Set up input mode switch button if needed
         
-        let actuallyNeedsInputModeSwitchKey = self.needsInputModeSwitchKey || UIDevice.current.userInterfaceIdiom != .phone
+        let actuallyNeedsInputModeSwitchKey = needsInputModeSwitchKey || UIDevice.current.userInterfaceIdiom != .phone
         
         if actuallyNeedsInputModeSwitchKey {
-            self.nextKeyboardButton = UIKitComponents.inputSwitchButton()
-            self.view.addSubview(self.nextKeyboardButton)
+            nextKeyboardButton = UIKitComponents.inputSwitchButton()
+            view.addSubview(nextKeyboardButton)
                 
-            self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
+            nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
             
             Constraints.applyEqual(pairs: [
-                (self.nextKeyboardButton.leadingAnchor, self.view.leadingAnchor),
-                (self.bottomRow.view.leadingAnchor, self.nextKeyboardButton.trailingAnchor),
+                (nextKeyboardButton.leadingAnchor, view.leadingAnchor),
+                (bottomRow.view.leadingAnchor, nextKeyboardButton.trailingAnchor),
             ])
             
-            Constraints.applyEqual(self.nextKeyboardButton.centerYAnchor, self.bottomRow.view.centerYAnchor)
+            Constraints.applyEqual(nextKeyboardButton.centerYAnchor, bottomRow.view.centerYAnchor)
         } else {
-            Constraints.applyEqual(self.bottomRow.view.leadingAnchor, self.view.leadingAnchor)
+            Constraints.applyEqual(bottomRow.view.leadingAnchor, view.leadingAnchor)
         }
         
         // MARK: - Set up the expanded key overlay
         
-        self.expandedKeyOverlay = ExpandedKeyOverlay()
-        self.view.addSubview(self.expandedKeyOverlay)
+        expandedKeyOverlay = ExpandedKeyOverlay()
+        view.addSubview(expandedKeyOverlay)
     }
     
     // MARK: - Other Boilerplate Code
@@ -176,9 +176,9 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
             keyButtonCell.delegate.isPressed = true
             
-            let originalRect = self.keyCollection.convert(keyButtonCell.frame, to: self.expandedKeyOverlay.superview)
+            let originalRect = keyCollection.convert(keyButtonCell.frame, to: expandedKeyOverlay.superview)
             
-            self.expandedKeyOverlay.show(
+            expandedKeyOverlay.show(
                 title: keyButtonCell.delegate.title,
                 frame: CGRect(x: originalRect.midX, y: originalRect.midY, width: originalRect.width, height: originalRect.height)
             )
@@ -189,9 +189,9 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     
     @objc func keyButtonRetract(from button: UIButton, with event: UIEvent) {
         if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { [weak self] _ in
                 keyButtonCell.delegate.isPressed = false
-                self.expandedKeyOverlay.hide()
+                self?.expandedKeyOverlay.hide()
             }
         } else {
             fatalError("Incorrect button setup.")

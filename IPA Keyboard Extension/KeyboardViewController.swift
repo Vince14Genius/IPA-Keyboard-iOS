@@ -15,8 +15,8 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.keyCollection.dataSource = self
-        self.keyCollection.delegate = self
+        keyCollection.dataSource = self
+        keyCollection.delegate = self
         LocalStorage.setDefaultValues()
         
         // Run IPASymbols consistency checks
@@ -32,8 +32,8 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
             glyphs.append(glyph)
         }
         
-        self.bottomBarDataSource.sectionGlyphs = glyphs
-        self.bottomBarDataSource.mainAction = { index in
+        bottomBarDataSource.sectionGlyphs = glyphs
+        bottomBarDataSource.mainAction = { index in
             self.scrollToSection(index: index)
         }
     }
@@ -41,7 +41,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     // MARK: - Helper Methods
 
     func updateBottomButtons() {
-        let visibleItems = self.keyCollection.indexPathsForVisibleItems.sorted {
+        let visibleItems = keyCollection.indexPathsForVisibleItems.sorted {
             return $0.section < $1.section
         }
         
@@ -75,21 +75,21 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         guard let text = (button.superview?.superview as? KeyButtonCell)?.delegate.title else {
             return
         }
-        self.textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
+        textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
     }
     
     func scrollToSection(index: Int) {
         let middleIndex = (getKeySet(section: index)?.count ?? 0) / 2
         
         // Calculate columns on screen
-        let visibleItemsCount = self.keyCollection.indexPathsForVisibleItems.count
+        let visibleItemsCount = keyCollection.indexPathsForVisibleItems.count
         
         if middleIndex > visibleItemsCount / 2 + cellsPerColumn {
             // big section
-            self.keyCollection.scrollToItem(at: [index, visibleItemsCount / 2 - cellsPerColumn], at: .centeredHorizontally, animated: true)
+            keyCollection.scrollToItem(at: [index, visibleItemsCount / 2 - cellsPerColumn], at: .centeredHorizontally, animated: true)
         } else {
             // small section
-            self.keyCollection.scrollToItem(at: [index, middleIndex], at: .centeredHorizontally, animated: true)
+            keyCollection.scrollToItem(at: [index, middleIndex], at: .centeredHorizontally, animated: true)
         }
     }
     
@@ -108,7 +108,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifier, for: indexPath) as! KeyButtonCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! KeyButtonCell
         let button = cell.button
         cell.delegate.title = getKeySet(section: indexPath.section)?[indexPath.item]
         
@@ -129,10 +129,10 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(
-            top: self.topInset,
+            top: topInset,
             left: leftInset(headerWidth: getHeaderWidth(section: section)),
-            bottom: self.bottomInset,
-            right: self.rightInset
+            bottom: bottomInset,
+            right: rightInset
         )
     }
     
@@ -147,17 +147,17 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let marginsAndInsets: CGFloat
         if #available(iOSApplicationExtension 11.0, *) {
-            marginsAndInsets = self.topInset + self.bottomInset + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(cellsPerColumn - 1)
+            marginsAndInsets = topInset + bottomInset + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(cellsPerColumn - 1)
         } else {
             // Fallback on earlier versions
-            marginsAndInsets = self.topInset + self.bottomInset + minimumInteritemSpacing * CGFloat(cellsPerColumn - 1)
+            marginsAndInsets = topInset + bottomInset + minimumInteritemSpacing * CGFloat(cellsPerColumn - 1)
         }
         let itemHeight = ((collectionView.bounds.size.height - marginsAndInsets) / CGFloat(cellsPerColumn)).rounded(.down)
         return CGSize(width: itemHeight, height: itemHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let element = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.reuseIdentifier, for: indexPath)
+        let element = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
         if let header = element as? SectionHeader {
             // Pass touches to the views underneath
             header.isUserInteractionEnabled = false
@@ -188,9 +188,9 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateBottomButtons()
-        self.expandedKeyOverlay.hide()
+        expandedKeyOverlay.hide()
         
-        for cell in self.keyCollection.visibleCells {
+        for cell in keyCollection.visibleCells {
             guard let buttonCell = cell as? KeyButtonCell else { continue }
             buttonCell.delegate.isPressed = false
         }

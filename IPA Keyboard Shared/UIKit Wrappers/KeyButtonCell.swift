@@ -23,28 +23,28 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.contentView.addSubview(button)
-        self.button.sizeToFit()
-        self.button.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(button)
+        button.sizeToFit()
+        button.translatesAutoresizingMaskIntoConstraints = false
         
-        self.button.backgroundColor = .clearInteractable
+        button.backgroundColor = .clearInteractable
         
-        self.button.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        self.button.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        self.button.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        self.button.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        button.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
-        let hostingController = UIHostingController(rootView: KeyButtonView(delegate: self.delegate))
+        let hostingController = UIHostingController(rootView: KeyButtonView(delegate: delegate))
         
-        self.contentView.addSubview(hostingController.view)
+        contentView.addSubview(hostingController.view)
         
         hostingController.view.sizeToFit()
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         
-        hostingController.view.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        hostingController.view.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        hostingController.view.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        hostingController.view.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        hostingController.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        hostingController.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        hostingController.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        hostingController.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
         hostingController.view.backgroundColor = .clear
         hostingController.view.isUserInteractionEnabled = false
