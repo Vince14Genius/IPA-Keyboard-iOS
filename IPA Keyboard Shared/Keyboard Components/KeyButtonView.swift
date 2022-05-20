@@ -29,7 +29,7 @@ struct KeyButtonView: View {
     var body: some View {
         if let titleText = delegate.title {
             Text(titleText)
-                .font(.system(size: GlobalSymbols.hasDottedCircle(titleText) ? complexKeyFontSize : defaultKeyFontSize))
+                .font(.system(size: Symbols.hasDottedCircle(titleText) ? complexKeyFontSize : defaultKeyFontSize))
                 .foregroundColor(Color(.label))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(colorScheme == .dark ? Color.darkModeKeyBackground : .white)

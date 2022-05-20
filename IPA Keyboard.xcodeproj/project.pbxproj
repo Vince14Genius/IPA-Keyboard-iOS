@@ -67,6 +67,8 @@
 		4EB2E6E82836E32A0048C926 /* UIKitComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6E62836E32A0048C926 /* UIKitComponents.swift */; };
 		4EB2E6EE28372F420048C926 /* UIKitHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */; };
 		4EB2E6EF28372F420048C926 /* UIKitHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */; };
+		4EB2E6F228373EAB0048C926 /* GlyphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6F128373EAB0048C926 /* GlyphButton.swift */; };
+		4EB2E6F328373EAB0048C926 /* GlyphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2E6F128373EAB0048C926 /* GlyphButton.swift */; };
 		4EB754C726F4310300B34608 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1A121452AF00078AC4B /* SectionHeader.swift */; };
 		4EB754C826F4310300B34608 /* KeyButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1B8214745CE0078AC4B /* KeyButtonCell.swift */; };
 		4EB754CA26F526B300B34608 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754C926F526B300B34608 /* ColorConstants.swift */; };
@@ -172,6 +174,7 @@
 		4EB2E6E32836E2E90048C926 /* InputSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSwitchButton.swift; sourceTree = "<group>"; };
 		4EB2E6E62836E32A0048C926 /* UIKitComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitComponents.swift; sourceTree = "<group>"; };
 		4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitHelperFunctions.swift; sourceTree = "<group>"; };
+		4EB2E6F128373EAB0048C926 /* GlyphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphButton.swift; sourceTree = "<group>"; };
 		4EB754C926F526B300B34608 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedKeyOverlay.swift; sourceTree = "<group>"; };
 		4ED8A73226A11C29001015B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 				4E5D174C26EAE8B8003B5C5B /* UIInputViewController+.swift */,
 				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
 				4E5D175126EAE916003B5C5B /* ToolbarButtonStyles.swift */,
+				4EB2E6F128373EAB0048C926 /* GlyphButton.swift */,
 				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
 				4E408CE727110E6700D52CE6 /* BottomRowDataSource.swift */,
 				4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */,
@@ -514,6 +518,7 @@
 				4E34B55C26F3F64600323D23 /* VisualEffectView.swift in Sources */,
 				4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */,
 				4EB2E6E42836E2E90048C926 /* InputSwitchButton.swift in Sources */,
+				4EB2E6F228373EAB0048C926 /* GlyphButton.swift in Sources */,
 				4E34B56626F3FB8B00323D23 /* UIInputViewController+.swift in Sources */,
 				4E0B742B269C2A4A0066345B /* SupportUsPage.swift in Sources */,
 				4E34B56326F3FB8B00323D23 /* ToolbarRow.swift in Sources */,
@@ -562,6 +567,7 @@
 				4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */,
 				4E84B18A2140E9980078AC4B /* KeyboardViewController.swift in Sources */,
 				4E84B1A221452AF00078AC4B /* SectionHeader.swift in Sources */,
+				4EB2E6F328373EAB0048C926 /* GlyphButton.swift in Sources */,
 				4EAFA35926EABD7500344131 /* StorageKeys.swift in Sources */,
 				4EAFA35B26EADBDE00344131 /* ToolbarRow.swift in Sources */,
 				4E408CE927110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,

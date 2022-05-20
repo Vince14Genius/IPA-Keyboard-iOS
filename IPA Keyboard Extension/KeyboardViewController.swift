@@ -75,7 +75,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         guard let text = (button.superview?.superview as? KeyButtonCell)?.delegate.title else {
             return
         }
-        textDocumentProxy.insertText(GlobalSymbols.removedDottedCircles(text))
+        textDocumentProxy.insertText(Symbols.removedDottedCircles(text))
     }
     
     func scrollToSection(index: Int) {

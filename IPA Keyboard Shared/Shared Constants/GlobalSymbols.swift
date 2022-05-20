@@ -1,5 +1,5 @@
 //
-//  GlobalSymbols.swift
+//  Symbols.swift
 //  IPA Keyboard
 //
 //  Created by Vincent C. on 2019/7/26.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GlobalSymbols {
+struct Symbols {
     
     static let squareBrackets = "[]"
     static let forwardSlashes = "//"
@@ -24,7 +24,7 @@ struct GlobalSymbols {
      - returns: whether the symbol has a dotted circle
      */
     static func hasDottedCircle(_ displaySymbol: String) -> Bool {
-        return displaySymbol.unicodeScalars.contains(GlobalSymbols.dottedCircleUnicodeScalar)
+        return displaySymbol.unicodeScalars.contains(Symbols.dottedCircleUnicodeScalar)
     }
     
     /**
@@ -32,7 +32,7 @@ struct GlobalSymbols {
     - returns: the original string, with all dotted circles removed
     */
     static func removedDottedCircles(_ originalString: String) -> String {
-        return String(originalString.unicodeScalars.filter { unicodeScalar in unicodeScalar != GlobalSymbols.dottedCircleUnicodeScalar })
+        return String(originalString.unicodeScalars.filter { unicodeScalar in unicodeScalar != Symbols.dottedCircleUnicodeScalar })
     }
     
 }
