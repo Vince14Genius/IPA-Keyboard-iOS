@@ -31,8 +31,8 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
         
         func setupView(_ view: UIView) {
             contentView.addSubview(view)
-            contentView.sizeToFit()
-            contentView.translatesAutoresizingMaskIntoConstraints = false
+            view.sizeToFit()
+            view.translatesAutoresizingMaskIntoConstraints = false
             
             Constraints.applyEqual(hPairs: [
                 (contentView.leadingAnchor, view.leadingAnchor),
