@@ -11,10 +11,13 @@ import SwiftUI
 
 class KeyboardViewController: MasterKeyboardViewController, UICollectionViewDataSource {
     
+    private var dataSource: KeyboardDataSource!
+    
     // MARK: - viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //dataSource = KeyboardDataSource(keyboardViewController: self)
         keyCollection.dataSource = self
         keyCollection.delegate = self
         LocalStorage.setDefaultValues()
@@ -34,48 +37,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         
         bottomBarDataSource.sectionGlyphs = glyphs
         bottomBarDataSource.mainAction = { index in
-            self.scrollToSection(index: index)
-        }
-    }
-    
-    // MARK: - Helper Methods
-
-    func updateBottomButtons() {
-        let visibleItems = keyCollection.indexPathsForVisibleItems.sorted {
-            return $0.section < $1.section
-        }
-        
-        let medianSectionIndex = visibleItems[visibleItems.count / 2].section
-        bottomBarDataSource.highlightedSectionIndex = medianSectionIndex
-    }
-    
-    func getKeySet(section: Int) -> [String?]? {
-        let largeDisplayKeySet = IPASymbols.sectionData[IPASymbols.enabledSections[section]]?.largeDisplayKeys
-        let defaultKeySet = IPASymbols.sectionData[IPASymbols.enabledSections[section]]?.regularDisplayKeys
-        return UIDevice.current.userInterfaceIdiom == .pad ? largeDisplayKeySet : defaultKeySet
-    }
-    
-    // MARK: - Button Actions
-
-    @objc func insertKeyButtonText(from button: UIButton, with event: UIEvent) {
-        guard let text = (button.superview?.superview as? KeyButtonCell)?.delegate.title else {
-            return
-        }
-        textDocumentProxy.insertText(Symbols.removedDottedCircles(text))
-    }
-    
-    func scrollToSection(index: Int) {
-        let middleIndex = (getKeySet(section: index)?.count ?? 0) / 2
-        
-        // Calculate columns on screen
-        let visibleItemsCount = keyCollection.indexPathsForVisibleItems.count
-        
-        if middleIndex > visibleItemsCount / 2 + Layout.cellsPerColumn {
-            // big section
-            keyCollection.scrollToItem(at: [index, visibleItemsCount / 2 - Layout.cellsPerColumn], at: .centeredHorizontally, animated: true)
-        } else {
-            // small section
-            keyCollection.scrollToItem(at: [index, middleIndex], at: .centeredHorizontally, animated: true)
+            self.scrollToSection(index: index, in: IPASymbols.self)
         }
     }
     
@@ -86,7 +48,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let numberOfItems = getKeySet(section: section)?.count {
+        if let numberOfItems = IPASymbols.getKeySet(section: section)?.count {
             return numberOfItems
         } else {
             fatalError("Section index overflow.")
@@ -94,9 +56,9 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! KeyButtonCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewConstants.reuseIdentifier, for: indexPath) as! KeyButtonCell
         let button = cell.button
-        cell.delegate.title = getKeySet(section: indexPath.section)?[indexPath.item]
+        cell.delegate.title = IPASymbols.getKeySet(section: indexPath.section)?[indexPath.item]
         
         if cell.requestToInitializeAction() {
             // Will only run if targets have not been added
@@ -137,7 +99,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let element = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let element = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewConstants.reuseIdentifier, for: indexPath)
         if let header = element as? SectionHeader {
             // Pass touches to the views underneath
             header.isUserInteractionEnabled = false

@@ -26,9 +26,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     // Bottom buttons
     @IBOutlet var nextKeyboardButton: UIButton!
     
-    // Reuse identifier constant for UICollectionView
-    let reuseIdentifier = "ReuseId"
-    
     // MARK: - viewDidLoad()
     
     override func viewDidLoad() {
@@ -68,8 +65,8 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         keyCollection.isPrefetchingEnabled = true
         
         // register reusable views
-        keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
+        keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: CollectionViewConstants.reuseIdentifier)
+        keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewConstants.reuseIdentifier)
         
         // MARK: - Set up constraints
         
@@ -136,6 +133,17 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         header.label.textColor = .secondaryLabel
     }
     
+    // MARK: - Helper Methods
+
+    func updateBottomButtons() {
+        let visibleItems = keyCollection.indexPathsForVisibleItems.sorted {
+            return $0.section < $1.section
+        }
+        
+        let medianSectionIndex = visibleItems[visibleItems.count / 2].section
+        bottomBarDataSource.highlightedSectionIndex = medianSectionIndex
+    }
+    
     // MARK: - Button Actions
     
     @objc func keyButtonExpand(from button: UIButton, with event: UIEvent) {
@@ -161,6 +169,28 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
             }
         } else {
             fatalError("Incorrect button setup.")
+        }
+    }
+    
+    @objc func insertKeyButtonText(from button: UIButton, with event: UIEvent) {
+        guard let text = (button.superview?.superview as? KeyButtonCell)?.delegate.title else {
+            return
+        }
+        textDocumentProxy.insertText(Symbols.removedDottedCircles(text))
+    }
+    
+    func scrollToSection(index: Int, in keyboardLayout: KeyboardLayout.Type) {
+        let middleIndex = (keyboardLayout.getKeySet(section: index)?.count ?? 0) / 2
+        
+        // Calculate columns on screen
+        let visibleItemsCount = keyCollection.indexPathsForVisibleItems.count
+        
+        if middleIndex > visibleItemsCount / 2 + Layout.cellsPerColumn {
+            // big section
+            keyCollection.scrollToItem(at: [index, visibleItemsCount / 2 - Layout.cellsPerColumn], at: .centeredHorizontally, animated: true)
+        } else {
+            // small section
+            keyCollection.scrollToItem(at: [index, middleIndex], at: .centeredHorizontally, animated: true)
         }
     }
 }
