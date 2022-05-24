@@ -9,15 +9,12 @@
 import UIKit
 import SwiftUI
 
-class KeyboardViewController: MasterKeyboardViewController, UICollectionViewDataSource {
-    
-    private var dataSource: KeyboardDataSource!
+class KeyboardViewController: MasterKeyboardViewController {
     
     // MARK: - viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //dataSource = KeyboardDataSource(keyboardViewController: self)
         keyCollection.dataSource = self
         keyCollection.delegate = self
         LocalStorage.setDefaultValues()
@@ -28,91 +25,13 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         
         // Set up the bottom stack view
         
-        var glyphs = [String]()
-        
-        for sectionName in IPASymbols.enabledSections {
-            let glyph = IPASymbols.sectionData[sectionName]!.sectionGlyph
-            glyphs.append(glyph)
+        bottomBarDataSource.sectionGlyphs = IPASymbols.enabledSections.map {
+            IPASymbols.sectionData[$0]!.sectionGlyph
         }
         
-        bottomBarDataSource.sectionGlyphs = glyphs
         bottomBarDataSource.mainAction = { index in
             self.scrollToSection(index: index, in: IPASymbols.self)
         }
-    }
-    
-    // MARK: - Collection View Methods
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return IPASymbols.enabledSections.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let numberOfItems = IPASymbols.getKeySet(section: section)?.count {
-            return numberOfItems
-        } else {
-            fatalError("Section index overflow.")
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewConstants.reuseIdentifier, for: indexPath) as! KeyButtonCell
-        let button = cell.button
-        cell.delegate.title = IPASymbols.getKeySet(section: indexPath.section)?[indexPath.item]
-        
-        if cell.requestToInitializeAction() {
-            // Will only run if targets have not been added
-            // Add targets
-            button.addTarget(self, action: #selector(insertKeyButtonText(from:with:)), for: .primaryActionTriggered)
-            button.addTarget(self, action: #selector(keyButtonExpand(from:with:)), for: .touchDown)
-            
-            // Add retraction targets
-            button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchCancel)
-            button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpOutside)
-            button.addTarget(self, action: #selector(keyButtonRetract(from:with:)), for: .touchUpInside)
-        }
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(
-            top: Layout.topInset,
-            left: Layout.leftInset(headerWidth: Layout.getHeaderWidth(keySet: IPASymbols.self, section: section)),
-            bottom: Layout.bottomInset,
-            right: Layout.rightInset
-        )
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Layout.minimumLineSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return Layout.minimumInteritemSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let marginsAndInsets = Layout.topInset + Layout.bottomInset + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + Layout.minimumInteritemSpacing * CGFloat(Layout.cellsPerColumn - 1)
-        let itemHeight = ((collectionView.bounds.size.height - marginsAndInsets) / CGFloat(Layout.cellsPerColumn)).rounded(.down)
-        return CGSize(width: itemHeight, height: itemHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let element = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewConstants.reuseIdentifier, for: indexPath)
-        if let header = element as? SectionHeader {
-            // Pass touches to the views underneath
-            header.isUserInteractionEnabled = false
-            
-            // Set the header title
-            header.label.text = NSLocalizedString(IPASymbols.enabledSections[indexPath.section], comment: "Localized versions of the section names.")
-            setSectionHeaderColor(header)
-        }
-        return element
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: Layout.getHeaderWidth(keySet: IPASymbols.self, section: section), height: 0)
     }
     
     // MARK: - Delegate Methods

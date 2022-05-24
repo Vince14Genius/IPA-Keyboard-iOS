@@ -124,6 +124,8 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         // Add custom view sizing constraints here
     }
     
+    // MARK: - Helper Methods
+    
     /**
     Update the colors of all section header text, based on the system keyboard color.
     - Parameters:
@@ -133,8 +135,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         header.label.textColor = .secondaryLabel
     }
     
-    // MARK: - Helper Methods
-
     func updateBottomButtons() {
         let visibleItems = keyCollection.indexPathsForVisibleItems.sorted {
             return $0.section < $1.section
@@ -142,41 +142,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         let medianSectionIndex = visibleItems[visibleItems.count / 2].section
         bottomBarDataSource.highlightedSectionIndex = medianSectionIndex
-    }
-    
-    // MARK: - Button Actions
-    
-    @objc func keyButtonExpand(from button: UIButton, with event: UIEvent) {
-        if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            keyButtonCell.delegate.isPressed = true
-            
-            let originalRect = keyCollection.convert(keyButtonCell.frame, to: expandedKeyOverlay.superview)
-            
-            expandedKeyOverlay.show(
-                title: keyButtonCell.delegate.title,
-                frame: CGRect(x: originalRect.midX, y: originalRect.midY, width: originalRect.width, height: originalRect.height)
-            )
-        } else {
-            fatalError("Incorrect button setup.")
-        }
-    }
-    
-    @objc func keyButtonRetract(from button: UIButton, with event: UIEvent) {
-        if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { [weak self] _ in
-                keyButtonCell.delegate.isPressed = false
-                self?.expandedKeyOverlay.hide()
-            }
-        } else {
-            fatalError("Incorrect button setup.")
-        }
-    }
-    
-    @objc func insertKeyButtonText(from button: UIButton, with event: UIEvent) {
-        guard let text = (button.superview?.superview as? KeyButtonCell)?.delegate.title else {
-            return
-        }
-        textDocumentProxy.insertText(Symbols.removedDottedCircles(text))
     }
     
     func scrollToSection(index: Int, in keyboardLayout: KeyboardLayout.Type) {
