@@ -10,7 +10,7 @@ import Foundation
 
 enum IPASymbols: KeyboardLayout {
     
-    enum sections: RawSectionID {
+    enum sections: RawSectionID, CaseIterable {
         case consonants = "Consonants"
         case nonPulmonic = "NonPulmonic"
         case otherSymbols = "OtherSymbols"
@@ -31,17 +31,9 @@ enum IPASymbols: KeyboardLayout {
     /**
      An iteratable `Array` that contains an ordered list of keyboard sections
      */
-    static let sectionNames: [RawSectionID] = [
-        IPASymbols.sections.consonants.rawValue,
-        IPASymbols.sections.nonPulmonic.rawValue,
-        IPASymbols.sections.otherSymbols.rawValue,
-        IPASymbols.sections.vowels.rawValue,
-        IPASymbols.sections.suprasegmentals.rawValue,
-        IPASymbols.sections.wordAccents.rawValue,
-        IPASymbols.sections.diacritics.rawValue,
-        IPASymbols.sections.extIPA.rawValue,
-        ]
-    
+    static var sectionNames: [RawSectionID] {
+        sections.allCases.map { $0.rawValue }
+    }
     /**
      A `Dictionary` that contains all data associated with a keyboard section
      */
