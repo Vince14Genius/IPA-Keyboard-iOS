@@ -28,10 +28,6 @@ enum IPASymbols: KeyboardLayout {
         case americanist = "Americanist"
     }
     
-    static let numberOfRowsForRegularDisplay = 4
-    
-    static let numberOfRowsForLargeDisplay = 6
-    
     /**
      An iteratable `Array` that contains an ordered list of keyboard sections
      */

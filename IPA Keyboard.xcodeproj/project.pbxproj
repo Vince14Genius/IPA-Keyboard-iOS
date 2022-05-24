@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E0A9E1D283D789600378987 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E1C283D789600378987 /* Layout.swift */; };
 		4E0A9E1E283D789600378987 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E1C283D789600378987 /* Layout.swift */; };
+		4E0A9E1F283D82CA00378987 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA664B526EFFF0B001588E9 /* KeyboardLayout.swift */; };
 		4E0B7424269BD5380066345B /* InstructionsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7423269BD5380066345B /* InstructionsListItem.swift */; };
 		4E0B7427269C21840066345B /* GettingStartedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7426269C21840066345B /* GettingStartedPage.swift */; };
 		4E0B7429269C22390066345B /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7428269C22390066345B /* SettingsPage.swift */; };
@@ -202,6 +203,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E0A9E20283D82EB00378987 /* Shared Models */ = {
+			isa = PBXGroup;
+			children = (
+				4EA664B526EFFF0B001588E9 /* KeyboardLayout.swift */,
+			);
+			path = "Shared Models";
+			sourceTree = "<group>";
+		};
 		4E0B7422269BD5210066345B /* View Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +300,7 @@
 				4E5D175026EAE8FC003B5C5B /* View Elements */,
 				4E48DABE26F31A3000F88CD9 /* Keyboard Components */,
 				4E5D174F26EAE8DF003B5C5B /* UIKit Wrappers */,
+				4E0A9E20283D82EB00378987 /* Shared Models */,
 				4E13CE8C2727807F00DB5CB0 /* Shared Constants */,
 			);
 			path = "IPA Keyboard Shared";
@@ -361,7 +371,6 @@
 				4EAFA35626E5B75E00344131 /* IPA Keyboard Extension.entitlements */,
 				4E84B1A721456EA50078AC4B /* Localization */,
 				4E84B1892140E9980078AC4B /* KeyboardViewController.swift */,
-				4EA664B526EFFF0B001588E9 /* KeyboardLayout.swift */,
 				4E13CE8B2727802700DB5CB0 /* Keyboard Layouts */,
 				4E84B18B2140E9980078AC4B /* Info.plist */,
 			);
@@ -534,6 +543,7 @@
 				4E408CE827110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
 				4E5D174B26EAE751003B5C5B /* Symbols.swift in Sources */,
 				4EAFA34E26E1A86700344131 /* UserTipView.swift in Sources */,
+				4E0A9E1F283D82CA00378987 /* KeyboardLayout.swift in Sources */,
 				4E34B56026F3FB8B00323D23 /* BottomRow.swift in Sources */,
 				4E14C380261E8624001AE827 /* IPAKeyboardApp.swift in Sources */,
 				4E14C3BD261EAD6F001AE827 /* BlueButtonStyle.swift in Sources */,

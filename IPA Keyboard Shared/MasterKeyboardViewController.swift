@@ -29,28 +29,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     // Reuse identifier constant for UICollectionView
     let reuseIdentifier = "ReuseId"
     
-    var cellSize: CGFloat {
-        get {
-            switch UIDevice.current.userInterfaceIdiom {
-            case .pad:
-                return 45
-            default:
-                return 38
-            }
-        }
-    }
-    
-    var cellsPerColumn: Int {
-        get {
-            switch UIDevice.current.userInterfaceIdiom {
-            case .pad:
-                return IPASymbols.numberOfRowsForLargeDisplay
-            default:
-                return IPASymbols.numberOfRowsForRegularDisplay
-            }
-        }
-    }
-    
     // MARK: - viewDidLoad()
     
     override func viewDidLoad() {
@@ -93,14 +71,9 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
         
-        // calculate height constraint
-        let insetsTotalHeight = Layout.topInset + Layout.bottomInset
-        let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
-        let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * Layout.minimumInteritemSpacing
-        let keyCollectionHeight = insetsTotalHeight + cellTotalHeight + spacingTotalHeight
-        keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
-        
         // MARK: - Set up constraints
+        
+        keyCollection.heightAnchor.constraint(equalToConstant: Layout.keyCollectionHeight).isActive = true
         
         Constraints.applyEqual(hPairs: [
             (toolbarRow.view.leadingAnchor, view.leadingAnchor),

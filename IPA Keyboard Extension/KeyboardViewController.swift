@@ -55,20 +55,6 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         return UIDevice.current.userInterfaceIdiom == .pad ? largeDisplayKeySet : defaultKeySet
     }
     
-    func getHeaderWidth(section: Int) -> CGFloat {
-        guard section < IPASymbols.enabledSections.count else {
-            fatalError("Index out of range for section ID: \(section)")
-        }
-        
-        // Calculate text width
-        let sectionKey = IPASymbols.enabledSections[section]
-        let sectionHeaderText = NSLocalizedString(sectionKey, comment: "Localized versions of the section names.")
-        let textSize = (sectionHeaderText as NSString).size(withAttributes: [.font: UIFont.systemFont(ofSize: UIFont.systemFontSize)])
-        let textWidth = textSize.width + Layout.leftInsetRaw + Layout.rightInset + Layout.minimumLineSpacing
-        
-        return textWidth
-    }
-    
     // MARK: - Button Actions
 
     @objc func insertKeyButtonText(from button: UIButton, with event: UIEvent) {
@@ -84,9 +70,9 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         // Calculate columns on screen
         let visibleItemsCount = keyCollection.indexPathsForVisibleItems.count
         
-        if middleIndex > visibleItemsCount / 2 + cellsPerColumn {
+        if middleIndex > visibleItemsCount / 2 + Layout.cellsPerColumn {
             // big section
-            keyCollection.scrollToItem(at: [index, visibleItemsCount / 2 - cellsPerColumn], at: .centeredHorizontally, animated: true)
+            keyCollection.scrollToItem(at: [index, visibleItemsCount / 2 - Layout.cellsPerColumn], at: .centeredHorizontally, animated: true)
         } else {
             // small section
             keyCollection.scrollToItem(at: [index, middleIndex], at: .centeredHorizontally, animated: true)
@@ -130,7 +116,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(
             top: Layout.topInset,
-            left: Layout.leftInset(headerWidth: getHeaderWidth(section: section)),
+            left: Layout.leftInset(headerWidth: Layout.getHeaderWidth(keySet: IPASymbols.self, section: section)),
             bottom: Layout.bottomInset,
             right: Layout.rightInset
         )
@@ -145,8 +131,8 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let marginsAndInsets = Layout.topInset + Layout.bottomInset + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + Layout.minimumInteritemSpacing * CGFloat(cellsPerColumn - 1)
-        let itemHeight = ((collectionView.bounds.size.height - marginsAndInsets) / CGFloat(cellsPerColumn)).rounded(.down)
+        let marginsAndInsets = Layout.topInset + Layout.bottomInset + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + Layout.minimumInteritemSpacing * CGFloat(Layout.cellsPerColumn - 1)
+        let itemHeight = ((collectionView.bounds.size.height - marginsAndInsets) / CGFloat(Layout.cellsPerColumn)).rounded(.down)
         return CGSize(width: itemHeight, height: itemHeight)
     }
     
@@ -164,7 +150,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: getHeaderWidth(section: section), height: 0)
+        return CGSize(width: Layout.getHeaderWidth(keySet: IPASymbols.self, section: section), height: 0)
     }
     
     // MARK: - Delegate Methods
