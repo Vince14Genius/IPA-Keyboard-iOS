@@ -1,5 +1,5 @@
 //
-//  Dimensions.swift
+//  Layout.swift
 //  IPA Keyboard
 //
 //  Created by Vincent C. on 5/24/22.
@@ -8,7 +8,7 @@
 
 import CoreGraphics
 
-enum Dimensions {
+enum Layout {
     public static let topInset: CGFloat = 24
     public static let bottomInset: CGFloat = 8
     public static let leftInsetRaw: CGFloat = 12

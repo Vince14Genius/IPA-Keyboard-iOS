@@ -94,9 +94,9 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
         
         // calculate height constraint
-        let insetsTotalHeight = Dimensions.topInset + Dimensions.bottomInset
+        let insetsTotalHeight = Layout.topInset + Layout.bottomInset
         let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
-        let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * Dimensions.minimumInteritemSpacing
+        let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * Layout.minimumInteritemSpacing
         let keyCollectionHeight = insetsTotalHeight + cellTotalHeight + spacingTotalHeight
         keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
         
