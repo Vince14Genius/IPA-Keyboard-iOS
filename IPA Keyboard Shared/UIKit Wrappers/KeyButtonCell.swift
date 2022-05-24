@@ -34,15 +34,14 @@ class KeyButtonCell: UICollectionViewCell, UIInputViewAudioFeedback {
             contentView.sizeToFit()
             contentView.translatesAutoresizingMaskIntoConstraints = false
             
-            Constraints.applyEqual(pairs: [
+            Constraints.applyEqual(hPairs: [
+                (contentView.leadingAnchor, view.leadingAnchor),
+                (contentView.trailingAnchor, view.trailingAnchor),
+            ], vPairs: [
                 (contentView.topAnchor, view.topAnchor),
                 (contentView.bottomAnchor, view.bottomAnchor),
             ])
             
-            Constraints.applyEqual(pairs: [
-                (contentView.leadingAnchor, view.leadingAnchor),
-                (contentView.trailingAnchor, view.trailingAnchor),
-            ])
         }
         
         setupView(button)

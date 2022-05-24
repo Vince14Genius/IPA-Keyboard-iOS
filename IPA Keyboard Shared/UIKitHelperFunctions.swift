@@ -18,4 +18,9 @@ enum Constraints {
     static func applyEqual<AnchorType>(pairs: [AnchorPair<AnchorType>]) {
         pairs.forEach { Self.applyEqual($0.lhs, $0.rhs) }
     }
+    
+    static func applyEqual(hPairs: [AnchorPair<NSLayoutXAxisAnchor>], vPairs: [AnchorPair<NSLayoutYAxisAnchor>]) {
+        applyEqual(pairs: hPairs)
+        applyEqual(pairs: vPairs)
+    }
 }

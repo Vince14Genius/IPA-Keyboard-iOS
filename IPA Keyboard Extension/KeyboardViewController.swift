@@ -64,7 +64,7 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
         let sectionKey = IPASymbols.enabledSections[section]
         let sectionHeaderText = NSLocalizedString(sectionKey, comment: "Localized versions of the section names.")
         let textSize = (sectionHeaderText as NSString).size(withAttributes: [.font: UIFont.systemFont(ofSize: UIFont.systemFontSize)])
-        let textWidth = textSize.width + leftInsetRaw + rightInset + minimumLineSpacing
+        let textWidth = textSize.width + Dimensions.leftInsetRaw + Dimensions.rightInset + Dimensions.minimumLineSpacing
         
         return textWidth
     }
@@ -129,29 +129,23 @@ class KeyboardViewController: MasterKeyboardViewController, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(
-            top: topInset,
-            left: leftInset(headerWidth: getHeaderWidth(section: section)),
-            bottom: bottomInset,
-            right: rightInset
+            top: Dimensions.topInset,
+            left: Dimensions.leftInset(headerWidth: getHeaderWidth(section: section)),
+            bottom: Dimensions.bottomInset,
+            right: Dimensions.rightInset
         )
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumLineSpacing
+        return Dimensions.minimumLineSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumInteritemSpacing
+        return Dimensions.minimumInteritemSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let marginsAndInsets: CGFloat
-        if #available(iOSApplicationExtension 11.0, *) {
-            marginsAndInsets = topInset + bottomInset + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumInteritemSpacing * CGFloat(cellsPerColumn - 1)
-        } else {
-            // Fallback on earlier versions
-            marginsAndInsets = topInset + bottomInset + minimumInteritemSpacing * CGFloat(cellsPerColumn - 1)
-        }
+        let marginsAndInsets = Dimensions.topInset + Dimensions.bottomInset + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + Dimensions.minimumInteritemSpacing * CGFloat(cellsPerColumn - 1)
         let itemHeight = ((collectionView.bounds.size.height - marginsAndInsets) / CGFloat(cellsPerColumn)).rounded(.down)
         return CGSize(width: itemHeight, height: itemHeight)
     }

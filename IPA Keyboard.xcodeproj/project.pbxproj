@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0A9E1D283D789600378987 /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E1C283D789600378987 /* Dimensions.swift */; };
+		4E0A9E1E283D789600378987 /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E1C283D789600378987 /* Dimensions.swift */; };
 		4E0B7424269BD5380066345B /* InstructionsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7423269BD5380066345B /* InstructionsListItem.swift */; };
 		4E0B7427269C21840066345B /* GettingStartedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7426269C21840066345B /* GettingStartedPage.swift */; };
 		4E0B7429269C22390066345B /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7428269C22390066345B /* SettingsPage.swift */; };
@@ -103,6 +105,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E0A9E1C283D789600378987 /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
 		4E0B7423269BD5380066345B /* InstructionsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsListItem.swift; sourceTree = "<group>"; };
 		4E0B7426269C21840066345B /* GettingStartedPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedPage.swift; sourceTree = "<group>"; };
 		4E0B7428269C22390066345B /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
@@ -239,6 +242,7 @@
 				4E5D175A26EAED83003B5C5B /* SystemSounds.swift */,
 				4E6755F822EA0F0E00DA88BB /* Symbols.swift */,
 				4EAFA35726EABD1A00344131 /* StorageKeys.swift */,
+				4E0A9E1C283D789600378987 /* Dimensions.swift */,
 			);
 			path = "Shared Constants";
 			sourceTree = "<group>";
@@ -516,6 +520,7 @@
 				4E34B56126F3FB8B00323D23 /* ToolbarButtonStyles.swift in Sources */,
 				4E0B7427269C21840066345B /* GettingStartedPage.swift in Sources */,
 				4E34B55C26F3F64600323D23 /* VisualEffectView.swift in Sources */,
+				4E0A9E1D283D789600378987 /* Dimensions.swift in Sources */,
 				4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */,
 				4EB2E6E42836E2E90048C926 /* InputSwitchButton.swift in Sources */,
 				4EB2E6F228373EAB0048C926 /* GlyphButton.swift in Sources */,
@@ -558,6 +563,7 @@
 				4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */,
 				4E34B55826F3F62E00323D23 /* KeyButtonView.swift in Sources */,
 				4EB2E6EF28372F420048C926 /* UIKitHelperFunctions.swift in Sources */,
+				4E0A9E1E283D789600378987 /* Dimensions.swift in Sources */,
 				4E34B55926F3F63600323D23 /* ExpandedKeyBezierPath.swift in Sources */,
 				4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */,
 				4EB754CB26F526B300B34608 /* ColorConstants.swift in Sources */,

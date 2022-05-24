@@ -29,15 +29,6 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     // Reuse identifier constant for UICollectionView
     let reuseIdentifier = "ReuseId"
     
-    // Dimensional constants
-    let topInset: CGFloat = 24
-    let bottomInset: CGFloat = 8
-    let leftInsetRaw: CGFloat = 12
-    func leftInset(headerWidth: CGFloat) -> CGFloat { return leftInsetRaw - headerWidth }
-    let rightInset: CGFloat = 12
-    let minimumLineSpacing: CGFloat = 4
-    let minimumInteritemSpacing: CGFloat = 4
-    
     var cellSize: CGFloat {
         get {
             switch UIDevice.current.userInterfaceIdiom {
@@ -103,23 +94,21 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
         
         // calculate height constraint
-        let insetsTotalHeight = topInset + bottomInset
+        let insetsTotalHeight = Dimensions.topInset + Dimensions.bottomInset
         let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
-        let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * minimumInteritemSpacing
+        let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * Dimensions.minimumInteritemSpacing
         let keyCollectionHeight = insetsTotalHeight + cellTotalHeight + spacingTotalHeight
         keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
         
         // MARK: - Set up constraints
         
-        Constraints.applyEqual(pairs: [
+        Constraints.applyEqual(hPairs: [
             (toolbarRow.view.leadingAnchor, view.leadingAnchor),
             (toolbarRow.view.trailingAnchor, view.trailingAnchor),
             (bottomRow.view.trailingAnchor, view.trailingAnchor),
             (keyCollection.leadingAnchor, view.leadingAnchor),
             (keyCollection.trailingAnchor, view.trailingAnchor),
-        ])
-        
-        Constraints.applyEqual(pairs: [
+        ], vPairs: [
             (toolbarRow.view.topAnchor, view.topAnchor),
             (bottomRow.view.bottomAnchor, view.bottomAnchor),
             (keyCollection.topAnchor, toolbarRow.view.bottomAnchor),
