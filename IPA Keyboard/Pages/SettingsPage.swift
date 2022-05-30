@@ -24,6 +24,7 @@ struct SettingsInnerPage: View {
     
     // On-off switches: advanced features
     @AppStorage(SettingsKey.isMovableCursorEnabled, store: appGroupStorage) private var isMovableCursorOn = false
+    @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn = false
     
     // On-off switches: keyboard list
     @AppStorage(SettingsKey.isIPAEnabled, store: appGroupStorage) private var isIPAKeyboardOn = true
@@ -82,6 +83,7 @@ struct SettingsInnerPage: View {
             }
             Section(header: Text(Localized.advancedSettings)) {
                 Toggle(Localized.movableCursor, isOn: $isMovableCursorOn)
+                Toggle("Force show input switch key (globe key)", isOn: $isInputSwitchKeyAlwaysOn)
                 Link("GitHub Repository", destination: URL(string: URLs.githubRepo)!)
             }
         }
