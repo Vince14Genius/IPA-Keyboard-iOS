@@ -87,9 +87,16 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         
         // MARK: - Set up input mode switch button if needed
         
-        let actuallyNeedsInputModeSwitchKey = needsInputModeSwitchKey || UIDevice.current.userInterfaceIdiom != .phone
+        var shouldShowInputModeSwitchKey = false
         
-        if actuallyNeedsInputModeSwitchKey {
+        shouldShowInputModeSwitchKey ||= needsInputModeSwitchKey
+        shouldShowInputModeSwitchKey ||= UIDevice.current.userInterfaceIdiom != .phone
+        
+        if let isInputSwitchKeyAlwaysOn = UserDefaults(suiteName: SharedIdentifiers.appGroup)?.bool(forKey: SettingsKey.isInputSwitchKeyAlwaysOn) {
+            shouldShowInputModeSwitchKey ||= isInputSwitchKeyAlwaysOn
+        }
+        
+        if shouldShowInputModeSwitchKey {
             nextKeyboardButton = UIKitComponents.inputSwitchButton()
             view.addSubview(nextKeyboardButton)
                 

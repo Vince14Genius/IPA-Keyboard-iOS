@@ -23,6 +23,8 @@
 		4E14C3AF261E8E16001AE827 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E14C3B1261E8E16001AE827 /* Localizable.strings */; };
 		4E14C3BD261EAD6F001AE827 /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C3BC261EAD6F001AE827 /* BlueButtonStyle.swift */; };
 		4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */; };
+		4E34246A28448E7400DABC81 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34246928448E7400DABC81 /* Operators.swift */; };
+		4E34246B28448F5100DABC81 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34246928448E7400DABC81 /* Operators.swift */; };
 		4E34B55826F3F62E00323D23 /* KeyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DABF26F3CB9B00F88CD9 /* KeyButtonView.swift */; };
 		4E34B55926F3F63600323D23 /* ExpandedKeyBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DAC126F3D2CC00F88CD9 /* ExpandedKeyBezierPath.swift */; };
 		4E34B55C26F3F64600323D23 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DAC626F3ED6900F88CD9 /* VisualEffectView.swift */; };
@@ -124,6 +126,7 @@
 		4E14C3B4261E8E19001AE827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E14C3BC261EAD6F001AE827 /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
 		4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldRepeatButton.swift; sourceTree = "<group>"; };
+		4E34246928448E7400DABC81 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCustomKeyboardPage.swift; sourceTree = "<group>"; };
 		4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationFunctions.swift; sourceTree = "<group>"; };
 		4E4030EC269D0B880081E3FD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -214,6 +217,7 @@
 		4E0A9E20283D82EB00378987 /* Shared Models */ = {
 			isa = PBXGroup;
 			children = (
+				4E34246928448E7400DABC81 /* Operators.swift */,
 				4EA664B526EFFF0B001588E9 /* KeyboardLayout.swift */,
 				4E0A9E25283D93AE00378987 /* KeyboardLayout+.swift */,
 			);
@@ -535,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EAFA35826EABD1A00344131 /* StorageKeys.swift in Sources */,
+				4E34246A28448E7400DABC81 /* Operators.swift in Sources */,
 				4E0B7429269C22390066345B /* SettingsPage.swift in Sources */,
 				4E34B55F26F3FB7B00323D23 /* KeyButtonView.swift in Sources */,
 				4E4D98FC2743086D001E701B /* HorizontalIAPButton.swift in Sources */,
@@ -586,6 +591,7 @@
 				4E34B55826F3F62E00323D23 /* KeyButtonView.swift in Sources */,
 				4EB2E6EF28372F420048C926 /* UIKitHelperFunctions.swift in Sources */,
 				4E0A9E1E283D789600378987 /* Layout.swift in Sources */,
+				4E34246B28448F5100DABC81 /* Operators.swift in Sources */,
 				4E34B55926F3F63600323D23 /* ExpandedKeyBezierPath.swift in Sources */,
 				4E0A9E29283D9C9F00378987 /* KeyButtonActions.swift in Sources */,
 				4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */,
