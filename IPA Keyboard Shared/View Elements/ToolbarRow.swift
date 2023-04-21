@@ -17,15 +17,28 @@ struct ToolbarRow: View {
     
     var inputViewController: UIInputViewController?
     
+    private func typeSandwich(_ text: String) {
+        inputViewController?.insertText(text)
+        inputViewController?.moveCursorBackByOne()
+        SystemSound.playInputClick()
+    }
+    
+    private func type(text: String) {
+        inputViewController?.insertText(text)
+        SystemSound.playInputClick()
+    }
+    
     var body: some View {
+        let inputVC = inputViewController
+        
         VStack(spacing: 0) {
             if isMovableCursorOn {
                 HStack(spacing: 2) {
                     HoldRepeatButton(label: Image(systemName: "arrow.backward")) {
-                        inputViewController?.moveCursorBackByOne()
+                        inputVC?.moveCursorBackByOne()
                     }
                     HoldRepeatButton(label: Image(systemName: "arrow.forward")) {
-                        inputViewController?.moveCursorForwardByOne()
+                        inputVC?.moveCursorForwardByOne()
                     }
                 }
                 .buttonStyle(CursorButtonStyle())
@@ -36,31 +49,23 @@ struct ToolbarRow: View {
             
             HStack(spacing: 0) {
                 Button("[ ]") {
-                    inputViewController?.insertText(GlobalSymbols.squareBrackets)
-                    inputViewController?.moveCursorBackByOne()
-                    SystemSound.playInputClick()
+                    typeSandwich(Symbols.squareBrackets)
                 }
                 Button("/ /") {
-                    inputViewController?.insertText(GlobalSymbols.forwardSlashes)
-                    inputViewController?.moveCursorBackByOne()
-                    SystemSound.playInputClick()
+                    typeSandwich(Symbols.forwardSlashes)
                 }
                 Button("~") {
-                    inputViewController?.insertText(GlobalSymbols.tilde)
-                    SystemSound.playInputClick()
+                    type(text: Symbols.tilde)
                 }
                 Button("◌") {
-                    inputViewController?.insertText(GlobalSymbols.dottedCircle)
-                    SystemSound.playInputClick()
+                    type(text: Symbols.dottedCircle)
                 }
                 Spacer()
                 Button("SpaceBarText") {
-                    inputViewController?.insertText(" ")
-                    SystemSound.playInputClick()
+                    type(text: " ")
                 }
                 Button("⏎") {
-                    inputViewController?.insertText("\n")
-                    SystemSound.playInputClick()
+                    type(text: "\n")
                 }
             }
             .padding([.leading, .trailing], 6)

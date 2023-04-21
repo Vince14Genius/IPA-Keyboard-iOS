@@ -10,18 +10,18 @@ import UIKit
 
 extension UIInputViewController {
     func insertText(_ text: String) {
-        self.textDocumentProxy.insertText(text)
+        textDocumentProxy.insertText(text)
     }
     
     func moveCursorBackByOne() {
-        self.textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
     }
 
     func moveCursorForwardByOne() {
-        self.textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: 1)
     }
     
     func deleteBackwardByOne() {
-        self.textDocumentProxy.deleteBackward()
+        textDocumentProxy.deleteBackward()
     }
 }

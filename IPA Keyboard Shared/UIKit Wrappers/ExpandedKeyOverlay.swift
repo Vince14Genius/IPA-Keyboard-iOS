@@ -12,8 +12,8 @@ import SwiftUI
 class ExpandedKeyOverlay: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.isUserInteractionEnabled = false
-        self.hide()
+        isUserInteractionEnabled = false
+        hide()
     }
     
     required init?(coder: NSCoder) {
@@ -23,17 +23,17 @@ class ExpandedKeyOverlay: UIView {
     func show(title: String?, frame: CGRect) {
         guard let titleText = title else { return }
         
-        self.isHidden = false
+        isHidden = false
         self.frame = frame
         
         let hostingController = UIHostingController(rootView: ExpandedKeyBezierPathView(titleText: titleText, baseWidth: frame.width, baseHeight: frame.height))
-        self.addSubview(hostingController.view)
+        addSubview(hostingController.view)
         
         SystemSound.playInputClick()
     }
     
     func hide() {
-        self.isHidden = true
-        self.subviews.forEach { $0.removeFromSuperview() }
+        isHidden = true
+        subviews.forEach { $0.removeFromSuperview() }
     }
 }

@@ -26,131 +26,89 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
     // Bottom buttons
     @IBOutlet var nextKeyboardButton: UIButton!
     
-    // Reuse identifier constant for UICollectionView
-    let reuseIdentifier = "ReuseId"
-    
-    // Dimensional constants
-    let topInset: CGFloat = 24
-    let bottomInset: CGFloat = 8
-    let leftInsetRaw: CGFloat = 12
-    func leftInset(headerWidth: CGFloat) -> CGFloat { return leftInsetRaw - headerWidth }
-    let rightInset: CGFloat = 12
-    let minimumLineSpacing: CGFloat = 4
-    let minimumInteritemSpacing: CGFloat = 4
-    
-    var cellSize: CGFloat {
-        get {
-            switch UIDevice.current.userInterfaceIdiom {
-            case .pad:
-                return 45
-            default:
-                return 38
-            }
-        }
-    }
-    
-    var cellsPerColumn: Int {
-        get {
-            switch UIDevice.current.userInterfaceIdiom {
-            case .pad:
-                return IPASymbols.numberOfRowsForLargeDisplay
-            default:
-                return IPASymbols.numberOfRowsForRegularDisplay
-            }
-        }
-    }
-    
     // MARK: - viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: - Perform custom UI setup here
+        // MARK: - Set up hosting controllers
         
         func addHostingController<T>(_ controllerToAdd: UIHostingController<T>) {
-            self.view.addSubview(controllerToAdd.view)
-            self.addChild(controllerToAdd)
+            view.addSubview(controllerToAdd.view)
+            addChild(controllerToAdd)
             controllerToAdd.view.backgroundColor = .clear
             controllerToAdd.view.sizeToFit()
             controllerToAdd.view.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        self.toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
-        addHostingController(self.toolbarRow)
+        toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
+        addHostingController(toolbarRow)
         
-        self.bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: self.bottomBarDataSource))
-        addHostingController(self.bottomRow)
-        
-        // MARK: - Set up constraints
-        
-        self.toolbarRow.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        self.toolbarRow.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.toolbarRow.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        
-        self.bottomRow.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.bottomRow.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: bottomBarDataSource))
+        addHostingController(bottomRow)
         
         // MARK: - Set up the collection view
         
+        // setup flow layout
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionHeadersPinToVisibleBounds = true
         
-        self.keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
-        self.keyCollection.backgroundColor = .clearInteractable
-        self.keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: self.reuseIdentifier)
-        self.keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.reuseIdentifier)
+        // make UICollectionView
+        keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
+        view.addSubview(keyCollection)
+        keyCollection.translatesAutoresizingMaskIntoConstraints = false
         
-        self.keyCollection.isDirectionalLockEnabled = false
-        self.keyCollection.isPrefetchingEnabled = true // this doesn't fix the scroll update delay problem
+        // UICollectionView settings
+        keyCollection.backgroundColor = .clearInteractable
+        keyCollection.isDirectionalLockEnabled = false
+        keyCollection.isPrefetchingEnabled = true
         
-        self.view.addSubview(self.keyCollection)
+        // register reusable views
+        keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: CollectionViewConstants.reuseIdentifier)
+        keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewConstants.reuseIdentifier)
         
-        self.keyCollection.translatesAutoresizingMaskIntoConstraints = false
-        self.keyCollection.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        self.keyCollection.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.keyCollection.topAnchor.constraint(equalTo: toolbarRow.view.bottomAnchor).isActive = true
-        self.keyCollection.bottomAnchor.constraint(equalTo: bottomRow.view.topAnchor).isActive = true
+        // MARK: - Set up constraints
         
-        let insetsTotalHeight = topInset + bottomInset
-        let cellTotalHeight = CGFloat(cellsPerColumn) * cellSize
-        let spacingTotalHeight = CGFloat(cellsPerColumn - 1) * minimumInteritemSpacing
-        let keyCollectionHeight = insetsTotalHeight + cellTotalHeight + spacingTotalHeight
-        self.keyCollection.heightAnchor.constraint(equalToConstant: keyCollectionHeight).isActive = true
+        keyCollection.heightAnchor.constraint(equalToConstant: Layout.keyCollectionHeight).isActive = true
+        
+        Constraints.applyEqual(hPairs: [
+            (toolbarRow.view.leadingAnchor, view.leadingAnchor),
+            (toolbarRow.view.trailingAnchor, view.trailingAnchor),
+            (bottomRow.view.trailingAnchor, view.trailingAnchor),
+            (keyCollection.leadingAnchor, view.leadingAnchor),
+            (keyCollection.trailingAnchor, view.trailingAnchor),
+        ], vPairs: [
+            (toolbarRow.view.topAnchor, view.topAnchor),
+            (bottomRow.view.bottomAnchor, view.bottomAnchor),
+            (keyCollection.topAnchor, toolbarRow.view.bottomAnchor),
+            (keyCollection.bottomAnchor, bottomRow.view.topAnchor),
+        ])
         
         // MARK: - Set up input mode switch button if needed
         
-        let actuallyNeedsInputModeSwitchKey = self.needsInputModeSwitchKey || UIDevice.current.userInterfaceIdiom != .phone
+        let actuallyNeedsInputModeSwitchKey = needsInputModeSwitchKey || UIDevice.current.userInterfaceIdiom != .phone
         
         if actuallyNeedsInputModeSwitchKey {
-            self.nextKeyboardButton = UIButton(type: .system)
-            
-            self.view.addSubview(self.nextKeyboardButton)
-            
-            self.nextKeyboardButton.setImage(UIImage(systemName: "globe"), for: [])
-            self.nextKeyboardButton.tintColor = .label
-            
-            self.nextKeyboardButton.sizeToFit()
-            self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-            
-            self.nextKeyboardButton.backgroundColor = .clearInteractable
+            nextKeyboardButton = UIKitComponents.inputSwitchButton()
+            view.addSubview(nextKeyboardButton)
                 
-            self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents)
+            nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
             
-            let nextKeyboardButtonHorizontalInset: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 18 : 12
-            self.nextKeyboardButton.contentEdgeInsets = UIEdgeInsets(top: 12, left: nextKeyboardButtonHorizontalInset, bottom: 12, right: nextKeyboardButtonHorizontalInset)
+            Constraints.applyEqual(pairs: [
+                (nextKeyboardButton.leadingAnchor, view.leadingAnchor),
+                (bottomRow.view.leadingAnchor, nextKeyboardButton.trailingAnchor),
+            ])
             
-            self.nextKeyboardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-            self.nextKeyboardButton.centerYAnchor.constraint(equalTo: self.bottomRow.view.centerYAnchor).isActive = true
-            self.bottomRow.view.leadingAnchor.constraint(equalTo: self.nextKeyboardButton.trailingAnchor).isActive = true
+            Constraints.applyEqual(nextKeyboardButton.centerYAnchor, bottomRow.view.centerYAnchor)
         } else {
-            self.bottomRow.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            Constraints.applyEqual(bottomRow.view.leadingAnchor, view.leadingAnchor)
         }
         
         // MARK: - Set up the expanded key overlay
         
-        self.expandedKeyOverlay = ExpandedKeyOverlay()
-        self.view.addSubview(self.expandedKeyOverlay)
+        expandedKeyOverlay = ExpandedKeyOverlay()
+        view.addSubview(expandedKeyOverlay)
     }
     
     // MARK: - Other Boilerplate Code
@@ -166,6 +124,8 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         // Add custom view sizing constraints here
     }
     
+    // MARK: - Helper Methods
+    
     /**
     Update the colors of all section header text, based on the system keyboard color.
     - Parameters:
@@ -175,31 +135,27 @@ class MasterKeyboardViewController: UIInputViewController, UICollectionViewDeleg
         header.label.textColor = .secondaryLabel
     }
     
-    // MARK: - Button Actions
-    
-    @objc func keyButtonExpand(from button: UIButton, with event: UIEvent) {
-        if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            keyButtonCell.delegate.isPressed = true
-            
-            let originalRect = self.keyCollection.convert(keyButtonCell.frame, to: self.expandedKeyOverlay.superview)
-            
-            self.expandedKeyOverlay.show(
-                title: keyButtonCell.delegate.title,
-                frame: CGRect(x: originalRect.midX, y: originalRect.midY, width: originalRect.width, height: originalRect.height)
-            )
-        } else {
-            fatalError("Incorrect button setup.")
+    func updateBottomButtons() {
+        let visibleItems = keyCollection.indexPathsForVisibleItems.sorted {
+            return $0.section < $1.section
         }
+        
+        let medianSectionIndex = visibleItems[visibleItems.count / 2].section
+        bottomBarDataSource.highlightedSectionIndex = medianSectionIndex
     }
     
-    @objc func keyButtonRetract(from button: UIButton, with event: UIEvent) {
-        if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
-                keyButtonCell.delegate.isPressed = false
-                self.expandedKeyOverlay.hide()
-            }
+    func scrollToSection(index: Int, in keyboardLayout: KeyboardLayout.Type) {
+        let middleIndex = (keyboardLayout.getKeySet(section: index)?.count ?? 0) / 2
+        
+        // Calculate columns on screen
+        let visibleItemsCount = keyCollection.indexPathsForVisibleItems.count
+        
+        if middleIndex > visibleItemsCount / 2 + Layout.cellsPerColumn {
+            // big section
+            keyCollection.scrollToItem(at: [index, visibleItemsCount / 2 - Layout.cellsPerColumn], at: .centeredHorizontally, animated: true)
         } else {
-            fatalError("Incorrect button setup.")
+            // small section
+            keyCollection.scrollToItem(at: [index, middleIndex], at: .centeredHorizontally, animated: true)
         }
     }
 }

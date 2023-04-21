@@ -33,16 +33,6 @@ protocol KeyboardLayout {
      A `Dictionary` that contains all data associated with a keyboard section
      */
     static var sectionData: [RawSectionID: KeyboardSectionData] { get }
-    
-    /**
-     The number of rows used for regular display layout
-     */
-    static var numberOfRowsForRegularDisplay: Int { get }
-    
-    /**
-     The number of rows used for large display layout
-     */
-    static var numberOfRowsForLargeDisplay: Int { get }
 }
 
 extension KeyboardLayout {

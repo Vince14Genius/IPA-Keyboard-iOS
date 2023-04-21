@@ -13,7 +13,7 @@ class SectionHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(label)
+        addSubview(label)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -21,6 +21,6 @@ enum SystemSound: UInt32 {
     }
     
     func play() {
-        AudioServicesPlaySystemSound(self.rawValue)
+        AudioServicesPlaySystemSound(rawValue)
     }
 }
