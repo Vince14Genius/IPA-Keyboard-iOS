@@ -42,9 +42,6 @@ struct SettingsInnerPage: View {
     
     var body: some View {
         Form {
-            Section() {
-                Link(Localized.buttonBugreport, destination: URL(string: URLs.feedback)!)
-            }
             Section(header: Text(Localized.titleKeyboards)) {
                 Toggle(Localized.keyboardIPA, isOn: $isIPAKeyboardOn)
                     .disabled(true)
@@ -84,7 +81,6 @@ struct SettingsInnerPage: View {
             Section(header: Text(Localized.advancedSettings)) {
                 Toggle(Localized.movableCursor, isOn: $isMovableCursorOn)
                 Toggle("Force show input switch key (globe key)", isOn: $isInputSwitchKeyAlwaysOn)
-                Link("GitHub Repository", destination: URL(string: URLs.githubRepo)!)
             }
         }
         .alert(isPresented: $showingComingSoonAlert, content: {

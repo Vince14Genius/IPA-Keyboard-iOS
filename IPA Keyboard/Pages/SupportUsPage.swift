@@ -25,6 +25,9 @@ struct SupportUsPageWrapped: View {
             .makeStackNavigationPage()
             .zIndex(0)
             
+            // this setup makes the banner go above
+            // the navigation title
+            
             if isLinkCopiedBannerVisible {
                 LinkCopiedBanner()
             }
@@ -121,19 +124,18 @@ struct SupportUsVStack: View {
                     }
                 }
             }
+            /*
             Divider()
                 .padding(.top, 8.0)
             Group {
                 Text(Localized.supportUsFriendsAppsTitle)
                     .font(.title2)
-                /*
                 Link(destination: URL(string: URLs.friendLinkGoLingo)!) {
                     HStack {
                         Image(systemName: "arrow.up.forward.app")
                         Text(Localized.supportUsFriendsAppsGoLingo)
                     }
                 }
-                */
                 Button {} label: {
                     HStack {
                         Image(systemName: "arrow.up.forward.app")
@@ -142,6 +144,7 @@ struct SupportUsVStack: View {
                 }
                 .disabled(true)
             }
+             */
             Divider()
                 .padding(.top, 8.0)
             Spacer()
@@ -152,6 +155,9 @@ struct SupportUsVStack: View {
                 InAppPurchases.donationLargeMeal,
                 InAppPurchases.donationSmallDrink,
             ])
+        }
+        .toolbar {
+            Link("GitHub Repo", destination: URL(string: URLs.githubRepo)!)
         }
     }
 }
