@@ -28,6 +28,7 @@ struct MainTabViewRegularSize: View {
             // Navigation menu list
             List {
                 NavigationLink(Localized.titleGettingStarted, destination: GettingStartedInnerPage())
+                NavigationLink("FAQ", destination: FAQInnerPage())
                 NavigationLink(Localized.titleSupportUs, destination: SupportUsInnerPage())
                 NavigationLink(Localized.titleSettings, destination: SettingsInnerPage())
             }
@@ -46,6 +47,11 @@ struct MainTabViewCompactSize: View {
                 .tabItem {
                     Image(systemName: "text.book.closed.fill")
                     Text(Localized.titleGettingStarted)
+                }
+            FAQPageWrapped()
+                .tabItem {
+                    Image(systemName: "questionmark.circle.fill")
+                    Text("FAQ")
                 }
             SupportUsPageWrapped()
                 .tabItem {

@@ -44,6 +44,48 @@
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "設置完畢後可以在這裡嘗試使用";
 
+/* FAQ Page - Globe Key */
+"The globe key / switch keyboards key doesn't show up! What do I do???" = "輸入法切換按鈕消失的場合";
+
+"There used to be a bug where on certain devices the globe key disappears for no reason.
+
+We made a fix already, but if the problem still occurs, follow these steps:" =
+"之前存在輸入法切換按鈕消失的bug不過現在已經修復。
+
+如果這個bug仍然出現，那可以通過以下步驟強制顯示切換按鈕：";
+
+"Go to the Settings tab in this app" = "打開本App内的設置";
+"Turn on \"Force show input switch key\"" = "開啟「強制顯示輸入法切換按鈕」";
+
+/* FAQ Page - Unicode */
+"Some of the characters are showing up as weird boxes!" = "Some of the characters are showing up as weird boxes!";
+"This keyboard types Unicode characters of the IPA symbols.
+
+It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+The characters you type out will show up correctly on systems that support rendering them." =
+"This keyboard types Unicode characters of the IPA symbols.
+
+It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+The characters you type out will show up correctly on systems that support rendering them.
+
+(這部分懶得翻譯了，以後再說吧)";
+
+/* FAQ Page - Doesn't show up */
+"The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "即使重新安裝/重新啟動設備，「第三方鍵盤」列表內依然找不到本輸入法的場合";
+
+"Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
+
+Unfortunately there's nothing we could do about it." =
+"有時在iOS上安裝第三方輸入法時確實會遇到這種情況（很罕見），這是系統方面的問題。
+
+很抱歉作為開發者我們對此無能為力。";
+
+/* FAQ Page - Future Features */
+"When is non-standard symbols / obsolete symbols / custom keyboard layout / recently used keys coming?" = "非正規字符/自定義鍵盤/最近使用字符之類的功能什麼時候出？";
+"When I beat my procrastination. :(" = "當我戰勝拖延症的時候 :(";
+
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "向開發者捐贈";
 "support-us-donate-subtitle" = "本IPA鍵盤堅持向大家免費提供，歡迎支持免費軟體的各位捐款資助！";
@@ -86,3 +128,4 @@
 /* Settings - Advanced Settings */
 "advanced-settings" = "高級設定";
 "settings-movable-cursor" = "可移動游標";
+"Force show input switch key (globe key)" = "強制顯示輸入法切換按鈕";

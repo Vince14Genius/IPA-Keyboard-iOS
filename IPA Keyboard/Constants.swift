@@ -63,6 +63,33 @@ enum Localized {
     /* Getting Started TextField */
     static let gettingStartedTextField: LocalizedStringKey = "keyboardtest.textfield.placeholder"
 
+    /* FAQ Page */
+    static let faqGlobeKeyHeading: LocalizedStringKey = "The globe key / switch keyboards key doesn't show up! What do I do???"
+    static let faqGlobeKeyDescription: LocalizedStringKey = """
+        There used to be a bug where on certain devices the globe key disappears for no reason.
+        
+        We made a fix already, but if the problem still occurs, follow these steps:
+        """
+    static let faqGlobeKeyStep1: LocalizedStringKey = "Go to the Settings tab in this app"
+    static let faqGlobeKeyStep2: LocalizedStringKey = "Turn on \"Force show input switch key\""
+    
+    static let faqUnicodeHeading: LocalizedStringKey = "Some of the characters are showing up as weird boxes!"
+    static let faqUnicodeBody: LocalizedStringKey = """
+        This keyboard types Unicode characters of the IPA symbols.
+
+        It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+        The characters you type out will show up correctly on systems that support rendering them.
+        """
+    static let faqDoesntShowUpHeading: LocalizedStringKey = "The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!"
+    static let faqDoesntShowUpBody: LocalizedStringKey = """
+        Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
+
+        Unfortunately there's nothing we could do about it.
+        """
+    static let faqFutureFeaturesHeading: LocalizedStringKey = "When is non-standard symbols / obsolete symbols / custom keyboard layout / recently used keys coming?"
+    static let faqFutureFeaturesBody: LocalizedStringKey = "When I beat my procrastination. :("
+    
     /* Support Us - Donate to the developer */
     static let supportUsDonateTitle: LocalizedStringKey = "support-us-donate-title"
     static let supportUsDonateSubtitle: LocalizedStringKey = "support-us-donate-subtitle"
@@ -107,6 +134,7 @@ enum Localized {
     /* Settings - Advanced Settings */
     static let advancedSettings: LocalizedStringKey = "advanced-settings"
     static let movableCursor: LocalizedStringKey = "settings-movable-cursor"
+    static let forceShowGlobeKey: LocalizedStringKey = "Force show input switch key (globe key)"
 }
 
 enum InAppPurchases {

@@ -23,6 +23,7 @@
 		4E14C3AF261E8E16001AE827 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E14C3B1261E8E16001AE827 /* Localizable.strings */; };
 		4E14C3BD261EAD6F001AE827 /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C3BC261EAD6F001AE827 /* BlueButtonStyle.swift */; };
 		4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */; };
+		4E2148C429F220EC0037328C /* FAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2148C329F220EC0037328C /* FAQPage.swift */; };
 		4E34246A28448E7400DABC81 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34246928448E7400DABC81 /* Operators.swift */; };
 		4E34246B28448F5100DABC81 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34246928448E7400DABC81 /* Operators.swift */; };
 		4E34B55826F3F62E00323D23 /* KeyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DABF26F3CB9B00F88CD9 /* KeyButtonView.swift */; };
@@ -126,6 +127,7 @@
 		4E14C3B4261E8E19001AE827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E14C3BC261EAD6F001AE827 /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
 		4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldRepeatButton.swift; sourceTree = "<group>"; };
+		4E2148C329F220EC0037328C /* FAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQPage.swift; sourceTree = "<group>"; };
 		4E34246928448E7400DABC81 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCustomKeyboardPage.swift; sourceTree = "<group>"; };
 		4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationFunctions.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				4E4030F3269FE0520081E3FD /* View+makeStackNavigationPage.swift */,
 				4E0B7426269C21840066345B /* GettingStartedPage.swift */,
+				4E2148C329F220EC0037328C /* FAQPage.swift */,
 				4E0B742A269C2A4A0066345B /* SupportUsPage.swift */,
 				4E0B7428269C22390066345B /* SettingsPage.swift */,
 				4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */,
@@ -559,6 +562,7 @@
 				4E14C384261E864C001AE827 /* MainTabView.swift in Sources */,
 				4E408CE827110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
 				4E5D174B26EAE751003B5C5B /* Symbols.swift in Sources */,
+				4E2148C429F220EC0037328C /* FAQPage.swift in Sources */,
 				4EAFA34E26E1A86700344131 /* UserTipView.swift in Sources */,
 				4E0A9E1F283D82CA00378987 /* KeyboardLayout.swift in Sources */,
 				4E34B56026F3FB8B00323D23 /* BottomRow.swift in Sources */,
