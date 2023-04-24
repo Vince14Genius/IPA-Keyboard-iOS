@@ -85,4 +85,5 @@
 
 /* Settings - Advanced Settings */
 "advanced-settings" = "Altgradaj Agordoj";
-"settings-movable-cursor" = "Movable Cursor";
+"settings-movable-cursor" = "Butonoj por movi la kursoron";
+"Force show input switch key (globe key)" = "Montru perforte la butonon por ŝanĝi klavarojn";

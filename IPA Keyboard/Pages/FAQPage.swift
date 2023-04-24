@@ -34,38 +34,38 @@ struct FAQVStack: View {
         VStack(alignment: .leading, spacing: 12.0) {
             Group {
                 Divider()
-                Text("The globe key / switch keyboards key doesn't show up! What do I do???")
+                Text(Localized.faqGlobeKeyHeading)
                     .font(.title2)
-                Text("There used to be a bug where on certain devices the globe key disappears for no reason. We made a fix already, but if the problem still occurs, follow these steps:")
+                Text(Localized.faqGlobeKeyDescription)
                     .foregroundColor(.secondary)
-                InstructionsListItem(index: 1, bodyText: "Go to the Settings tab in this app")
-                InstructionsListItem(index: 2, bodyText: "Turn on \"Force show input switch key\"")
+                InstructionsListItem(index: 1, bodyText: Localized.faqGlobeKeyStep1)
+                InstructionsListItem(index: 2, bodyText: Localized.faqGlobeKeyStep2)
             }
             .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
             
             Group {
                 Divider()
-                Text("Some of the characters are showing up as weird boxes!")
+                Text(Localized.faqUnicodeHeading)
                     .font(.title2)
-                Text("This keyboard types Unicode characters of the IPA symbols.\n\nIt's just that (your version of) iOS doesn't support rendering some of the characters yet.\n\nThe characters you type out will show up correctly on systems that support rendering them.")
-                    .foregroundColor(.secondary)
-            }
-            .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
-            
-            Group {
-                Divider()
-                Text("The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!")
-                    .font(.title2)
-                Text("Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.\n\nUnfortunately there's nothing we could do about it.")
+                Text(Localized.faqUnicodeBody)
                     .foregroundColor(.secondary)
             }
             .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
             
             Group {
                 Divider()
-                Text("When is non-standard symbols / obsolete symbols / custom keyboard layout / recently used keys coming?")
+                Text(Localized.faqDoesntShowUpHeading)
                     .font(.title2)
-                Text("When I beat my procrastination. :(")
+                Text(Localized.faqDoesntShowUpBody)
+                    .foregroundColor(.secondary)
+            }
+            .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
+            
+            Group {
+                Divider()
+                Text(Localized.faqFutureFeaturesHeading)
+                    .font(.title2)
+                Text(Localized.faqFutureFeaturesBody)
                     .foregroundColor(.secondary)
             }
             .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround

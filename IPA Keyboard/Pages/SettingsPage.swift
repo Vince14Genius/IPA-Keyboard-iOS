@@ -80,7 +80,7 @@ struct SettingsInnerPage: View {
             }
             Section(header: Text(Localized.advancedSettings)) {
                 Toggle(Localized.movableCursor, isOn: $isMovableCursorOn)
-                Toggle("Force show input switch key (globe key)", isOn: $isInputSwitchKeyAlwaysOn)
+                Toggle(Localized.forceShowGlobeKey, isOn: $isInputSwitchKeyAlwaysOn)
             }
         }
         .alert(isPresented: $showingComingSoonAlert, content: {

@@ -44,9 +44,51 @@
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "追加した後はこちらでお試しいただけます";
 
+/* FAQ Page - Globe Key */
+"The globe key / switch keyboards key doesn't show up! What do I do???" = "キーボードを切り替えるボタンが消えた場合";
+
+"There used to be a bug where on certain devices the globe key disappears for no reason.
+
+We made a fix already, but if the problem still occurs, follow these steps:" =
+"過去、あるデバイスの機種ではキーボードを切り替えるボタンが消えてしまう不具合がございましたが、それは既に直されたはずです。
+
+もしその不具合がまた現れてしまう場合がございましたら、下記の手順に従ってください：";
+
+"Go to the Settings tab in this app" = "このアプリの「設定」タブを開けて、";
+"Turn on \"Force show input switch key\"" = "「キーボードを切り替えるボタンを強制的に表示」をオンにしてください";
+
+/* FAQ Page - Unicode */
+"Some of the characters are showing up as weird boxes!" = "Some of the characters are showing up as weird boxes!";
+"This keyboard types Unicode characters of the IPA symbols.
+
+It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+The characters you type out will show up correctly on systems that support rendering them." =
+"This keyboard types Unicode characters of the IPA symbols.
+
+It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+The characters you type out will show up correctly on systems that support rendering them.
+
+(今この部分翻訳する気ない笑)";
+
+/* FAQ Page - Doesn't show up */
+"The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "再インストール・再起動してもキーボードがリストに現れない場合";
+
+"Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
+
+Unfortunately there's nothing we could do about it." =
+"これはiOSの他社製キーボードがたまに遭う、オペレーティングシステム自身の不具合でございます。
+
+残念ですが我々開発者は解決策を提供できませんので申し訳ございません。";
+
+/* FAQ Page - Future Features */
+"When is non-standard symbols / obsolete symbols / custom keyboard layout / recently used keys coming?" = "非公式記号・カスタマイズ・よく使う記号などの機能はいつリリースしますか？";
+"When I beat my procrastination. :(" = "自分の先延ばし癖に勝ったら(泣";
+
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "開発者に寄贈";
-"support-us-donate-subtitle" = "このIPAキーボードはこれからもみんなに無料で提供し続けますので、寄贈していただけると大変助かります。";
+"support-us-donate-subtitle" = "このIPAキーボードはこれからも皆様に無料で提供し続けますので、寄贈していただけると大変助かります。";
 "support-us-donate-buy-drink" = "🧋 飲み物をおごってあげる";
 "support-us-donate-buy-meal" = "🍱 食事代をおごってあげる";
 "support-us-donate-total-count: %lld" = "%lld回ご寄贈いただき、誠にありがとうございました！";
@@ -81,8 +123,9 @@
 "button-restore-purchases" = "購入履歴復元";
 
 /* Settings - Bug Report / Feedback */
-"localized-button-bugreport" = "バグ報告・フィードバック";
+"localized-button-bugreport" = "バグ報告・ご意見箱";
 
 /* Settings - Advanced Settings */
 "advanced-settings" = "詳細設定";
-"settings-movable-cursor" = "テキストカーソルを移動させるボタン";
+"settings-movable-cursor" = "入力カーソルを移動するボタンを表示";
+"Force show input switch key (globe key)" = "キーボードを切り替えるボタンを強制的に表示";

@@ -44,6 +44,45 @@
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "You can try the keyboard here after setup.";
 
+/* FAQ Page - Globe Key */
+"The globe key / switch keyboards key doesn't show up! What do I do???" = "The globe key / switch keyboards key doesn't show up! What do I do???";
+
+"There used to be a bug where on certain devices the globe key disappears for no reason.
+
+We made a fix already, but if the problem still occurs, follow these steps:" =
+"There used to be a bug where on certain devices the globe key disappears for no reason.
+
+We made a fix already, but if the problem still occurs, follow these steps:";
+
+"Go to the Settings tab in this app" = "Go to the Settings tab in this app";
+"Turn on \"Force show input switch key\"" = "Turn on \"Force show input switch key\"";
+
+/* FAQ Page - Unicode */
+"Some of the characters are showing up as weird boxes!" = "Some of the characters are showing up as weird boxes!";
+"This keyboard types Unicode characters of the IPA symbols.
+
+It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+The characters you type out will show up correctly on systems that support rendering them." =
+"This keyboard types Unicode characters of the IPA symbols.
+
+It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+The characters you type out will show up correctly on systems that support rendering them.";
+
+/* FAQ Page - Doesn't show up */
+"The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!";
+"Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
+
+Unfortunately there's nothing we could do about it." =
+"Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
+
+Unfortunately there's nothing we could do about it.";
+
+/* FAQ Page - Future Features */
+"When is non-standard symbols / obsolete symbols / custom keyboard layout / recently used keys coming?" = "When is non-standard symbols / obsolete symbols / custom keyboard layout / recently used keys coming?";
+"When I beat my procrastination. :(" = "When I beat my procrastination. :(";
+
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "Donate to the developer";
 "support-us-donate-subtitle" = "Contribute to our effort to keep this IPA keyboard completely free!";
@@ -86,3 +125,4 @@
 /* Settings - Advanced Settings */
 "advanced-settings" = "Advanced Settings";
 "settings-movable-cursor" = "Movable Cursor";
+"Force show input switch key (globe key)" = "Force show input switch key (globe key)";
