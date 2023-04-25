@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -58,7 +58,7 @@
 		4E6755F922EA0F0E00DA88BB /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* Symbols.swift */; };
 		4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B15C2140E9330078AC4B /* Assets.xcassets */; };
 		4E84B18A2140E9980078AC4B /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1892140E9980078AC4B /* KeyboardViewController.swift */; };
-		4E84B18E2140E9980078AC4B /* IPA Keyboard Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E84B1872140E9980078AC4B /* IPA Keyboard Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4E84B18E2140E9980078AC4B /* IPA Keyboard Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4E84B1872140E9980078AC4B /* IPA Keyboard Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1952142624C0078AC4B /* IPASymbols.swift */; };
 		4E84B1A221452AF00078AC4B /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1A121452AF00078AC4B /* SectionHeader.swift */; };
 		4E84B1AB21456EEB0078AC4B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B1A921456EEB0078AC4B /* Localizable.strings */; };
@@ -99,15 +99,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4E84B1922140E9980078AC4B /* Embed App Extensions */ = {
+		4E84B1922140E9980078AC4B /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				4E84B18E2140E9980078AC4B /* IPA Keyboard Extension.appex in Embed App Extensions */,
+				4E84B18E2140E9980078AC4B /* IPA Keyboard Extension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -441,7 +441,7 @@
 				4E84B14E2140E92F0078AC4B /* Sources */,
 				4E84B14F2140E92F0078AC4B /* Frameworks */,
 				4E84B1502140E92F0078AC4B /* Resources */,
-				4E84B1922140E9980078AC4B /* Embed App Extensions */,
+				4E84B1922140E9980078AC4B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -476,8 +476,9 @@
 		4E84B14A2140E92F0078AC4B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1030;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = Vince14Genius;
 				TargetAttributes = {
 					4E84B1512140E92F0078AC4B = {
