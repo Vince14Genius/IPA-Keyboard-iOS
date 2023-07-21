@@ -89,11 +89,11 @@ enum IPASymbols: KeyboardLayout {
             sectionGlyph: "ʘ",
             localStorageKey: SettingsKey.isIPAEnabled,
             regularDisplayKeys: [
-                "ʘ", "ǀ", "ǃ", "ǂ",
-                "ǁ", nil, nil, nil,
-                "ɓ", "ɗ", "ʄ", "ɠ",
-                "ʛ", nil, nil, nil,
-                "◌ʼ",
+                "ʘ", "ɓ", nil, "◌ʼ",
+                "ǀ", "ɗ", nil, nil,
+                "ǃ", "ʄ", nil, nil,
+                "ǂ", "ɠ", nil, nil,
+                "ǁ", "ʛ",
             ],
             largeDisplayKeys:  [
                 "ʘ", "ǀ", "ǃ", "ǂ", "ǁ", nil,
@@ -105,8 +105,8 @@ enum IPASymbols: KeyboardLayout {
             sectionGlyph: "ʍ",
             localStorageKey: SettingsKey.isIPAEnabled,
             regularDisplayKeys: [
-                "ʍ", "w", "ɥ", "ʜ",
-                "ʢ", "ʡ", "ɕ", "ʑ",
+                "ʍ", "ɥ", "ʢ", "ɕ",
+                "w", "ʜ", "ʡ", "ʑ",
                 "ɺ", "ɧ", "◌͡", "◌͜",
             ],
             largeDisplayKeys: [
@@ -141,9 +141,9 @@ enum IPASymbols: KeyboardLayout {
             sectionGlyph: "ː",
             localStorageKey: SettingsKey.isIPAEnabled,
             regularDisplayKeys: [
-                "ˈ", "ˌ", "ː", "ˑ",
-                "◌̆", "|", "‖", ".",
-                "‿",
+                "ˈ", "ː", "|", ".",
+                "ˌ", "ˑ", "‖", "‿",
+                nil, "◌̆",
             ],
             largeDisplayKeys: [
                 "ˈ", "ˌ", "ː", "ˑ", "◌̆", nil,
@@ -154,13 +154,11 @@ enum IPASymbols: KeyboardLayout {
             sectionGlyph: "˥",
             localStorageKey: SettingsKey.isIPAEnabled,
             regularDisplayKeys: [
-                "◌̋", "◌́", "◌̄", "◌̀",
-                "˥", "˦", "˧", "˨",
-                "◌̏", nil, nil, nil,
-                "˩", nil, nil, nil,
-                "◌̌", "◌̂", "◌᷄", "◌᷅",
-                "◌᷈", nil, nil, nil,
-                "ꜜ", "ꜛ", "↗", "↘",
+                "◌̋", "˥", "◌̌", "ꜜ",
+                "◌́", "˦", "◌̂", "ꜛ",
+                "◌̄", "˧", "◌᷄", "↗",
+                "◌̀", "˨", "◌᷅", "↘",
+                "◌̏", "˩", "◌᷈",
             ],
             largeDisplayKeys: [
                 "◌̋", "◌́", "◌̄", "◌̀", "◌̏", nil,
