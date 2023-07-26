@@ -44,6 +44,7 @@ enum SettingsKey {
     
     static let isMovableCursorEnabled = "isMovableCursorEnabled"
     static let isInputSwitchKeyAlwaysOn = "isInputSwitchKeyAlwaysOn"
+    static let isInputClickSoundEnabled = "isInputClickSoundEnabled"
 }
 
 enum SupportUsKey {
@@ -67,6 +68,7 @@ fileprivate let defaultValues: [String: Any] = [
     
     SettingsKey.isMovableCursorEnabled: false,
     SettingsKey.isInputSwitchKeyAlwaysOn: false,
+    SettingsKey.isInputClickSoundEnabled: true,
     
     SupportUsKey.timesDonatedSmallDrink: 0,
     SupportUsKey.timesDonatedLargeMeal: 0,
