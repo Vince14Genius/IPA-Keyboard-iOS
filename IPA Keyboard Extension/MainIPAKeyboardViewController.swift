@@ -1,5 +1,5 @@
 //
-//  KeyboardViewController.swift
+//  MainIPAKeyboardViewController.swift
 //  IPA Keyboard Extension
 //
 //  Created by Vincent C. on 2018/9/6.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-class KeyboardViewController: MasterKeyboardViewController {
+class MainIPAKeyboardViewController: IPAKeyboardViewControllerTemplate {
     
     // MARK: - viewDidLoad()
     

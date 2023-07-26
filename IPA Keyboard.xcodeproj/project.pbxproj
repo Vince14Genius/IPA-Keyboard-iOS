@@ -54,10 +54,10 @@
 		4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175A26EAED83003B5C5B /* SystemSounds.swift */; };
 		4E5D175F26EAF00E003B5C5B /* BottomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175D26EAF00E003B5C5B /* BottomRow.swift */; };
 		4E65D9752724D20500E49DD7 /* LinkCopiedBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */; };
-		4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */; };
+		4E6755F422EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */; };
 		4E6755F922EA0F0E00DA88BB /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* Symbols.swift */; };
 		4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B15C2140E9330078AC4B /* Assets.xcassets */; };
-		4E84B18A2140E9980078AC4B /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1892140E9980078AC4B /* KeyboardViewController.swift */; };
+		4E84B18A2140E9980078AC4B /* MainIPAKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1892140E9980078AC4B /* MainIPAKeyboardViewController.swift */; };
 		4E84B18E2140E9980078AC4B /* IPA Keyboard Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4E84B1872140E9980078AC4B /* IPA Keyboard Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1952142624C0078AC4B /* IPASymbols.swift */; };
 		4E84B1A221452AF00078AC4B /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1A121452AF00078AC4B /* SectionHeader.swift */; };
@@ -152,7 +152,7 @@
 		4E5D175A26EAED83003B5C5B /* SystemSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSounds.swift; sourceTree = "<group>"; };
 		4E5D175D26EAF00E003B5C5B /* BottomRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomRow.swift; sourceTree = "<group>"; };
 		4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCopiedBanner.swift; sourceTree = "<group>"; };
-		4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterKeyboardViewController.swift; sourceTree = "<group>"; };
+		4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAKeyboardViewControllerTemplate.swift; sourceTree = "<group>"; };
 		4E6755F822EA0F0E00DA88BB /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		4E84B1522140E92F0078AC4B /* IPA Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E84B15C2140E9330078AC4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		4E84B1752140E9340078AC4B /* IPA_KeyboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_KeyboardUITests.swift; sourceTree = "<group>"; };
 		4E84B1772140E9340078AC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E84B1872140E9980078AC4B /* IPA Keyboard Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "IPA Keyboard Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E84B1892140E9980078AC4B /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		4E84B1892140E9980078AC4B /* MainIPAKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainIPAKeyboardViewController.swift; sourceTree = "<group>"; };
 		4E84B18B2140E9980078AC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E84B1952142624C0078AC4B /* IPASymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPASymbols.swift; sourceTree = "<group>"; };
 		4E84B1A121452AF00078AC4B /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 		4E6755F122EA060700DA88BB /* IPA Keyboard Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4E6755F222EA062800DA88BB /* MasterKeyboardViewController.swift */,
+				4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */,
 				4E0A9E27283D9C8300378987 /* KeyButtonActions.swift */,
 				4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */,
 				4EB2E6DF2836DDFA0048C926 /* UIKit Components */,
@@ -388,7 +388,7 @@
 			children = (
 				4EAFA35626E5B75E00344131 /* IPA Keyboard Extension.entitlements */,
 				4E84B1A721456EA50078AC4B /* Localization */,
-				4E84B1892140E9980078AC4B /* KeyboardViewController.swift */,
+				4E84B1892140E9980078AC4B /* MainIPAKeyboardViewController.swift */,
 				4E0A9E21283D8DA200378987 /* KeyboardViewController+UICollectionViewDataSource.swift */,
 				4E13CE8B2727802700DB5CB0 /* Keyboard Layouts */,
 				4E84B18B2140E9980078AC4B /* Info.plist */,
@@ -604,8 +604,8 @@
 				4EA664B626EFFF0B001588E9 /* KeyboardLayout.swift in Sources */,
 				4E5D175926EAEB39003B5C5B /* RepeatTimer.swift in Sources */,
 				4E5D175F26EAF00E003B5C5B /* BottomRow.swift in Sources */,
-				4E6755F422EA062800DA88BB /* MasterKeyboardViewController.swift in Sources */,
-				4E84B18A2140E9980078AC4B /* KeyboardViewController.swift in Sources */,
+				4E6755F422EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift in Sources */,
+				4E84B18A2140E9980078AC4B /* MainIPAKeyboardViewController.swift in Sources */,
 				4E84B1A221452AF00078AC4B /* SectionHeader.swift in Sources */,
 				4EB2E6F328373EAB0048C926 /* GlyphButton.swift in Sources */,
 				4E0A9E24283D8E9900378987 /* CollectionViewConstants.swift in Sources */,
