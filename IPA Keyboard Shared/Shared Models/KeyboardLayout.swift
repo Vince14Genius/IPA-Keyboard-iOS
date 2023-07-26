@@ -21,7 +21,13 @@ typealias RawSectionID = String
  
  - note: `regularDisplayKeys` and `largeDisplayKeys` must be updated to match each other; use the `keyArrangementConsistencyCheck()` function to check consistency
  */
-typealias KeyboardSectionData = (sectionGlyph: String, localStorageKey: String, regularDisplayKeys: [String?], largeDisplayKeys: [String?])
+struct KeyboardSectionData {
+    let sectionGlyph: String
+    let localStorageKey: String
+    let regularDisplayKeys: [String?]
+    let largeDisplayKeys: [String?]
+    var ignoredNonOverlappingKeys: [String]? = nil
+}
 
 protocol KeyboardLayout {
     /**
@@ -64,17 +70,26 @@ extension KeyboardLayout {
             let thisSectionRD = thisSection.regularDisplayKeys
             let thisSectionLD = thisSection.largeDisplayKeys
             
+            func isKeyIgnorable(_ key: String) -> Bool {
+                guard let ignorableKeys = thisSection.ignoredNonOverlappingKeys else {
+                    return false
+                }
+                return ignorableKeys.contains(key)
+            }
+            
             for keyOptional in thisSectionRD {
                 guard let key = keyOptional else { continue }
+                if isKeyIgnorable(key) { continue }
                 if !thisSectionLD.contains(key) {
-                    fatalError("Missing key \"\(key)\" in \(sectionName) regularDisplayKeys]")
+                    fatalError("Missing key \"\(key)\" in \(sectionName) largeDisplayKeys")
                 }
             }
             
             for keyOptional in thisSectionLD {
                 guard let key = keyOptional else { continue }
+                if isKeyIgnorable(key) { continue }
                 if !thisSectionRD.contains(key) {
-                    fatalError("Missing key \"\(key)\" in \(sectionName) largeDisplayKeys")
+                    fatalError("Missing key \"\(key)\" in \(sectionName) regularDisplayKeys")
                 }
             }
         }
