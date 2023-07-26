@@ -1,5 +1,5 @@
 //
-//  MasterKeyboardViewController.swift
+//  IPAKeyboardViewControllerTemplate.swift
 //  IPA Keyboard
 //
 //  Created by Vincent C. on 2019/7/25.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-class MasterKeyboardViewController: UIInputViewController, UICollectionViewDelegateFlowLayout {
+class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Constants
     

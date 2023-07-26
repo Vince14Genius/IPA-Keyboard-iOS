@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension MasterKeyboardViewController {
+extension IPAKeyboardViewControllerTemplate {
     
     func initializeKeyButton(_ cell: KeyButtonCell) {
         let button = cell.button
