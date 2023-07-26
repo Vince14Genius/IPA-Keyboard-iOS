@@ -16,6 +16,7 @@ enum SystemSound: UInt32 {
     case modify = 1156
     
     static func playInputClick() {
+        guard LocalStorage.getBool(for: SettingsKey.isInputClickSoundEnabled) else { return }
         SystemSound.inputClick.play()
         //UIDevice.current.playInputClick()
     }

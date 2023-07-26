@@ -129,3 +129,4 @@ Unfortunately there's nothing we could do about it." =
 "advanced-settings" = "詳細設定";
 "settings-movable-cursor" = "入力カーソルを移動するボタンを表示";
 "Force show input switch key (globe key)" = "キーボードを切り替えるボタンを強制的に表示";
+"Keyboard Feedback Sound" = "キーボードの音";

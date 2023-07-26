@@ -25,6 +25,7 @@ struct SettingsInnerPage: View {
     // On-off switches: advanced features
     @AppStorage(SettingsKey.isMovableCursorEnabled, store: appGroupStorage) private var isMovableCursorOn = false
     @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn = false
+    @AppStorage(SettingsKey.isInputClickSoundEnabled, store: appGroupStorage) private var isInputClickSoundEnabled = true
     
     // On-off switches: keyboard list
     @AppStorage(SettingsKey.isIPAEnabled, store: appGroupStorage) private var isIPAKeyboardOn = true
@@ -81,6 +82,7 @@ struct SettingsInnerPage: View {
             Section(header: Text(Localized.advancedSettings)) {
                 Toggle(Localized.movableCursor, isOn: $isMovableCursorOn)
                 Toggle(Localized.forceShowGlobeKey, isOn: $isInputSwitchKeyAlwaysOn)
+                Toggle(Localized.inputClickSound, isOn: $isInputClickSoundEnabled)
             }
         }
         .alert(isPresented: $showingComingSoonAlert, content: {

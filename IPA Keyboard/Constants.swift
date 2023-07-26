@@ -135,6 +135,7 @@ enum Localized {
     static let advancedSettings: LocalizedStringKey = "advanced-settings"
     static let movableCursor: LocalizedStringKey = "settings-movable-cursor"
     static let forceShowGlobeKey: LocalizedStringKey = "Force show input switch key (globe key)"
+    static let inputClickSound: LocalizedStringKey = "Keyboard Feedback Sound"
 }
 
 enum InAppPurchases {
