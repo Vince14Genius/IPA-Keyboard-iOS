@@ -44,7 +44,7 @@ struct GettingStartedVStack: View {
             Text(Localized.gettingStartedDescription)
                 .font(.title2)
                 .padding(.bottom)
-            ForEach(Localized.gettingStartedRange) { i in
+            ForEach(Localized.gettingStartedRange, id: \.self) { i in
                 InstructionsListItem(index: i, bodyText: Localized.gettingStartedKey(i))
             }
             Group {
