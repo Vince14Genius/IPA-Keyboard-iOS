@@ -78,6 +78,7 @@ struct BottomRow: View {
                     }
                 }
                 .fixedSize(horizontal: false, vertical: true)
+                .background(Color.clearInteractable)
                 .gesture(
                     DragGesture(minimumDistance: 2)
                         .onChanged { value in
