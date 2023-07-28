@@ -15,8 +15,13 @@ struct GlyphWithID: Identifiable {
 
 struct BottomRow: View {
     
-    static let rowHeight = 36.0
-    static let buttonWidth = 36.0
+    static var rowHeight: Double {
+        UIDevice.current.userInterfaceIdiom == .pad ? 48 : 36
+    }
+    
+    static var buttonWidth: Double {
+        rowHeight
+    }
     
     @Environment(\.colorScheme) var colorScheme
     

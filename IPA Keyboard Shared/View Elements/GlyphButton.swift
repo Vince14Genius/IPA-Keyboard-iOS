@@ -10,14 +10,16 @@ import SwiftUI
 
 struct GlyphButton: View {
     
-    private let sideLength = 24.0
+    static var textSideLength: Double {
+        UIDevice.current.userInterfaceIdiom == .pad ? 32 : 24
+    }
     
     private var horizontalPadding: Double {
-        (BottomRow.buttonWidth - sideLength) / 2
+        (BottomRow.buttonWidth - GlyphButton.textSideLength) / 2
     }
     
     private var verticalPadding: Double {
-        (BottomRow.rowHeight - sideLength) / 2
+        (BottomRow.rowHeight - GlyphButton.textSideLength) / 2
     }
     
     @Environment(\.colorScheme) var colorScheme
@@ -32,8 +34,9 @@ struct GlyphButton: View {
     
     var body: some View {
         label
+            .font(UIDevice.current.userInterfaceIdiom == .pad ? .system(size: GlyphButton.textSideLength * 0.67) : .body)
             .foregroundColor(isSelected ? Color(.label) : Color(.secondaryLabel))
-            .frame(minWidth: sideLength, minHeight: sideLength)
+            .frame(minWidth: GlyphButton.textSideLength, minHeight: GlyphButton.textSideLength)
             .padding(.horizontal, horizontalPadding)
             .padding(.vertical, verticalPadding)
             .background(isSelected ? GlyphButton.selectedColor(colorScheme: colorScheme) : .clear)

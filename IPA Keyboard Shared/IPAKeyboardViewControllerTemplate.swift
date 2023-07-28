@@ -80,10 +80,14 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             (keyCollection.trailingAnchor, view.trailingAnchor),
         ], vPairs: [
             (toolbarRow.view.topAnchor, view.topAnchor),
-            (bottomRow.view.bottomAnchor, view.bottomAnchor),
             (keyCollection.topAnchor, toolbarRow.view.bottomAnchor),
             (keyCollection.bottomAnchor, bottomRow.view.topAnchor),
         ])
+        
+        bottomRow.view.bottomAnchor.constraint(
+            equalTo: view.bottomAnchor,
+            constant: UIDevice.current.userInterfaceIdiom == .pad ? -8 : 0
+        ).isActive = true
         
         // MARK: - Set up input mode switch button if needed
         

@@ -8,6 +8,24 @@
 
 import SwiftUI
 
+struct CursorButtons: View {
+    var inputViewController: UIInputViewController?
+    
+    var body: some View {
+        let inputVC = inputViewController
+        
+        HStack(spacing: 2) {
+            HoldRepeatButton(label: Image(systemName: "arrow.backward")) {
+                inputVC?.moveCursorBackByOne()
+            }
+            HoldRepeatButton(label: Image(systemName: "arrow.forward")) {
+                inputVC?.moveCursorForwardByOne()
+            }
+        }
+        .buttonStyle(CursorButtonStyle())
+    }
+}
+
 struct ToolbarRow: View {
     static let appGroupStorage = UserDefaults(suiteName: SharedIdentifiers.appGroup)
     
@@ -32,17 +50,9 @@ struct ToolbarRow: View {
         let inputVC = inputViewController
         
         VStack(spacing: 0) {
-            if isMovableCursorOn {
-                HStack(spacing: 2) {
-                    HoldRepeatButton(label: Image(systemName: "arrow.backward")) {
-                        inputVC?.moveCursorBackByOne()
-                    }
-                    HoldRepeatButton(label: Image(systemName: "arrow.forward")) {
-                        inputVC?.moveCursorForwardByOne()
-                    }
-                }
-                .buttonStyle(CursorButtonStyle())
-                .padding(4)
+            if isMovableCursorOn, UIDevice.current.userInterfaceIdiom != .pad {
+                CursorButtons(inputViewController: inputVC)
+                    .padding(4)
                 
                 Divider()
             }
@@ -61,6 +71,11 @@ struct ToolbarRow: View {
                     type(text: Symbols.dottedCircle)
                 }
                 Spacer()
+                
+                if isMovableCursorOn, UIDevice.current.userInterfaceIdiom == .pad {
+                    CursorButtons(inputViewController: inputVC)
+                }
+                
                 Button("SpaceBarText") {
                     type(text: " ")
                 }
