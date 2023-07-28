@@ -56,12 +56,15 @@ enum Localized {
     /* Getting Started Settings Link Button */
     static let gettingStartedSettingsButton: LocalizedStringKey = "getting-started-settings-button"
     
-    /* Getting Started Note */
+    /* Getting Started Note: Doesn't Show Up */
     static let gettingStartedNoteBullet: LocalizedStringKey = "getting-started-note-bullet-point"
     static let gettingStartedNote: LocalizedStringKey = "getting-started-note"
 
     /* Getting Started TextField */
     static let gettingStartedTextField: LocalizedStringKey = "keyboardtest.textfield.placeholder"
+    
+    /* Getting Started Note: Full Access */
+    static let gettingStartedNoteFullAccess: LocalizedStringKey = "You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless."
 
     /* FAQ Page */
     static let faqGlobeKeyHeading: LocalizedStringKey = "The globe key / switch keyboards key doesn't show up! What do I do???"

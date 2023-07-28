@@ -57,8 +57,11 @@ struct GettingStartedVStack: View {
                     .buttonStyle(BlueButtonStyle())
                 UserTipView(bodyText: Localized.gettingStartedNote)
                 TextField(Localized.gettingStartedTextField, text: $textFieldText)
+                    .padding(.top)
+                Divider()
+                    .padding([.bottom])
+                UserTipView(bodyText: Localized.gettingStartedNoteFullAccess)
             }
-                .padding(.top)
             Divider()
                 .padding([.bottom])
             Spacer()

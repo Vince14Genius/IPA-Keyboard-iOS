@@ -40,6 +40,7 @@
 /* Getting Started Note */
 "getting-started-note-bullet-point" = "※";
 "getting-started-note" = "リストに「IPAキーボード」がない場合は、アプリを削除して再インストールし、またはデバイスを再起動してみてください。";
+"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "「フルアクセス」はオンにしなくても大丈夫ですが、オフの場合は触覚フィードバックが作動しませんのでご了承ください。どちらにしても本キーボードはデータを一切収集しておりません。";
 
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "追加した後はこちらでお試しいただけます";

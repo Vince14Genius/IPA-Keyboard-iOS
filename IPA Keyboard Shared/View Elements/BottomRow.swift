@@ -30,7 +30,7 @@ struct BottomRow: View {
         let normalized = x / width
         let scaled = normalized * Double(dataSource.sectionGlyphs.count)
     
-        let section = Int(scaled)
+        let section = Int(floor(scaled)) // prevent -0.x bugs
         let fraction = scaled - floor(scaled)
         
         dataSource.dragScrollAction?(section, fraction)
@@ -83,6 +83,11 @@ struct BottomRow: View {
                             isScrolling = false
                         }
                 )
+                .onChange(of: dataSource.highlightedSectionIndex) { _ in
+                    if isScrolling {
+                        UISelectionFeedbackGenerator().selectionChanged()
+                    }
+                }
             }
             .frame(height: BottomRow.rowHeight)
             
