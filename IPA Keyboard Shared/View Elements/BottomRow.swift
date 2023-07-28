@@ -15,16 +15,31 @@ struct GlyphWithID: Identifiable {
 
 struct BottomRow: View {
     
+    static let rowHeight = 36.0
+    static let buttonWidth = 36.0
+    
     @Environment(\.colorScheme) var colorScheme
     
     var inputViewController: UIInputViewController?
     
     @ObservedObject var dataSource: BottomRowDataSource
     
+    @State private var isScrolling = false
+    
+    private func dragScroll(x: Double, width: Double) {
+        let normalized = x / width
+        let scaled = normalized * Double(dataSource.sectionGlyphs.count)
+    
+        let section = Int(scaled)
+        let fraction = scaled - floor(scaled)
+        
+        dataSource.dragScrollAction?(section, fraction)
+    }
+    
     var body: some View {
         let inputVC = inputViewController
         
-        HStack(spacing: 0) {
+        HStack(alignment: .center, spacing: 0) {
             if inputVC?.needsInputModeSwitchKey ?? false {
                 Spacer(minLength: 0)
             }
@@ -36,17 +51,40 @@ struct BottomRow: View {
                 )
             }
             
-            ForEach(glyphs) { element in
-                GlyphButton(
-                    label: Text(dataSource.sectionGlyphs[element.id]),
-                    isSelected: element.id == dataSource.highlightedSectionIndex
-                ) {
-                    UISelectionFeedbackGenerator().selectionChanged()
-                    SystemSound.playInputClick()
-                    dataSource.mainAction?(element.id)
+            GeometryReader { proxy in
+                ZStack {
+                    GlyphButton.selectedColor(colorScheme: colorScheme)
+                        .opacity(isScrolling ? 1 : 0)
+                        .cornerRadius(.infinity)
+                    HStack(spacing: 0) {
+                        ForEach(glyphs) { element in
+                            let isSelected = (element.id == dataSource.highlightedSectionIndex) && !isScrolling
+                            
+                            GlyphButton(
+                                label: Text(dataSource.sectionGlyphs[element.id]),
+                                isSelected: isSelected
+                            ) {
+                                UISelectionFeedbackGenerator().selectionChanged()
+                                SystemSound.playInputClick()
+                                dataSource.sectionIconTapAction?(element.id)
+                            }
+                            Spacer(minLength: 0)
+                        }
+                    }
                 }
-                Spacer(minLength: 0)
+                .fixedSize(horizontal: false, vertical: true)
+                .gesture(
+                    DragGesture(minimumDistance: 2)
+                        .onChanged { value in
+                            isScrolling = true
+                            dragScroll(x: value.location.x, width: proxy.size.width)
+                        }
+                        .onEnded { _ in
+                            isScrolling = false
+                        }
+                )
             }
+            .frame(height: BottomRow.rowHeight)
             
             HoldRepeatButton(label: Image(systemName: "delete.left")) {
                 inputVC?.deleteBackwardByOne()
@@ -60,11 +98,14 @@ struct BottomRow: View {
 
 struct BottomRow_Previews: PreviewProvider {
     static var previews: some View {
-        HStack {
+        VStack {
             Spacer()
-            let dataSource = BottomRowDataSource(sectionGlyphs: ["a", "b", "c", "1", "2", "3", "/"])
-            BottomRow(dataSource: dataSource)
-                .background(Color(.secondarySystemBackground))
+            HStack {
+                Spacer()
+                let dataSource = BottomRowDataSource(sectionGlyphs: ["a", "b", "c", "1", "2", "3", "/"])
+                BottomRow(dataSource: dataSource)
+                    .background(Color(.secondarySystemBackground))
+            }
         }
         .preferredColorScheme(.light)
     }

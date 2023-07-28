@@ -151,18 +151,37 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         bottomBarDataSource.highlightedSectionIndex = medianSectionIndex
     }
     
-    func scrollToSection(index: Int, in keyboardLayout: KeyboardLayout.Type) {
-        let middleIndex = (keyboardLayout.getKeySet(section: index)?.count ?? 0) / 2
+    func scrollTo(section: Int, keyboardLayout: KeyboardLayout.Type) {
+        let middleIndex = (keyboardLayout.getKeySet(section: section)?.count ?? 0) / 2
         
         // Calculate columns on screen
         let visibleItemsCount = keyCollection.indexPathsForVisibleItems.count
         
         if middleIndex > visibleItemsCount / 2 + Layout.cellsPerColumn {
             // big section
-            keyCollection.scrollToItem(at: [index, visibleItemsCount / 2 - Layout.cellsPerColumn], at: .centeredHorizontally, animated: true)
+            keyCollection.scrollToItem(at: [section, visibleItemsCount / 2 - Layout.cellsPerColumn], at: .centeredHorizontally, animated: true)
         } else {
             // small section
-            keyCollection.scrollToItem(at: [index, middleIndex], at: .centeredHorizontally, animated: true)
+            keyCollection.scrollToItem(at: [section, middleIndex], at: .centeredHorizontally, animated: true)
         }
+    }
+    
+    func scrollTo(section: Int, fraction: Double) {
+        guard
+            0 <= section,
+            section < keyCollection.numberOfSections,
+            0 <= fraction,
+            fraction < 1
+        else {
+            return
+        }
+        
+        let fractionIndex = Double(keyCollection.numberOfItems(inSection: section)) * fraction
+        
+        keyCollection.scrollToItem(
+            at: [section, Int(fractionIndex)],
+            at: .left,
+            animated: false
+        )
     }
 }

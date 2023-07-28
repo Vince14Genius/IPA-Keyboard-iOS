@@ -10,19 +10,34 @@ import SwiftUI
 
 struct GlyphButton: View {
     
+    private let sideLength = 24.0
+    
+    private var horizontalPadding: Double {
+        (BottomRow.buttonWidth - sideLength) / 2
+    }
+    
+    private var verticalPadding: Double {
+        (BottomRow.rowHeight - sideLength) / 2
+    }
+    
     @Environment(\.colorScheme) var colorScheme
     
     var label: Text
     var isSelected: Bool
     var action: () -> Void
     
+    static func selectedColor(colorScheme: ColorScheme) -> Color {
+        .init(white: colorScheme == .light ? 0 : 1, opacity: 0.15)
+    }
+    
     var body: some View {
         label
             .foregroundColor(isSelected ? Color(.label) : Color(.secondaryLabel))
-            .frame(minWidth: 24, minHeight: 24)
-            .padding(6)
-            .background(isSelected ? Color(white: colorScheme == .light ? 0 : 1, opacity: 0.15) : .clear)
-            .cornerRadius(1000)
+            .frame(minWidth: sideLength, minHeight: sideLength)
+            .padding(.horizontal, horizontalPadding)
+            .padding(.vertical, verticalPadding)
+            .background(isSelected ? GlyphButton.selectedColor(colorScheme: colorScheme) : .clear)
+            .cornerRadius(.infinity)
             .overlay(Color.clearInteractable)
             .onTapGesture(perform: action)
     }
