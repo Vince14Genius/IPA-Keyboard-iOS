@@ -11,5 +11,16 @@ import SwiftUI
 class CursorGestureState: ObservableObject {
     static let movingOpacity = 0.3
     
-    @Published var isMovingCursor: Bool = false
+    var showKeyCollection: (() -> Void)?
+    var hideKeyCollection: (() -> Void)?
+    
+    @Published var isMovingCursor: Bool = false {
+        didSet {
+            if isMovingCursor {
+                hideKeyCollection?()
+            } else {
+                showKeyCollection?()
+            }
+        }
+    }
 }

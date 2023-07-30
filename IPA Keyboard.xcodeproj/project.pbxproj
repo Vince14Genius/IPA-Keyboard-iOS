@@ -46,6 +46,8 @@
 		4E4993DC2A767FC700616B4E /* CursorGestureState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993DB2A767FC700616B4E /* CursorGestureState.swift */; };
 		4E4993DD2A7680A900616B4E /* ToolbarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */; };
 		4E4993DE2A7680AD00616B4E /* CursorGestureState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993DB2A767FC700616B4E /* CursorGestureState.swift */; };
+		4E4993E02A76882800616B4E /* FakeKeyCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993DF2A76882800616B4E /* FakeKeyCollection.swift */; };
+		4E4993E12A76882800616B4E /* FakeKeyCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993DF2A76882800616B4E /* FakeKeyCollection.swift */; };
 		4E4D98FA2742FAE2001E701B /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D98F92742FAE2001E701B /* StoreManager.swift */; };
 		4E4D98FC2743086D001E701B /* HorizontalIAPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D98FB2743086D001E701B /* HorizontalIAPButton.swift */; };
 		4E5D174B26EAE751003B5C5B /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* Symbols.swift */; };
@@ -143,6 +145,7 @@
 		4E48DAC126F3D2CC00F88CD9 /* ExpandedKeyBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedKeyBezierPath.swift; sourceTree = "<group>"; };
 		4E48DAC626F3ED6900F88CD9 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		4E4993DB2A767FC700616B4E /* CursorGestureState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGestureState.swift; sourceTree = "<group>"; };
+		4E4993DF2A76882800616B4E /* FakeKeyCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeKeyCollection.swift; sourceTree = "<group>"; };
 		4E4C51692462C28200B9AC43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E4D98F92742FAE2001E701B /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		4E4D98FB2743086D001E701B /* HorizontalIAPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalIAPButton.swift; sourceTree = "<group>"; };
@@ -280,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				4E48DABF26F3CB9B00F88CD9 /* KeyButtonView.swift */,
+				4E4993DF2A76882800616B4E /* FakeKeyCollection.swift */,
 				4E48DAC626F3ED6900F88CD9 /* VisualEffectView.swift */,
 				4E48DAC126F3D2CC00F88CD9 /* ExpandedKeyBezierPath.swift */,
 			);
@@ -573,6 +577,7 @@
 				4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */,
 				4EB754C726F4310300B34608 /* SectionHeader.swift in Sources */,
 				4E14C384261E864C001AE827 /* MainTabView.swift in Sources */,
+				4E4993E02A76882800616B4E /* FakeKeyCollection.swift in Sources */,
 				4E408CE827110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
 				4E5D174B26EAE751003B5C5B /* Symbols.swift in Sources */,
 				4E2148C429F220EC0037328C /* FAQPage.swift in Sources */,
@@ -631,6 +636,7 @@
 				4EB2E6E82836E32A0048C926 /* UIKitComponents.swift in Sources */,
 				4E5D174E26EAE8B8003B5C5B /* UIInputViewController+.swift in Sources */,
 				4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */,
+				4E4993E12A76882800616B4E /* FakeKeyCollection.swift in Sources */,
 				4E48DAC826F3ED6900F88CD9 /* VisualEffectView.swift in Sources */,
 				4E84B1B9214745CE0078AC4B /* KeyButtonCell.swift in Sources */,
 				4E0A9E26283D93AE00378987 /* KeyboardLayout+.swift in Sources */,
