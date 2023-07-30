@@ -20,7 +20,7 @@ extension UIKitComponents {
         
         button.backgroundColor = .clearInteractable
         
-        let nextKeyboardButtonHorizontalInset: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 18 : 12
+        let nextKeyboardButtonHorizontalInset: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 32 : 12
         button.contentEdgeInsets = UIEdgeInsets(top: 12, left: nextKeyboardButtonHorizontalInset, bottom: 12, right: nextKeyboardButtonHorizontalInset)
         
         return button

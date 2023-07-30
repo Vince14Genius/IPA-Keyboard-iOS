@@ -29,8 +29,12 @@ class MainIPAKeyboardViewController: IPAKeyboardViewControllerTemplate {
             IPASymbols.sectionData[$0]!.sectionGlyph
         }
         
-        bottomBarDataSource.mainAction = { index in
-            self.scrollToSection(index: index, in: IPASymbols.self)
+        bottomBarDataSource.sectionIconTapAction = { [unowned self] section in
+            self.scrollTo(section: section, keyboardLayout: IPASymbols.self)
+        }
+        
+        bottomBarDataSource.dragScrollAction = { [unowned self] section, fraction in
+            self.scrollTo(section: section, fraction: fraction)
         }
     }
     

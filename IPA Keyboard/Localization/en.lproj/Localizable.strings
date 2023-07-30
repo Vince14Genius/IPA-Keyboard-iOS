@@ -40,6 +40,7 @@
 /* Getting Started Note */
 "getting-started-note-bullet-point" = "*";
 "getting-started-note" = "If the option does not show up on the list, try restarting your device, or delete the app and reinstall it.";
+"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless.";
 
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "You can try the keyboard here after setup.";

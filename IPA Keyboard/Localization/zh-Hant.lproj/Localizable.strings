@@ -40,6 +40,7 @@
 /* Getting Started Note */
 "getting-started-note-bullet-point" = "*";
 "getting-started-note" = "如果列表中沒有出現此選項，請嘗試重新啟動設備，或者重新安裝此App。";
+"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "使用本輸入法不需要開啟「完全訪問」，但是在不開啟的情況下觸覺回饋會無效。無論開啟與否，本輸入法都不會收集任何信息。";
 
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "設置完畢後可以在這裡嘗試使用";

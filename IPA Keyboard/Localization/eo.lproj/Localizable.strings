@@ -40,6 +40,7 @@
 /* Getting Started Note */
 "getting-started-note-bullet-point" = "*";
 "getting-started-note" = "Se la IFA Klavaro ne estas en la listo, provu rekomenci vian aparaton.";
+"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "Vi ne devas enŝalti \"Full Access\", sed haptic feedback ne funkcias sen ĝi. Sendepende, ĉi tiu klavaro ne kolektas uzantajn datumojn.";
 
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "Vi povas provi ĉi tie post aldoni.";

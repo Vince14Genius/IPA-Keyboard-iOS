@@ -34,10 +34,14 @@ public struct CursorButtonStyle: ButtonStyle {
 
 public struct BackwardDeleteButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
-        Image(systemName: configuration.isPressed ? "delete.left.fill" : "delete.left")
-            .foregroundColor(Color(.label))
-            .padding([.top, .bottom])
-            .padding([.leading, .trailing], 12)
-            .background(Color.clearInteractable)
+        VStack(alignment: .center) {
+            HStack(alignment: .center) {
+                Image(systemName: configuration.isPressed ? "delete.left.fill" : "delete.left")
+                    .font(UIDevice.current.userInterfaceIdiom == .pad ? .system(size: GlyphButton.textSideLength * 0.67) : .body)
+            }
+        }
+        .frame(width: BottomRow.buttonWidth, height: BottomRow.rowHeight)
+        .foregroundColor(Color(.label))
+        .background(Color.clearInteractable)
     }
 }

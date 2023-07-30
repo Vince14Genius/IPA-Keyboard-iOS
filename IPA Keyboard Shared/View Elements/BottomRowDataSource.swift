@@ -11,7 +11,8 @@ import SwiftUI
 class BottomRowDataSource: ObservableObject {
     @Published var highlightedSectionIndex = 0
     @Published var sectionGlyphs: [String] = []
-    @Published var mainAction: ((Int) -> ())?
+    @Published var sectionIconTapAction: ((_ section: Int) -> ())?
+    @Published var dragScrollAction: ((_ section: Int, _ fraction: Double) -> ())?
     
     init() {}
     
