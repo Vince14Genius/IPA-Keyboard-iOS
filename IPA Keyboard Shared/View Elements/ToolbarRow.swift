@@ -26,12 +26,18 @@ struct CursorButtons: View {
     }
 }
 
+private let cursorThreshold = 2.0
+
 struct ToolbarRow: View {
     static let appGroupStorage = UserDefaults(suiteName: SharedIdentifiers.appGroup)
     
     @AppStorage(SettingsKey.isMovableCursorEnabled, store: Self.appGroupStorage) private var isMovableCursorOn = false
     
     @Environment(\.colorScheme) var colorScheme
+    
+    @State private var isMovingCursor = false
+    @State private var previousCursorTranslation: Double?
+    @State private var cursorDeltaBuildup = 0.0
     
     var inputViewController: UIInputViewController?
     
@@ -44,6 +50,14 @@ struct ToolbarRow: View {
     private func type(text: String) {
         inputViewController?.insertText(text)
         SystemSound.playInputClick()
+    }
+    
+    private func moveCursorBackByOne() {
+        inputViewController?.moveCursorBackByOne()
+    }
+    
+    private func moveCursorForwardByOne() {
+        inputViewController?.moveCursorForwardByOne()
     }
     
     var body: some View {
@@ -77,13 +91,59 @@ struct ToolbarRow: View {
                 }
                 
                 Button("SpaceBarText") {
-                    type(text: " ")
+                    if isMovingCursor {
+                        isMovingCursor = false
+                    } else {
+                        type(text: " ")
+                    }
                 }
+                .simultaneousGesture(
+                    LongPressGesture(minimumDuration: 0.5).onEnded { didComplete in
+                        isMovingCursor = didComplete
+                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 1.0)
+                    }.sequenced(
+                        before: DragGesture(minimumDistance: 1)
+                            .onChanged { value in
+                                isMovingCursor = true
+                                //TODO
+                                let currentCursorTranslation = value.translation.width
+                                if let previousCursorTranslation {
+                                    let delta = currentCursorTranslation - previousCursorTranslation
+                                    cursorDeltaBuildup += delta
+                                }
+                                previousCursorTranslation = currentCursorTranslation
+                            }
+                            .onEnded { _ in
+                                Timer.scheduledTimer(withTimeInterval: .leastNonzeroMagnitude, repeats: false) { _ in
+                                    isMovingCursor = false
+                                }
+                            }
+                    )
+                )
+                .onChange(of: isMovingCursor) { _ in
+                    previousCursorTranslation = nil
+                    cursorDeltaBuildup = 0
+                }
+                .onChange(of: cursorDeltaBuildup) { newValue in
+                    if newValue <= -cursorThreshold {
+                        for _ in stride(from: newValue, to: 0, by: cursorThreshold) {
+                            moveCursorBackByOne()
+                        }
+                        cursorDeltaBuildup = 0
+                    } else if newValue >= cursorThreshold {
+                        for _ in stride(from: newValue, to: 0, by: -cursorThreshold) {
+                            moveCursorForwardByOne()
+                        }
+                        cursorDeltaBuildup = 0
+                    }
+                }
+                
                 Button("⏎") {
                     type(text: "\n")
                 }
             }
             .padding([.leading, .trailing], 6)
+            .opacity(isMovingCursor ? 0.3 : 1.0)
         }
         .buttonStyle(ToolbarButtonStyle())
     }
