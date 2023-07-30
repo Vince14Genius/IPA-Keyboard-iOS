@@ -12,7 +12,13 @@ Join the [beta test on TestFlight](https://testflight.apple.com/join/lPas1HHg) t
 
 - Full Unicode keyboards are too hard to navigate; an IPA-specific keyboard would have demand among linguistics hobbyists
 
-- All IPA Keyboards on the App Store before mine was released were either non-free, full of ads, or poorly designed; this project aims to solve all three problems
+- All IPA Keyboards on the App Store before mine was released were either...
+  - non-free
+  - full of ads
+  - poorly designed, or
+  - only included the subset of the IPA that's relevant to English (as opposed to the full IPA chart)
+
+- This project aimed to solve *all* of the problems highlighted above. And according to many, it has done so *very* successfully.
 
 - A relatively easily accomplishable project to boost my previously negative self-esteem
 
