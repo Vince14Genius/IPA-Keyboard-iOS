@@ -36,6 +36,7 @@ struct BottomRow: View {
     var inputViewController: UIInputViewController?
     
     @ObservedObject var dataSource: BottomRowDataSource
+    @ObservedObject var cursorGestureState: CursorGestureState
     
     @State private var isScrolling = false
     
@@ -127,6 +128,8 @@ struct BottomRow: View {
             .buttonStyle(BackwardDeleteButtonStyle())
         }
         .padding([.leading, .trailing], 6)
+        .opacity(cursorGestureState.isMovingCursor ? CursorGestureState.movingOpacity : 1.0)
+        .allowsHitTesting(!cursorGestureState.isMovingCursor)
     }
 }
 
@@ -137,7 +140,7 @@ struct BottomRow_Previews: PreviewProvider {
             HStack {
                 Spacer()
                 let dataSource = BottomRowDataSource(sectionGlyphs: ["a", "b", "c", "1", "2", "3", "/"])
-                BottomRow(dataSource: dataSource)
+                BottomRow(dataSource: dataSource, cursorGestureState: .init())
                     .background(Color(.secondarySystemBackground))
             }
         }

@@ -35,7 +35,7 @@ struct ToolbarRow: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var isMovingCursor = false
+    @ObservedObject var cursorGestureState: CursorGestureState
     @State private var previousCursorTranslation: Double?
     @State private var cursorDeltaBuildup = 0.0
     
@@ -90,21 +90,30 @@ struct ToolbarRow: View {
                     CursorButtons(inputViewController: inputVC)
                 }
                 
-                Button("SpaceBarText") {
-                    if isMovingCursor {
-                        isMovingCursor = false
+                Button {
+                    if cursorGestureState.isMovingCursor {
+                        cursorGestureState.isMovingCursor = false
                     } else {
                         type(text: " ")
+                    }
+                } label: {
+                    Group {
+                        if cursorGestureState.isMovingCursor {
+                            Text("SpaceBarText")
+                                .opacity(1.0)
+                        } else {
+                            Text("SpaceBarText")
+                        }
                     }
                 }
                 .simultaneousGesture(
                     LongPressGesture(minimumDuration: 0.5).onEnded { didComplete in
-                        isMovingCursor = didComplete
+                            cursorGestureState.isMovingCursor = didComplete
                         UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 1.0)
                     }.sequenced(
-                        before: DragGesture(minimumDistance: 1)
+                        before: DragGesture(minimumDistance: 0)
                             .onChanged { value in
-                                isMovingCursor = true
+                                cursorGestureState.isMovingCursor = true
                                 //TODO
                                 let currentCursorTranslation = value.translation.width
                                 if let previousCursorTranslation {
@@ -115,12 +124,14 @@ struct ToolbarRow: View {
                             }
                             .onEnded { _ in
                                 Timer.scheduledTimer(withTimeInterval: .leastNonzeroMagnitude, repeats: false) { _ in
-                                    isMovingCursor = false
+                                    DispatchQueue.main.async {
+                                        cursorGestureState.isMovingCursor = false
+                                    }
                                 }
                             }
                     )
                 )
-                .onChange(of: isMovingCursor) { _ in
+                .onChange(of: cursorGestureState.isMovingCursor) { _ in
                     previousCursorTranslation = nil
                     cursorDeltaBuildup = 0
                 }
@@ -143,7 +154,8 @@ struct ToolbarRow: View {
                 }
             }
             .padding([.leading, .trailing], 6)
-            .opacity(isMovingCursor ? 0.3 : 1.0)
+            .opacity(cursorGestureState.isMovingCursor ? CursorGestureState.movingOpacity : 1.0)
+            .allowsHitTesting(!cursorGestureState.isMovingCursor)
         }
         .buttonStyle(ToolbarButtonStyle())
     }
@@ -151,7 +163,7 @@ struct ToolbarRow: View {
 
 struct ToolbarRow_Previews: PreviewProvider {
     static var previews: some View {
-        ToolbarRow()
+        ToolbarRow(cursorGestureState: .init())
     }
 }
 

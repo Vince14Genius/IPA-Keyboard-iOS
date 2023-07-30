@@ -22,6 +22,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
     var expandedKeyOverlay: ExpandedKeyOverlay!
     
     let bottomBarDataSource = BottomRowDataSource()
+    let cursorGestureState = CursorGestureState()
     
     // Bottom buttons
     @IBOutlet var nextKeyboardButton: UIButton!
@@ -41,10 +42,10 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             controllerToAdd.view.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
+        toolbarRow = UIHostingController(rootView: ToolbarRow(cursorGestureState: cursorGestureState, inputViewController: self))
         addHostingController(toolbarRow)
         
-        bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: bottomBarDataSource))
+        bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: bottomBarDataSource, cursorGestureState: cursorGestureState))
         addHostingController(bottomRow)
         
         // MARK: - Set up the collection view
