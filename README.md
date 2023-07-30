@@ -4,6 +4,8 @@ An iOS keyboard for typing symbols in the International Phonetic Alphabet.
 
 Download on the App Store: https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497
 
+Join the [beta test on TestFlight](https://testflight.apple.com/join/lPas1HHg) to preview upcoming features and help us find bugs!
+
 ## Purpose
 
 - Most IPA symbols cannot be typed using regular keyboards
