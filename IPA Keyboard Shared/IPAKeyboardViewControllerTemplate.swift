@@ -80,14 +80,11 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             (keyCollection.trailingAnchor, view.trailingAnchor),
         ], vPairs: [
             (toolbarRow.view.topAnchor, view.topAnchor),
+            // bottom row constant will depend on
+            // whether input switch button is needed
             (keyCollection.topAnchor, toolbarRow.view.bottomAnchor),
             (keyCollection.bottomAnchor, bottomRow.view.topAnchor),
         ])
-        
-        bottomRow.view.bottomAnchor.constraint(
-            equalTo: view.bottomAnchor,
-            constant: UIDevice.current.userInterfaceIdiom == .pad ? -8 : 0
-        ).isActive = true
         
         // MARK: - Set up input mode switch button if needed
         
@@ -96,9 +93,16 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         shouldShowInputModeSwitchKey ||= needsInputModeSwitchKey
         shouldShowInputModeSwitchKey ||= UIDevice.current.userInterfaceIdiom != .phone
         
+        // check isInputSwitchKeyAlwaysOn
         if let isInputSwitchKeyAlwaysOn = UserDefaults(suiteName: SharedIdentifiers.appGroup)?.bool(forKey: SettingsKey.isInputSwitchKeyAlwaysOn) {
             shouldShowInputModeSwitchKey ||= isInputSwitchKeyAlwaysOn
         }
+        
+        // bottom row bottom anchor constraint
+        bottomRow.view.bottomAnchor.constraint(
+            equalTo: view.bottomAnchor,
+            constant: shouldShowInputModeSwitchKey ? -8 : 0
+        ).isActive = true
         
         if shouldShowInputModeSwitchKey {
             nextKeyboardButton = UIKitComponents.inputSwitchButton()
