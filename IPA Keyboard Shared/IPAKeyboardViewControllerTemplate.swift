@@ -20,8 +20,10 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
     var bottomRow: UIHostingController<BottomRow>!
     
     var expandedKeyOverlay: ExpandedKeyOverlay!
+    var fakeKeyCollection: UIHostingController<FakeKeyCollection>!
     
     let bottomBarDataSource = BottomRowDataSource()
+    let cursorGestureState = CursorGestureState()
     
     // Bottom buttons
     @IBOutlet var nextKeyboardButton: UIButton!
@@ -41,11 +43,15 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             controllerToAdd.view.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        toolbarRow = UIHostingController(rootView: ToolbarRow(inputViewController: self))
+        toolbarRow = UIHostingController(rootView: ToolbarRow(cursorGestureState: cursorGestureState, inputViewController: self))
         addHostingController(toolbarRow)
         
-        bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: bottomBarDataSource))
+        bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: bottomBarDataSource, cursorGestureState: cursorGestureState))
         addHostingController(bottomRow)
+        
+        fakeKeyCollection = UIHostingController(rootView: FakeKeyCollection(cursorGestureState: cursorGestureState))
+        addHostingController(fakeKeyCollection)
+        fakeKeyCollection.view?.layer.zPosition = -1
         
         // MARK: - Set up the collection view
         
@@ -68,6 +74,14 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: CollectionViewConstants.reuseIdentifier)
         keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewConstants.reuseIdentifier)
         
+        // setup show/hide for the cursor gesture
+        cursorGestureState.showKeyCollection = { [weak self] in
+            self?.keyCollection.isHidden = false
+        }
+        cursorGestureState.hideKeyCollection = { [weak self] in
+            self?.keyCollection.isHidden = true
+        }
+        
         // MARK: - Set up constraints
         
         keyCollection.heightAnchor.constraint(equalToConstant: Layout.keyCollectionHeight).isActive = true
@@ -78,12 +92,16 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             (bottomRow.view.trailingAnchor, view.trailingAnchor),
             (keyCollection.leadingAnchor, view.leadingAnchor),
             (keyCollection.trailingAnchor, view.trailingAnchor),
+            (fakeKeyCollection.view.leadingAnchor, keyCollection.leadingAnchor),
+            (fakeKeyCollection.view.trailingAnchor, keyCollection.trailingAnchor),
         ], vPairs: [
             (toolbarRow.view.topAnchor, view.topAnchor),
             // bottom row constant will depend on
             // whether input switch button is needed
             (keyCollection.topAnchor, toolbarRow.view.bottomAnchor),
             (keyCollection.bottomAnchor, bottomRow.view.topAnchor),
+            (fakeKeyCollection.view.topAnchor, keyCollection.topAnchor),
+            (fakeKeyCollection.view.bottomAnchor, keyCollection.bottomAnchor),
         ])
         
         // MARK: - Set up input mode switch button if needed
