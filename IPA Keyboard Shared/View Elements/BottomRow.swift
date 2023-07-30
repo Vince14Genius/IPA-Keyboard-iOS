@@ -13,6 +13,14 @@ struct GlyphWithID: Identifiable {
     var id: Int
 }
 
+private func underlayOffset(
+    proxyWidth: Double,
+    sectionCount: Int,
+    section: Int
+) -> Double {
+    proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth / 2
+}
+
 struct BottomRow: View {
     
     static var rowHeight: Double {
@@ -30,6 +38,10 @@ struct BottomRow: View {
     @ObservedObject var dataSource: BottomRowDataSource
     
     @State private var isScrolling = false
+    
+    static func underlayColor(colorScheme: ColorScheme) -> Color {
+        .init(white: colorScheme == .light ? 0 : 1, opacity: 0.15)
+    }
     
     private func dragScroll(x: Double, width: Double) {
         let normalized = x / width
@@ -58,16 +70,26 @@ struct BottomRow: View {
             
             GeometryReader { proxy in
                 ZStack {
-                    GlyphButton.selectedColor(colorScheme: colorScheme)
-                        .opacity(isScrolling ? 1 : 0)
-                        .cornerRadius(.infinity)
+                    Group {
+                        let offset = underlayOffset(
+                            proxyWidth: proxy.size.width,
+                            sectionCount: dataSource.sectionGlyphs.count,
+                            section: dataSource.highlightedSectionIndex
+                        )
+                        BottomRow.underlayColor(colorScheme: colorScheme)
+                            .cornerRadius(.infinity)
+                            .frame(maxWidth: isScrolling ? .infinity : BottomRow.buttonWidth)
+                            .offset(x: isScrolling ? 0.0 : offset)
+                    }
+                    
                     HStack(spacing: 0) {
                         ForEach(glyphs) { element in
-                            let isSelected = (element.id == dataSource.highlightedSectionIndex) && !isScrolling
+                            let isSelected = element.id == dataSource.highlightedSectionIndex
+                            let foregroundColor = (isSelected || isScrolling) ? Color(.label) : Color(.secondaryLabel)
                             
                             GlyphButton(
                                 label: Text(dataSource.sectionGlyphs[element.id]),
-                                isSelected: isSelected
+                                foregroundColor: foregroundColor
                             ) {
                                 UISelectionFeedbackGenerator().selectionChanged()
                                 SystemSound.playInputClick()
@@ -79,8 +101,9 @@ struct BottomRow: View {
                 }
                 .fixedSize(horizontal: false, vertical: true)
                 .background(Color.clearInteractable)
+                .animation(.easeInOut(duration: 0.3), value: isScrolling)
                 .gesture(
-                    DragGesture(minimumDistance: 2)
+                    DragGesture(minimumDistance: 1)
                         .onChanged { value in
                             isScrolling = true
                             dragScroll(x: value.location.x, width: proxy.size.width)

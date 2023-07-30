@@ -25,21 +25,16 @@ struct GlyphButton: View {
     @Environment(\.colorScheme) var colorScheme
     
     var label: Text
-    var isSelected: Bool
+    var foregroundColor: Color
     var action: () -> Void
-    
-    static func selectedColor(colorScheme: ColorScheme) -> Color {
-        .init(white: colorScheme == .light ? 0 : 1, opacity: 0.15)
-    }
     
     var body: some View {
         label
             .font(UIDevice.current.userInterfaceIdiom == .pad ? .system(size: GlyphButton.textSideLength * 0.67) : .body)
-            .foregroundColor(isSelected ? Color(.label) : Color(.secondaryLabel))
+            .foregroundColor(foregroundColor)
             .frame(minWidth: GlyphButton.textSideLength, minHeight: GlyphButton.textSideLength)
             .padding(.horizontal, horizontalPadding)
             .padding(.vertical, verticalPadding)
-            .background(isSelected ? GlyphButton.selectedColor(colorScheme: colorScheme) : .clear)
             .cornerRadius(.infinity)
             .overlay(Color.clearInteractable)
             .onTapGesture(perform: action)
@@ -50,9 +45,9 @@ struct GlyphButton_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
             Spacer()
-            GlyphButton(label: Text("x"), isSelected: true) {}
+            GlyphButton(label: Text("x"), foregroundColor: Color(.label)) {}
             Spacer()
-            GlyphButton(label: Text("x"), isSelected: false) {}
+            GlyphButton(label: Text("x"), foregroundColor: Color(.secondaryLabel)) {}
             Spacer()
         }
         .padding([.leading, .trailing], 6)
