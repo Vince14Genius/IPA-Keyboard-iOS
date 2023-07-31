@@ -19,10 +19,6 @@ class MainIPAKeyboardViewController: IPAKeyboardViewControllerTemplate {
         keyCollection.delegate = self
         LocalStorage.setDefaultValues()
         
-        // Run IPASymbols consistency checks
-        
-        IPASymbols.keyArrangementConsistencyCheck()
-        
         // Set up the bottom stack view
         
         bottomBarDataSource.sectionGlyphs = IPASymbols.enabledSections.map {

@@ -57,41 +57,4 @@ extension KeyboardLayout {
         }
         return availableSections
     }
-    
-    /**
-    Check whether `largeDisplayKeys` for each section has been properly updated to match `regularDisplayKeys`
-    */
-    static func keyArrangementConsistencyCheck() {
-        for sectionName in Self.sectionNames {
-            guard let thisSection = Self.sectionData[sectionName] else {
-                fatalError("Missing section \"\(sectionName)\"")
-            }
-            
-            let thisSectionRD = thisSection.regularDisplayKeys
-            let thisSectionLD = thisSection.largeDisplayKeys
-            
-            func isKeyIgnorable(_ key: String) -> Bool {
-                guard let ignorableKeys = thisSection.ignoredNonOverlappingKeys else {
-                    return false
-                }
-                return ignorableKeys.contains(key)
-            }
-            
-            for keyOptional in thisSectionRD {
-                guard let key = keyOptional else { continue }
-                if isKeyIgnorable(key) { continue }
-                if !thisSectionLD.contains(key) {
-                    fatalError("Missing key \"\(key)\" in \(sectionName) largeDisplayKeys")
-                }
-            }
-            
-            for keyOptional in thisSectionLD {
-                guard let key = keyOptional else { continue }
-                if isKeyIgnorable(key) { continue }
-                if !thisSectionRD.contains(key) {
-                    fatalError("Missing key \"\(key)\" in \(sectionName) regularDisplayKeys")
-                }
-            }
-        }
-    }
 }
