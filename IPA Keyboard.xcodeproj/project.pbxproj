@@ -225,7 +225,6 @@
 		4E0A9E20283D82EB00378987 /* Shared Models */ = {
 			isa = PBXGroup;
 			children = (
-				4E34246928448E7400DABC81 /* Operators.swift */,
 				4EA664B526EFFF0B001588E9 /* KeyboardLayout.swift */,
 				4E0A9E25283D93AE00378987 /* KeyboardLayout+.swift */,
 			);
@@ -266,7 +265,7 @@
 			path = "Keyboard Layouts";
 			sourceTree = "<group>";
 		};
-		4E13CE8C2727807F00DB5CB0 /* Shared Constants */ = {
+		4E13CE8C2727807F00DB5CB0 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				4EB754C926F526B300B34608 /* ColorConstants.swift */,
@@ -276,7 +275,7 @@
 				4E0A9E1C283D789600378987 /* Layout.swift */,
 				4E0A9E23283D8E9900378987 /* CollectionViewConstants.swift */,
 			);
-			path = "Shared Constants";
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		4E48DABE26F31A3000F88CD9 /* Keyboard Components */ = {
@@ -299,6 +298,31 @@
 			path = "Observable Objects";
 			sourceTree = "<group>";
 		};
+		4E4993E22A77400D00616B4E /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
+				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		4E4993E32A77402200616B4E /* Button Groups */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Button Groups";
+			sourceTree = "<group>";
+		};
+		4E4993E42A77616B00616B4E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */,
+				4E34246928448E7400DABC81 /* Operators.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		4E5D174F26EAE8DF003B5C5B /* UIKit Wrappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,37 +338,37 @@
 			children = (
 				4E4993DA2A767F9E00616B4E /* Observable Objects */,
 				4E5D174C26EAE8B8003B5C5B /* UIInputViewController+.swift */,
-				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
 				4E5D175126EAE916003B5C5B /* ToolbarButtonStyles.swift */,
 				4EB2E6F128373EAB0048C926 /* GlyphButton.swift */,
-				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
+				4E48DABE26F31A3000F88CD9 /* Keyboard Components */,
+				4E4993E22A77400D00616B4E /* Rows */,
 				4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */,
+				4E4993E32A77402200616B4E /* Button Groups */,
 				4E5D175726EAEB39003B5C5B /* RepeatTimer.swift */,
 			);
 			path = "View Elements";
 			sourceTree = "<group>";
 		};
-		4E6755F122EA060700DA88BB /* IPA Keyboard Shared */ = {
+		4E6755F122EA060700DA88BB /* Core Keyboard Functionality */ = {
 			isa = PBXGroup;
 			children = (
 				4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */,
 				4E0A9E27283D9C8300378987 /* KeyButtonActions.swift */,
-				4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */,
+				4E13CE8C2727807F00DB5CB0 /* Constants */,
+				4E4993E42A77616B00616B4E /* Utility */,
 				4EB2E6DF2836DDFA0048C926 /* UIKit Components */,
 				4E5D175026EAE8FC003B5C5B /* View Elements */,
-				4E48DABE26F31A3000F88CD9 /* Keyboard Components */,
-				4E5D174F26EAE8DF003B5C5B /* UIKit Wrappers */,
 				4E0A9E20283D82EB00378987 /* Shared Models */,
-				4E13CE8C2727807F00DB5CB0 /* Shared Constants */,
 			);
-			path = "IPA Keyboard Shared";
+			path = "Core Keyboard Functionality";
 			sourceTree = "<group>";
 		};
 		4E84B1492140E92F0078AC4B = {
 			isa = PBXGroup;
 			children = (
 				4E4C51692462C28200B9AC43 /* README.md */,
-				4E6755F122EA060700DA88BB /* IPA Keyboard Shared */,
+				4E6755F122EA060700DA88BB /* Core Keyboard Functionality */,
+				4E13CE8B2727802700DB5CB0 /* Keyboard Layouts */,
 				4E84B1542140E92F0078AC4B /* IPA Keyboard */,
 				4E84B1692140E9340078AC4B /* IPA KeyboardTests */,
 				4E84B1742140E9340078AC4B /* IPA KeyboardUITests */,
@@ -406,7 +430,6 @@
 				4E84B1A721456EA50078AC4B /* Localization */,
 				4E84B1892140E9980078AC4B /* MainIPAKeyboardViewController.swift */,
 				4E0A9E21283D8DA200378987 /* KeyboardViewController+UICollectionViewDataSource.swift */,
-				4E13CE8B2727802700DB5CB0 /* Keyboard Layouts */,
 				4E84B18B2140E9980078AC4B /* Info.plist */,
 			);
 			path = "IPA Keyboard Extension";
@@ -441,6 +464,7 @@
 		4EB2E6DF2836DDFA0048C926 /* UIKit Components */ = {
 			isa = PBXGroup;
 			children = (
+				4E5D174F26EAE8DF003B5C5B /* UIKit Wrappers */,
 				4EB2E6E62836E32A0048C926 /* UIKitComponents.swift */,
 				4EB2E6E32836E2E90048C926 /* InputSwitchButton.swift */,
 			);
