@@ -68,7 +68,7 @@
 
 /* Settings - Keyboards */
 "localized-title-keyboards" = "Klavaroj";
-"localized-keyboard-ipa" = "IFA (IPA, Standard, 2018)";
+"localized-keyboard-ipa" = "IFA (IPA, Standard, 2020)";
 "localized-keyboard-extipa" = "extIFA (extIPA, Standard, 2016)";
 "localized-keyboard-nonstandard-obsolete" = "Malvalidaj/Malaktualaj Simboloj";
 "localized-keyboard-custom" = "Laŭmenda IFA Klavaro";

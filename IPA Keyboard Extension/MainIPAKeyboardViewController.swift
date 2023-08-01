@@ -21,12 +21,10 @@ class MainIPAKeyboardViewController: IPAKeyboardViewControllerTemplate {
         
         // Set up the bottom stack view
         
-        bottomBarDataSource.sectionGlyphs = IPASymbols.enabledSections.map {
-            IPASymbols.sectionData[$0]!.sectionGlyph
-        }
+        refreshBottomBarDataSource()
         
         bottomBarDataSource.sectionIconTapAction = { [unowned self] section in
-            self.scrollTo(section: section, keyboardLayout: IPASymbols.self)
+            self.scrollTo(section: section, keyboardLayout: currentLayout)
         }
         
         bottomBarDataSource.dragScrollAction = { [unowned self] section, fraction in

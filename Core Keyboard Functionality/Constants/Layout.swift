@@ -50,12 +50,12 @@ enum Layout {
     }
     
     public static func getHeaderWidth(keySet: KeyboardLayout.Type, section: Int) -> CGFloat {
-        guard section < keySet.enabledSections.count else {
+        guard section < keySet.sectionNames.count else {
             fatalError("Index out of range for section ID: \(section)")
         }
         
         // Calculate text width
-        let sectionKey = keySet.enabledSections[section]
+        let sectionKey = keySet.sectionNames[section]
         let sectionHeaderText = NSLocalizedString(sectionKey, comment: "Localized versions of the section names.")
         let textSize = (sectionHeaderText as NSString).size(withAttributes: [.font: UIFont.systemFont(ofSize: UIFont.systemFontSize)])
         let textWidth = textSize.width + leftInsetRaw + rightInset + minimumLineSpacing

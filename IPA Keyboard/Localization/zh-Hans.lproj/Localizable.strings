@@ -110,7 +110,7 @@ Unfortunately there's nothing we could do about it." =
 
 /* Settings - Keyboards */
 "localized-title-keyboards" = "键盘列表";
-"localized-keyboard-ipa" = "IPA（官方，2018）";
+"localized-keyboard-ipa" = "IPA（官方，2020）";
 "localized-keyboard-extipa" = "extIPA（官方，2016）";
 "localized-keyboard-nonstandard-obsolete" = "非官方/已废弃字符（包括舌尖元音）";
 "localized-keyboard-custom" = "自定义IPA键盘";

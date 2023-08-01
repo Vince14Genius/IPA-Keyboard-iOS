@@ -20,7 +20,15 @@ final class IPA_KeyboardTests: XCTestCase {
     }
 
     func testKeySetConsistency() throws {
-        KeySetConsistentAcrossSizesTest.check(layout: IPASymbols.self)
+        KeyboardLayouts.allLayouts.forEach {
+            KeySetConsistentAcrossSizesTest.check(layout: $0.self)
+        }
+    }
+    
+    func testSectionsSaturation() throws {
+        KeyboardLayouts.allLayouts.forEach {
+            SectionsSaturationTest.check(layout: $0.self)
+        }
     }
 
     func testPerformanceExample() throws {

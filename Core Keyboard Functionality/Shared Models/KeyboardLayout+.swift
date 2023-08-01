@@ -10,8 +10,15 @@ import UIKit
 
 extension KeyboardLayout {
     static func getKeySet(section: Int) -> [String?]? {
-        let largeDisplayKeySet = Self.sectionData[Self.enabledSections[section]]?.largeDisplayKeys
-        let defaultKeySet = Self.sectionData[Self.enabledSections[section]]?.regularDisplayKeys
+        let largeDisplayKeySet = Self.sectionData[Self.sectionNames[section]]?.largeDisplayKeys
+        let defaultKeySet = Self.sectionData[Self.sectionNames[section]]?.regularDisplayKeys
         return UIDevice.current.userInterfaceIdiom == .pad ? largeDisplayKeySet : defaultKeySet
+    }
+    
+    static var isAvailable: Bool {
+        guard let key = Self.storageKeyIsUnlocked else {
+            return true
+        }
+        return LocalStorage.getBool(for: key)
     }
 }

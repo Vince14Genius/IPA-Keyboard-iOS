@@ -8,162 +8,62 @@
 
 import SwiftUI
 
-struct CursorButtons: View {
-    var inputViewController: UIInputViewController?
-    
-    var body: some View {
-        let inputVC = inputViewController
-        
-        HStack(spacing: 2) {
-            HoldRepeatButton(label: Image(systemName: "arrow.backward")) {
-                inputVC?.moveCursorBackByOne()
-            }
-            HoldRepeatButton(label: Image(systemName: "arrow.forward")) {
-                inputVC?.moveCursorForwardByOne()
-            }
-        }
-        .buttonStyle(CursorButtonStyle())
-    }
-}
-
 private let cursorThreshold = 2.0
 
 struct ToolbarRow: View {
-    static let appGroupStorage = UserDefaults(suiteName: SharedIdentifiers.appGroup)
-    
-    @AppStorage(SettingsKey.isMovableCursorEnabled, store: Self.appGroupStorage) private var isMovableCursorOn = false
-    
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.horizontalSizeClass) var sizeClass
     
     @ObservedObject var cursorGestureState: CursorGestureState
+    @ObservedObject var layoutSwitcherState: LayoutSwitcherState
+    
     @State private var previousCursorTranslation: Double?
     @State private var cursorDeltaBuildup = 0.0
     
+    static let appGroupStorage = UserDefaults(suiteName: SharedIdentifiers.appGroup)
+    
+    @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn: Bool = false
+    
     var inputViewController: UIInputViewController?
     
-    private func typeSandwich(_ text: String) {
-        inputViewController?.insertText(text)
-        inputViewController?.moveCursorBackByOne()
-        SystemSound.playInputClick()
-    }
-    
-    private func type(text: String) {
-        inputViewController?.insertText(text)
-        SystemSound.playInputClick()
-    }
-    
-    private func moveCursorBackByOne() {
-        inputViewController?.moveCursorBackByOne()
-    }
-    
-    private func moveCursorForwardByOne() {
-        inputViewController?.moveCursorForwardByOne()
-    }
-    
     var body: some View {
-        let inputVC = inputViewController
+        let rowsLayout = RowsLayout.from(
+            sizeClass: sizeClass ?? .compact,
+            uiIdiom: UIDevice.current.userInterfaceIdiom,
+            inputViewController: inputViewController
+        )
         
         VStack(spacing: 0) {
-            if isMovableCursorOn, UIDevice.current.userInterfaceIdiom != .pad {
-                CursorButtons(inputViewController: inputVC)
-                    .padding(4)
-                
+            if rowsLayout == .crowdedCompact {
+                HStack {
+                    LayoutSwitcher(direction: .down, state: layoutSwitcherState, rowsLayout: rowsLayout)
+                        .padding(4)
+                        .padding([.leading, .trailing], 6)
+                    Spacer()
+                }
                 Divider()
             }
             
             HStack(spacing: 0) {
-                Button("[ ]") {
-                    typeSandwich(Symbols.squareBrackets)
-                }
-                Button("/ /") {
-                    typeSandwich(Symbols.forwardSlashes)
-                }
-                Button("~") {
-                    type(text: Symbols.tilde)
-                }
-                Button("◌") {
-                    type(text: Symbols.dottedCircle)
-                }
-                Spacer()
-                
-                if isMovableCursorOn, UIDevice.current.userInterfaceIdiom == .pad {
-                    CursorButtons(inputViewController: inputVC)
-                }
-                
-                Button {
-                    if cursorGestureState.isMovingCursor {
-                        cursorGestureState.isMovingCursor = false
-                    } else {
-                        type(text: " ")
-                    }
-                } label: {
-                    Group {
-                        if cursorGestureState.isMovingCursor {
-                            Text("SpaceBarText")
-                                .opacity(1.0)
-                        } else {
-                            Text("SpaceBarText")
-                        }
-                    }
-                }
-                .simultaneousGesture(
-                    LongPressGesture(minimumDuration: 0.5).onEnded { didComplete in
-                            cursorGestureState.isMovingCursor = didComplete
-                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 1.0)
-                    }.sequenced(
-                        before: DragGesture(minimumDistance: 0)
-                            .onChanged { value in
-                                cursorGestureState.isMovingCursor = true
-                                //TODO
-                                let currentCursorTranslation = value.translation.width
-                                if let previousCursorTranslation {
-                                    let delta = currentCursorTranslation - previousCursorTranslation
-                                    cursorDeltaBuildup += delta
-                                }
-                                previousCursorTranslation = currentCursorTranslation
-                            }
-                            .onEnded { _ in
-                                Timer.scheduledTimer(withTimeInterval: .leastNonzeroMagnitude, repeats: false) { _ in
-                                    DispatchQueue.main.async {
-                                        cursorGestureState.isMovingCursor = false
-                                    }
-                                }
-                            }
-                    )
+                PinnedSymbolKeys(
+                    inputViewController: inputViewController
                 )
-                .onChange(of: cursorGestureState.isMovingCursor) { _ in
-                    previousCursorTranslation = nil
-                    cursorDeltaBuildup = 0
-                }
-                .onChange(of: cursorDeltaBuildup) { newValue in
-                    if newValue <= -cursorThreshold {
-                        for _ in stride(from: newValue, to: 0, by: cursorThreshold) {
-                            moveCursorBackByOne()
-                        }
-                        cursorDeltaBuildup = 0
-                    } else if newValue >= cursorThreshold {
-                        for _ in stride(from: newValue, to: 0, by: -cursorThreshold) {
-                            moveCursorForwardByOne()
-                        }
-                        cursorDeltaBuildup = 0
-                    }
-                }
-                
-                Button("⏎") {
-                    type(text: "\n")
-                }
+                Spacer()
+                PinnedGeneralKeys(
+                    cursorGestureState: cursorGestureState,
+                    inputViewController: inputViewController
+                )
             }
             .padding([.leading, .trailing], 6)
             .opacity(cursorGestureState.isMovingCursor ? CursorGestureState.movingOpacity : 1.0)
             .allowsHitTesting(!cursorGestureState.isMovingCursor)
         }
-        .buttonStyle(ToolbarButtonStyle())
     }
 }
 
 struct ToolbarRow_Previews: PreviewProvider {
     static var previews: some View {
-        ToolbarRow(cursorGestureState: .init())
+        ToolbarRow(cursorGestureState: .init(), layoutSwitcherState: .init())
     }
 }
 

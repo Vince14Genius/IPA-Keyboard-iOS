@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 /**
  A unique identifier for each section in a `keyboardLayout` to retrieve data from `Dictionary` constants
@@ -23,13 +24,15 @@ typealias RawSectionID = String
  */
 struct KeyboardSectionData {
     let sectionGlyph: String
-    let localStorageKey: String
     let regularDisplayKeys: [String?]
     let largeDisplayKeys: [String?]
     var ignoredNonOverlappingKeys: [String]? = nil
 }
 
 protocol KeyboardLayout {
+    static var shortenedDisplayName: LocalizedStringKey { get }
+    static var fullDisplayName: LocalizedStringKey { get }
+    
     /**
      An iteratable `Array` that contains an ordered list of keyboard sections
      */
@@ -39,22 +42,11 @@ protocol KeyboardLayout {
      A `Dictionary` that contains all data associated with a keyboard section
      */
     static var sectionData: [RawSectionID: KeyboardSectionData] { get }
-}
-
-extension KeyboardLayout {
+    
     /**
-    Check `LocalStorage` to return a list of sections enabled by the user
-    */
-    static var enabledSections: [RawSectionID] {
-        var availableSections = [RawSectionID]()
-        for sectionName in Self.sectionNames {
-            guard let localStorageKey = Self.sectionData[sectionName]?.localStorageKey else {
-                continue
-            }
-            if LocalStorage.getBool(for: localStorageKey) {
-                availableSections.append(sectionName)
-            }
-        }
-        return availableSections
-    }
+     A `UserDefaults` key to retrieve the unlocked status of the keyboard layout
+     
+     - a `nil` value means that the layout is always available and does not need to be unlocked
+     */
+    static var storageKeyIsUnlocked: String? { get }
 }

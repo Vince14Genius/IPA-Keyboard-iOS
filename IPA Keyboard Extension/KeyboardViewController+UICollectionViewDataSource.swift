@@ -13,12 +13,12 @@ extension MainIPAKeyboardViewController: UICollectionViewDataSource {
     // MARK: - Collection View Methods
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return IPASymbols.enabledSections.count
+        return currentLayout.sectionNames.count
     }
     
     // numberOfItemsInSection:
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let numberOfItems = IPASymbols.getKeySet(section: section)?.count {
+        if let numberOfItems = currentLayout.getKeySet(section: section)?.count {
             return numberOfItems
         } else {
             fatalError("Section index overflow.")
@@ -28,7 +28,7 @@ extension MainIPAKeyboardViewController: UICollectionViewDataSource {
     // cellForItemAt:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewConstants.reuseIdentifier, for: indexPath) as! KeyButtonCell
-        cell.delegate.title = IPASymbols.getKeySet(section: indexPath.section)?[indexPath.item]
+        cell.delegate.title = currentLayout.getKeySet(section: indexPath.section)?[indexPath.item]
         initializeKeyButton(cell)
         return cell
     }
@@ -37,7 +37,7 @@ extension MainIPAKeyboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(
             top: Layout.topInset,
-            left: Layout.leftInset(headerWidth: Layout.getHeaderWidth(keySet: IPASymbols.self, section: section)),
+            left: Layout.leftInset(headerWidth: Layout.getHeaderWidth(keySet: currentLayout, section: section)),
             bottom: Layout.bottomInset,
             right: Layout.rightInset
         )
@@ -68,7 +68,7 @@ extension MainIPAKeyboardViewController: UICollectionViewDataSource {
             header.isUserInteractionEnabled = false
             
             // Set the header title
-            header.label.text = NSLocalizedString(IPASymbols.enabledSections[indexPath.section], comment: "Localized versions of the section names.")
+            header.label.text = NSLocalizedString(currentLayout.sectionNames[indexPath.section], comment: "Localized versions of the section names.")
             setSectionHeaderColor(header)
         }
         return element
@@ -76,7 +76,7 @@ extension MainIPAKeyboardViewController: UICollectionViewDataSource {
     
     // referenceSizeForHeaderInSection:
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: Layout.getHeaderWidth(keySet: IPASymbols.self, section: section), height: 0)
+        return CGSize(width: Layout.getHeaderWidth(keySet: currentLayout, section: section), height: 0)
     }
     
 }

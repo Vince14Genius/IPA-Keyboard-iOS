@@ -8,11 +8,6 @@
 
 import SwiftUI
 
-struct GlyphWithID: Identifiable {
-    var glyph: String
-    var id: Int
-}
-
 private func underlayOffset(
     proxyWidth: Double,
     sectionCount: Int,
@@ -32,97 +27,47 @@ struct BottomRow: View {
     }
     
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.horizontalSizeClass) var sizeClass
     
     var inputViewController: UIInputViewController?
     
     @ObservedObject var dataSource: BottomRowDataSource
     @ObservedObject var cursorGestureState: CursorGestureState
+    @ObservedObject var layoutSwitcherState: LayoutSwitcherState
     
     @State private var isScrolling = false
+    
+    static let appGroupStorage = UserDefaults(suiteName: SharedIdentifiers.appGroup)
+    
+    @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn: Bool = false
     
     static func underlayColor(colorScheme: ColorScheme) -> Color {
         .init(white: colorScheme == .light ? 0 : 1, opacity: 0.15)
     }
     
-    private func dragScroll(x: Double, width: Double) {
-        let normalized = x / width
-        let scaled = normalized * Double(dataSource.sectionGlyphs.count)
-    
-        let section = Int(floor(scaled)) // prevent -0.x bugs
-        let fraction = scaled - floor(scaled)
-        
-        dataSource.dragScrollAction?(section, fraction)
-    }
-    
     var body: some View {
-        let inputVC = inputViewController
+        let rowsLayout = RowsLayout.from(
+            sizeClass: sizeClass ?? .compact,
+            uiIdiom: UIDevice.current.userInterfaceIdiom,
+            inputViewController: inputViewController
+        )
         
         HStack(alignment: .center, spacing: 0) {
-            if inputVC?.needsInputModeSwitchKey ?? false {
-                Spacer(minLength: 0)
+            if rowsLayout != .crowdedCompact {
+                LayoutSwitcher(direction: .up, state: layoutSwitcherState, rowsLayout: rowsLayout)
+                    .padding(.trailing, rowsLayout == .padRegular ? 8 : 4)
             }
             
-            let glyphs = dataSource.sectionGlyphs.indices.map {
-                GlyphWithID(
-                    glyph: dataSource.sectionGlyphs[$0],
-                    id: $0
-                )
+            if rowsLayout == .padRegular {
+                Spacer()
             }
             
-            GeometryReader { proxy in
-                ZStack {
-                    Group {
-                        let offset = underlayOffset(
-                            proxyWidth: proxy.size.width,
-                            sectionCount: dataSource.sectionGlyphs.count,
-                            section: dataSource.highlightedSectionIndex
-                        )
-                        BottomRow.underlayColor(colorScheme: colorScheme)
-                            .cornerRadius(.infinity)
-                            .frame(maxWidth: isScrolling ? .infinity : BottomRow.buttonWidth)
-                            .offset(x: isScrolling ? 0.0 : offset)
-                    }
-                    
-                    HStack(spacing: 0) {
-                        ForEach(glyphs) { element in
-                            let isSelected = element.id == dataSource.highlightedSectionIndex
-                            let foregroundColor = (isSelected || isScrolling) ? Color(.label) : Color(.secondaryLabel)
-                            
-                            GlyphButton(
-                                label: Text(dataSource.sectionGlyphs[element.id]),
-                                foregroundColor: foregroundColor
-                            ) {
-                                UISelectionFeedbackGenerator().selectionChanged()
-                                SystemSound.playInputClick()
-                                dataSource.sectionIconTapAction?(element.id)
-                            }
-                            Spacer(minLength: 0)
-                        }
-                    }
-                }
-                .fixedSize(horizontal: false, vertical: true)
-                .background(Color.clearInteractable)
-                .animation(.easeInOut(duration: 0.3), value: isScrolling)
-                .gesture(
-                    DragGesture(minimumDistance: 1)
-                        .onChanged { value in
-                            isScrolling = true
-                            dragScroll(x: value.location.x, width: proxy.size.width)
-                        }
-                        .onEnded { _ in
-                            isScrolling = false
-                        }
-                )
-                .onChange(of: dataSource.highlightedSectionIndex) { _ in
-                    if isScrolling {
-                        UISelectionFeedbackGenerator().selectionChanged()
-                    }
-                }
-            }
-            .frame(height: BottomRow.rowHeight)
+            SectionScroller(isScrolling: $isScrolling, dataSource: dataSource)
+            
+            Spacer(minLength: 0)
             
             HoldRepeatButton(label: Image(systemName: "delete.left")) {
-                inputVC?.deleteBackwardByOne()
+                inputViewController?.deleteBackwardByOne()
                 SystemSound.delete.play()
             }
             .buttonStyle(BackwardDeleteButtonStyle())
@@ -140,7 +85,7 @@ struct BottomRow_Previews: PreviewProvider {
             HStack {
                 Spacer()
                 let dataSource = BottomRowDataSource(sectionGlyphs: ["a", "b", "c", "1", "2", "3", "/"])
-                BottomRow(dataSource: dataSource, cursorGestureState: .init())
+                BottomRow(dataSource: dataSource, cursorGestureState: .init(), layoutSwitcherState: .init())
                     .background(Color(.secondarySystemBackground))
             }
         }

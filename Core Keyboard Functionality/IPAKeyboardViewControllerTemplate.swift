@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionViewDelegateFlowLayout {
+class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionViewDelegateFlowLayout, LayoutSwitcherDelegate {
     
     // MARK: - Constants
     
@@ -22,11 +22,28 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
     var expandedKeyOverlay: ExpandedKeyOverlay!
     var fakeKeyCollection: UIHostingController<FakeKeyCollection>!
     
-    let bottomBarDataSource = BottomRowDataSource()
-    let cursorGestureState = CursorGestureState()
-    
     // Bottom buttons
     @IBOutlet var nextKeyboardButton: UIButton!
+    
+    // MARK: - States
+    
+    let bottomBarDataSource = BottomRowDataSource()
+    let cursorGestureState = CursorGestureState()
+    let layoutSwitcherState = LayoutSwitcherState()
+    
+    var currentLayout: KeyboardLayout.Type = IPASymbols.self {
+        didSet {
+            keyCollection.reloadData()
+            refreshBottomBarDataSource()
+            scrollTo(section: 0, fraction: 0)
+        }
+    }
+    
+    func refreshBottomBarDataSource() {
+        bottomBarDataSource.sectionGlyphs = currentLayout.sectionNames.map {
+            currentLayout.sectionData[$0]!.sectionGlyph
+        }
+    }
     
     // MARK: - viewDidLoad()
     
@@ -43,15 +60,26 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             controllerToAdd.view.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        toolbarRow = UIHostingController(rootView: ToolbarRow(cursorGestureState: cursorGestureState, inputViewController: self))
+        toolbarRow = UIHostingController(rootView: ToolbarRow(
+            cursorGestureState: cursorGestureState,
+            layoutSwitcherState: layoutSwitcherState,
+            inputViewController: self
+        ))
         addHostingController(toolbarRow)
         
-        bottomRow = UIHostingController(rootView: BottomRow(inputViewController: self, dataSource: bottomBarDataSource, cursorGestureState: cursorGestureState))
+        bottomRow = UIHostingController(rootView: BottomRow(
+            inputViewController: self,
+            dataSource: bottomBarDataSource,
+            cursorGestureState: cursorGestureState,
+            layoutSwitcherState: layoutSwitcherState
+        ))
         addHostingController(bottomRow)
         
         fakeKeyCollection = UIHostingController(rootView: FakeKeyCollection(cursorGestureState: cursorGestureState))
         addHostingController(fakeKeyCollection)
         fakeKeyCollection.view?.layer.zPosition = -1
+        
+        layoutSwitcherState.controller = self
         
         // MARK: - Set up the collection view
         
@@ -144,6 +172,35 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         view.addSubview(expandedKeyOverlay)
     }
     
+    // MARK: - re-render hosting controllers
+    
+    private func rerenderHostingControllers() {
+        func updateHostingController<T>(_ controller: UIHostingController<T>) {
+            controller.view.backgroundColor = .clear
+            controller.view.sizeToFit()
+            controller.view.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        toolbarRow.rootView = ToolbarRow(
+            cursorGestureState: cursorGestureState,
+            layoutSwitcherState: layoutSwitcherState,
+            inputViewController: self
+        )
+        updateHostingController(toolbarRow)
+        
+        bottomRow.rootView = BottomRow(
+            inputViewController: self,
+            dataSource: bottomBarDataSource,
+            cursorGestureState: cursorGestureState,
+            layoutSwitcherState: layoutSwitcherState
+        )
+        updateHostingController(bottomRow)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        rerenderHostingControllers()
+    }
+    
     // MARK: - Other Boilerplate Code
     
     override func didReceiveMemoryWarning() {
@@ -173,7 +230,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             return $0.section < $1.section
         }
         
-        let medianSectionIndex = visibleItems[visibleItems.count / 2].section
+        let medianSectionIndex = visibleItems.count == 0 ? 0 : visibleItems[visibleItems.count / 2].section
         bottomBarDataSource.highlightedSectionIndex = medianSectionIndex
     }
     

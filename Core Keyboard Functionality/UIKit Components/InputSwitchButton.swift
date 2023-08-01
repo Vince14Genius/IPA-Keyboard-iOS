@@ -20,8 +20,12 @@ extension UIKitComponents {
         
         button.backgroundColor = .clearInteractable
         
-        let nextKeyboardButtonHorizontalInset: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 32 : 12
-        button.contentEdgeInsets = UIEdgeInsets(top: 12, left: nextKeyboardButtonHorizontalInset, bottom: 12, right: nextKeyboardButtonHorizontalInset)
+        let horizontalInset: Double = UIDevice.current.userInterfaceIdiom == .pad ? 32 : Layout.leftInsetRaw
+        let verticalInset: Double = 12
+        button.contentEdgeInsets = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
+        
+        button.imageView!.widthAnchor.constraint(equalToConstant: BottomRow.rowHeight - 2 * verticalInset).isActive = true
+        button.widthAnchor.constraint(equalTo: button.imageView!.widthAnchor, constant: horizontalInset * 2).isActive = true
         
         return button
     }

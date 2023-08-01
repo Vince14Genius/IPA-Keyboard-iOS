@@ -11,6 +11,20 @@ import StoreKit
 
 let appGroupStorage = UserDefaults(suiteName: SharedIdentifiers.appGroup)
 
+struct KeyboardListRow: View {
+    var text: LocalizedStringKey
+    
+    var body: some View {
+        Label {
+            Text(text)
+                .foregroundColor(.primary)
+        } icon: {
+            Image(systemName: "checkmark.circle")
+                .foregroundColor(.green)
+        }
+    }
+}
+
 struct SettingsPageWrapped: View {
     var body: some View {
         SettingsInnerPage()
@@ -23,14 +37,10 @@ struct SettingsInnerPage: View {
     @StateObject var storeManager = StoreManager.instance
     
     // On-off switches: advanced features
-    @AppStorage(SettingsKey.isMovableCursorEnabled, store: appGroupStorage) private var isMovableCursorOn = false
     @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn = false
     @AppStorage(SettingsKey.isInputClickSoundEnabled, store: appGroupStorage) private var isInputClickSoundEnabled = true
     
     // On-off switches: keyboard list
-    @AppStorage(SettingsKey.isIPAEnabled, store: appGroupStorage) private var isIPAKeyboardOn = true
-    @AppStorage(SettingsKey.isExtIPAEnabled, store: appGroupStorage) private var isExtIPAKeyboardOn = true
-    @AppStorage(SettingsKey.isNonstandardEnabled, store: appGroupStorage) private var isNonstandardCharsKeyboardOn = false
     @AppStorage(SettingsKey.isCustomKeyboardEnabled, store: appGroupStorage) private var isCustomIPAKeyboardOn = false
     @AppStorage(SettingsKey.isRecentsEnabled, store: appGroupStorage) private var isRecentsOn = false
     
@@ -44,18 +54,26 @@ struct SettingsInnerPage: View {
     var body: some View {
         Form {
             Section(header: Text(Localized.titleKeyboards)) {
-                Toggle(Localized.keyboardIPA, isOn: $isIPAKeyboardOn)
-                    .disabled(true)
-                Toggle(Localized.keyboardExtIPA, isOn: $isExtIPAKeyboardOn)
+                Group {
+                    let localizedKeys = [
+                        Localized.keyboardIPA,
+                        Localized.keyboardExtIPA
+                    ]
+                    
+                    ForEach(localizedKeys.indices, id: \.self) { i in
+                        KeyboardListRow(text: localizedKeys[i])
+                    }
+                }
+                .foregroundColor(.green)
                 Group {
                     if isNonstandardCharsKeyboardUnlocked {
-                        Toggle(Localized.keyboardNonstandard, isOn: $isNonstandardCharsKeyboardOn)
+                        KeyboardListRow(text: Localized.keyboardNonstandard)
                     } else {
                         HorizontalIAPButton(
-                            localizedKey: Localized.unlockNonstandard,
+                            localizedKey: Localized.keyboardNonstandard,
                             productIdentifier: InAppPurchases.unlockObsoleteNonstandard,
                             storeManager: storeManager,
-                            disabledLabel: Localized.alertComingSoon
+                            hasDisplayLock: true
                         )
                     }
                 }
@@ -80,7 +98,6 @@ struct SettingsInnerPage: View {
                     .disabled(true)
             }
             Section(header: Text(Localized.advancedSettings)) {
-                Toggle(Localized.movableCursor, isOn: $isMovableCursorOn)
                 Toggle(Localized.forceShowGlobeKey, isOn: $isInputSwitchKeyAlwaysOn)
                 Toggle(Localized.inputClickSound, isOn: $isInputClickSoundEnabled)
             }
