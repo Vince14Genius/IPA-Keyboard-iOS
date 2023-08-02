@@ -6,6 +6,18 @@
   Copyright © 2018 Vince14Genius. All rights reserved.
 */
 
+/* Pinned Keys */
+"SpaceBarText" = "spaceto";
+
+/* Keyboard Layouts */
+"Standard" = "Standard";
+"IPA (Standard)" = "IFA (Standard)";
+"extIPA" = "extIFA";
+"Extended IPA" = "extIFA (Aldonoj al la IFA)";
+"Nonstandard" = "Nonstandard";
+"Nonstandard & Obsolete Symbols" = "Nonstandard (Malvalidaj/Malaktualaj Simboloj)";
+
+/* Sections - IPA (Standard) */
 "Consonants" = "Konsonantoj";
 "NonPulmonic" = "Ne-Pulmona";
 "OtherSymbols" = "Altaj Simboloj";
@@ -13,6 +25,3 @@
 "Suprasegmentals" = "Supersegmentaĵoj";
 "TonesAndWordAccents" = "Tonoj kaj akcentoj";
 "Diacritics" = "Diakritiloj";
-"ExtIPA" = "Aldonoj al la IFA";
-
-"SpaceBarText" = "spaceto";

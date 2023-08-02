@@ -48,6 +48,9 @@
 		4E4993DE2A7680AD00616B4E /* CursorGestureState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993DB2A767FC700616B4E /* CursorGestureState.swift */; };
 		4E4993E02A76882800616B4E /* FakeKeyCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993DF2A76882800616B4E /* FakeKeyCollection.swift */; };
 		4E4993E12A76882800616B4E /* FakeKeyCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993DF2A76882800616B4E /* FakeKeyCollection.swift */; };
+		4E4993EE2A77649600616B4E /* IPA_KeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993ED2A77649600616B4E /* IPA_KeyboardTests.swift */; };
+		4E4993F72A77685400616B4E /* IPASymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1952142624C0078AC4B /* IPASymbols.swift */; };
+		4E4993F92A77689C00616B4E /* KeySetConsistentAcrossSizesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993F82A77689B00616B4E /* KeySetConsistentAcrossSizesTest.swift */; };
 		4E4D98FA2742FAE2001E701B /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D98F92742FAE2001E701B /* StoreManager.swift */; };
 		4E4D98FC2743086D001E701B /* HorizontalIAPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D98FB2743086D001E701B /* HorizontalIAPButton.swift */; };
 		4E5D174B26EAE751003B5C5B /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* Symbols.swift */; };
@@ -90,9 +93,40 @@
 		4EB754CD26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
 		4EB754CE26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
 		4ED8A73326A11C29001015B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8A73226A11C29001015B2 /* Constants.swift */; };
+		4EEEE4C02A7774730071E301 /* KeyboardLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */; };
+		4EEEE4C12A7774730071E301 /* KeyboardLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */; };
+		4EEEE4C32A77769C0071E301 /* ExtIPASymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4C22A77769C0071E301 /* ExtIPASymbols.swift */; };
+		4EEEE4C42A77769C0071E301 /* ExtIPASymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4C22A77769C0071E301 /* ExtIPASymbols.swift */; };
+		4EEEE4C62A777F360071E301 /* NonstandardSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4C52A777F360071E301 /* NonstandardSymbols.swift */; };
+		4EEEE4C72A777F360071E301 /* NonstandardSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4C52A777F360071E301 /* NonstandardSymbols.swift */; };
+		4EEEE4C92A77974E0071E301 /* LayoutSwitcherState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4C82A77974E0071E301 /* LayoutSwitcherState.swift */; };
+		4EEEE4CA2A77974E0071E301 /* LayoutSwitcherState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4C82A77974E0071E301 /* LayoutSwitcherState.swift */; };
+		4EEEE4CC2A77A5550071E301 /* PinnedSymbolKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4CB2A77A5550071E301 /* PinnedSymbolKeys.swift */; };
+		4EEEE4CD2A77A5EB0071E301 /* PinnedSymbolKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4CB2A77A5550071E301 /* PinnedSymbolKeys.swift */; };
+		4EEEE4CF2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4CE2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift */; };
+		4EEEE4D02A77A6E50071E301 /* SpaceKeyWithCursorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4CE2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift */; };
+		4EEEE4D32A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */; };
+		4EEEE4D42A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */; };
+		4EEEE4D62A77A9DD0071E301 /* RowsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */; };
+		4EEEE4D72A77A9DD0071E301 /* RowsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */; };
+		4EEEE4D92A7881D00071E301 /* SectionScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D82A7881D00071E301 /* SectionScroller.swift */; };
+		4EEEE4DA2A7881D00071E301 /* SectionScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D82A7881D00071E301 /* SectionScroller.swift */; };
+		4EEEE4DC2A7887BE0071E301 /* LayoutSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */; };
+		4EEEE4DD2A7887BE0071E301 /* LayoutSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */; };
+		4EEEE4DE2A788BBA0071E301 /* KeyboardLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E25283D93AE00378987 /* KeyboardLayout+.swift */; };
+		4EEEE4E02A79C0190071E301 /* SectionsSaturationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4DF2A79C0190071E301 /* SectionsSaturationTest.swift */; };
+		4EEEE4E22A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 4EEEE4E12A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit */; };
+		4EEEE4E32A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 4EEEE4E12A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4E4993EF2A77649600616B4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E84B14A2140E92F0078AC4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E84B1512140E92F0078AC4B;
+			remoteInfo = "IPA Keyboard";
+		};
 		4E84B18C2140E9980078AC4B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4E84B14A2140E92F0078AC4B /* Project object */;
@@ -146,6 +180,9 @@
 		4E48DAC626F3ED6900F88CD9 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		4E4993DB2A767FC700616B4E /* CursorGestureState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGestureState.swift; sourceTree = "<group>"; };
 		4E4993DF2A76882800616B4E /* FakeKeyCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeKeyCollection.swift; sourceTree = "<group>"; };
+		4E4993EB2A77649600616B4E /* IPA KeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IPA KeyboardTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E4993ED2A77649600616B4E /* IPA_KeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_KeyboardTests.swift; sourceTree = "<group>"; };
+		4E4993F82A77689B00616B4E /* KeySetConsistentAcrossSizesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeySetConsistentAcrossSizesTest.swift; sourceTree = "<group>"; };
 		4E4C51692462C28200B9AC43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E4D98F92742FAE2001E701B /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		4E4D98FB2743086D001E701B /* HorizontalIAPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalIAPButton.swift; sourceTree = "<group>"; };
@@ -163,10 +200,6 @@
 		4E84B1522140E92F0078AC4B /* IPA Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E84B15C2140E9330078AC4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E84B1612140E9330078AC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E84B16A2140E9340078AC4B /* IPA_KeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_KeyboardTests.swift; sourceTree = "<group>"; };
-		4E84B16C2140E9340078AC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E84B1752140E9340078AC4B /* IPA_KeyboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPA_KeyboardUITests.swift; sourceTree = "<group>"; };
-		4E84B1772140E9340078AC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E84B1872140E9980078AC4B /* IPA Keyboard Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "IPA Keyboard Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E84B1892140E9980078AC4B /* MainIPAKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainIPAKeyboardViewController.swift; sourceTree = "<group>"; };
 		4E84B18B2140E9980078AC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -201,9 +234,28 @@
 		4EB754C926F526B300B34608 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedKeyOverlay.swift; sourceTree = "<group>"; };
 		4ED8A73226A11C29001015B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayouts.swift; sourceTree = "<group>"; };
+		4EEEE4C22A77769C0071E301 /* ExtIPASymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtIPASymbols.swift; sourceTree = "<group>"; };
+		4EEEE4C52A777F360071E301 /* NonstandardSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonstandardSymbols.swift; sourceTree = "<group>"; };
+		4EEEE4C82A77974E0071E301 /* LayoutSwitcherState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSwitcherState.swift; sourceTree = "<group>"; };
+		4EEEE4CB2A77A5550071E301 /* PinnedSymbolKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedSymbolKeys.swift; sourceTree = "<group>"; };
+		4EEEE4CE2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceKeyWithCursorControl.swift; sourceTree = "<group>"; };
+		4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedGeneralKeys.swift; sourceTree = "<group>"; };
+		4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowsLayout.swift; sourceTree = "<group>"; };
+		4EEEE4D82A7881D00071E301 /* SectionScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScroller.swift; sourceTree = "<group>"; };
+		4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSwitcher.swift; sourceTree = "<group>"; };
+		4EEEE4DF2A79C0190071E301 /* SectionsSaturationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsSaturationTest.swift; sourceTree = "<group>"; };
+		4EEEE4E12A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "IPA Phonetic Keyboard.storekit"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4E4993E82A77649600616B4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E84B14F2140E92F0078AC4B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,7 +277,6 @@
 		4E0A9E20283D82EB00378987 /* Shared Models */ = {
 			isa = PBXGroup;
 			children = (
-				4E34246928448E7400DABC81 /* Operators.swift */,
 				4EA664B526EFFF0B001588E9 /* KeyboardLayout.swift */,
 				4E0A9E25283D93AE00378987 /* KeyboardLayout+.swift */,
 			);
@@ -261,12 +312,15 @@
 		4E13CE8B2727802700DB5CB0 /* Keyboard Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */,
 				4E84B1952142624C0078AC4B /* IPASymbols.swift */,
+				4EEEE4C22A77769C0071E301 /* ExtIPASymbols.swift */,
+				4EEEE4C52A777F360071E301 /* NonstandardSymbols.swift */,
 			);
 			path = "Keyboard Layouts";
 			sourceTree = "<group>";
 		};
-		4E13CE8C2727807F00DB5CB0 /* Shared Constants */ = {
+		4E13CE8C2727807F00DB5CB0 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				4EB754C926F526B300B34608 /* ColorConstants.swift */,
@@ -276,7 +330,7 @@
 				4E0A9E1C283D789600378987 /* Layout.swift */,
 				4E0A9E23283D8E9900378987 /* CollectionViewConstants.swift */,
 			);
-			path = "Shared Constants";
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		4E48DABE26F31A3000F88CD9 /* Keyboard Components */ = {
@@ -295,8 +349,50 @@
 			children = (
 				4E408CE727110E6700D52CE6 /* BottomRowDataSource.swift */,
 				4E4993DB2A767FC700616B4E /* CursorGestureState.swift */,
+				4EEEE4C82A77974E0071E301 /* LayoutSwitcherState.swift */,
 			);
 			path = "Observable Objects";
+			sourceTree = "<group>";
+		};
+		4E4993E22A77400D00616B4E /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */,
+				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
+				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
+				4EEEE4D12A77A86F0071E301 /* Buttons */,
+				4E4993E32A77402200616B4E /* Button Groups */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		4E4993E32A77402200616B4E /* Button Groups */ = {
+			isa = PBXGroup;
+			children = (
+				4EEEE4CB2A77A5550071E301 /* PinnedSymbolKeys.swift */,
+				4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */,
+				4EEEE4D82A7881D00071E301 /* SectionScroller.swift */,
+			);
+			path = "Button Groups";
+			sourceTree = "<group>";
+		};
+		4E4993E42A77616B00616B4E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */,
+				4E34246928448E7400DABC81 /* Operators.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		4E4993EC2A77649600616B4E /* IPA KeyboardTests */ = {
+			isa = PBXGroup;
+			children = (
+				4E4993F82A77689B00616B4E /* KeySetConsistentAcrossSizesTest.swift */,
+				4EEEE4DF2A79C0190071E301 /* SectionsSaturationTest.swift */,
+				4E4993ED2A77649600616B4E /* IPA_KeyboardTests.swift */,
+			);
+			path = "IPA KeyboardTests";
 			sourceTree = "<group>";
 		};
 		4E5D174F26EAE8DF003B5C5B /* UIKit Wrappers */ = {
@@ -314,41 +410,36 @@
 			children = (
 				4E4993DA2A767F9E00616B4E /* Observable Objects */,
 				4E5D174C26EAE8B8003B5C5B /* UIInputViewController+.swift */,
-				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
 				4E5D175126EAE916003B5C5B /* ToolbarButtonStyles.swift */,
-				4EB2E6F128373EAB0048C926 /* GlyphButton.swift */,
-				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
-				4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */,
-				4E5D175726EAEB39003B5C5B /* RepeatTimer.swift */,
+				4E48DABE26F31A3000F88CD9 /* Keyboard Components */,
+				4E4993E22A77400D00616B4E /* Rows */,
 			);
 			path = "View Elements";
 			sourceTree = "<group>";
 		};
-		4E6755F122EA060700DA88BB /* IPA Keyboard Shared */ = {
+		4E6755F122EA060700DA88BB /* Core Keyboard Functionality */ = {
 			isa = PBXGroup;
 			children = (
 				4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */,
 				4E0A9E27283D9C8300378987 /* KeyButtonActions.swift */,
-				4EB2E6ED28372F420048C926 /* UIKitHelperFunctions.swift */,
+				4E13CE8C2727807F00DB5CB0 /* Constants */,
+				4E4993E42A77616B00616B4E /* Utility */,
 				4EB2E6DF2836DDFA0048C926 /* UIKit Components */,
 				4E5D175026EAE8FC003B5C5B /* View Elements */,
-				4E48DABE26F31A3000F88CD9 /* Keyboard Components */,
-				4E5D174F26EAE8DF003B5C5B /* UIKit Wrappers */,
 				4E0A9E20283D82EB00378987 /* Shared Models */,
-				4E13CE8C2727807F00DB5CB0 /* Shared Constants */,
 			);
-			path = "IPA Keyboard Shared";
+			path = "Core Keyboard Functionality";
 			sourceTree = "<group>";
 		};
 		4E84B1492140E92F0078AC4B = {
 			isa = PBXGroup;
 			children = (
 				4E4C51692462C28200B9AC43 /* README.md */,
-				4E6755F122EA060700DA88BB /* IPA Keyboard Shared */,
+				4E6755F122EA060700DA88BB /* Core Keyboard Functionality */,
+				4E13CE8B2727802700DB5CB0 /* Keyboard Layouts */,
 				4E84B1542140E92F0078AC4B /* IPA Keyboard */,
-				4E84B1692140E9340078AC4B /* IPA KeyboardTests */,
-				4E84B1742140E9340078AC4B /* IPA KeyboardUITests */,
 				4E84B1882140E9980078AC4B /* IPA Keyboard Extension */,
+				4E4993EC2A77649600616B4E /* IPA KeyboardTests */,
 				4E84B1532140E92F0078AC4B /* Products */,
 				4EAFA35326E241A400344131 /* Frameworks */,
 			);
@@ -359,6 +450,7 @@
 			children = (
 				4E84B1522140E92F0078AC4B /* IPA Keyboard.app */,
 				4E84B1872140E9980078AC4B /* IPA Keyboard Extension.appex */,
+				4E4993EB2A77649600616B4E /* IPA KeyboardTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -373,30 +465,13 @@
 				4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */,
 				4ED8A73226A11C29001015B2 /* Constants.swift */,
 				4E4D98F92742FAE2001E701B /* StoreManager.swift */,
+				4EEEE4E12A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit */,
 				4E0B7425269C215F0066345B /* Pages */,
 				4E0B7422269BD5210066345B /* View Elements */,
 				4E84B15C2140E9330078AC4B /* Assets.xcassets */,
 				4E84B1612140E9330078AC4B /* Info.plist */,
 			);
 			path = "IPA Keyboard";
-			sourceTree = "<group>";
-		};
-		4E84B1692140E9340078AC4B /* IPA KeyboardTests */ = {
-			isa = PBXGroup;
-			children = (
-				4E84B16A2140E9340078AC4B /* IPA_KeyboardTests.swift */,
-				4E84B16C2140E9340078AC4B /* Info.plist */,
-			);
-			path = "IPA KeyboardTests";
-			sourceTree = "<group>";
-		};
-		4E84B1742140E9340078AC4B /* IPA KeyboardUITests */ = {
-			isa = PBXGroup;
-			children = (
-				4E84B1752140E9340078AC4B /* IPA_KeyboardUITests.swift */,
-				4E84B1772140E9340078AC4B /* Info.plist */,
-			);
-			path = "IPA KeyboardUITests";
 			sourceTree = "<group>";
 		};
 		4E84B1882140E9980078AC4B /* IPA Keyboard Extension */ = {
@@ -406,7 +481,6 @@
 				4E84B1A721456EA50078AC4B /* Localization */,
 				4E84B1892140E9980078AC4B /* MainIPAKeyboardViewController.swift */,
 				4E0A9E21283D8DA200378987 /* KeyboardViewController+UICollectionViewDataSource.swift */,
-				4E13CE8B2727802700DB5CB0 /* Keyboard Layouts */,
 				4E84B18B2140E9980078AC4B /* Info.plist */,
 			);
 			path = "IPA Keyboard Extension";
@@ -441,15 +515,46 @@
 		4EB2E6DF2836DDFA0048C926 /* UIKit Components */ = {
 			isa = PBXGroup;
 			children = (
+				4E5D174F26EAE8DF003B5C5B /* UIKit Wrappers */,
 				4EB2E6E62836E32A0048C926 /* UIKitComponents.swift */,
 				4EB2E6E32836E2E90048C926 /* InputSwitchButton.swift */,
 			);
 			path = "UIKit Components";
 			sourceTree = "<group>";
 		};
+		4EEEE4D12A77A86F0071E301 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */,
+				4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */,
+				4E5D175726EAEB39003B5C5B /* RepeatTimer.swift */,
+				4EB2E6F128373EAB0048C926 /* GlyphButton.swift */,
+				4EEEE4CE2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4E4993EA2A77649600616B4E /* IPA KeyboardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E4993F12A77649600616B4E /* Build configuration list for PBXNativeTarget "IPA KeyboardTests" */;
+			buildPhases = (
+				4E4993E72A77649600616B4E /* Sources */,
+				4E4993E82A77649600616B4E /* Frameworks */,
+				4E4993E92A77649600616B4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E4993F02A77649600616B4E /* PBXTargetDependency */,
+			);
+			name = "IPA KeyboardTests";
+			productName = "IPA KeyboardTests";
+			productReference = 4E4993EB2A77649600616B4E /* IPA KeyboardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4E84B1512140E92F0078AC4B /* IPA Keyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E84B17A2140E9340078AC4B /* Build configuration list for PBXNativeTarget "IPA Keyboard" */;
@@ -493,10 +598,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1030;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = Vince14Genius;
 				TargetAttributes = {
+					4E4993EA2A77649600616B4E = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 4E84B1512140E92F0078AC4B;
+					};
 					4E84B1512140E92F0078AC4B = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1020;
@@ -527,17 +636,26 @@
 			targets = (
 				4E84B1512140E92F0078AC4B /* IPA Keyboard */,
 				4E84B1862140E9980078AC4B /* IPA Keyboard Extension */,
+				4E4993EA2A77649600616B4E /* IPA KeyboardTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4E4993E92A77649600616B4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E84B1502140E92F0078AC4B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4E14C3AF261E8E16001AE827 /* Localizable.strings in Resources */,
 				4EAC2B70214B5F54008CF477 /* InfoPlist.strings in Resources */,
+				4EEEE4E22A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit in Resources */,
 				4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +665,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E84B1AB21456EEB0078AC4B /* Localizable.strings in Resources */,
+				4EEEE4E32A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit in Resources */,
 				4EAA9212217F831A0015DBFE /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,42 +673,62 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4E4993E72A77649600616B4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EEEE4E02A79C0190071E301 /* SectionsSaturationTest.swift in Sources */,
+				4E4993F92A77689C00616B4E /* KeySetConsistentAcrossSizesTest.swift in Sources */,
+				4E4993EE2A77649600616B4E /* IPA_KeyboardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E84B14E2140E92F0078AC4B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4EAFA35826EABD1A00344131 /* StorageKeys.swift in Sources */,
 				4E34246A28448E7400DABC81 /* Operators.swift in Sources */,
+				4E4993F72A77685400616B4E /* IPASymbols.swift in Sources */,
 				4E0B7429269C22390066345B /* SettingsPage.swift in Sources */,
 				4E34B55F26F3FB7B00323D23 /* KeyButtonView.swift in Sources */,
 				4E4D98FC2743086D001E701B /* HorizontalIAPButton.swift in Sources */,
 				4E34B56126F3FB8B00323D23 /* ToolbarButtonStyles.swift in Sources */,
 				4E0B7427269C21840066345B /* GettingStartedPage.swift in Sources */,
 				4E34B55C26F3F64600323D23 /* VisualEffectView.swift in Sources */,
+				4EEEE4CD2A77A5EB0071E301 /* PinnedSymbolKeys.swift in Sources */,
 				4E4993DD2A7680A900616B4E /* ToolbarRow.swift in Sources */,
 				4E0A9E1D283D789600378987 /* Layout.swift in Sources */,
 				4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */,
 				4EB2E6E42836E2E90048C926 /* InputSwitchButton.swift in Sources */,
+				4EEEE4DE2A788BBA0071E301 /* KeyboardLayout+.swift in Sources */,
 				4EB2E6F228373EAB0048C926 /* GlyphButton.swift in Sources */,
 				4E34B56626F3FB8B00323D23 /* UIInputViewController+.swift in Sources */,
+				4EEEE4CF2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift in Sources */,
 				4E0B742B269C2A4A0066345B /* SupportUsPage.swift in Sources */,
 				4E34B56426F3FB8B00323D23 /* HoldRepeatButton.swift in Sources */,
 				4E4030EA269C584C0081E3FD /* UIApplicationFunctions.swift in Sources */,
+				4EEEE4C02A7774730071E301 /* KeyboardLayouts.swift in Sources */,
 				4EB754C726F4310300B34608 /* SectionHeader.swift in Sources */,
 				4E14C384261E864C001AE827 /* MainTabView.swift in Sources */,
+				4EEEE4D92A7881D00071E301 /* SectionScroller.swift in Sources */,
 				4E4993E02A76882800616B4E /* FakeKeyCollection.swift in Sources */,
 				4E408CE827110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
 				4E5D174B26EAE751003B5C5B /* Symbols.swift in Sources */,
 				4E2148C429F220EC0037328C /* FAQPage.swift in Sources */,
 				4EAFA34E26E1A86700344131 /* UserTipView.swift in Sources */,
+				4EEEE4D62A77A9DD0071E301 /* RowsLayout.swift in Sources */,
 				4E0A9E1F283D82CA00378987 /* KeyboardLayout.swift in Sources */,
 				4E34B56026F3FB8B00323D23 /* BottomRow.swift in Sources */,
+				4EEEE4C92A77974E0071E301 /* LayoutSwitcherState.swift in Sources */,
 				4E4993DE2A7680AD00616B4E /* CursorGestureState.swift in Sources */,
 				4E14C380261E8624001AE827 /* IPAKeyboardApp.swift in Sources */,
+				4EEEE4C32A77769C0071E301 /* ExtIPASymbols.swift in Sources */,
 				4E14C3BD261EAD6F001AE827 /* BlueButtonStyle.swift in Sources */,
 				4EB2E6E72836E32A0048C926 /* UIKitComponents.swift in Sources */,
 				4EB754CA26F526B300B34608 /* ColorConstants.swift in Sources */,
 				4E4D98FA2742FAE2001E701B /* StoreManager.swift in Sources */,
+				4EEEE4DC2A7887BE0071E301 /* LayoutSwitcher.swift in Sources */,
 				4EB754CD26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */,
 				4EB754C826F4310300B34608 /* KeyButtonCell.swift in Sources */,
 				4E5D175B26EAED83003B5C5B /* SystemSounds.swift in Sources */,
@@ -601,6 +740,8 @@
 				4ED8A73326A11C29001015B2 /* Constants.swift in Sources */,
 				4E34B56526F3FB8B00323D23 /* ExpandedKeyBezierPath.swift in Sources */,
 				4E34B56226F3FB8B00323D23 /* RepeatTimer.swift in Sources */,
+				4EEEE4C62A777F360071E301 /* NonstandardSymbols.swift in Sources */,
+				4EEEE4D32A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,19 +749,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EEEE4D02A77A6E50071E301 /* SpaceKeyWithCursorControl.swift in Sources */,
+				4EEEE4C42A77769C0071E301 /* ExtIPASymbols.swift in Sources */,
 				4EB2E6E52836E2E90048C926 /* InputSwitchButton.swift in Sources */,
 				4E5D175326EAE916003B5C5B /* ToolbarButtonStyles.swift in Sources */,
 				4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */,
 				4E34B55826F3F62E00323D23 /* KeyButtonView.swift in Sources */,
 				4EB2E6EF28372F420048C926 /* UIKitHelperFunctions.swift in Sources */,
+				4EEEE4D72A77A9DD0071E301 /* RowsLayout.swift in Sources */,
 				4E0A9E1E283D789600378987 /* Layout.swift in Sources */,
+				4EEEE4DA2A7881D00071E301 /* SectionScroller.swift in Sources */,
+				4EEEE4CC2A77A5550071E301 /* PinnedSymbolKeys.swift in Sources */,
 				4E34246B28448F5100DABC81 /* Operators.swift in Sources */,
 				4E34B55926F3F63600323D23 /* ExpandedKeyBezierPath.swift in Sources */,
 				4E0A9E29283D9C9F00378987 /* KeyButtonActions.swift in Sources */,
+				4EEEE4DD2A7887BE0071E301 /* LayoutSwitcher.swift in Sources */,
 				4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */,
 				4EB754CB26F526B300B34608 /* ColorConstants.swift in Sources */,
 				4EA664B626EFFF0B001588E9 /* KeyboardLayout.swift in Sources */,
 				4E5D175926EAEB39003B5C5B /* RepeatTimer.swift in Sources */,
+				4EEEE4CA2A77974E0071E301 /* LayoutSwitcherState.swift in Sources */,
 				4E5D175F26EAF00E003B5C5B /* BottomRow.swift in Sources */,
 				4E6755F422EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift in Sources */,
 				4E84B18A2140E9980078AC4B /* MainIPAKeyboardViewController.swift in Sources */,
@@ -630,14 +778,17 @@
 				4E0A9E24283D8E9900378987 /* CollectionViewConstants.swift in Sources */,
 				4EAFA35926EABD7500344131 /* StorageKeys.swift in Sources */,
 				4EAFA35B26EADBDE00344131 /* ToolbarRow.swift in Sources */,
+				4EEEE4D42A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */,
 				4E408CE927110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
 				4E6755F922EA0F0E00DA88BB /* Symbols.swift in Sources */,
 				4E0A9E22283D8DA200378987 /* KeyboardViewController+UICollectionViewDataSource.swift in Sources */,
 				4EB2E6E82836E32A0048C926 /* UIKitComponents.swift in Sources */,
+				4EEEE4C12A7774730071E301 /* KeyboardLayouts.swift in Sources */,
 				4E5D174E26EAE8B8003B5C5B /* UIInputViewController+.swift in Sources */,
 				4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */,
 				4E4993E12A76882800616B4E /* FakeKeyCollection.swift in Sources */,
 				4E48DAC826F3ED6900F88CD9 /* VisualEffectView.swift in Sources */,
+				4EEEE4C72A777F360071E301 /* NonstandardSymbols.swift in Sources */,
 				4E84B1B9214745CE0078AC4B /* KeyButtonCell.swift in Sources */,
 				4E0A9E26283D93AE00378987 /* KeyboardLayout+.swift in Sources */,
 				4EB754CE26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */,
@@ -647,6 +798,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4E4993F02A77649600616B4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E84B1512140E92F0078AC4B /* IPA Keyboard */;
+			targetProxy = 4E4993EF2A77649600616B4E /* PBXContainerItemProxy */;
+		};
 		4E84B18D2140E9980078AC4B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4E84B1862140E9980078AC4B /* IPA Keyboard Extension */;
@@ -707,6 +863,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4E4993F22A77649600616B4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S5LH6VYMA5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-KeyboardTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IPA Keyboard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IPA Keyboard";
+			};
+			name = Debug;
+		};
+		4E4993F32A77649600616B4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S5LH6VYMA5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Vince14Genius.IPA-KeyboardTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IPA Keyboard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IPA Keyboard";
+			};
+			name = Release;
+		};
 		4E84B1782140E9340078AC4B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -924,6 +1123,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4E4993F12A77649600616B4E /* Build configuration list for PBXNativeTarget "IPA KeyboardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E4993F22A77649600616B4E /* Debug */,
+				4E4993F32A77649600616B4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4E84B14D2140E92F0078AC4B /* Build configuration list for PBXProject "IPA Keyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

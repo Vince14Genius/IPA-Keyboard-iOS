@@ -24,6 +24,17 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     @Published var products = [SKProduct]()
     @Published var transactionState: SKPaymentTransactionState?
     
+    @Published var isShowingRefundAlert = false
+    @Published var refundMessage: String? {
+        didSet {
+            if refundMessage != nil {
+                DispatchQueue.main.async {
+                    self.isShowingRefundAlert = true
+                }
+            }
+        }
+    }
+    
     private let appGroupStorage = UserDefaults(suiteName: SharedIdentifiers.appGroup)
     
     var request: SKProductsRequest!
@@ -84,6 +95,33 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 transactionState = .failed
             default:
                 queue.finishTransaction(transaction)
+            }
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, didRevokeEntitlementsForProductIdentifiers productIdentifiers: [String]) {
+        print("paymentQueue(_:didRevokeEntitlementsForProductIdentifiers:) called")
+        for id in productIdentifiers {
+            if let storageKey = InAppPurchases.nonconsumableProductIdToStorageKey[id] {
+                let localized = InAppPurchases.productIDToLocalizedStringKey[id] ?? "<?>"
+                // Nonconsumable Products
+                appGroupStorage?.set(false, forKey: storageKey)
+                print("Did set \(storageKey)")
+                DispatchQueue.main.async {
+                    self.refundMessage = "We're notified of your refund for \(localized.localized()).\nYour access to paid keyboard layouts has been updated accordingly."
+                }
+            } else if let storageKey = InAppPurchases.simpleIncrementProductIdToStorageKey[id] {
+                // Consumable products that are simple +1 increments
+                guard let localized = InAppPurchases.productIDToLocalizedStringKey[id] else {
+                    return
+                }
+                let oldValue = appGroupStorage?.integer(forKey: storageKey) ?? 0
+                appGroupStorage?.set(oldValue - 1, forKey: storageKey)
+                DispatchQueue.main.async {
+                    self.refundMessage = "We're notified of your refund for \(localized.localized()).\nYour contribution count has been updated accordingly."
+                }
+            } else {
+                print("Revokation did not require updating UserDefaults")
             }
         }
     }

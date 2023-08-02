@@ -29,10 +29,6 @@ enum SharedIdentifiers {
 }
 
 enum SettingsKey {
-    static let isIPAEnabled = "isIPAEnabled"
-    static let isExtIPAEnabled = "isExtIPAEnabled"
-    static let isNonstandardEnabled = "isNonstandardEnabled"
-    
     static let isCustomKeyboardEnabled = "isCustomKeyboardEnabled"
     
     static let isRecentsEnabled = "isRecentsEnabled"
@@ -42,7 +38,6 @@ enum SettingsKey {
     
     static let customKeyboardLayout = "customKeyboardLayout"
     
-    static let isMovableCursorEnabled = "isMovableCursorEnabled"
     static let isInputSwitchKeyAlwaysOn = "isInputSwitchKeyAlwaysOn"
     static let isInputClickSoundEnabled = "isInputClickSoundEnabled"
 }
@@ -53,10 +48,6 @@ enum SupportUsKey {
 }
 
 fileprivate let defaultValues: [String: Any] = [
-    SettingsKey.isIPAEnabled: true,
-    SettingsKey.isExtIPAEnabled: false,
-    
-    SettingsKey.isNonstandardEnabled: false,
     SettingsKey.isCustomKeyboardEnabled: false,
     
     SettingsKey.customKeyboardLayout: [
@@ -66,7 +57,6 @@ fileprivate let defaultValues: [String: Any] = [
     
     SettingsKey.isRecentsEnabled: false, // TODO: set value to true once implemented
     
-    SettingsKey.isMovableCursorEnabled: false,
     SettingsKey.isInputSwitchKeyAlwaysOn: false,
     SettingsKey.isInputClickSoundEnabled: true,
     

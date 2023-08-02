@@ -6,13 +6,42 @@
   Copyright © 2018 Vince14Genius. All rights reserved.
 */
 
+/* Pinned Keys */
+"SpaceBarText" = "空白";
+
+/* Keyboard Layouts */
+"Standard" = "IPA(公式)";
+"IPA (Standard)" = "IPA (公式)";
+"extIPA" = "extIPA";
+"Extended IPA" = "extIPA（拡張IPA）";
+"Nonstandard" = "非公式記号";
+"Nonstandard & Obsolete Symbols" = "非公式・破棄された記号";
+
+/* Sections - IPA (Standard) */
 "Consonants" = "子音";
 "NonPulmonic" = "子音（非肺臓気流）";
-"OtherSymbols" = "別の記号";
+"OtherSymbols" = "その他の記号";
 "Vowels" = "母音";
 "Suprasegmentals" = "超分節要素";
 "TonesAndWordAccents" = "声調記号とアクセント";
 "Diacritics" = "補助記号";
-"ExtIPA" = "拡張IPA";
 
-"SpaceBarText" = "空白";
+/* Sections - Extended IPA */
+
+//"Consonants"
+//"Diacritics"
+"Connected Speech, Uncertainty etc." = "Connected Speech, Uncertainty etc.";
+"Voicing" = "清音・濁音";
+"Other Sounds" = "その他の音";
+"Consonant Superscripts" = "子音の上付き";
+"Vowel Superscripts" = "母音の上付き";
+
+/* Sections - Nonstandard & Obsolete Symbols */
+
+"Ligatures" = "合字";
+"Numerals" = "数字記号";
+"Small Caps & Uppercase" = "小型英大文字・IPA大文字";
+"Sinologist & Koreanist" = "SinologistとKoreanist";
+"Americanist & Slavicist" = "AmericanistとSlavicist";
+"Obsolete" = "破棄された記号";
+"Community Requested" = "コミュニティ要望";

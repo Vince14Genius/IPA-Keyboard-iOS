@@ -20,6 +20,7 @@ enum URLs {
     static let shareLink = "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497"
     static let appStoreReview = "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497?action=write-review"
     static let githubRepo = "https://github.com/Vince14Genius/IPA-Keyboard-iOS"
+    static let friendLinkDynamicDungeon = "https://apps.apple.com/app/dynamic-dungeon/id6449023174"
     static let friendLinkGoLingo = "https://apps.apple.com/app/golingo/id1194977025"
 }
 
@@ -161,5 +162,12 @@ enum InAppPurchases {
     static let simpleIncrementProductIdToStorageKey = [
         Self.donationSmallDrink: SupportUsKey.timesDonatedSmallDrink,
         Self.donationLargeMeal: SupportUsKey.timesDonatedLargeMeal,
+    ]
+    
+    static let productIDToLocalizedStringKey = [
+        Self.donationSmallDrink: "support-us-donate-buy-drink",
+        Self.donationLargeMeal: "support-us-donate-buy-meal",
+        Self.unlockObsoleteNonstandard: "localized-keyboard-nonstandard-obsolete",
+        Self.unlockCustomKeyboard: "localized-keyboard-custom",
     ]
 }

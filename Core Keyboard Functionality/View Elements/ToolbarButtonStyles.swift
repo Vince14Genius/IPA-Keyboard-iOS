@@ -14,21 +14,8 @@ public struct ToolbarButtonStyle: ButtonStyle {
             .foregroundColor(Color(.label))
             .opacity(configuration.isPressed ? 0.33 : 1)
             .padding([.top, .bottom])
-            .padding([.leading, .trailing], 12)
+            .padding([.leading, .trailing], Layout.leftInsetRaw)
             .background(Color.clearInteractable)
-    }
-}
-
-public struct CursorButtonStyle: ButtonStyle {
-    @Environment(\.colorScheme) var colorScheme
-    
-    public func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .padding([.leading, .trailing], 24)
-            .padding([.top, .bottom], 8)
-            .background(colorScheme == .light ? Color(.secondarySystemBackground) : .darkModeKeyBackground)
-            .cornerRadius(6)
-            .opacity(configuration.isPressed ? 0.67 : 1)
     }
 }
 

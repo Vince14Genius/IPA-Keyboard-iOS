@@ -9,7 +9,7 @@
 import UIKit
 
 class SectionHeader: UICollectionReusableView {
-    let label = UILabel(frame: CGRect(x: 12, y: 0, width: 240, height: 24))
+    let label = UILabel(frame: CGRect(x: Layout.leftInsetRaw, y: 0, width: 240, height: 24))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

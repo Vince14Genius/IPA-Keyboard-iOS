@@ -9,9 +9,6 @@
 import UIKit
 
 extension UIInputViewController {
-    func insertText(_ text: String) {
-        textDocumentProxy.insertText(text)
-    }
     
     func moveCursorBackByOne() {
         textDocumentProxy.adjustTextPosition(byCharacterOffset: -1)
@@ -24,4 +21,16 @@ extension UIInputViewController {
     func deleteBackwardByOne() {
         textDocumentProxy.deleteBackward()
     }
+    
+    func typeSandwich(_ text: String) {
+        textDocumentProxy.insertText(text)
+        moveCursorBackByOne()
+        SystemSound.playInputClick()
+    }
+    
+    func type(text: String) {
+        textDocumentProxy.insertText(text)
+        SystemSound.playInputClick()
+    }
+    
 }

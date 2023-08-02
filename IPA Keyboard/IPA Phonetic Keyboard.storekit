@@ -1,0 +1,90 @@
+{
+  "identifier" : "5B8053C3",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "1584588491",
+      "localizations" : [
+        {
+          "description" : "A small donation",
+          "displayName" : "Donation: Buy me a drink",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "donation_small_drink",
+      "referenceName" : "Donation: Buy me a drink",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "9.99",
+      "familyShareable" : false,
+      "internalID" : "1584588630",
+      "localizations" : [
+        {
+          "description" : "A moderate amount of donation",
+          "displayName" : "Donation: Buy me a meal",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "donation_large_meal",
+      "referenceName" : "Donation: Buy me a meal",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "5.99",
+      "familyShareable" : false,
+      "internalID" : "1584588531",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "Customize Your IPA Keyboard",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "unlock_custom_ipa_keyboard",
+      "referenceName" : "Unlock Custom IPA Keyboard",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "5.99",
+      "familyShareable" : false,
+      "internalID" : "1584588319",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "非公式・破棄された記号をアンロック",
+          "locale" : "ja"
+        },
+        {
+          "description" : "",
+          "displayName" : "解鎖非正規/已廢棄字符",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Unlock obsolete and non-standard IPA symbols",
+          "displayName" : "Obsolete/Non-Standard Symbols",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "unlock_obsolete_nonstandard_symbols",
+      "referenceName" : "Unlock Obsolete and Non-Standard Symbols",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "1440241497",
+    "_developerTeamID" : "S5LH6VYMA5",
+    "_lastSynchronizedDate" : 712630751.37535703
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

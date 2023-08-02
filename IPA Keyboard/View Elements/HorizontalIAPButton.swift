@@ -15,6 +15,7 @@ struct HorizontalIAPButton: View {
     
     @ObservedObject var storeManager: StoreManager
     
+    var hasDisplayLock: Bool = false
     var disabledLabel: LocalizedStringKey?
     
     var product: SKProduct? {
@@ -35,17 +36,21 @@ struct HorizontalIAPButton: View {
             }
         } label: {
             HStack {
-                Text(localizedKey)
+                if hasDisplayLock {
+                    Label(localizedKey, systemImage: "lock.fill")
+                } else {
+                    Text(localizedKey)
+                }
+                
+                Spacer()
+                
                 if let disabledLabel = disabledLabel {
-                    Spacer()
                     Divider()
                     Text(disabledLabel)
                 } else if let product = self.product {
-                    Spacer()
                     Divider()
                     Text(makeFormatter(locale: product.priceLocale).string(from: product.price)!)
                 } else {
-                    Spacer()
                     ProgressView()
                 }
             }

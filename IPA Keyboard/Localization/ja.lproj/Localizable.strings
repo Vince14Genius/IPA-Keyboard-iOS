@@ -15,7 +15,7 @@
 "ipakeyboard.title" = "IPAキーボード";
 
 /* Tab View tab names */
-"localized-title-getting-started" = "始めましょう";
+"localized-title-getting-started" = "はじめに";
 "localized-title-support-us" = "開発者を支援";
 "localized-title-settings" = "設定";
 
@@ -110,7 +110,7 @@ Unfortunately there's nothing we could do about it." =
 
 /* Settings - Keyboards */
 "localized-title-keyboards" = "キーボードリスト";
-"localized-keyboard-ipa" = "IPA (公式, 2018)";
+"localized-keyboard-ipa" = "IPA (公式, 2020)";
 "localized-keyboard-extipa" = "extIPA (公式, 2016)";
 "localized-keyboard-nonstandard-obsolete" = "非公式・破棄された記号";
 "localized-keyboard-custom" = "カスタムIPAキーボード";

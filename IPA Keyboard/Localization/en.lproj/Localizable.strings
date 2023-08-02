@@ -107,7 +107,7 @@ Unfortunately there's nothing we could do about it.";
 
 /* Settings - Keyboards */
 "localized-title-keyboards" = "Keyboards";
-"localized-keyboard-ipa" = "IPA (Standard, 2018)";
+"localized-keyboard-ipa" = "IPA (Standard, 2020)";
 "localized-keyboard-extipa" = "extIPA (Standard, 2016)";
 "localized-keyboard-nonstandard-obsolete" = "Nonstandard/Obsolete Symbols";
 "localized-keyboard-custom" = "Custom IPA Keyboard";
