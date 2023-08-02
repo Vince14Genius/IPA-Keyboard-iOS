@@ -163,4 +163,11 @@ enum InAppPurchases {
         Self.donationSmallDrink: SupportUsKey.timesDonatedSmallDrink,
         Self.donationLargeMeal: SupportUsKey.timesDonatedLargeMeal,
     ]
+    
+    static let productIDToLocalizedStringKey = [
+        Self.donationSmallDrink: "support-us-donate-buy-drink",
+        Self.donationLargeMeal: "support-us-donate-buy-meal",
+        Self.unlockObsoleteNonstandard: "localized-keyboard-nonstandard-obsolete",
+        Self.unlockCustomKeyboard: "localized-keyboard-custom",
+    ]
 }

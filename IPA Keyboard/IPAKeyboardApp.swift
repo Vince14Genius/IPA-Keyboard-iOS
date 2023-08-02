@@ -11,6 +11,8 @@ import StoreKit
 
 @main
 struct IPAKeyboardApp: App {
+    @StateObject private var storeManager = StoreManager.instance
+    
     init() {
         LocalStorage.setDefaultValues()
     }
@@ -20,6 +22,12 @@ struct IPAKeyboardApp: App {
             MainTabView()
                 .onAppear {
                     SKPaymentQueue.default().add(StoreManager.instance)
+                }
+                .alert(isPresented: $storeManager.isShowingRefundAlert) {
+                    Alert(
+                        title: Text("Refund Processed"),
+                        message: Text(storeManager.refundMessage ?? "<error>")
+                    )
                 }
         }
     }

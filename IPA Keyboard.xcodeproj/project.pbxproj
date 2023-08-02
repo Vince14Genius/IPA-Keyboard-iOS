@@ -115,6 +115,8 @@
 		4EEEE4DD2A7887BE0071E301 /* LayoutSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */; };
 		4EEEE4DE2A788BBA0071E301 /* KeyboardLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E25283D93AE00378987 /* KeyboardLayout+.swift */; };
 		4EEEE4E02A79C0190071E301 /* SectionsSaturationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4DF2A79C0190071E301 /* SectionsSaturationTest.swift */; };
+		4EEEE4E22A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 4EEEE4E12A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit */; };
+		4EEEE4E32A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 4EEEE4E12A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +245,7 @@
 		4EEEE4D82A7881D00071E301 /* SectionScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScroller.swift; sourceTree = "<group>"; };
 		4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSwitcher.swift; sourceTree = "<group>"; };
 		4EEEE4DF2A79C0190071E301 /* SectionsSaturationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsSaturationTest.swift; sourceTree = "<group>"; };
+		4EEEE4E12A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "IPA Phonetic Keyboard.storekit"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +465,7 @@
 				4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */,
 				4ED8A73226A11C29001015B2 /* Constants.swift */,
 				4E4D98F92742FAE2001E701B /* StoreManager.swift */,
+				4EEEE4E12A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit */,
 				4E0B7425269C215F0066345B /* Pages */,
 				4E0B7422269BD5210066345B /* View Elements */,
 				4E84B15C2140E9330078AC4B /* Assets.xcassets */,
@@ -651,6 +655,7 @@
 			files = (
 				4E14C3AF261E8E16001AE827 /* Localizable.strings in Resources */,
 				4EAC2B70214B5F54008CF477 /* InfoPlist.strings in Resources */,
+				4EEEE4E22A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit in Resources */,
 				4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,6 +665,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E84B1AB21456EEB0078AC4B /* Localizable.strings in Resources */,
+				4EEEE4E32A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit in Resources */,
 				4EAA9212217F831A0015DBFE /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
