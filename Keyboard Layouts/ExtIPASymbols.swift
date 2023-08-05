@@ -46,7 +46,7 @@ enum ExtIPASymbols: KeyboardLayout {
         ),
         
         sections.diacritics.rawValue: .init(
-            sectionGlyph: "◌͋",
+            sectionGlyph: "m͋",
             regularDisplayKeys: [
                 "◌͋", "◌͌", "◌͊", nil,
                 "◌͈", "◌͉", nil, nil,
@@ -81,7 +81,7 @@ enum ExtIPASymbols: KeyboardLayout {
         ),
         
         sections.voicing.rawValue: .init(
-            sectionGlyph: "◌˭",
+            sectionGlyph: "p˭",
             regularDisplayKeys: [
                 "ˬ", "₍◌", "◌₎", nil,
                 "◌˭", "ʰ◌",
