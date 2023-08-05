@@ -91,8 +91,6 @@ enum Localized {
 
         Unfortunately there's nothing we could do about it.
         """
-    static let faqFutureFeaturesHeading: LocalizedStringKey = "When is non-standard symbols / obsolete symbols / custom keyboard layout / recently used keys coming?"
-    static let faqFutureFeaturesBody: LocalizedStringKey = "When I beat my procrastination. :("
     
     /* Support Us - Donate to the developer */
     static let supportUsDonateTitle: LocalizedStringKey = "support-us-donate-title"

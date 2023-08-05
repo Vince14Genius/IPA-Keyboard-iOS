@@ -42,7 +42,7 @@ enum NonstandardSymbols: KeyboardLayout {
             ]
         ),
         sections.numerals.rawValue: .init(
-            sectionGlyph: "◌₁",
+            sectionGlyph: "h₁",
             regularDisplayKeys: [
                 "◌₁", "◌₄", "◌₇", "◌₀",
                 "◌₂", "◌₅", "◌₈", nil,
@@ -54,7 +54,6 @@ enum NonstandardSymbols: KeyboardLayout {
             largeDisplayKeys: [
                 "◌₁", "◌₃", "◌₅", "◌₇", "◌₉", nil,
                 "◌₂", "◌₄", "◌₆", "◌₈", "◌₀", nil,
-                nil, nil, nil, nil, nil, nil,
                 "◌¹", "◌³", "◌⁵", "◌⁷", "◌⁹", nil,
                 "◌²", "◌⁴", "◌⁶", "◌⁸", "◌⁰", nil,
             ]
