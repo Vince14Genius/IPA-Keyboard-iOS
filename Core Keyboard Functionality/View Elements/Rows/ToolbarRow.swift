@@ -24,12 +24,11 @@ struct ToolbarRow: View {
     
     @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn: Bool = false
     
-    var inputViewController: UIInputViewController?
+    weak var inputViewController: UIInputViewController?
     
     var body: some View {
         let rowsLayout = RowsLayout.from(
             sizeClass: sizeClass ?? .compact,
-            uiIdiom: UIDevice.current.userInterfaceIdiom,
             inputViewController: inputViewController
         )
         
@@ -48,7 +47,13 @@ struct ToolbarRow: View {
                 PinnedSymbolKeys(
                     inputViewController: inputViewController
                 )
-                Spacer()
+                
+                if rowsLayout == .crowdedCompact {
+                    Spacer(minLength: 0)
+                } else {
+                    Spacer()
+                }
+                
                 PinnedGeneralKeys(
                     cursorGestureState: cursorGestureState,
                     inputViewController: inputViewController

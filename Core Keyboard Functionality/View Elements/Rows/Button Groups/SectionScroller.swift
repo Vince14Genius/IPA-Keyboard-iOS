@@ -16,6 +16,7 @@ private struct GlyphWithID: Identifiable {
 struct SectionScroller: View {
     @Binding var isScrolling: Bool
     @ObservedObject var dataSource: BottomRowDataSource
+    let rowsLayout: RowsLayout
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -24,7 +25,7 @@ struct SectionScroller: View {
         sectionCount: Int,
         section: Int
     ) -> Double {
-        proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth / 2
+        proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth(rowsLayout: rowsLayout) / 2
     }
     
     private func dragScroll(x: Double, width: Double) {
@@ -55,7 +56,7 @@ struct SectionScroller: View {
                     )
                     BottomRow.underlayColor(colorScheme: colorScheme)
                         .cornerRadius(.infinity)
-                        .frame(maxWidth: isScrolling ? .infinity : BottomRow.buttonWidth)
+                        .frame(maxWidth: isScrolling ? .infinity : BottomRow.buttonWidth(rowsLayout: rowsLayout))
                         .offset(x: isScrolling ? 0.0 : offset)
                 }
                 
@@ -66,7 +67,8 @@ struct SectionScroller: View {
                         
                         GlyphButton(
                             label: Text(dataSource.sectionGlyphs[element.id]),
-                            foregroundColor: foregroundColor
+                            foregroundColor: foregroundColor,
+                            rowsLayout: rowsLayout
                         ) {
                             UISelectionFeedbackGenerator().selectionChanged()
                             SystemSound.playInputClick()
@@ -95,6 +97,6 @@ struct SectionScroller: View {
                 }
             }
         }
-        .frame(height: BottomRow.rowHeight)
+        .frame(height: BottomRow.rowHeight(rowsLayout: rowsLayout))
     }
 }

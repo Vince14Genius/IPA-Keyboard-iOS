@@ -56,7 +56,7 @@ struct LayoutSwitcher: View {
             }
             .foregroundColor(.secondary)
             .padding(.horizontal, rowsLayout == .padRegular ? 16 : 8)
-            .frame(height: BottomRow.rowHeight - 6)
+            .frame(height: BottomRow.rowHeight(rowsLayout: rowsLayout) - 6)
             .background(BottomRow.underlayColor(colorScheme: colorScheme))
             .cornerRadius(.infinity)
         }

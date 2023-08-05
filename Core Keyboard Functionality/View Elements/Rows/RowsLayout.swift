@@ -9,25 +9,18 @@
 import SwiftUI
 
 enum RowsLayout {
-    case padCompact
     case padRegular
     case fullCompact
     case crowdedCompact
     
+    static let crowdedViewportSizeThreshold = 375
+    
     static func from(
         sizeClass: UserInterfaceSizeClass,
-        uiIdiom: UIUserInterfaceIdiom,
         inputViewController: UIInputViewController?
     ) -> RowsLayout {
-        if uiIdiom == .pad {
-            switch sizeClass {
-            case .compact:
-                return .padCompact
-            case .regular:
-                return .padRegular
-            @unknown default:
-                fatalError("Unsupported iPad size class <\(sizeClass)>")
-            }
+        if case .regular = sizeClass {
+            return .padRegular
         }
         
         guard let inputViewController else { return .fullCompact }

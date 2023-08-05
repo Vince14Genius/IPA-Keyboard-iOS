@@ -16,7 +16,7 @@ struct SpaceKeyWithCursorControl: View {
     @State private var previousCursorTranslation: Double?
     @State private var cursorDeltaBuildup = 0.0
     
-    var inputViewController: UIInputViewController?
+    weak var inputViewController: UIInputViewController?
     
     private func moveCursorBackByOne() {
         inputViewController?.moveCursorBackByOne()

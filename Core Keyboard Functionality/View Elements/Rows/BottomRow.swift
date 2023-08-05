@@ -11,25 +11,26 @@ import SwiftUI
 private func underlayOffset(
     proxyWidth: Double,
     sectionCount: Int,
-    section: Int
+    section: Int,
+    rowsLayout: RowsLayout
 ) -> Double {
-    proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth / 2
+    proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth(rowsLayout: rowsLayout) / 2
 }
 
 struct BottomRow: View {
     
-    static var rowHeight: Double {
-        UIDevice.current.userInterfaceIdiom == .pad ? 48 : 36
+    static func rowHeight(rowsLayout: RowsLayout) -> Double {
+        rowsLayout == .padRegular ? 48 : 36
     }
     
-    static var buttonWidth: Double {
-        rowHeight
+    static func buttonWidth(rowsLayout: RowsLayout) -> Double {
+        rowHeight(rowsLayout: rowsLayout)
     }
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.horizontalSizeClass) var sizeClass
     
-    var inputViewController: UIInputViewController?
+    weak var inputViewController: UIInputViewController?
     
     @ObservedObject var dataSource: BottomRowDataSource
     @ObservedObject var cursorGestureState: CursorGestureState
@@ -48,7 +49,6 @@ struct BottomRow: View {
     var body: some View {
         let rowsLayout = RowsLayout.from(
             sizeClass: sizeClass ?? .compact,
-            uiIdiom: UIDevice.current.userInterfaceIdiom,
             inputViewController: inputViewController
         )
         
@@ -62,15 +62,19 @@ struct BottomRow: View {
                 Spacer()
             }
             
-            SectionScroller(isScrolling: $isScrolling, dataSource: dataSource)
+            if
+                rowsLayout == .crowdedCompact,
+                let inputViewController
+            {
+                SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, rowsLayout: rowsLayout)
+                    .frame(maxWidth: inputViewController.view.frame.size.width - BottomRow.buttonWidth(rowsLayout: rowsLayout) * 2)
+            } else {
+                SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, rowsLayout: rowsLayout)
+            }
             
             Spacer(minLength: 0)
             
-            HoldRepeatButton(label: Image(systemName: "delete.left")) {
-                inputViewController?.deleteBackwardByOne()
-                SystemSound.delete.play()
-            }
-            .buttonStyle(BackwardDeleteButtonStyle())
+            BackwardsDeleteButton(inputViewController: inputViewController, rowsLayout: rowsLayout)
         }
         .padding([.leading, .trailing], 6)
         .opacity(cursorGestureState.isMovingCursor ? CursorGestureState.movingOpacity : 1.0)

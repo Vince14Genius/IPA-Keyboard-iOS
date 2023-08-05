@@ -24,11 +24,7 @@ public struct BackwardDeleteButtonStyle: ButtonStyle {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
                 Image(systemName: configuration.isPressed ? "delete.left.fill" : "delete.left")
-                    .font(UIDevice.current.userInterfaceIdiom == .pad ? .system(size: GlyphButton.textSideLength * 0.67) : .body)
             }
         }
-        .frame(width: BottomRow.buttonWidth, height: BottomRow.rowHeight)
-        .foregroundColor(Color(.label))
-        .background(Color.clearInteractable)
     }
 }

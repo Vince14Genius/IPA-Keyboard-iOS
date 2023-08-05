@@ -11,7 +11,7 @@ import SwiftUI
 
 class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionViewDelegateFlowLayout, LayoutSwitcherDelegate {
     
-    // MARK: - Constants
+    // MARK: - UI Elements
     
     @IBOutlet var keyCollection: UICollectionView!
     @IBOutlet var bottomStack: UIStackView!
@@ -22,8 +22,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
     var expandedKeyOverlay: ExpandedKeyOverlay!
     var fakeKeyCollection: UIHostingController<FakeKeyCollection>!
     
-    // Bottom buttons
-    @IBOutlet var nextKeyboardButton: UIButton!
+    @IBOutlet var nextKeyboardButton: InputSwitchButton?
     
     // MARK: - States
     
@@ -151,17 +150,20 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         ).isActive = true
         
         if shouldShowInputModeSwitchKey {
-            nextKeyboardButton = UIKitComponents.inputSwitchButton()
-            view.addSubview(nextKeyboardButton)
+            nextKeyboardButton = .init()
+            let button = nextKeyboardButton!
+            
+            view.addSubview(button)
+            button.updateInsets(inputViewController: self)
                 
-            nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
+            button.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
             
             Constraints.applyEqual(pairs: [
-                (nextKeyboardButton.leadingAnchor, view.leadingAnchor),
-                (bottomRow.view.leadingAnchor, nextKeyboardButton.trailingAnchor),
+                (button.leadingAnchor, view.leadingAnchor),
+                (bottomRow.view.leadingAnchor, button.trailingAnchor),
             ])
             
-            Constraints.applyEqual(nextKeyboardButton.centerYAnchor, bottomRow.view.centerYAnchor)
+            Constraints.applyEqual(button.centerYAnchor, bottomRow.view.centerYAnchor)
         } else {
             Constraints.applyEqual(bottomRow.view.leadingAnchor, view.leadingAnchor)
         }
@@ -175,18 +177,11 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
     // MARK: - re-render hosting controllers
     
     private func rerenderHostingControllers() {
-        func updateHostingController<T>(_ controller: UIHostingController<T>) {
-            controller.view.backgroundColor = .clear
-            controller.view.sizeToFit()
-            controller.view.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
         toolbarRow.rootView = ToolbarRow(
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState,
             inputViewController: self
         )
-        updateHostingController(toolbarRow)
         
         bottomRow.rootView = BottomRow(
             inputViewController: self,
@@ -194,7 +189,8 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState
         )
-        updateHostingController(bottomRow)
+        
+        nextKeyboardButton?.updateInsets(inputViewController: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -212,6 +208,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         super.updateViewConstraints()
         
         // Add custom view sizing constraints here
+        rerenderHostingControllers()
     }
     
     // MARK: - Helper Methods
