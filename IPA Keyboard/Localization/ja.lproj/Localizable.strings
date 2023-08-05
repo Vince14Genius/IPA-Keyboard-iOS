@@ -81,11 +81,7 @@ The characters you type out will show up correctly on systems that support rende
 Unfortunately there's nothing we could do about it." =
 "これはiOSの他社製キーボードがたまに遭う、オペレーティングシステム自身の不具合でございます。
 
-残念ですが我々開発者は解決策を提供できませんので申し訳ございません。";
-
-/* FAQ Page - Future Features */
-"When is non-standard symbols / obsolete symbols / custom keyboard layout / recently used keys coming?" = "非公式記号・カスタマイズ・よく使う記号などの機能はいつリリースしますか？";
-"When I beat my procrastination. :(" = "自分の先延ばし癖に勝ったら(泣";
+残念ですが我々開発者側からは解決策を提供できませんので申し訳ございません。";
 
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "開発者に寄贈";

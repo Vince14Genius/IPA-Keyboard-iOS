@@ -83,10 +83,6 @@ Unfortunately there's nothing we could do about it." =
 
 很抱歉作为开发者我们对此无能为力。";
 
-/* FAQ Page - Future Features */
-"When is non-standard symbols / obsolete symbols / custom keyboard layout / recently used keys coming?" = "非官方字符、自定义键盘、最近使用字符之类的功能什么时候出？";
-"When I beat my procrastination. :(" = "当我战胜拖延症的时候 :(";
-
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "向开发者捐赠";
 "support-us-donate-subtitle" = "本IPA键盘坚持向大家免费提供，欢迎支持免费软件的各位捐款资助！";

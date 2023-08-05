@@ -61,15 +61,6 @@ struct FAQVStack: View {
             }
             .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
             
-            Group {
-                Divider()
-                Text(Localized.faqFutureFeaturesHeading)
-                    .font(.title2)
-                Text(Localized.faqFutureFeaturesBody)
-                    .foregroundColor(.secondary)
-            }
-            .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
-            
             Divider()
             Link(destination: URL(string: URLs.feedback)!) {
                 HStack {
