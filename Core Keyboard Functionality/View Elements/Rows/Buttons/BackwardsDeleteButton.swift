@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BackwardsDeleteButton: View {
     weak var inputViewController: UIInputViewController?
-    var rowsLayout: RowsLayout
+    var keyboardSizeClass: KeyboardSizeClass
     
     var body: some View {
         HoldRepeatButton(
@@ -19,10 +19,10 @@ struct BackwardsDeleteButton: View {
             inputViewController?.deleteBackwardByOne()
             SystemSound.delete.play()
         }
-        .frame(width: BottomRow.buttonWidth(rowsLayout: rowsLayout), height: BottomRow.rowHeight(rowsLayout: rowsLayout))
+        .frame(width: BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass), height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass))
         .foregroundColor(Color(.label))
         .background(Color.clearInteractable)
         .buttonStyle(BackwardDeleteButtonStyle())
-        .font(rowsLayout == .padRegular ? .system(size: GlyphButton.textSideLength(rowsLayout: rowsLayout) * 0.67) : .body)
+        .font(keyboardSizeClass == .padRegular ? .system(size: GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass) * 0.67) : .body)
     }
 }

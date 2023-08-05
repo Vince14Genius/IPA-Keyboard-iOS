@@ -95,6 +95,7 @@
 		4EB754CD26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
 		4EB754CE26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
 		4ED8A73326A11C29001015B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8A73226A11C29001015B2 /* Constants.swift */; };
+		4EDF784D2A7DCF790020CFC0 /* KeyboardSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */; };
 		4EEEE4C02A7774730071E301 /* KeyboardLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */; };
 		4EEEE4C12A7774730071E301 /* KeyboardLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */; };
 		4EEEE4C32A77769C0071E301 /* ExtIPASymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4C22A77769C0071E301 /* ExtIPASymbols.swift */; };
@@ -109,8 +110,7 @@
 		4EEEE4D02A77A6E50071E301 /* SpaceKeyWithCursorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4CE2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift */; };
 		4EEEE4D32A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */; };
 		4EEEE4D42A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */; };
-		4EEEE4D62A77A9DD0071E301 /* RowsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */; };
-		4EEEE4D72A77A9DD0071E301 /* RowsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */; };
+		4EEEE4D72A77A9DD0071E301 /* KeyboardSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */; };
 		4EEEE4D92A7881D00071E301 /* SectionScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D82A7881D00071E301 /* SectionScroller.swift */; };
 		4EEEE4DA2A7881D00071E301 /* SectionScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D82A7881D00071E301 /* SectionScroller.swift */; };
 		4EEEE4DC2A7887BE0071E301 /* LayoutSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */; };
@@ -244,7 +244,7 @@
 		4EEEE4CB2A77A5550071E301 /* PinnedSymbolKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedSymbolKeys.swift; sourceTree = "<group>"; };
 		4EEEE4CE2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceKeyWithCursorControl.swift; sourceTree = "<group>"; };
 		4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedGeneralKeys.swift; sourceTree = "<group>"; };
-		4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowsLayout.swift; sourceTree = "<group>"; };
+		4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSizeClass.swift; sourceTree = "<group>"; };
 		4EEEE4D82A7881D00071E301 /* SectionScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScroller.swift; sourceTree = "<group>"; };
 		4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSwitcher.swift; sourceTree = "<group>"; };
 		4EEEE4DF2A79C0190071E301 /* SectionsSaturationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsSaturationTest.swift; sourceTree = "<group>"; };
@@ -360,7 +360,6 @@
 		4E4993E22A77400D00616B4E /* Rows */ = {
 			isa = PBXGroup;
 			children = (
-				4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */,
 				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
 				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
 				4EEEE4D12A77A86F0071E301 /* Buttons */,
@@ -425,6 +424,7 @@
 			children = (
 				4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */,
 				4E0A9E27283D9C8300378987 /* KeyButtonActions.swift */,
+				4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */,
 				4E13CE8C2727807F00DB5CB0 /* Constants */,
 				4E4993E42A77616B00616B4E /* Utility */,
 				4EB2E6DF2836DDFA0048C926 /* UIKit Components */,
@@ -703,6 +703,7 @@
 				4E34B55C26F3F64600323D23 /* VisualEffectView.swift in Sources */,
 				4EEEE4CD2A77A5EB0071E301 /* PinnedSymbolKeys.swift in Sources */,
 				4E4993DD2A7680A900616B4E /* ToolbarRow.swift in Sources */,
+				4EDF784D2A7DCF790020CFC0 /* KeyboardSizeClass.swift in Sources */,
 				4E0A9E1D283D789600378987 /* Layout.swift in Sources */,
 				4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */,
 				4EB2E6E42836E2E90048C926 /* InputSwitchButton.swift in Sources */,
@@ -722,7 +723,6 @@
 				4E5D174B26EAE751003B5C5B /* Symbols.swift in Sources */,
 				4E2148C429F220EC0037328C /* FAQPage.swift in Sources */,
 				4EAFA34E26E1A86700344131 /* UserTipView.swift in Sources */,
-				4EEEE4D62A77A9DD0071E301 /* RowsLayout.swift in Sources */,
 				4E0A9E1F283D82CA00378987 /* KeyboardLayout.swift in Sources */,
 				4E34B56026F3FB8B00323D23 /* BottomRow.swift in Sources */,
 				4EEEE4C92A77974E0071E301 /* LayoutSwitcherState.swift in Sources */,
@@ -761,7 +761,7 @@
 				4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */,
 				4E34B55826F3F62E00323D23 /* KeyButtonView.swift in Sources */,
 				4EB2E6EF28372F420048C926 /* UIKitHelperFunctions.swift in Sources */,
-				4EEEE4D72A77A9DD0071E301 /* RowsLayout.swift in Sources */,
+				4EEEE4D72A77A9DD0071E301 /* KeyboardSizeClass.swift in Sources */,
 				4E0A9E1E283D789600378987 /* Layout.swift in Sources */,
 				4EEEE4DA2A7881D00071E301 /* SectionScroller.swift in Sources */,
 				4EEEE4CC2A77A5550071E301 /* PinnedSymbolKeys.swift in Sources */,

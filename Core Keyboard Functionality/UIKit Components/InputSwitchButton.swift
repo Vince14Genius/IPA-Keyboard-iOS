@@ -36,7 +36,7 @@ class InputSwitchButton: UIButton {
         @unknown default: sizeClass = .compact
         }
         
-        let rowsLayout = RowsLayout.from(
+        let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass,
             inputViewController: inputViewController
         )
@@ -59,8 +59,8 @@ class InputSwitchButton: UIButton {
         
         widthConstraints.forEach { $0.isActive = false }
         widthConstraints = [
-            imageView!.widthAnchor.constraint(equalToConstant: BottomRow.rowHeight(rowsLayout: rowsLayout) - 2 * verticalInset),
-            imageView!.heightAnchor.constraint(equalToConstant: BottomRow.rowHeight(rowsLayout: rowsLayout) - 2 * verticalInset),
+            imageView!.widthAnchor.constraint(equalToConstant: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass) - 2 * verticalInset),
+            imageView!.heightAnchor.constraint(equalToConstant: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass) - 2 * verticalInset),
             widthAnchor.constraint(equalTo: imageView!.widthAnchor, constant: horizontalInset * 2),
         ]
         widthConstraints.forEach { $0.isActive = true }

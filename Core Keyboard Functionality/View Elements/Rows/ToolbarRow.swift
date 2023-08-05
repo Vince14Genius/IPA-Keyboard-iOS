@@ -27,15 +27,15 @@ struct ToolbarRow: View {
     weak var inputViewController: UIInputViewController?
     
     var body: some View {
-        let rowsLayout = RowsLayout.from(
+        let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass ?? .compact,
             inputViewController: inputViewController
         )
         
         VStack(spacing: 0) {
-            if rowsLayout == .crowdedCompact {
+            if keyboardSizeClass == .crowdedCompact {
                 HStack {
-                    LayoutSwitcher(direction: .down, state: layoutSwitcherState, rowsLayout: rowsLayout)
+                    LayoutSwitcher(direction: .down, state: layoutSwitcherState, keyboardSizeClass: keyboardSizeClass)
                         .padding(4)
                         .padding([.leading, .trailing], 6)
                     Spacer()
@@ -48,7 +48,7 @@ struct ToolbarRow: View {
                     inputViewController: inputViewController
                 )
                 
-                if rowsLayout == .crowdedCompact {
+                if keyboardSizeClass == .crowdedCompact {
                     Spacer(minLength: 0)
                 } else {
                     Spacer()

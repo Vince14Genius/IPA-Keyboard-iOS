@@ -12,19 +12,19 @@ private func underlayOffset(
     proxyWidth: Double,
     sectionCount: Int,
     section: Int,
-    rowsLayout: RowsLayout
+    keyboardSizeClass: KeyboardSizeClass
 ) -> Double {
-    proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth(rowsLayout: rowsLayout) / 2
+    proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) / 2
 }
 
 struct BottomRow: View {
     
-    static func rowHeight(rowsLayout: RowsLayout) -> Double {
-        rowsLayout == .padRegular ? 48 : 36
+    static func rowHeight(keyboardSizeClass: KeyboardSizeClass) -> Double {
+        keyboardSizeClass == .padRegular ? 48 : 36
     }
     
-    static func buttonWidth(rowsLayout: RowsLayout) -> Double {
-        rowHeight(rowsLayout: rowsLayout)
+    static func buttonWidth(keyboardSizeClass: KeyboardSizeClass) -> Double {
+        rowHeight(keyboardSizeClass: keyboardSizeClass)
     }
     
     @Environment(\.colorScheme) var colorScheme
@@ -47,34 +47,34 @@ struct BottomRow: View {
     }
     
     var body: some View {
-        let rowsLayout = RowsLayout.from(
+        let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass ?? .compact,
             inputViewController: inputViewController
         )
         
         HStack(alignment: .center, spacing: 0) {
-            if rowsLayout != .crowdedCompact {
-                LayoutSwitcher(direction: .up, state: layoutSwitcherState, rowsLayout: rowsLayout)
-                    .padding(.trailing, rowsLayout == .padRegular ? 8 : 4)
+            if keyboardSizeClass != .crowdedCompact {
+                LayoutSwitcher(direction: .up, state: layoutSwitcherState, keyboardSizeClass: keyboardSizeClass)
+                    .padding(.trailing, keyboardSizeClass == .padRegular ? 8 : 4)
             }
             
-            if rowsLayout == .padRegular {
+            if keyboardSizeClass == .padRegular {
                 Spacer()
             }
             
             if
-                rowsLayout == .crowdedCompact,
+                keyboardSizeClass == .crowdedCompact,
                 let inputViewController
             {
-                SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, rowsLayout: rowsLayout)
-                    .frame(maxWidth: inputViewController.view.frame.size.width - BottomRow.buttonWidth(rowsLayout: rowsLayout) * 2)
+                SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
+                    .frame(maxWidth: inputViewController.view.frame.size.width - BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) * 2)
             } else {
-                SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, rowsLayout: rowsLayout)
+                SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
             }
             
             Spacer(minLength: 0)
             
-            BackwardsDeleteButton(inputViewController: inputViewController, rowsLayout: rowsLayout)
+            BackwardsDeleteButton(inputViewController: inputViewController, keyboardSizeClass: keyboardSizeClass)
         }
         .padding([.leading, .trailing], 6)
         .opacity(cursorGestureState.isMovingCursor ? CursorGestureState.movingOpacity : 1.0)

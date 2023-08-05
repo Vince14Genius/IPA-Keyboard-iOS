@@ -1,5 +1,5 @@
 //
-//  RowsLayout.swift
+//  KeyboardSizeClass.swift
 //  IPA Keyboard
 //
 //  Created by Vincent C. on 7/31/23.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-enum RowsLayout {
+enum KeyboardSizeClass {
     case padRegular
     case fullCompact
     case crowdedCompact
@@ -18,7 +18,7 @@ enum RowsLayout {
     static func from(
         sizeClass: UserInterfaceSizeClass,
         inputViewController: UIInputViewController?
-    ) -> RowsLayout {
+    ) -> KeyboardSizeClass {
         if case .regular = sizeClass {
             return .padRegular
         }
