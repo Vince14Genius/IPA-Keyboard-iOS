@@ -12,8 +12,30 @@ enum KeyboardSizeClass: String {
     case padRegular
     case fullCompact
     case crowdedCompact
+    case padExtraCrowdedCompact
     
     static let crowdedViewportSizeThreshold = 375
+    
+    var isCrowded: Bool {
+        switch self {
+        case .padRegular:
+            return false
+        case .fullCompact:
+            return false
+        case .crowdedCompact:
+            return true
+        case .padExtraCrowdedCompact:
+            return true
+        }
+    }
+    
+    var isExtraCrowded: Bool {
+        self == .padExtraCrowdedCompact
+    }
+    
+    var isWide: Bool {
+        self == .padRegular
+    }
     
     static func from(
         sizeClass: UserInterfaceSizeClass,
@@ -32,13 +54,14 @@ enum KeyboardSizeClass: String {
         
         let viewportWidth = rootViewController.view.frame.width
         
-        if
-            UIDevice.current.userInterfaceIdiom == .pad,
-            600 < viewportWidth
-        {
-            // deal with iPadOS failure to update size class
-            // when user exists floating keyboard mode
-            return .padRegular
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if 0 < viewportWidth && viewportWidth <= 600 {
+                return .padExtraCrowdedCompact
+            } else {
+                // deal with iPadOS failure to update size class
+                // when user exists floating keyboard mode
+                return .padRegular
+            }
         }
         
         var isCrowded = needsInputModeSwitchKey

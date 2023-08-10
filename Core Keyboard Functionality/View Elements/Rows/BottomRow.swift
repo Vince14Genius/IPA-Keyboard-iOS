@@ -20,7 +20,7 @@ private func underlayOffset(
 struct BottomRow: View {
     
     static func rowHeight(keyboardSizeClass: KeyboardSizeClass) -> Double {
-        keyboardSizeClass == .padRegular ? 48 : 36
+        keyboardSizeClass.isWide ? 48 : 36
     }
     
     static func buttonWidth(keyboardSizeClass: KeyboardSizeClass) -> Double {
@@ -47,10 +47,6 @@ struct BottomRow: View {
         .init(white: colorScheme == .light ? 0 : 1, opacity: 0.15)
     }
     
-    private func isExtremelyCrowded(keyboardSizeClass: KeyboardSizeClass) -> Bool {
-        keyboardSizeClass == .crowdedCompact && UIDevice.current.userInterfaceIdiom == .pad
-    }
-    
     var body: some View {
         let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass ?? .compact,
@@ -59,29 +55,18 @@ struct BottomRow: View {
         )
         
         HStack(alignment: .center, spacing: 0) {
-            if keyboardSizeClass != .crowdedCompact {
+            if !keyboardSizeClass.isCrowded {
                 LayoutSwitcher(direction: .up, state: layoutSwitcherState, keyboardSizeClass: keyboardSizeClass)
-                    .padding(.trailing, keyboardSizeClass == .padRegular ? 8 : 4)
+                    .padding(.trailing, keyboardSizeClass.isWide ? 8 : 4)
             }
             
-            if keyboardSizeClass == .padRegular {
+            if keyboardSizeClass.isWide {
                 Spacer()
             }
             
-            if
-                keyboardSizeClass == .crowdedCompact,
-                let inputViewController
-            {
-                // layout restrictions for crowded and extra-crowded size classes
-                let multiplier = UIDevice.current.userInterfaceIdiom == .pad ? 3.0 : 2.0
-                let maxWidth = max(0, inputViewController.view.frame.size.width - BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) * multiplier)
-                SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
-                    .frame(maxWidth: maxWidth)
-            } else {
-                SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
-            }
+            SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
             
-            if !isExtremelyCrowded(keyboardSizeClass: keyboardSizeClass) {
+            if !keyboardSizeClass.isExtraCrowded {
                 Spacer(minLength: 0)
                 BackwardsDeleteButton(inputViewController: inputViewController, keyboardSizeClass: keyboardSizeClass)
             }

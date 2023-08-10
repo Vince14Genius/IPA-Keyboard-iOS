@@ -72,10 +72,7 @@ import SwiftUI
         case .padRegular:
             horizontalInset = 32
             verticalInset = 8
-        case .fullCompact:
-            horizontalInset = Layout.leftInsetRaw
-            verticalInset = 6
-        case .crowdedCompact:
+        case .fullCompact, .crowdedCompact, .padExtraCrowdedCompact:
             horizontalInset = Layout.leftInsetRaw
             verticalInset = 6
         }

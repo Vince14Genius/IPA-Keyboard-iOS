@@ -25,6 +25,6 @@ struct BackwardsDeleteButton: View {
         .foregroundColor(Color(.label))
         .background(Color.clearInteractable)
         .buttonStyle(BackwardDeleteButtonStyle())
-        .font(keyboardSizeClass == .padRegular ? .system(size: GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass) * padTextSizeMultiplier) : .body)
+        .font(keyboardSizeClass.isWide ? .system(size: GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass) * padTextSizeMultiplier) : .body)
     }
 }

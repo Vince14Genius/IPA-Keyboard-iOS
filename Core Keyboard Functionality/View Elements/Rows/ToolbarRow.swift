@@ -35,13 +35,13 @@ struct ToolbarRow: View {
         )
         
         VStack(spacing: 0) {
-            if keyboardSizeClass == .crowdedCompact {
+            if keyboardSizeClass.isCrowded {
                 HStack {
                     LayoutSwitcher(direction: .down, state: layoutSwitcherState, keyboardSizeClass: keyboardSizeClass)
                         .padding(4)
                         .padding([.leading, .trailing], 6)
                     Spacer()
-                    if UIDevice.current.userInterfaceIdiom == .pad {
+                    if keyboardSizeClass.isExtraCrowded {
                         BackwardsDeleteButton(inputViewController: inputViewController, keyboardSizeClass: keyboardSizeClass)
                     }
                 }
@@ -53,7 +53,7 @@ struct ToolbarRow: View {
                     inputViewController: inputViewController
                 )
                 
-                if keyboardSizeClass == .crowdedCompact {
+                if keyboardSizeClass.isCrowded {
                     Spacer(minLength: 0)
                 } else {
                     Spacer()

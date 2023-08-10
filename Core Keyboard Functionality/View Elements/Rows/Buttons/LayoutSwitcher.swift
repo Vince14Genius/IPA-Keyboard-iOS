@@ -55,7 +55,7 @@ struct LayoutSwitcher: View {
                 .font(.footnote)
             }
             .foregroundColor(.secondary)
-            .padding(.horizontal, keyboardSizeClass == .padRegular ? 16 : 8)
+            .padding(.horizontal, keyboardSizeClass.isWide ? 16 : 8)
             .frame(height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass) - 6)
             .background(BottomRow.underlayColor(colorScheme: colorScheme))
             .cornerRadius(.infinity)
