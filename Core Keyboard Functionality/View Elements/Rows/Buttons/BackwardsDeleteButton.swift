@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct BackwardsDeleteButton: View {
+    let padTextSizeMultiplier = 0.8
+    
     weak var inputViewController: UIInputViewController?
     var keyboardSizeClass: KeyboardSizeClass
     
@@ -23,6 +25,6 @@ struct BackwardsDeleteButton: View {
         .foregroundColor(Color(.label))
         .background(Color.clearInteractable)
         .buttonStyle(BackwardDeleteButtonStyle())
-        .font(keyboardSizeClass == .padRegular ? .system(size: GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass) * 0.67) : .body)
+        .font(keyboardSizeClass == .padRegular ? .system(size: GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass) * padTextSizeMultiplier) : .body)
     }
 }

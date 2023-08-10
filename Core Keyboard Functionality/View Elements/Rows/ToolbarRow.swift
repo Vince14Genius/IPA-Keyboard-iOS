@@ -29,7 +29,8 @@ struct ToolbarRow: View {
     var body: some View {
         let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass ?? .compact,
-            inputViewController: inputViewController
+            rootViewController: inputViewController,
+            needsInputModeSwitchKey: inputViewController?.needsInputModeSwitchKey ?? true
         )
         
         VStack(spacing: 0) {

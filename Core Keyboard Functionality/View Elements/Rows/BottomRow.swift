@@ -49,7 +49,8 @@ struct BottomRow: View {
     var body: some View {
         let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass ?? .compact,
-            inputViewController: inputViewController
+            rootViewController: inputViewController,
+            needsInputModeSwitchKey: inputViewController?.needsInputModeSwitchKey ?? false
         )
         
         HStack(alignment: .center, spacing: 0) {
@@ -67,7 +68,7 @@ struct BottomRow: View {
                 let inputViewController
             {
                 SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
-                    .frame(maxWidth: inputViewController.view.frame.size.width - BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) * 2)
+                    .frame(maxWidth: max(0, inputViewController.view.frame.size.width - BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) * 2))
             } else {
                 SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
             }

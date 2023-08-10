@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-enum KeyboardSizeClass {
+enum KeyboardSizeClass: String {
     case padRegular
     case fullCompact
     case crowdedCompact
@@ -17,20 +17,21 @@ enum KeyboardSizeClass {
     
     static func from(
         sizeClass: UserInterfaceSizeClass,
-        inputViewController: UIInputViewController?
+        rootViewController: UIViewController?,
+        needsInputModeSwitchKey: Bool
     ) -> KeyboardSizeClass {
         if case .regular = sizeClass {
             return .padRegular
         }
         
-        guard let inputViewController else { return .fullCompact }
+        guard let rootViewController else { return .fullCompact }
         
-        var isCrowded = inputViewController.needsInputModeSwitchKey
-        let viewportWidth = inputViewController.view.frame.size.width
+        var isCrowded = needsInputModeSwitchKey
+        let viewportWidth = rootViewController.view.frame.size.width
         
         // pre-initialization viewport width = 0
         // iPhone 12/13 mini viewport width = 375
-        isCrowded ||= 0 < inputViewController.view.frame.size.width && viewportWidth <= 375
+        isCrowded ||= 0 < rootViewController.view.frame.size.width && viewportWidth <= 375
         
         return isCrowded ? .crowdedCompact : .fullCompact
     }

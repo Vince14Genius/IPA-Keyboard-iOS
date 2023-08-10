@@ -10,6 +10,8 @@ import SwiftUI
 
 struct GlyphButton: View {
     
+    let padTextSizeMultiplier = 0.67
+    
     static func textSideLength(keyboardSizeClass: KeyboardSizeClass) -> Double {
         keyboardSizeClass == .padRegular ? 32 : 24
     }
@@ -32,7 +34,7 @@ struct GlyphButton: View {
     var body: some View {
         let textSideLength = GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass)
         label
-            .font(keyboardSizeClass == .padRegular ? .system(size: textSideLength * 0.67) : .body)
+            .font(keyboardSizeClass == .padRegular ? .system(size: textSideLength * padTextSizeMultiplier) : .body)
             .foregroundColor(foregroundColor)
             .frame(minWidth: textSideLength, minHeight: textSideLength)
             .padding(.horizontal, horizontalPadding)

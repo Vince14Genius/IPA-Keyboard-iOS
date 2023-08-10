@@ -151,19 +151,24 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         
         if shouldShowInputModeSwitchKey {
             nextKeyboardButton = .init()
-            let button = nextKeyboardButton!
+            let button = nextKeyboardButton!.button
             
             view.addSubview(button)
-            button.updateInsets(inputViewController: self)
+            nextKeyboardButton!.updateInsets(inputViewController: self)
                 
             button.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
             
-            Constraints.applyEqual(pairs: [
+            Constraints.applyEqual(hPairs: [
                 (button.leadingAnchor, view.leadingAnchor),
                 (bottomRow.view.leadingAnchor, button.trailingAnchor),
+            ], vPairs: [
+                (button.topAnchor, keyCollection.bottomAnchor),
             ])
             
-            Constraints.applyEqual(button.centerYAnchor, bottomRow.view.centerYAnchor)
+            button.bottomAnchor.constraint(
+                equalTo: view.bottomAnchor,
+                constant: -8
+            ).isActive = true
         } else {
             Constraints.applyEqual(bottomRow.view.leadingAnchor, view.leadingAnchor)
         }
@@ -177,6 +182,11 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
     // MARK: - re-render hosting controllers
     
     private func rerenderHostingControllers() {
+        print("rerenderHostingControllers() called")
+        
+        // update the UIKit elements first, then let SwiftUI respond
+        nextKeyboardButton?.updateInsets(inputViewController: self)
+        
         toolbarRow.rootView = ToolbarRow(
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState,
@@ -189,11 +199,15 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState
         )
-        
-        nextKeyboardButton?.updateInsets(inputViewController: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        rerenderHostingControllers()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         rerenderHostingControllers()
     }
     
