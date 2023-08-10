@@ -44,10 +44,15 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         }
     }
     
+    private var shouldShowInputModeSwitchKey: Bool = false
+    
     // MARK: - viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        shouldShowInputModeSwitchKey ||= needsInputModeSwitchKey
+        shouldShowInputModeSwitchKey ||= UIDevice.current.userInterfaceIdiom != .phone
         
         // MARK: - Set up hosting controllers
         
@@ -62,12 +67,14 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         toolbarRow = UIHostingController(rootView: ToolbarRow(
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState,
-            inputViewController: self
+            inputViewController: self,
+            needsInputModeSwitchKey: shouldShowInputModeSwitchKey
         ))
         addHostingController(toolbarRow)
         
         bottomRow = UIHostingController(rootView: BottomRow(
             inputViewController: self,
+            needsInputModeSwitchKey: shouldShowInputModeSwitchKey,
             dataSource: bottomBarDataSource,
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState
@@ -133,11 +140,6 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         
         // MARK: - Set up input mode switch button if needed
         
-        var shouldShowInputModeSwitchKey = false
-        
-        shouldShowInputModeSwitchKey ||= needsInputModeSwitchKey
-        shouldShowInputModeSwitchKey ||= UIDevice.current.userInterfaceIdiom != .phone
-        
         // check isInputSwitchKeyAlwaysOn
         if let isInputSwitchKeyAlwaysOn = UserDefaults(suiteName: SharedIdentifiers.appGroup)?.bool(forKey: SettingsKey.isInputSwitchKeyAlwaysOn) {
             shouldShowInputModeSwitchKey ||= isInputSwitchKeyAlwaysOn
@@ -190,15 +192,20 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         toolbarRow.rootView = ToolbarRow(
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState,
-            inputViewController: self
+            inputViewController: self,
+            needsInputModeSwitchKey: shouldShowInputModeSwitchKey
         )
         
         bottomRow.rootView = BottomRow(
             inputViewController: self,
+            needsInputModeSwitchKey: shouldShowInputModeSwitchKey,
             dataSource: bottomBarDataSource,
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState
         )
+        
+        toolbarRow.view.sizeToFit()
+        bottomRow.view.sizeToFit()
     }
     
     override func viewDidAppear(_ animated: Bool) {

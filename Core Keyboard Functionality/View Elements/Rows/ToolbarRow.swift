@@ -25,12 +25,13 @@ struct ToolbarRow: View {
     @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn: Bool = false
     
     weak var inputViewController: UIInputViewController?
+    var needsInputModeSwitchKey: Bool
     
     var body: some View {
         let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass ?? .compact,
             rootViewController: inputViewController,
-            needsInputModeSwitchKey: inputViewController?.needsInputModeSwitchKey ?? true
+            needsInputModeSwitchKey: needsInputModeSwitchKey
         )
         
         VStack(spacing: 0) {
@@ -40,6 +41,9 @@ struct ToolbarRow: View {
                         .padding(4)
                         .padding([.leading, .trailing], 6)
                     Spacer()
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        BackwardsDeleteButton(inputViewController: inputViewController, keyboardSizeClass: keyboardSizeClass)
+                    }
                 }
                 Divider()
             }
@@ -69,7 +73,7 @@ struct ToolbarRow: View {
 
 struct ToolbarRow_Previews: PreviewProvider {
     static var previews: some View {
-        ToolbarRow(cursorGestureState: .init(), layoutSwitcherState: .init())
+        ToolbarRow(cursorGestureState: .init(), layoutSwitcherState: .init(), needsInputModeSwitchKey: true)
     }
 }
 

@@ -31,6 +31,7 @@ struct BottomRow: View {
     @Environment(\.horizontalSizeClass) var sizeClass
     
     weak var inputViewController: UIInputViewController?
+    var needsInputModeSwitchKey: Bool
     
     @ObservedObject var dataSource: BottomRowDataSource
     @ObservedObject var cursorGestureState: CursorGestureState
@@ -46,11 +47,15 @@ struct BottomRow: View {
         .init(white: colorScheme == .light ? 0 : 1, opacity: 0.15)
     }
     
+    private func isExtremelyCrowded(keyboardSizeClass: KeyboardSizeClass) -> Bool {
+        keyboardSizeClass == .crowdedCompact && UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
     var body: some View {
         let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass ?? .compact,
             rootViewController: inputViewController,
-            needsInputModeSwitchKey: inputViewController?.needsInputModeSwitchKey ?? false
+            needsInputModeSwitchKey: needsInputModeSwitchKey
         )
         
         HStack(alignment: .center, spacing: 0) {
@@ -67,15 +72,19 @@ struct BottomRow: View {
                 keyboardSizeClass == .crowdedCompact,
                 let inputViewController
             {
+                // layout restrictions for crowded and extra-crowded size classes
+                let multiplier = UIDevice.current.userInterfaceIdiom == .pad ? 3.0 : 2.0
+                let maxWidth = max(0, inputViewController.view.frame.size.width - BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) * multiplier)
                 SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
-                    .frame(maxWidth: max(0, inputViewController.view.frame.size.width - BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) * 2))
+                    .frame(maxWidth: maxWidth)
             } else {
                 SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
             }
             
-            Spacer(minLength: 0)
-            
-            BackwardsDeleteButton(inputViewController: inputViewController, keyboardSizeClass: keyboardSizeClass)
+            if !isExtremelyCrowded(keyboardSizeClass: keyboardSizeClass) {
+                Spacer(minLength: 0)
+                BackwardsDeleteButton(inputViewController: inputViewController, keyboardSizeClass: keyboardSizeClass)
+            }
         }
         .padding([.leading, .trailing], 6)
         .opacity(cursorGestureState.isMovingCursor ? CursorGestureState.movingOpacity : 1.0)
@@ -90,7 +99,7 @@ struct BottomRow_Previews: PreviewProvider {
             HStack {
                 Spacer()
                 let dataSource = BottomRowDataSource(sectionGlyphs: ["a", "b", "c", "1", "2", "3", "/"])
-                BottomRow(dataSource: dataSource, cursorGestureState: .init(), layoutSwitcherState: .init())
+                BottomRow(needsInputModeSwitchKey: false, dataSource: dataSource, cursorGestureState: .init(), layoutSwitcherState: .init())
                     .background(Color(.secondarySystemBackground))
             }
         }

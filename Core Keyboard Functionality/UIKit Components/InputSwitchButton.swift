@@ -16,8 +16,8 @@ import SwiftUI
         let button = UIButton(type: .custom)
         
         button.setImage(UIImage(systemName: "globe"), for: [])
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .center
+        button.contentHorizontalAlignment = .center
         
         button.tintColor = .label
         button.setTitleColor(.label, for: .normal)
@@ -27,6 +27,9 @@ import SwiftUI
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.backgroundColor = .clearInteractable
+        
+        button.constraints.forEach { $0.isActive = false }
+        button.imageView!.constraints.forEach { $0.isActive = false }
         
         return button
     }()
@@ -65,36 +68,35 @@ import SwiftUI
         let horizontalInset: Double
         let verticalInset: Double
         
-        switch sizeClass {
-        case .compact:
-            horizontalInset = UIDevice.current.userInterfaceIdiom == .pad ? 0 : Layout.leftInsetRaw
-            verticalInset = UIDevice.current.userInterfaceIdiom == .pad ? 12 : 6
-        case .regular:
+        switch keyboardSizeClass {
+        case .padRegular:
             horizontalInset = 32
             verticalInset = 8
-        @unknown default:
+        case .fullCompact:
+            horizontalInset = Layout.leftInsetRaw
+            verticalInset = 6
+        case .crowdedCompact:
             horizontalInset = Layout.leftInsetRaw
             verticalInset = 6
         }
         
-        button.contentEdgeInsets = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
-        
         let glyphSideLength = BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass) - 2 * verticalInset
-        
-//        button.clipsToBounds = true
         
         button.imageView?.contentMode = .scaleAspectFit
         button.imageView?.translatesAutoresizingMaskIntoConstraints = false
         button.imageView?.sizeToFit()
         
         widthConstraints.forEach { $0.isActive = false }
-        widthConstraints = [
+        let nonRequired = [
             button.imageView!.widthAnchor.constraint(equalToConstant: glyphSideLength),
             button.imageView!.heightAnchor.constraint(equalTo: button.imageView!.widthAnchor),
-            button.imageView!.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-            button.imageView!.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            button.widthAnchor.constraint(equalTo: button.imageView!.widthAnchor, constant: horizontalInset * 2),
         ]
+        nonRequired.forEach { $0.priority = .defaultHigh }
+        widthConstraints = [
+            button.widthAnchor.constraint(equalTo: button.imageView!.widthAnchor, constant: horizontalInset * 2),
+            button.heightAnchor.constraint(equalToConstant: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass)),
+        ]
+        widthConstraints.append(contentsOf: nonRequired)
         widthConstraints.forEach { $0.isActive = true }
         
         print("""
@@ -102,6 +104,10 @@ import SwiftUI
           glyphSideLength: \(glyphSideLength)
           horizontalInset: \(horizontalInset)
           verticalInset: \(verticalInset)
+        INFO {
+          view controller root view width: \(inputViewController.view.frame.width)
+          real button insets: \(button.contentEdgeInsets)
+        }
         """)
     }
 }

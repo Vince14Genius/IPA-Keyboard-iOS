@@ -25,7 +25,13 @@ struct SectionScroller: View {
         sectionCount: Int,
         section: Int
     ) -> Double {
-        proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) / 2
+        let buttonWidth = BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass)
+        let realProxyWidth = max(proxyWidth, buttonWidth * Double(sectionCount))
+        let sectionWidth = realProxyWidth / Double(sectionCount)
+        let offsetFromOrigin = sectionWidth * Double(section)
+        let origin = -realProxyWidth / 2
+        let correctionAmount = buttonWidth / 2
+        return origin + offsetFromOrigin + correctionAmount
     }
     
     private func dragScroll(x: Double, width: Double) {
