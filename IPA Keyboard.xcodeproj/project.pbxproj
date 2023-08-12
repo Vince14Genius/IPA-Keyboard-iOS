@@ -96,6 +96,8 @@
 		4EB754CE26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
 		4ED8A73326A11C29001015B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8A73226A11C29001015B2 /* Constants.swift */; };
 		4EDF784D2A7DCF790020CFC0 /* KeyboardSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */; };
+		4EDF78522A8720030020CFC0 /* NumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF78512A8720030020CFC0 /* NumberPad.swift */; };
+		4EDF78532A8720030020CFC0 /* NumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF78512A8720030020CFC0 /* NumberPad.swift */; };
 		4EEEE4C02A7774730071E301 /* KeyboardLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */; };
 		4EEEE4C12A7774730071E301 /* KeyboardLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */; };
 		4EEEE4C32A77769C0071E301 /* ExtIPASymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4C22A77769C0071E301 /* ExtIPASymbols.swift */; };
@@ -237,6 +239,7 @@
 		4EB754C926F526B300B34608 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedKeyOverlay.swift; sourceTree = "<group>"; };
 		4ED8A73226A11C29001015B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4EDF78512A8720030020CFC0 /* NumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPad.swift; sourceTree = "<group>"; };
 		4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayouts.swift; sourceTree = "<group>"; };
 		4EEEE4C22A77769C0071E301 /* ExtIPASymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtIPASymbols.swift; sourceTree = "<group>"; };
 		4EEEE4C52A777F360071E301 /* NonstandardSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonstandardSymbols.swift; sourceTree = "<group>"; };
@@ -319,6 +322,7 @@
 				4E84B1952142624C0078AC4B /* IPASymbols.swift */,
 				4EEEE4C22A77769C0071E301 /* ExtIPASymbols.swift */,
 				4EEEE4C52A777F360071E301 /* NonstandardSymbols.swift */,
+				4EDF78512A8720030020CFC0 /* NumberPad.swift */,
 			);
 			path = "Keyboard Layouts";
 			sourceTree = "<group>";
@@ -745,6 +749,7 @@
 				4ED8A73326A11C29001015B2 /* Constants.swift in Sources */,
 				4E34B56526F3FB8B00323D23 /* ExpandedKeyBezierPath.swift in Sources */,
 				4E34B56226F3FB8B00323D23 /* RepeatTimer.swift in Sources */,
+				4EDF78522A8720030020CFC0 /* NumberPad.swift in Sources */,
 				4EEEE4C62A777F360071E301 /* NonstandardSymbols.swift in Sources */,
 				4EEEE4D32A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */,
 			);
@@ -796,6 +801,7 @@
 				4E48DAC826F3ED6900F88CD9 /* VisualEffectView.swift in Sources */,
 				4EEEE4C72A777F360071E301 /* NonstandardSymbols.swift in Sources */,
 				4E84B1B9214745CE0078AC4B /* KeyButtonCell.swift in Sources */,
+				4EDF78532A8720030020CFC0 /* NumberPad.swift in Sources */,
 				4E0A9E26283D93AE00378987 /* KeyboardLayout+.swift in Sources */,
 				4EB754CE26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */,
 			);
