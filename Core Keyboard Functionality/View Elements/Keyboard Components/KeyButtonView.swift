@@ -27,15 +27,24 @@ struct KeyButtonView: View {
     @ObservedObject var delegate: KeyButtonViewDelegate
     
     var body: some View {
+        let cornerRadius = 5.0
         if let titleText = delegate.title {
-            Text(titleText)
-                .font(.system(size: Symbols.hasDottedCircle(titleText) ? complexKeyFontSize : defaultKeyFontSize))
-                .foregroundColor(Color(.label))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(colorScheme == .dark ? Color.darkModeKeyBackground : .white)
-                .cornerRadius(4)
-                .shadow(color: Color(white: 0, opacity: 0.4), radius: 0.5, x: 0, y: 1)
-                .opacity(delegate.isPressed ? 0.5 : 1.0)
+            ZStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(.black)
+                        .offset(y: 1)
+                        .opacity(colorScheme == .dark ? 1.0 : 0.3)
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(.white)
+                }
+                .compositingGroup()
+                .opacity(colorScheme == .dark ? Color.darkModeKeyBackgroundOpacity : 1.0)
+                Text(titleText)
+                    .font(.system(size: Symbols.hasDottedCircle(titleText) ? complexKeyFontSize : defaultKeyFontSize))
+                    .foregroundColor(Color(.label))
+            }
+            .opacity(delegate.isPressed ? 0.5 : 1.0)
         }
     }
 }
