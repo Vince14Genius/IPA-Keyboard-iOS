@@ -76,7 +76,9 @@ struct SectionScroller: View {
                             foregroundColor: foregroundColor,
                             keyboardSizeClass: keyboardSizeClass
                         ) {
-                            UISelectionFeedbackGenerator().selectionChanged()
+                            Haptics.play {
+                                UISelectionFeedbackGenerator().selectionChanged()
+                            }
                             SystemSound.playInputClick()
                             dataSource.sectionIconTapAction?(element.id)
                         }
@@ -99,10 +101,13 @@ struct SectionScroller: View {
             )
             .onChange(of: dataSource.highlightedSectionIndex) { _ in
                 if isScrolling {
-                    UISelectionFeedbackGenerator().selectionChanged()
+                    Haptics.play {
+                        UISelectionFeedbackGenerator().selectionChanged()
+                    }
                 }
             }
         }
         .frame(height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass))
+        .frame(maxWidth: Double(glyphs.count) * BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) * 2)
     }
 }

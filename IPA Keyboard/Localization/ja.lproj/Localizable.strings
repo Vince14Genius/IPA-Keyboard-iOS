@@ -127,3 +127,4 @@ Unfortunately there's nothing we could do about it." =
 "settings-movable-cursor" = "入力カーソルを移動するボタンを表示";
 "Force show input switch key (globe key)" = "キーボードを切り替えるボタンを強制的に表示";
 "Keyboard Feedback Sound" = "キーボードの音";
+"Haptic Feedback (Requires Full Access)" = "触覚フィードバック（「フルアクセス」が必要）";

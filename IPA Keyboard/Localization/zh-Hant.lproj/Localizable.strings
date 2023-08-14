@@ -127,3 +127,4 @@ Unfortunately there's nothing we could do about it." =
 "settings-movable-cursor" = "可移動游標";
 "Force show input switch key (globe key)" = "強制顯示輸入法切換按鈕";
 "Keyboard Feedback Sound" = "鍵盤回饋聲音";
+"Haptic Feedback (Requires Full Access)" = "觸覺回饋（需開啟「完全訪問」）";

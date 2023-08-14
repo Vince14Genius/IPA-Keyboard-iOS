@@ -46,7 +46,9 @@ struct SpaceKeyWithCursorControl: View {
         .simultaneousGesture(
             LongPressGesture(minimumDuration: 0.5).onEnded { didComplete in
                     cursorGestureState.isMovingCursor = didComplete
-                UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 1.0)
+                Haptics.play {
+                    UIImpactFeedbackGenerator(style: .rigid).impactOccurred(intensity: 1.0)
+                }
             }.sequenced(
                 before: DragGesture(minimumDistance: 0)
                     .onChanged { value in

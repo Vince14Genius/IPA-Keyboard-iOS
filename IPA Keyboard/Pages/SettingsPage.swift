@@ -39,6 +39,7 @@ struct SettingsInnerPage: View {
     // On-off switches: advanced features
     @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn = false
     @AppStorage(SettingsKey.isInputClickSoundEnabled, store: appGroupStorage) private var isInputClickSoundEnabled = true
+    @AppStorage(SettingsKey.isHapticFeedbackEnabled, store: appGroupStorage) private var isHapticFeedbackEnabled = true
     
     // On-off switches: keyboard list
     @AppStorage(SettingsKey.isCustomKeyboardEnabled, store: appGroupStorage) private var isCustomIPAKeyboardOn = false
@@ -100,6 +101,7 @@ struct SettingsInnerPage: View {
             Section(header: Text(Localized.advancedSettings)) {
                 Toggle(Localized.forceShowGlobeKey, isOn: $isInputSwitchKeyAlwaysOn)
                 Toggle(Localized.inputClickSound, isOn: $isInputClickSoundEnabled)
+                Toggle(Localized.hapticFeedbackToggle, isOn: $isHapticFeedbackEnabled)
             }
         }
         .alert(isPresented: $showingComingSoonAlert, content: {
