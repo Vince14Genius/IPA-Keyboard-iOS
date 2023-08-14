@@ -13,6 +13,7 @@ enum KeyboardLayouts {
         IPASymbols.self,
         ExtIPASymbols.self,
         NonstandardSymbols.self,
+        NumberPad.self,
     ]
     
     enum Localized {

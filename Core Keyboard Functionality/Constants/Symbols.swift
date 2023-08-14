@@ -14,6 +14,7 @@ struct Symbols {
     static let forwardSlashes = "//"
     static let tilde = "~"
     static let dottedCircle = "◌"
+    static let angleBrackets = "⟨⟩"
     
     // MARK: Dotted Circle Operations
     

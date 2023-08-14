@@ -50,7 +50,8 @@ struct ToolbarRow: View {
             
             HStack(spacing: 0) {
                 PinnedSymbolKeys(
-                    inputViewController: inputViewController
+                    inputViewController: inputViewController,
+                    keyboardSizeClass: keyboardSizeClass
                 )
                 
                 if keyboardSizeClass.isCrowded {
