@@ -10,29 +10,33 @@ import SwiftUI
 
 struct GlyphButton: View {
     
-    static var textSideLength: Double {
-        UIDevice.current.userInterfaceIdiom == .pad ? 32 : 24
+    let padTextSizeMultiplier = 0.67
+    
+    static func textSideLength(keyboardSizeClass: KeyboardSizeClass) -> Double {
+        keyboardSizeClass.isWide ? 32 : 24
     }
     
     private var horizontalPadding: Double {
-        (BottomRow.buttonWidth - GlyphButton.textSideLength) / 2
+        (BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) - GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass)) / 2
     }
     
     private var verticalPadding: Double {
-        (BottomRow.rowHeight - GlyphButton.textSideLength) / 2
+        (BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass) - GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass)) / 2
     }
     
     @Environment(\.colorScheme) var colorScheme
     
     var label: Text
     var foregroundColor: Color
+    var keyboardSizeClass: KeyboardSizeClass
     var action: () -> Void
     
     var body: some View {
+        let textSideLength = GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass)
         label
-            .font(UIDevice.current.userInterfaceIdiom == .pad ? .system(size: GlyphButton.textSideLength * 0.67) : .body)
+            .font(keyboardSizeClass.isWide ? .system(size: textSideLength * padTextSizeMultiplier) : .body)
             .foregroundColor(foregroundColor)
-            .frame(minWidth: GlyphButton.textSideLength, minHeight: GlyphButton.textSideLength)
+            .frame(minWidth: textSideLength, minHeight: textSideLength)
             .padding(.horizontal, horizontalPadding)
             .padding(.vertical, verticalPadding)
             .cornerRadius(.infinity)
@@ -45,9 +49,9 @@ struct GlyphButton_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
             Spacer()
-            GlyphButton(label: Text("x"), foregroundColor: Color(.label)) {}
+            GlyphButton(label: Text("x"), foregroundColor: Color(.label), keyboardSizeClass: .fullCompact) {}
             Spacer()
-            GlyphButton(label: Text("x"), foregroundColor: Color(.secondaryLabel)) {}
+            GlyphButton(label: Text("x"), foregroundColor: Color(.secondaryLabel), keyboardSizeClass: .fullCompact) {}
             Spacer()
         }
         .padding([.leading, .trailing], 6)

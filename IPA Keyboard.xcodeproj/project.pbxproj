@@ -10,7 +10,7 @@
 		4E0A9E1D283D789600378987 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E1C283D789600378987 /* Layout.swift */; };
 		4E0A9E1E283D789600378987 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E1C283D789600378987 /* Layout.swift */; };
 		4E0A9E1F283D82CA00378987 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA664B526EFFF0B001588E9 /* KeyboardLayout.swift */; };
-		4E0A9E22283D8DA200378987 /* KeyboardViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E21283D8DA200378987 /* KeyboardViewController+UICollectionViewDataSource.swift */; };
+		4E0A9E22283D8DA200378987 /* IPAKeyboardViewControllerTemplate+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E21283D8DA200378987 /* IPAKeyboardViewControllerTemplate+UICollectionViewDataSource.swift */; };
 		4E0A9E24283D8E9900378987 /* CollectionViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E23283D8E9900378987 /* CollectionViewConstants.swift */; };
 		4E0A9E26283D93AE00378987 /* KeyboardLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E25283D93AE00378987 /* KeyboardLayout+.swift */; };
 		4E0A9E29283D9C9F00378987 /* KeyButtonActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A9E27283D9C8300378987 /* KeyButtonActions.swift */; };
@@ -63,6 +63,8 @@
 		4E65D9752724D20500E49DD7 /* LinkCopiedBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */; };
 		4E6755F422EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */; };
 		4E6755F922EA0F0E00DA88BB /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* Symbols.swift */; };
+		4E7958EA2A7A752100C54EB4 /* BackwardsDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7958E92A7A752100C54EB4 /* BackwardsDeleteButton.swift */; };
+		4E7958EB2A7A752100C54EB4 /* BackwardsDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7958E92A7A752100C54EB4 /* BackwardsDeleteButton.swift */; };
 		4E84B15D2140E9330078AC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E84B15C2140E9330078AC4B /* Assets.xcassets */; };
 		4E84B18A2140E9980078AC4B /* MainIPAKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84B1892140E9980078AC4B /* MainIPAKeyboardViewController.swift */; };
 		4E84B18E2140E9980078AC4B /* IPA Keyboard Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4E84B1872140E9980078AC4B /* IPA Keyboard Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -93,6 +95,7 @@
 		4EB754CD26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
 		4EB754CE26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
 		4ED8A73326A11C29001015B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8A73226A11C29001015B2 /* Constants.swift */; };
+		4EDF784D2A7DCF790020CFC0 /* KeyboardSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */; };
 		4EEEE4C02A7774730071E301 /* KeyboardLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */; };
 		4EEEE4C12A7774730071E301 /* KeyboardLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */; };
 		4EEEE4C32A77769C0071E301 /* ExtIPASymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4C22A77769C0071E301 /* ExtIPASymbols.swift */; };
@@ -107,8 +110,7 @@
 		4EEEE4D02A77A6E50071E301 /* SpaceKeyWithCursorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4CE2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift */; };
 		4EEEE4D32A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */; };
 		4EEEE4D42A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */; };
-		4EEEE4D62A77A9DD0071E301 /* RowsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */; };
-		4EEEE4D72A77A9DD0071E301 /* RowsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */; };
+		4EEEE4D72A77A9DD0071E301 /* KeyboardSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */; };
 		4EEEE4D92A7881D00071E301 /* SectionScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D82A7881D00071E301 /* SectionScroller.swift */; };
 		4EEEE4DA2A7881D00071E301 /* SectionScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D82A7881D00071E301 /* SectionScroller.swift */; };
 		4EEEE4DC2A7887BE0071E301 /* LayoutSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */; };
@@ -152,7 +154,7 @@
 
 /* Begin PBXFileReference section */
 		4E0A9E1C283D789600378987 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		4E0A9E21283D8DA200378987 /* KeyboardViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
+		4E0A9E21283D8DA200378987 /* IPAKeyboardViewControllerTemplate+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IPAKeyboardViewControllerTemplate+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		4E0A9E23283D8E9900378987 /* CollectionViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewConstants.swift; sourceTree = "<group>"; };
 		4E0A9E25283D93AE00378987 /* KeyboardLayout+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardLayout+.swift"; sourceTree = "<group>"; };
 		4E0A9E27283D9C8300378987 /* KeyButtonActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonActions.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCopiedBanner.swift; sourceTree = "<group>"; };
 		4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAKeyboardViewControllerTemplate.swift; sourceTree = "<group>"; };
 		4E6755F822EA0F0E00DA88BB /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		4E7958E92A7A752100C54EB4 /* BackwardsDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackwardsDeleteButton.swift; sourceTree = "<group>"; };
 		4E84B1522140E92F0078AC4B /* IPA Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IPA Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E84B15C2140E9330078AC4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E84B1612140E9330078AC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -241,7 +244,7 @@
 		4EEEE4CB2A77A5550071E301 /* PinnedSymbolKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedSymbolKeys.swift; sourceTree = "<group>"; };
 		4EEEE4CE2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceKeyWithCursorControl.swift; sourceTree = "<group>"; };
 		4EEEE4D22A77A9000071E301 /* PinnedGeneralKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedGeneralKeys.swift; sourceTree = "<group>"; };
-		4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowsLayout.swift; sourceTree = "<group>"; };
+		4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSizeClass.swift; sourceTree = "<group>"; };
 		4EEEE4D82A7881D00071E301 /* SectionScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScroller.swift; sourceTree = "<group>"; };
 		4EEEE4DB2A7887BE0071E301 /* LayoutSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSwitcher.swift; sourceTree = "<group>"; };
 		4EEEE4DF2A79C0190071E301 /* SectionsSaturationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsSaturationTest.swift; sourceTree = "<group>"; };
@@ -357,7 +360,6 @@
 		4E4993E22A77400D00616B4E /* Rows */ = {
 			isa = PBXGroup;
 			children = (
-				4EEEE4D52A77A9DD0071E301 /* RowsLayout.swift */,
 				4EAFA35A26EADBDE00344131 /* ToolbarRow.swift */,
 				4E5D175D26EAF00E003B5C5B /* BottomRow.swift */,
 				4EEEE4D12A77A86F0071E301 /* Buttons */,
@@ -421,7 +423,9 @@
 			isa = PBXGroup;
 			children = (
 				4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */,
+				4E0A9E21283D8DA200378987 /* IPAKeyboardViewControllerTemplate+UICollectionViewDataSource.swift */,
 				4E0A9E27283D9C8300378987 /* KeyButtonActions.swift */,
+				4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */,
 				4E13CE8C2727807F00DB5CB0 /* Constants */,
 				4E4993E42A77616B00616B4E /* Utility */,
 				4EB2E6DF2836DDFA0048C926 /* UIKit Components */,
@@ -480,7 +484,6 @@
 				4EAFA35626E5B75E00344131 /* IPA Keyboard Extension.entitlements */,
 				4E84B1A721456EA50078AC4B /* Localization */,
 				4E84B1892140E9980078AC4B /* MainIPAKeyboardViewController.swift */,
-				4E0A9E21283D8DA200378987 /* KeyboardViewController+UICollectionViewDataSource.swift */,
 				4E84B18B2140E9980078AC4B /* Info.plist */,
 			);
 			path = "IPA Keyboard Extension";
@@ -530,6 +533,7 @@
 				4E5D175726EAEB39003B5C5B /* RepeatTimer.swift */,
 				4EB2E6F128373EAB0048C926 /* GlyphButton.swift */,
 				4EEEE4CE2A77A6E50071E301 /* SpaceKeyWithCursorControl.swift */,
+				4E7958E92A7A752100C54EB4 /* BackwardsDeleteButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -691,6 +695,7 @@
 				4E34246A28448E7400DABC81 /* Operators.swift in Sources */,
 				4E4993F72A77685400616B4E /* IPASymbols.swift in Sources */,
 				4E0B7429269C22390066345B /* SettingsPage.swift in Sources */,
+				4E7958EA2A7A752100C54EB4 /* BackwardsDeleteButton.swift in Sources */,
 				4E34B55F26F3FB7B00323D23 /* KeyButtonView.swift in Sources */,
 				4E4D98FC2743086D001E701B /* HorizontalIAPButton.swift in Sources */,
 				4E34B56126F3FB8B00323D23 /* ToolbarButtonStyles.swift in Sources */,
@@ -698,6 +703,7 @@
 				4E34B55C26F3F64600323D23 /* VisualEffectView.swift in Sources */,
 				4EEEE4CD2A77A5EB0071E301 /* PinnedSymbolKeys.swift in Sources */,
 				4E4993DD2A7680A900616B4E /* ToolbarRow.swift in Sources */,
+				4EDF784D2A7DCF790020CFC0 /* KeyboardSizeClass.swift in Sources */,
 				4E0A9E1D283D789600378987 /* Layout.swift in Sources */,
 				4E4030F0269D456D0081E3FD /* SupportUsPageButtons.swift in Sources */,
 				4EB2E6E42836E2E90048C926 /* InputSwitchButton.swift in Sources */,
@@ -717,7 +723,6 @@
 				4E5D174B26EAE751003B5C5B /* Symbols.swift in Sources */,
 				4E2148C429F220EC0037328C /* FAQPage.swift in Sources */,
 				4EAFA34E26E1A86700344131 /* UserTipView.swift in Sources */,
-				4EEEE4D62A77A9DD0071E301 /* RowsLayout.swift in Sources */,
 				4E0A9E1F283D82CA00378987 /* KeyboardLayout.swift in Sources */,
 				4E34B56026F3FB8B00323D23 /* BottomRow.swift in Sources */,
 				4EEEE4C92A77974E0071E301 /* LayoutSwitcherState.swift in Sources */,
@@ -756,7 +761,7 @@
 				4E84B1962142624C0078AC4B /* IPASymbols.swift in Sources */,
 				4E34B55826F3F62E00323D23 /* KeyButtonView.swift in Sources */,
 				4EB2E6EF28372F420048C926 /* UIKitHelperFunctions.swift in Sources */,
-				4EEEE4D72A77A9DD0071E301 /* RowsLayout.swift in Sources */,
+				4EEEE4D72A77A9DD0071E301 /* KeyboardSizeClass.swift in Sources */,
 				4E0A9E1E283D789600378987 /* Layout.swift in Sources */,
 				4EEEE4DA2A7881D00071E301 /* SectionScroller.swift in Sources */,
 				4EEEE4CC2A77A5550071E301 /* PinnedSymbolKeys.swift in Sources */,
@@ -781,10 +786,11 @@
 				4EEEE4D42A77A9000071E301 /* PinnedGeneralKeys.swift in Sources */,
 				4E408CE927110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
 				4E6755F922EA0F0E00DA88BB /* Symbols.swift in Sources */,
-				4E0A9E22283D8DA200378987 /* KeyboardViewController+UICollectionViewDataSource.swift in Sources */,
+				4E0A9E22283D8DA200378987 /* IPAKeyboardViewControllerTemplate+UICollectionViewDataSource.swift in Sources */,
 				4EB2E6E82836E32A0048C926 /* UIKitComponents.swift in Sources */,
 				4EEEE4C12A7774730071E301 /* KeyboardLayouts.swift in Sources */,
 				4E5D174E26EAE8B8003B5C5B /* UIInputViewController+.swift in Sources */,
+				4E7958EB2A7A752100C54EB4 /* BackwardsDeleteButton.swift in Sources */,
 				4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */,
 				4E4993E12A76882800616B4E /* FakeKeyCollection.swift in Sources */,
 				4E48DAC826F3ED6900F88CD9 /* VisualEffectView.swift in Sources */,

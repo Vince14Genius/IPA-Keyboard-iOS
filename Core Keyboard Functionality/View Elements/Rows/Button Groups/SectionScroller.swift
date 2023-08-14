@@ -16,6 +16,7 @@ private struct GlyphWithID: Identifiable {
 struct SectionScroller: View {
     @Binding var isScrolling: Bool
     @ObservedObject var dataSource: BottomRowDataSource
+    let keyboardSizeClass: KeyboardSizeClass
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -24,7 +25,13 @@ struct SectionScroller: View {
         sectionCount: Int,
         section: Int
     ) -> Double {
-        proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth / 2
+        let buttonWidth = BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass)
+        let realProxyWidth = max(proxyWidth, buttonWidth * Double(sectionCount))
+        let sectionWidth = realProxyWidth / Double(sectionCount)
+        let offsetFromOrigin = sectionWidth * Double(section)
+        let origin = -realProxyWidth / 2
+        let correctionAmount = buttonWidth / 2
+        return origin + offsetFromOrigin + correctionAmount
     }
     
     private func dragScroll(x: Double, width: Double) {
@@ -55,7 +62,7 @@ struct SectionScroller: View {
                     )
                     BottomRow.underlayColor(colorScheme: colorScheme)
                         .cornerRadius(.infinity)
-                        .frame(maxWidth: isScrolling ? .infinity : BottomRow.buttonWidth)
+                        .frame(maxWidth: isScrolling ? .infinity : BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass))
                         .offset(x: isScrolling ? 0.0 : offset)
                 }
                 
@@ -66,7 +73,8 @@ struct SectionScroller: View {
                         
                         GlyphButton(
                             label: Text(dataSource.sectionGlyphs[element.id]),
-                            foregroundColor: foregroundColor
+                            foregroundColor: foregroundColor,
+                            keyboardSizeClass: keyboardSizeClass
                         ) {
                             UISelectionFeedbackGenerator().selectionChanged()
                             SystemSound.playInputClick()
@@ -95,6 +103,6 @@ struct SectionScroller: View {
                 }
             }
         }
-        .frame(height: BottomRow.rowHeight)
+        .frame(height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass))
     }
 }

@@ -24,22 +24,26 @@ struct ToolbarRow: View {
     
     @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn: Bool = false
     
-    var inputViewController: UIInputViewController?
+    weak var inputViewController: UIInputViewController?
+    var needsInputModeSwitchKey: Bool
     
     var body: some View {
-        let rowsLayout = RowsLayout.from(
+        let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass ?? .compact,
-            uiIdiom: UIDevice.current.userInterfaceIdiom,
-            inputViewController: inputViewController
+            rootViewController: inputViewController,
+            needsInputModeSwitchKey: needsInputModeSwitchKey
         )
         
         VStack(spacing: 0) {
-            if rowsLayout == .crowdedCompact {
+            if keyboardSizeClass.isCrowded {
                 HStack {
-                    LayoutSwitcher(direction: .down, state: layoutSwitcherState, rowsLayout: rowsLayout)
+                    LayoutSwitcher(direction: .down, state: layoutSwitcherState, keyboardSizeClass: keyboardSizeClass)
                         .padding(4)
                         .padding([.leading, .trailing], 6)
                     Spacer()
+                    if keyboardSizeClass.isExtraCrowded {
+                        BackwardsDeleteButton(inputViewController: inputViewController, keyboardSizeClass: keyboardSizeClass)
+                    }
                 }
                 Divider()
             }
@@ -48,7 +52,13 @@ struct ToolbarRow: View {
                 PinnedSymbolKeys(
                     inputViewController: inputViewController
                 )
-                Spacer()
+                
+                if keyboardSizeClass.isCrowded {
+                    Spacer(minLength: 0)
+                } else {
+                    Spacer()
+                }
+                
                 PinnedGeneralKeys(
                     cursorGestureState: cursorGestureState,
                     inputViewController: inputViewController
@@ -63,7 +73,7 @@ struct ToolbarRow: View {
 
 struct ToolbarRow_Previews: PreviewProvider {
     static var previews: some View {
-        ToolbarRow(cursorGestureState: .init(), layoutSwitcherState: .init())
+        ToolbarRow(cursorGestureState: .init(), layoutSwitcherState: .init(), needsInputModeSwitchKey: true)
     }
 }
 

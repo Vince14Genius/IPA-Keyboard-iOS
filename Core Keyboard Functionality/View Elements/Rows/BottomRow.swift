@@ -11,25 +11,27 @@ import SwiftUI
 private func underlayOffset(
     proxyWidth: Double,
     sectionCount: Int,
-    section: Int
+    section: Int,
+    keyboardSizeClass: KeyboardSizeClass
 ) -> Double {
-    proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth / 2
+    proxyWidth / Double(sectionCount) * Double(section) - proxyWidth / 2 + BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) / 2
 }
 
 struct BottomRow: View {
     
-    static var rowHeight: Double {
-        UIDevice.current.userInterfaceIdiom == .pad ? 48 : 36
+    static func rowHeight(keyboardSizeClass: KeyboardSizeClass) -> Double {
+        keyboardSizeClass.isWide ? 48 : 36
     }
     
-    static var buttonWidth: Double {
-        rowHeight
+    static func buttonWidth(keyboardSizeClass: KeyboardSizeClass) -> Double {
+        rowHeight(keyboardSizeClass: keyboardSizeClass)
     }
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.horizontalSizeClass) var sizeClass
     
-    var inputViewController: UIInputViewController?
+    weak var inputViewController: UIInputViewController?
+    var needsInputModeSwitchKey: Bool
     
     @ObservedObject var dataSource: BottomRowDataSource
     @ObservedObject var cursorGestureState: CursorGestureState
@@ -46,31 +48,28 @@ struct BottomRow: View {
     }
     
     var body: some View {
-        let rowsLayout = RowsLayout.from(
+        let keyboardSizeClass = KeyboardSizeClass.from(
             sizeClass: sizeClass ?? .compact,
-            uiIdiom: UIDevice.current.userInterfaceIdiom,
-            inputViewController: inputViewController
+            rootViewController: inputViewController,
+            needsInputModeSwitchKey: needsInputModeSwitchKey
         )
         
         HStack(alignment: .center, spacing: 0) {
-            if rowsLayout != .crowdedCompact {
-                LayoutSwitcher(direction: .up, state: layoutSwitcherState, rowsLayout: rowsLayout)
-                    .padding(.trailing, rowsLayout == .padRegular ? 8 : 4)
+            if !keyboardSizeClass.isCrowded {
+                LayoutSwitcher(direction: .up, state: layoutSwitcherState, keyboardSizeClass: keyboardSizeClass)
+                    .padding(.trailing, keyboardSizeClass.isWide ? 8 : 4)
             }
             
-            if rowsLayout == .padRegular {
+            if keyboardSizeClass.isWide {
                 Spacer()
             }
             
-            SectionScroller(isScrolling: $isScrolling, dataSource: dataSource)
+            SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
             
-            Spacer(minLength: 0)
-            
-            HoldRepeatButton(label: Image(systemName: "delete.left")) {
-                inputViewController?.deleteBackwardByOne()
-                SystemSound.delete.play()
+            if !keyboardSizeClass.isExtraCrowded {
+                Spacer(minLength: 0)
+                BackwardsDeleteButton(inputViewController: inputViewController, keyboardSizeClass: keyboardSizeClass)
             }
-            .buttonStyle(BackwardDeleteButtonStyle())
         }
         .padding([.leading, .trailing], 6)
         .opacity(cursorGestureState.isMovingCursor ? CursorGestureState.movingOpacity : 1.0)
@@ -85,7 +84,7 @@ struct BottomRow_Previews: PreviewProvider {
             HStack {
                 Spacer()
                 let dataSource = BottomRowDataSource(sectionGlyphs: ["a", "b", "c", "1", "2", "3", "/"])
-                BottomRow(dataSource: dataSource, cursorGestureState: .init(), layoutSwitcherState: .init())
+                BottomRow(needsInputModeSwitchKey: false, dataSource: dataSource, cursorGestureState: .init(), layoutSwitcherState: .init())
                     .background(Color(.secondarySystemBackground))
             }
         }

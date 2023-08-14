@@ -13,16 +13,18 @@ fileprivate let interactableClearOpacity = 0.001
 
 extension Color {
     static var clearInteractable: Color {
-        return Color(white: 0.5, opacity: interactableClearOpacity)
+        Color(white: 0.5, opacity: interactableClearOpacity)
     }
     
     static var darkModeKeyBackground: Color {
-        return Color(white: 1, opacity: 0.3)
+        Color(white: 1, opacity: 0.3)
     }
+    
+    static let darkModeKeyBackgroundOpacity = 0.3
 }
 
 extension UIColor {
     static var clearInteractable: UIColor {
-        return UIColor(white: 0.5, alpha: CGFloat(interactableClearOpacity))
+        UIColor(white: 0.5, alpha: CGFloat(interactableClearOpacity))
     }
 }

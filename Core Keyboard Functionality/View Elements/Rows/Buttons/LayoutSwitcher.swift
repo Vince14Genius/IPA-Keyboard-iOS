@@ -17,7 +17,7 @@ struct LayoutSwitcher: View {
     
     let direction: Direction
     @ObservedObject var state: LayoutSwitcherState
-    let rowsLayout: RowsLayout
+    let keyboardSizeClass: KeyboardSizeClass
     
     private var menuIcon: String {
         switch direction {
@@ -55,8 +55,8 @@ struct LayoutSwitcher: View {
                 .font(.footnote)
             }
             .foregroundColor(.secondary)
-            .padding(.horizontal, rowsLayout == .padRegular ? 16 : 8)
-            .frame(height: BottomRow.rowHeight - 6)
+            .padding(.horizontal, keyboardSizeClass.isWide ? 16 : 8)
+            .frame(height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass) - 6)
             .background(BottomRow.underlayColor(colorScheme: colorScheme))
             .cornerRadius(.infinity)
         }

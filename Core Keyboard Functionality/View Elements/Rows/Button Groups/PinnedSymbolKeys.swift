@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PinnedSymbolKeys: View {
-    var inputViewController: UIInputViewController?
+    weak var inputViewController: UIInputViewController?
     
     var body: some View {
         HStack(spacing: 0) {

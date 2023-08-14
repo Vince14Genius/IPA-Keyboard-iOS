@@ -11,7 +11,7 @@ import SwiftUI
 
 class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionViewDelegateFlowLayout, LayoutSwitcherDelegate {
     
-    // MARK: - Constants
+    // MARK: - UI Elements
     
     @IBOutlet var keyCollection: UICollectionView!
     @IBOutlet var bottomStack: UIStackView!
@@ -22,8 +22,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
     var expandedKeyOverlay: ExpandedKeyOverlay!
     var fakeKeyCollection: UIHostingController<FakeKeyCollection>!
     
-    // Bottom buttons
-    @IBOutlet var nextKeyboardButton: UIButton!
+    @IBOutlet var nextKeyboardButton: InputSwitchButton?
     
     // MARK: - States
     
@@ -45,10 +44,15 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         }
     }
     
+    private var shouldShowInputModeSwitchKey: Bool = false
+    
     // MARK: - viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        shouldShowInputModeSwitchKey ||= needsInputModeSwitchKey
+        shouldShowInputModeSwitchKey ||= UIDevice.current.userInterfaceIdiom != .phone
         
         // MARK: - Set up hosting controllers
         
@@ -63,12 +67,14 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         toolbarRow = UIHostingController(rootView: ToolbarRow(
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState,
-            inputViewController: self
+            inputViewController: self,
+            needsInputModeSwitchKey: shouldShowInputModeSwitchKey
         ))
         addHostingController(toolbarRow)
         
         bottomRow = UIHostingController(rootView: BottomRow(
             inputViewController: self,
+            needsInputModeSwitchKey: shouldShowInputModeSwitchKey,
             dataSource: bottomBarDataSource,
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState
@@ -134,11 +140,6 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         
         // MARK: - Set up input mode switch button if needed
         
-        var shouldShowInputModeSwitchKey = false
-        
-        shouldShowInputModeSwitchKey ||= needsInputModeSwitchKey
-        shouldShowInputModeSwitchKey ||= UIDevice.current.userInterfaceIdiom != .phone
-        
         // check isInputSwitchKeyAlwaysOn
         if let isInputSwitchKeyAlwaysOn = UserDefaults(suiteName: SharedIdentifiers.appGroup)?.bool(forKey: SettingsKey.isInputSwitchKeyAlwaysOn) {
             shouldShowInputModeSwitchKey ||= isInputSwitchKeyAlwaysOn
@@ -151,17 +152,25 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         ).isActive = true
         
         if shouldShowInputModeSwitchKey {
-            nextKeyboardButton = UIKitComponents.inputSwitchButton()
-            view.addSubview(nextKeyboardButton)
-                
-            nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
+            nextKeyboardButton = .init()
+            let button = nextKeyboardButton!.button
             
-            Constraints.applyEqual(pairs: [
-                (nextKeyboardButton.leadingAnchor, view.leadingAnchor),
-                (bottomRow.view.leadingAnchor, nextKeyboardButton.trailingAnchor),
+            view.addSubview(button)
+            nextKeyboardButton!.updateInsets(inputViewController: self)
+                
+            button.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
+            
+            Constraints.applyEqual(hPairs: [
+                (button.leadingAnchor, view.leadingAnchor),
+                (bottomRow.view.leadingAnchor, button.trailingAnchor),
+            ], vPairs: [
+                (button.topAnchor, keyCollection.bottomAnchor),
             ])
             
-            Constraints.applyEqual(nextKeyboardButton.centerYAnchor, bottomRow.view.centerYAnchor)
+            button.bottomAnchor.constraint(
+                equalTo: view.bottomAnchor,
+                constant: -8
+            ).isActive = true
         } else {
             Constraints.applyEqual(bottomRow.view.leadingAnchor, view.leadingAnchor)
         }
@@ -175,29 +184,37 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
     // MARK: - re-render hosting controllers
     
     private func rerenderHostingControllers() {
-        func updateHostingController<T>(_ controller: UIHostingController<T>) {
-            controller.view.backgroundColor = .clear
-            controller.view.sizeToFit()
-            controller.view.translatesAutoresizingMaskIntoConstraints = false
-        }
+        print("rerenderHostingControllers() called")
+        
+        // update the UIKit elements first, then let SwiftUI respond
+        nextKeyboardButton?.updateInsets(inputViewController: self)
         
         toolbarRow.rootView = ToolbarRow(
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState,
-            inputViewController: self
+            inputViewController: self,
+            needsInputModeSwitchKey: shouldShowInputModeSwitchKey
         )
-        updateHostingController(toolbarRow)
         
         bottomRow.rootView = BottomRow(
             inputViewController: self,
+            needsInputModeSwitchKey: shouldShowInputModeSwitchKey,
             dataSource: bottomBarDataSource,
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState
         )
-        updateHostingController(bottomRow)
+        
+        toolbarRow.view.sizeToFit()
+        bottomRow.view.sizeToFit()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        rerenderHostingControllers()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         rerenderHostingControllers()
     }
     
@@ -212,6 +229,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         super.updateViewConstraints()
         
         // Add custom view sizing constraints here
+        rerenderHostingControllers()
     }
     
     // MARK: - Helper Methods

@@ -1,5 +1,5 @@
 //
-//  MainIPAKeyboardViewController+UICollectionViewDataSource.swift
+//  IPAKeyboardViewControllerTemplate+UICollectionViewDataSource.swift
 //  IPA Keyboard Extension
 //
 //  Created by Vincent C. on 5/24/22.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension MainIPAKeyboardViewController: UICollectionViewDataSource {
+extension IPAKeyboardViewControllerTemplate: UICollectionViewDataSource {
     
     // MARK: - Collection View Methods
     

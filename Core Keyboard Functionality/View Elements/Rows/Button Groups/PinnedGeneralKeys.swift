@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PinnedGeneralKeys: View {
     @ObservedObject var cursorGestureState: CursorGestureState
-    var inputViewController: UIInputViewController?
+    weak var inputViewController: UIInputViewController?
     
     var body: some View {
         HStack(spacing: 0) {
