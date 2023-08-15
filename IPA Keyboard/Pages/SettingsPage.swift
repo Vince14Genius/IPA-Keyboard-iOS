@@ -40,6 +40,7 @@ struct SettingsInnerPage: View {
     @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn = false
     @AppStorage(SettingsKey.isInputClickSoundEnabled, store: appGroupStorage) private var isInputClickSoundEnabled = true
     @AppStorage(SettingsKey.isHapticFeedbackEnabled, store: appGroupStorage) private var isHapticFeedbackEnabled = true
+    @AppStorage(SettingsKey.shouldShowAffricateTieBarsInToolbar, store: appGroupStorage) private var shouldShowAffricateTieBarsInToolbar = false
     
     // On-off switches: keyboard list
     @AppStorage(SettingsKey.isCustomKeyboardEnabled, store: appGroupStorage) private var isCustomIPAKeyboardOn = false
@@ -66,40 +67,41 @@ struct SettingsInnerPage: View {
                     }
                 }
                 .foregroundColor(.green)
-                Group {
-                    if isNonstandardCharsKeyboardUnlocked {
-                        KeyboardListRow(text: Localized.keyboardNonstandard)
-                    } else {
-                        HorizontalIAPButton(
-                            localizedKey: Localized.keyboardNonstandard,
-                            productIdentifier: InAppPurchases.unlockObsoleteNonstandard,
-                            storeManager: storeManager,
-                            hasDisplayLock: true
-                        )
-                    }
+                if isNonstandardCharsKeyboardUnlocked {
+                    KeyboardListRow(text: Localized.keyboardNonstandard)
+                } else {
+                    HorizontalIAPButton(
+                        localizedKey: Localized.keyboardNonstandard,
+                        productIdentifier: InAppPurchases.unlockObsoleteNonstandard,
+                        storeManager: storeManager,
+                        hasDisplayLock: true
+                    )
                 }
             }
-            Section() {
-                Group {
-                    if isCustomIPAKeyboardUnlocked {
-                        Toggle(Localized.keyboardCustom, isOn: $isCustomIPAKeyboardOn)
-                        NavigationLink(Localized.linkCustomize, destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
-                    } else {
-                        HorizontalIAPButton(
-                            localizedKey: Localized.unlockCustom,
-                            productIdentifier: InAppPurchases.unlockCustomKeyboard,
-                            storeManager: storeManager,
-                            disabledLabel: Localized.alertComingSoon
-                        )
-                    }
+            Section {
+                if isCustomIPAKeyboardUnlocked {
+                    Toggle(Localized.keyboardCustom, isOn: $isCustomIPAKeyboardOn)
+                    NavigationLink(Localized.linkCustomize, destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
+                } else {
+                    HorizontalIAPButton(
+                        localizedKey: Localized.unlockCustom,
+                        productIdentifier: InAppPurchases.unlockCustomKeyboard,
+                        storeManager: storeManager,
+                        disabledLabel: Localized.alertComingSoon
+                    )
                 }
             }
-            Section() {
+            Section {
                 Toggle(Localized.keyboardRecents, isOn: $isRecentsOn)
                     .disabled(true)
             }
+            Section {
+                Toggle(Localized.affricateTieBarToggle, isOn: $shouldShowAffricateTieBarsInToolbar)
+            }
             Section(header: Text(Localized.advancedSettings)) {
                 Toggle(Localized.forceShowGlobeKey, isOn: $isInputSwitchKeyAlwaysOn)
+            }
+            Section {
                 Toggle(Localized.inputClickSound, isOn: $isInputClickSoundEnabled)
                 Toggle(Localized.hapticFeedbackToggle, isOn: $isHapticFeedbackEnabled)
             }

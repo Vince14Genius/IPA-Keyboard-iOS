@@ -128,3 +128,4 @@ Unfortunately there's nothing we could do about it." =
 "Force show input switch key (globe key)" = "強制顯示輸入法切換按鈕";
 "Keyboard Feedback Sound" = "鍵盤回饋聲音";
 "Haptic Feedback (Requires Full Access)" = "觸覺回饋（需開啟「完全訪問」）";
+"Show affricate tie bar in toolbar" = "在工具欄中顯示⟨◌͡◌⟩和⟨◌͜◌⟩";

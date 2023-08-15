@@ -10,11 +10,16 @@ import Foundation
 
 struct Symbols {
     
+    // default
     static let squareBrackets = "[]"
     static let forwardSlashes = "//"
     static let tilde = "~"
     static let dottedCircle = "◌"
     static let angleBrackets = "⟨⟩"
+    
+    // optional
+    static let topTieBar = "\u{0361}"
+    static let bottomTieBar = "\u{035c}"
     
     // MARK: Dotted Circle Operations
     

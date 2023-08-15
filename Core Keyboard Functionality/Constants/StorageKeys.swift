@@ -60,6 +60,8 @@ fileprivate let defaultValues: [String: Any] = [
     
     SettingsKey.isRecentsEnabled: false, // TODO: set value to true once implemented
     
+    SettingsKey.shouldShowAffricateTieBarsInToolbar: false,
+    
     SettingsKey.isInputSwitchKeyAlwaysOn: false,
     SettingsKey.isInputClickSoundEnabled: true,
     SettingsKey.isHapticFeedbackEnabled: true,
