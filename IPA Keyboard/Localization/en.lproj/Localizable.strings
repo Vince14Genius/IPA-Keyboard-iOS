@@ -121,6 +121,7 @@ Unfortunately there's nothing we could do about it.";
 
 /* Settings - Advanced Settings */
 "advanced-settings" = "Advanced Settings";
-"settings-movable-cursor" = "Movable Cursor";
 "Force show input switch key (globe key)" = "Force show input switch key (globe key)";
-"Keyboard Feedback Sound" = "Keyboard Feedback Sound";
+"Keyboard Feedback Sound" = "Keyboard feedback sound";
+"Haptic Feedback (Requires Full Access)" = "Haptic feedback (requires \"Full Access\")";
+"Show affricate tie bar in toolbar" = "Show ⟨◌͡◌⟩ and ⟨◌͜◌⟩ in toolbar";

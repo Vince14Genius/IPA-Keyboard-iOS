@@ -38,8 +38,11 @@ enum SettingsKey {
     
     static let customKeyboardLayout = "customKeyboardLayout"
     
+    static let shouldShowAffricateTieBarsInToolbar = "shouldShowAffricateTieBarsInToolbar"
+    
     static let isInputSwitchKeyAlwaysOn = "isInputSwitchKeyAlwaysOn"
     static let isInputClickSoundEnabled = "isInputClickSoundEnabled"
+    static let isHapticFeedbackEnabled = "isHapticFeedbackEnabled"
 }
 
 enum SupportUsKey {
@@ -57,8 +60,11 @@ fileprivate let defaultValues: [String: Any] = [
     
     SettingsKey.isRecentsEnabled: false, // TODO: set value to true once implemented
     
+    SettingsKey.shouldShowAffricateTieBarsInToolbar: false,
+    
     SettingsKey.isInputSwitchKeyAlwaysOn: false,
     SettingsKey.isInputClickSoundEnabled: true,
+    SettingsKey.isHapticFeedbackEnabled: true,
     
     SupportUsKey.timesDonatedSmallDrink: 0,
     SupportUsKey.timesDonatedLargeMeal: 0,

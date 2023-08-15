@@ -87,5 +87,7 @@
 /* Settings - Advanced Settings */
 "advanced-settings" = "Altgradaj Agordoj";
 "settings-movable-cursor" = "Butonoj por movi la kursoron";
-"Force show input switch key (globe key)" = "Montru perforte la butonon por ŝanĝi klavarojn";
+"Force show input switch key (globe key)" = "Perforte montri la butonon por ŝanĝi klavarojn";
 "Keyboard Feedback Sound" = "La sono de la klavoj";
+"Haptic Feedback (Requires Full Access)" = "Haptic feedback (bezonas \"Full Access\")";
+"Show affricate tie bar in toolbar" = "Montri ⟨◌͡◌⟩ kaj ⟨◌͜◌⟩ en la toolbar";

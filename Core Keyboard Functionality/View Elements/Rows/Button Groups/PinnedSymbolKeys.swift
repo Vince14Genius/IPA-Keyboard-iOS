@@ -39,6 +39,14 @@ struct PinnedSymbolKeys: View {
             Button("⟨ ⟩") {
                 inputViewController?.typeSandwich(Symbols.angleBrackets)
             }
+            if LocalStorage.getBool(for: SettingsKey.shouldShowAffricateTieBarsInToolbar) {
+                Button("◌͡◌") {
+                    inputViewController?.type(text: Symbols.topTieBar)
+                }
+                Button("◌͜◌") {
+                    inputViewController?.type(text: Symbols.bottomTieBar)
+                }
+            }
         }
     }
     
