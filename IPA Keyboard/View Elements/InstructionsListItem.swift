@@ -13,6 +13,9 @@ struct InstructionsListItem: View {
     
     var index: Int
     var bodyText: LocalizedStringKey
+    var transitionAfter: TimeInterval?
+    
+    @State private var isVisible = false
     
     var body: some View {
         HStack(alignment: .top) {
@@ -28,6 +31,20 @@ struct InstructionsListItem: View {
         .padding([.top, .bottom], 4)
         .padding([.leading, .trailing], 8)
         .shadow(color: colorScheme == .light ? Color(red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear, radius: 16, x: 0, y: 4)
+        .opacity(isVisible ? 1.0 : 0.0)
+        .offset(x: isVisible ? 0.0 : -300.0)
+        .onAppear {
+            guard let transitionAfter else {
+                isVisible = true
+                return
+            }
+            withAnimation(.easeOut(duration: 0.8).delay(transitionAfter)) {
+                isVisible = true
+            }
+        }
+        .onDisappear {
+            isVisible = false
+        }
     }
 }
 
@@ -36,7 +53,7 @@ struct InstructionsListItem_Previews: PreviewProvider {
     
     static var previews: some View {
         VStack(alignment: .leading) {
-            InstructionsListItem(index: 1, bodyText: "Colorless green ideas sleep furiously.")
+            InstructionsListItem(index: 1, bodyText: "Colorless green ideas sleep furiously.", transitionAfter: 0.5)
             InstructionsListItem(index: 2, bodyText: Self.loremIpsum)
         }
         .padding()
