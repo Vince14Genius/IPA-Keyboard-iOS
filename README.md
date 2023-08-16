@@ -23,7 +23,7 @@ An iOS keyboard for typing symbols in the International Phonetic Alphabet.
 
 ## TODO List
 
-See Issues.
+See [Issues](https://github.com/Vince14Genius/IPA-Keyboard-iOS/issues).
 
 ## Translation help
 
