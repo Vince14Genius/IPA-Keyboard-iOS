@@ -2,9 +2,8 @@
 
 An iOS keyboard for typing symbols in the International Phonetic Alphabet. 
 
-Download on the App Store: https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497
-
-Join the [beta test on TestFlight](https://testflight.apple.com/join/lPas1HHg) to preview upcoming features and help us find bugs!
+| [App Store Link](https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497) | [TestFlight Link](https://testflight.apple.com/join/lPas1HHg) |
+|-|-|
 
 ## Purpose
 
@@ -24,4 +23,13 @@ Join the [beta test on TestFlight](https://testflight.apple.com/join/lPas1HHg) t
 
 ## TODO List
 
-All items in the TODO list have been moved to Issues.
+See Issues.
+
+## Translation help
+
+Files to translate:
+
+- InfoPlist.strings in IPA Keyboard (host app)
+- Localizable.strings in IPA Keyboard (host app)
+- InfoPlist.strings in IPA Keyboard Extension (the keyboard)
+- Localizable.strings in IPA Keyboard Extension (the keyboard)
