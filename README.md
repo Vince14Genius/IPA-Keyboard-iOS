@@ -29,7 +29,7 @@ See Issues.
 
 Files to translate:
 
-- InfoPlist.strings in IPA Keyboard (host app)
-- Localizable.strings in IPA Keyboard (host app)
-- InfoPlist.strings in IPA Keyboard Extension (the keyboard)
-- Localizable.strings in IPA Keyboard Extension (the keyboard)
+- InfoPlist.strings in IPA Keyboard (main app)
+- Localizable.strings in IPA Keyboard (main app)
+- InfoPlist.strings in IPA Keyboard Extension
+- Localizable.strings in IPA Keyboard Extension
