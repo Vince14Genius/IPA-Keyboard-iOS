@@ -39,22 +39,18 @@ struct GettingStartedInnerPage: View {
 struct GettingStartedVStack: View {
     @State private var textFieldText: String = ""
     
+    private let animationDelay = 0.2
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(Localized.gettingStartedDescription)
                 .font(.title2)
                 .padding(.bottom)
             ForEach(Localized.gettingStartedRange, id: \.self) { i in
-                InstructionsListItem(index: i, bodyText: Localized.gettingStartedKey(i))
+                InstructionsListItem(index: i, bodyText: Localized.gettingStartedKey(i), transitionAfter: Double(i) * animationDelay)
             }
             Group {
-                Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
-                    HStack {
-                        Image(systemName: "arrow.up.forward.app")
-                        Text(Localized.gettingStartedSettingsButton)
-                    }
-                }
-                    .buttonStyle(BlueButtonStyle())
+                SettingsLinkButton(appearAfter: Double(Localized.gettingStartedRange.upperBound + 1) * animationDelay)
                 UserTipView(bodyText: Localized.gettingStartedNote)
                 TextField(Localized.gettingStartedTextField, text: $textFieldText)
                     .padding(.top)

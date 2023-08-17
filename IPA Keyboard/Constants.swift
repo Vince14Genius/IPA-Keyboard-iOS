@@ -145,8 +145,8 @@ enum Localized {
 enum InAppPurchases {
     static let donationSmallDrink = "donation_small_drink"
     static let donationLargeMeal = "donation_large_meal"
-    static let unlockCustomKeyboard = "unlock_custom_ipa_keyboard"
-    static let unlockObsoleteNonstandard = "unlock_obsolete_nonstandard_symbols"
+    static let unlockCustomKeyboard = RoutineEveryUpdate.IAPKey.unlockCustomLayout
+    static let unlockObsoleteNonstandard = RoutineEveryUpdate.IAPKey.unlockNonstandard
     
     /**
      Holds product ID to storage key pairs for nonconsumable IAP items

@@ -78,23 +78,23 @@ struct SettingsInnerPage: View {
                     )
                 }
             }
-            Section {
-                if isCustomIPAKeyboardUnlocked {
-                    Toggle(Localized.keyboardCustom, isOn: $isCustomIPAKeyboardOn)
-                    NavigationLink(Localized.linkCustomize, destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
-                } else {
-                    HorizontalIAPButton(
-                        localizedKey: Localized.unlockCustom,
-                        productIdentifier: InAppPurchases.unlockCustomKeyboard,
-                        storeManager: storeManager,
-                        disabledLabel: Localized.alertComingSoon
-                    )
-                }
-            }
-            Section {
-                Toggle(Localized.keyboardRecents, isOn: $isRecentsOn)
-                    .disabled(true)
-            }
+//            Section {
+//                if isCustomIPAKeyboardUnlocked {
+//                    Toggle(Localized.keyboardCustom, isOn: $isCustomIPAKeyboardOn)
+//                    NavigationLink(Localized.linkCustomize, destination: SettingsCustomKeyboardPage()).disabled(!isCustomIPAKeyboardOn)
+//                } else {
+//                    HorizontalIAPButton(
+//                        localizedKey: Localized.unlockCustom,
+//                        productIdentifier: InAppPurchases.unlockCustomKeyboard,
+//                        storeManager: storeManager,
+//                        disabledLabel: Localized.alertComingSoon
+//                    )
+//                }
+//            }
+//            Section {
+//                Toggle(Localized.keyboardRecents, isOn: $isRecentsOn)
+//                    .disabled(true)
+//            }
             Section {
                 Toggle(Localized.affricateTieBarToggle, isOn: $shouldShowAffricateTieBarsInToolbar)
             }
@@ -104,6 +104,25 @@ struct SettingsInnerPage: View {
             Section {
                 Toggle(Localized.inputClickSound, isOn: $isInputClickSoundEnabled)
                 Toggle(Localized.hapticFeedbackToggle, isOn: $isHapticFeedbackEnabled)
+            }
+            if
+                let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+            {
+                Section(header: Text("Info")) {
+                    HStack {
+                        Text("Version")
+                        Spacer()
+                        Text("\(version)")
+                            .foregroundColor(.secondary)
+                    }
+                    HStack {
+                        Text("Build")
+                        Spacer()
+                        Text("\(build)")
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
         }
         .alert(isPresented: $showingComingSoonAlert, content: {
