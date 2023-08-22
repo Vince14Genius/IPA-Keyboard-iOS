@@ -37,16 +37,26 @@
     {
       "displayPrice" : "5.99",
       "familyShareable" : false,
-      "internalID" : "1584588531",
+      "internalID" : "6461645472",
       "localizations" : [
         {
-          "description" : "",
-          "displayName" : "Customize Your IPA Keyboard",
+          "description" : "解锁非官方/已废弃字符（包括舌尖元音）",
+          "displayName" : "解锁非官方/已废弃字符",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "非公式・破棄された記号をアンロック",
+          "displayName" : "非公式・破棄された記号をアンロック",
+          "locale" : "ja"
+        },
+        {
+          "description" : "Unlock obsolete and non-standard IPA symbols",
+          "displayName" : "Obsolete/Non-Standard Symbols",
           "locale" : "en_US"
         }
       ],
-      "productID" : "unlock_custom_ipa_keyboard",
-      "referenceName" : "Unlock Custom IPA Keyboard",
+      "productID" : "unlock_obsolete_nonstandard_symbols_PROD",
+      "referenceName" : "Nonstandard Symbols (PROD)",
       "type" : "NonConsumable"
     },
     {
@@ -55,12 +65,12 @@
       "internalID" : "1584588319",
       "localizations" : [
         {
-          "description" : "",
+          "description" : "非公式・破棄された記号をアンロック",
           "displayName" : "非公式・破棄された記号をアンロック",
           "locale" : "ja"
         },
         {
-          "description" : "",
+          "description" : "解鎖非正規/已廢棄字符",
           "displayName" : "解鎖非正規/已廢棄字符",
           "locale" : "zh_CN"
         },
@@ -71,14 +81,29 @@
         }
       ],
       "productID" : "unlock_obsolete_nonstandard_symbols",
-      "referenceName" : "Unlock Obsolete and Non-Standard Symbols",
+      "referenceName" : "Nonstandard Symbols (TestFlight)",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "5.99",
+      "familyShareable" : false,
+      "internalID" : "1584588531",
+      "localizations" : [
+        {
+          "description" : "Create your own keyboard layout with any keys",
+          "displayName" : "Customize Your IPA Keyboard",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "unlock_custom_ipa_keyboard",
+      "referenceName" : "Unlock Custom IPA Keyboard (TestFlight)",
       "type" : "NonConsumable"
     }
   ],
   "settings" : {
     "_applicationInternalID" : "1440241497",
     "_developerTeamID" : "S5LH6VYMA5",
-    "_lastSynchronizedDate" : 712630751.37535703
+    "_lastSynchronizedDate" : 714430382.05850697
   },
   "subscriptionGroups" : [
 
