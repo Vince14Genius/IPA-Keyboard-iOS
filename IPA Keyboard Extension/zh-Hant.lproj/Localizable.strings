@@ -15,7 +15,7 @@
 "extIPA" = "extIPA";
 "Extended IPA" = "擴展IPA（extIPA）";
 "Nonstandard" = "非正規符號";
-"Nonstandard & Obsolete Symbols" = "非正規/已廢棄字符";
+"Nonstandard & Obsolete Symbols" = "非正規/已廢棄字元";
 
 /* Sections - IPA (Standard) */
 "Consonants" = "輔音";
@@ -40,8 +40,8 @@
 
 "Ligatures" = "合字";
 "Numerals" = "數字符號";
-"Small Caps & Uppercase" = "小型大寫字符/大寫字符";
+"Small Caps & Uppercase" = "小型大寫字元/大寫字元";
 "Sinologist & Koreanist" = "漢藏語言學/韓語言學";
 "Americanist & Slavicist" = "美式音標/斯拉夫語言學";
-"Obsolete" = "已廢棄字符";
+"Obsolete" = "已廢棄字元";
 "Community Requested" = "社區提議";

@@ -40,7 +40,7 @@
 /* Getting Started Note */
 "getting-started-note-bullet-point" = "*";
 "getting-started-note" = "如果列表中沒有出現此選項，請嘗試重新啟動設備，或者重新安裝此App。";
-"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "使用本輸入法不需要開啟「完全訪問」，但是在不開啟的情況下觸覺回饋會無效。無論開啟與否，本輸入法都不會收集任何信息。";
+"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "使用本輸入法不需要開啟「完整取用」，但是在不開啟的情況下觸覺回饋會無效。無論開啟與否，本輸入法都不會收集任何信息。";
 
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "設置完畢後可以在這裡嘗試使用";
@@ -108,13 +108,13 @@ Unfortunately there's nothing we could do about it." =
 "localized-title-keyboards" = "鍵盤列表";
 "localized-keyboard-ipa" = "IPA（標準，2020）";
 "localized-keyboard-extipa" = "extIPA（標準，2016）";
-"localized-keyboard-nonstandard-obsolete" = "非正規/已廢棄字符";
+"localized-keyboard-nonstandard-obsolete" = "非正規/已廢棄字元";
 "localized-keyboard-custom" = "自定義IPA鍵盤";
 "localized-link-customize" = "自定義...";
-"localized-keyboard-recents" = "最近使用的字符";
+"localized-keyboard-recents" = "最近使用的字元";
 
 /* Settings - Unlock Keyboards */
-"localized-unlock-nonstandard-obsolete" = "解鎖非正規/已廢棄字符";
+"localized-unlock-nonstandard-obsolete" = "解鎖非正規/已廢棄字元";
 "localized-unlock-custom" = "解鎖自定義IPA鍵盤";
 "alert-coming-soon" = "敬請期待";
 "button-restore-purchases" = "恢復購買記錄";
@@ -127,5 +127,5 @@ Unfortunately there's nothing we could do about it." =
 "settings-movable-cursor" = "可移動游標";
 "Force show input switch key (globe key)" = "強制顯示輸入法切換按鈕";
 "Keyboard Feedback Sound" = "鍵盤回饋聲音";
-"Haptic Feedback (Requires Full Access)" = "觸覺回饋（需開啟「完全訪問」）";
+"Haptic Feedback (Requires Full Access)" = "觸覺回饋（需開啟「完整取用」）";
 "Show affricate tie bar in toolbar" = "在工具欄中顯示⟨◌͡◌⟩和⟨◌͜◌⟩";
