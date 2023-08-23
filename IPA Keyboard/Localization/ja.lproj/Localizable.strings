@@ -59,19 +59,15 @@ We made a fix already, but if the problem still occurs, follow these steps:" =
 "Turn on \"Force show input switch key\"" = "「キーボードを切り替えるボタンを強制的に表示」をオンにしてください";
 
 /* FAQ Page - Unicode */
-"Some of the characters are showing up as weird boxes!" = "Some of the characters are showing up as weird boxes!";
+"Some of the characters are showing up as weird boxes!" = "一部の文字が変なはてな付きの四角形になってるんですけど！";
 "This keyboard types Unicode characters of the IPA symbols.
 
 It's just that (your version of) iOS doesn't support rendering some of the characters yet.
 
 The characters you type out will show up correctly on systems that support rendering them." =
-"This keyboard types Unicode characters of the IPA symbols.
+"お使いのバージョンのiOSの内蔵しているフォントにこの文字が含まれていないのが原因です。
 
-It's just that (your version of) iOS doesn't support rendering some of the characters yet.
-
-The characters you type out will show up correctly on systems that support rendering them.
-
-(今この部分翻訳する気ない笑)";
+本キーボードは国際音声記号を公式Unicode文字として入力する仕組みになっておりますので、入力された文字は実装されているデバイスでさえあれば正しく表示されます。ご安心ください。";
 
 /* FAQ Page - Doesn't show up */
 "The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "再インストール・再起動してもキーボードがリストに現れない場合";

@@ -59,19 +59,15 @@ We made a fix already, but if the problem still occurs, follow these steps:" =
 "Turn on \"Force show input switch key\"" = "开启“强制显示输入法切换按钮”";
 
 /* FAQ Page - Unicode */
-"Some of the characters are showing up as weird boxes!" = "Some of the characters are showing up as weird boxes!";
+"Some of the characters are showing up as weird boxes!" = "键盘上的某些字符会显示成乱码！";
 "This keyboard types Unicode characters of the IPA symbols.
 
 It's just that (your version of) iOS doesn't support rendering some of the characters yet.
 
 The characters you type out will show up correctly on systems that support rendering them." =
-"This keyboard types Unicode characters of the IPA symbols.
+"这只是因为（您正使用的）iOS 版本还没有字体支持显示这些字符。
 
-It's just that (your version of) iOS doesn't support rendering some of the characters yet.
-
-The characters you type out will show up correctly on systems that support rendering them.
-
-(这部分懒得翻译了，以后再说吧)";
+由于你所输入的IPA符号会作为标准Unicode字符输出，这些字符将在支持显示的系统中正确显示。";
 
 /* FAQ Page - Doesn't show up */
 "The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "即使重新安装/重启设备，“第三方键盘”列表中依然找不到本输入法的场合";

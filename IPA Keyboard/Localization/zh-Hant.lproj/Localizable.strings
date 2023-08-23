@@ -46,7 +46,7 @@
 "keyboardtest.textfield.placeholder" = "設置完畢後可以在這裡嘗試使用";
 
 /* FAQ Page - Globe Key */
-"The globe key / switch keyboards key doesn't show up! What do I do???" = "輸入法切換按鈕消失的場合";
+"The globe key / switch keyboards key doesn't show up! What do I do???" = "輸入法切換按鈕消失怎麼辦？";
 
 "There used to be a bug where on certain devices the globe key disappears for no reason.
 
@@ -59,22 +59,20 @@ We made a fix already, but if the problem still occurs, follow these steps:" =
 "Turn on \"Force show input switch key\"" = "開啟「強制顯示輸入法切換按鈕」";
 
 /* FAQ Page - Unicode */
-"Some of the characters are showing up as weird boxes!" = "Some of the characters are showing up as weird boxes!";
+"Some of the characters are showing up as weird boxes!" = "鍵盤中的某些字元會顯示成亂碼！";
 "This keyboard types Unicode characters of the IPA symbols.
 
 It's just that (your version of) iOS doesn't support rendering some of the characters yet.
 
 The characters you type out will show up correctly on systems that support rendering them." =
-"This keyboard types Unicode characters of the IPA symbols.
+"這只是因為（您使用的）iOS 版本還沒有字體支援顯示這些字元。
 
-It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+由於你所輸入的 IPA 符號會作為 Unicode 字元輸出，這些字元將會在支援的系統上正確顯示。
 
-The characters you type out will show up correctly on systems that support rendering them.
-
-(這部分懶得翻譯了，以後再說吧)";
+(感謝 @graphemecluster 翻譯)";
 
 /* FAQ Page - Doesn't show up */
-"The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "即使重新安裝/重新啟動設備，「第三方鍵盤」列表內依然找不到本輸入法的場合";
+"The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "即使重新安裝/重新啟動設備，「第三方鍵盤」列表內依然找不到本輸入法，怎麼辦？";
 
 "Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
 
@@ -123,7 +121,7 @@ Unfortunately there's nothing we could do about it." =
 "localized-button-bugreport" = "問題報告/提供建議";
 
 /* Settings - Advanced Settings */
-"advanced-settings" = "高級設定";
+"advanced-settings" = "進階設定";
 "settings-movable-cursor" = "可移動游標";
 "Force show input switch key (globe key)" = "強制顯示輸入法切換按鈕";
 "Keyboard Feedback Sound" = "鍵盤回饋聲音";
