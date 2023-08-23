@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  IPA Keyboard
+
+  Created by Vincent C. on 2018/9/9.
+  Copyright © 2018 Vince14Genius. All rights reserved.
+*/
+
+/* Pinned Keys */
+"SpaceBarText" = "空格";
+
+/* Keyboard Layouts */
+"Standard" = "IPA(標準)";
+"IPA (Standard)" = "IPA (標準)";
+"extIPA" = "extIPA";
+"Extended IPA" = "擴展IPA（extIPA）";
+"Nonstandard" = "非正規符號";
+"Nonstandard & Obsolete Symbols" = "非正規/已廢棄字元";
+
+/* Sections - IPA (Standard) */
+"Consonants" = "輔音";
+"NonPulmonic" = "非肺部氣流音";
+"OtherSymbols" = "其他符號";
+"Vowels" = "元音";
+"Suprasegmentals" = "超音段成分";
+"TonesAndWordAccents" = "聲調";
+"Diacritics" = "變音符號";
+
+/* Sections - Extended IPA */
+
+//"Consonants"
+//"Diacritics"
+"Connected Speech, Uncertainty etc." = "連音/不確定性等";
+"Voicing" = "清濁音";
+"Other Sounds" = "其他聲音";
+"Consonant Superscripts" = "輔音上標";
+"Vowel Superscripts" = "元音上標";
+
+/* Sections - Nonstandard & Obsolete Symbols */
+
+"Ligatures" = "合字";
+"Numerals" = "數字符號";
+"Small Caps & Uppercase" = "小型大寫字元/大寫字元";
+"Sinologist & Koreanist" = "漢藏語言學/韓語言學";
+"Americanist & Slavicist" = "美式音標/斯拉夫語言學";
+"Obsolete" = "已廢棄字元";
+"Community Requested" = "社區提議";

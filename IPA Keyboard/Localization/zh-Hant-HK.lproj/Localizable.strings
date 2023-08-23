@@ -1,0 +1,129 @@
+/* 
+  Localizable.strings
+  IPA Keyboard
+
+  Created by Vincent C. on 4/7/21.
+  Copyright © 2021 Vince14Genius. All rights reserved.
+*/
+
+"localized-ipa-wikipedia-url" = "https://zh.wikipedia.org/wiki/%E5%9C%8B%E9%9A%9B%E9%9F%B3%E6%A8%99"; // 國際音標
+
+/* Basics */
+"alert-dismiss" = "OK";
+
+/* title = "IPA Keyboard"; */
+"ipakeyboard.title" = "IPA音標鍵盤";
+
+/* Tab View tab names */
+"localized-title-getting-started" = "開始使用";
+"localized-title-support-us" = "支持我們";
+"localized-title-settings" = "設定";
+
+/* Navigation titles */
+"localized-title-support-us-exclamation" = "支持我們";
+
+/* Getting Started - About IPA */
+"about.ipa.title" = "關於IPA";
+
+/* Getting Started Description */
+"getting-started-description" = "設置鍵盤步驟：";
+
+/* Getting Started Instructions */
+"getting-started-1" = "啟動「設定」App";
+"getting-started-2" = "前往「一般」＞「鍵盤」＞「鍵盤」";
+"getting-started-3" = "點一下「新增鍵盤」";
+"getting-started-4" = "從「第三方鍵盤」列表加入「IPA鍵盤」";
+
+/* Getting Started Settings Link Button */
+"getting-started-settings-button" = "啟動「設定」App...";
+
+/* Getting Started Note */
+"getting-started-note-bullet-point" = "*";
+"getting-started-note" = "如果列表中沒有出現此選項，請嘗試重新啟動設備，或者重新安裝此App。";
+"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "使用本輸入法不需要開啟「全權取用」，但是在不開啟的情況下觸覺回饋會無效。無論開啟與否，本輸入法都不會收集任何信息。";
+
+/* Getting Started TextField */
+"keyboardtest.textfield.placeholder" = "設置完畢後可以在這裡嘗試使用";
+
+/* FAQ Page - Globe Key */
+"The globe key / switch keyboards key doesn't show up! What do I do???" = "輸入法切換按鈕消失怎麼辦？";
+
+"There used to be a bug where on certain devices the globe key disappears for no reason.
+
+We made a fix already, but if the problem still occurs, follow these steps:" =
+"之前存在輸入法切換按鈕消失的bug不過現在已經修復。
+
+如果這個bug仍然出現，那可以通過以下步驟強制顯示切換按鈕：";
+
+"Go to the Settings tab in this app" = "打開本App内的設置";
+"Turn on \"Force show input switch key\"" = "開啟「強制顯示輸入法切換按鈕」";
+
+/* FAQ Page - Unicode */
+"Some of the characters are showing up as weird boxes!" = "鍵盤中的某些字元會顯示成亂碼！";
+"This keyboard types Unicode characters of the IPA symbols.
+
+It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+The characters you type out will show up correctly on systems that support rendering them." =
+"這只是因為（您使用的）iOS 版本還沒有字體支援顯示這些字元。
+
+由於你所輸入的 IPA 符號會作為 Unicode 字元輸出，這些字元將會在支援的系統上正確顯示。
+
+(感謝 @graphemecluster 翻譯)";
+
+/* FAQ Page - Doesn't show up */
+"The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "即使重新安裝/重新啟動設備，「第三方鍵盤」列表內依然找不到本輸入法，怎麼辦？";
+
+"Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
+
+Unfortunately there's nothing we could do about it." =
+"有時在iOS上安裝第三方輸入法時確實會遇到這種情況（很罕見），這是系統方面的問題。
+
+很抱歉作為開發者我們對此無能為力。";
+
+/* Support Us - Donate to the developer */
+"support-us-donate-title" = "向開發者捐贈";
+"support-us-donate-subtitle" = "本IPA鍵盤堅持向大家免費提供，歡迎支持免費軟體的各位捐款資助！";
+"support-us-donate-buy-drink" = "🧋 幫我買杯飲料";
+"support-us-donate-buy-meal" = "🍜 給開發者投食";
+"support-us-donate-total-count: %lld" = "非常感謝捐贈%lld次！";
+
+/* Support Us - Rate the app if you haven't */
+"support-us-rate-title" = "歡迎評價！歡迎任何好評、意見、以及建議";
+"support-us-rate-button" = "在 App Store 評價我們";
+
+/* Support Us - Spread the word on social media */
+"support-us-share-title" = "讓有需要的朋友也知道這個IPA鍵盤吧";
+"support-us-share-button" = "複製分享連結";
+"link-copied-banner" = "連結已複製！";
+
+/* Support Us - Check out our friends' apps */
+"support-us-friends-apps-title" = "友情App連結";
+"support-us-friends-apps-golingo" = "GoLingo";
+"support-us-friends-apps-tbd" = "敬請期待";
+
+/* Settings - Keyboards */
+"localized-title-keyboards" = "鍵盤列表";
+"localized-keyboard-ipa" = "IPA（標準，2020）";
+"localized-keyboard-extipa" = "extIPA（標準，2016）";
+"localized-keyboard-nonstandard-obsolete" = "非正規/已廢棄字元";
+"localized-keyboard-custom" = "自定義IPA鍵盤";
+"localized-link-customize" = "自定義...";
+"localized-keyboard-recents" = "最近使用的字元";
+
+/* Settings - Unlock Keyboards */
+"localized-unlock-nonstandard-obsolete" = "解鎖非正規/已廢棄字元";
+"localized-unlock-custom" = "解鎖自定義IPA鍵盤";
+"alert-coming-soon" = "敬請期待";
+"button-restore-purchases" = "恢復購買記錄";
+
+/* Settings - Bug Report / Feedback */
+"localized-button-bugreport" = "問題報告/提供建議";
+
+/* Settings - Advanced Settings */
+"advanced-settings" = "進階設定";
+"settings-movable-cursor" = "可移動游標";
+"Force show input switch key (globe key)" = "強制顯示輸入法切換按鈕";
+"Keyboard Feedback Sound" = "鍵盤回饋聲音";
+"Haptic Feedback (Requires Full Access)" = "觸覺回饋（需開啟「全權取用」）";
+"Show affricate tie bar in toolbar" = "在工具欄中顯示⟨◌͡◌⟩和⟨◌͜◌⟩";
