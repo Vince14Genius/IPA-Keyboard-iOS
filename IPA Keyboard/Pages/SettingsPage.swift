@@ -103,7 +103,10 @@ struct SettingsInnerPage: View {
             }
             Section {
                 Toggle(Localized.inputClickSound, isOn: $isInputClickSoundEnabled)
-                Toggle(Localized.hapticFeedbackToggle, isOn: $isHapticFeedbackEnabled)
+                if UIDevice.current.userInterfaceIdiom != .pad {
+                    // no need to show this toggle on devices without the Taptic Engine
+                    Toggle(Localized.hapticFeedbackToggle, isOn: $isHapticFeedbackEnabled)
+                }
             }
             if
                 let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
