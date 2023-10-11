@@ -1,8 +1,10 @@
 # IPA-Keyboard-iOS
 
+<img src="IPA%20Keyboard/Assets.xcassets/AppIcon.appiconset/Icon-60%403x.png" alt="app icon">
+
 An iOS keyboard for typing symbols in the International Phonetic Alphabet. 
 
-| [App Store Link](https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497) | [TestFlight Link](https://testflight.apple.com/join/lPas1HHg) |
+| [App Store ✅](https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497) | [TestFlight ✈️](https://testflight.apple.com/join/lPas1HHg) |
 |-|-|
 
 ## Purpose
@@ -29,7 +31,7 @@ See [Issues](https://github.com/Vince14Genius/IPA-Keyboard-iOS/issues).
 
 Files to translate:
 
-- InfoPlist.strings in IPA Keyboard (main app)
-- Localizable.strings in IPA Keyboard (main app)
-- InfoPlist.strings in IPA Keyboard Extension
-- Localizable.strings in IPA Keyboard Extension
+- `InfoPlist.strings` in IPA Keyboard (main app)
+- `Localizable.strings` in IPA Keyboard (main app)
+- `InfoPlist.strings` in IPA Keyboard Extension
+- `Localizable.strings` in IPA Keyboard Extension
