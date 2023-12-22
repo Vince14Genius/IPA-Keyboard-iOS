@@ -16,6 +16,8 @@
 "Extended IPA" = "扩展IPA（extIPA）";
 "Nonstandard" = "非官方字符";
 "Nonstandard & Obsolete Symbols" = "非官方/已废弃字符（包括舌尖元音）";
+"NumPad" = "数字键盘";
+"Number Pad" = "数字键盘";
 
 /* Sections - IPA (Standard) */
 "Consonants" = "辅音";

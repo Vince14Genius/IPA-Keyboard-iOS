@@ -16,6 +16,8 @@
 "Extended IPA" = "extIPA（拡張IPA）";
 "Nonstandard" = "非公式記号";
 "Nonstandard & Obsolete Symbols" = "非公式・破棄された記号";
+"NumPad" = "数字入力";
+"Number Pad" = "数字入力";
 
 /* Sections - IPA (Standard) */
 "Consonants" = "子音";
