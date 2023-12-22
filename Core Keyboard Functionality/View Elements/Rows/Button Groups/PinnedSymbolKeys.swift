@@ -69,7 +69,6 @@ struct PinnedSymbolKeys: View {
                         .offset(y: 2)
                 }
                 .foregroundColor(Color(.label))
-                .padding([.leading, .trailing], Layout.leftInsetRaw)
                 .background(Color.clearInteractable)
             }
         }
