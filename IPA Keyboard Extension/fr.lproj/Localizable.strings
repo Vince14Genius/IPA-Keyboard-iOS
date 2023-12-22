@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  IPA Keyboard
+
+  Created by Vincent C. on 2018/9/9.
+  Copyright © 2018 Vince14Genius. All rights reserved.
+*/
+
+/* Pinned Keys */
+"SpaceBarText" = "espace";
+
+/* Keyboard Layouts */
+"Standard" = "API";
+"IPA (Standard)" = "L'API (Officiel)";
+"extIPA" = "extAPI";
+"Extended IPA" = "Extensions de l'API";
+"Nonstandard" = "Non-officiel";
+"Nonstandard & Obsolete Symbols" = "Symboles non-officieles & obsolètes";
+"NumPad" = "Nombres";
+"Number Pad" = "Clavier numérique";
+
+/* Sections - IPA (Standard) */
+"Consonants" = "Consonnes";
+"NonPulmonic" = "Non pulmoniques";
+"OtherSymbols" = "Autres symboles";
+"Vowels" = "Voyelles";
+"Suprasegmentals" = "Suprasegmentaux";
+"TonesAndWordAccents" = "Tons et accents de mot";
+"Diacritics" = "Diacritiques";
+
+/* Sections - Extended IPA */
+
+//"Consonants"
+//"Diacritics"
+"Connected Speech, Uncertainty etc." = "Connected Speech, Uncertainty etc.";
+"Voicing" = "Voicing";
+"Other Sounds" = "Other Sounds";
+"Consonant Superscripts" = "Consonant Superscripts";
+"Vowel Superscripts" = "Vowel Superscripts";
+
+/* Sections - Nonstandard & Obsolete Symbols */
+
+"Ligatures" = "Ligatures";
+"Numerals" = "Numerals";
+"Small Caps & Uppercase" = "Small Caps & Uppercase";
+"Sinologist & Koreanist" = "Sinologist & Koreanist";
+"Americanist & Slavicist" = "Americanist & Slavicist";
+"Obsolete" = "Obsolete";
+"Community Requested" = "Community Requested";
