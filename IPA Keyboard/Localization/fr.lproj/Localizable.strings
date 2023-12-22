@@ -1,0 +1,127 @@
+/* 
+  Localizable.strings
+  IPA Keyboard
+
+  Created by Vincent C. on 4/7/21.
+  Copyright © 2021 Vince14Genius. All rights reserved.
+*/
+
+"localized-ipa-wikipedia-url" = "https://fr.wikipedia.org/wiki/Alphabet_phonétique_international";
+
+/* Basics */
+"alert-dismiss" = "Got it!";
+
+/* title = "IPA Keyboard"; */
+"ipakeyboard.title" = "Clavier API";
+
+/* Tab View tab names */
+"localized-title-getting-started" = "Pour commencer";
+"localized-title-support-us" = "Soutenez-nous";
+"localized-title-settings" = "Réglages";
+
+/* Navigation titles */
+"localized-title-support-us-exclamation" = "Soutenez-nous!";
+
+/* Getting Started - About IPA */
+"about.ipa.title" = "À propos d'API";
+
+/* Getting Started Description */
+"getting-started-description" = "Pour configurer le clavier:";
+
+/* Getting Started Instructions */
+"getting-started-1" = "Ouvrez l'application Réglages";
+"getting-started-2" = "Accédez à Général > Clavier > Claviers";
+"getting-started-3" = "Touchez \"Ajouter un clavier...\"";
+"getting-started-4" = "Ajoutez \"Clavier API\" de la la liste \"Claviers de tierce partie\"";
+
+/* Getting Started Settings Link Button */
+"getting-started-settings-button" = "Ouvrez Réglages...";
+
+/* Getting Started Note */
+"getting-started-note-bullet-point" = "*";
+"getting-started-note" = "Si l'option n'apparaît pas dans la liste, essayez de redémarrer votre appareil ou supprimez l'application et réinstallez-la.";
+"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "Vous n'êtes pas obligé d'autoriser un accès complet, mais le retour haptique ne fonctionne pas sans un accès complet. Ce clavier ne collecte pas les données utilisateur quoi qu'il en soit.";
+
+/* Getting Started TextField */
+"keyboardtest.textfield.placeholder" = "Vous pouvez essayer le clavier ici après l'avoir configuré.";
+
+/* FAQ Page - Globe Key */
+"The globe key / switch keyboards key doesn't show up! What do I do???" = "The globe key / switch keyboards key doesn't show up! What do I do???";
+
+"There used to be a bug where on certain devices the globe key disappears for no reason.
+
+We made a fix already, but if the problem still occurs, follow these steps:" =
+"There used to be a bug where on certain devices the globe key disappears for no reason.
+
+We made a fix already, but if the problem still occurs, follow these steps:";
+
+"Go to the Settings tab in this app" = "Go to the Settings tab in this app";
+"Turn on \"Force show input switch key\"" = "Turn on \"Force show input switch key\"";
+
+/* FAQ Page - Unicode */
+"Some of the characters are showing up as weird boxes!" = "Some of the characters are showing up as weird boxes!";
+"This keyboard types Unicode characters of the IPA symbols.
+
+It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+The characters you type out will show up correctly on systems that support rendering them." =
+"This keyboard types Unicode characters of the IPA symbols.
+
+It's just that (your version of) iOS doesn't support rendering some of the characters yet.
+
+The characters you type out will show up correctly on systems that support rendering them.";
+
+/* FAQ Page - Doesn't show up */
+"The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!";
+"Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
+
+Unfortunately there's nothing we could do about it." =
+"Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
+
+Unfortunately there's nothing we could do about it.";
+
+/* Support Us - Donate to the developer */
+"support-us-donate-title" = "Donate to the developer";
+"support-us-donate-subtitle" = "Contribute to our effort to keep this IPA keyboard completely free!";
+"support-us-donate-buy-drink" = "🥤 Buy me a drink";
+"support-us-donate-buy-meal" = "🥙 Buy me a meal";
+"support-us-donate-total-count: %lld" = "Thank you for donating %lld times!";
+
+/* Support Us - Rate the app if you haven't */
+"support-us-rate-title" = "Rate the app if you haven't";
+"support-us-rate-button" = "Rate us on the App Store";
+
+/* Support Us - Spread the word on social media */
+"support-us-share-title" = "Spread the word on social media";
+"support-us-share-button" = "Copy share link";
+"link-copied-banner" = "Link Copied!";
+
+/* Support Us - Check out our friends' apps */
+"support-us-friends-apps-title" = "Check out our friends' apps";
+"support-us-friends-apps-golingo" = "GoLingo";
+"support-us-friends-apps-tbd" = "TBD";
+
+/* Settings - Keyboards */
+"localized-title-keyboards" = "Claviers";
+"localized-keyboard-ipa" = "API (Officiel, 2020)";
+"localized-keyboard-extipa" = "extAPI (Officiel, 2016)";
+"localized-keyboard-nonstandard-obsolete" = "Symboles non-officieles/obsolètes";
+"localized-keyboard-custom" = "Custom IPA Keyboard";
+"localized-link-customize" = "Customize...";
+"localized-keyboard-recents" = "Recently used keys";
+
+/* Settings - Unlock Keyboards */
+"localized-unlock-nonstandard-obsolete" = "Débloquez les symboles non-officieles & obsolètes";
+"localized-unlock-custom" = "Unlock Custom IPA Keyboard";
+"alert-coming-soon" = "À venir";
+"button-restore-purchases" = "Restaurer les achats";
+
+/* Settings - Bug Report / Feedback */
+"localized-button-bugreport" = "Rapports de bugs / Commentaires";
+
+/* Settings - Advanced Settings */
+"advanced-settings" = "Réglages avancés";
+"Force show input switch key (globe key)" = "Afficher de force la touche de changement de saisie (touche du globe)";
+"Keyboard Feedback Sound" = "Son de retour du clavier";
+"Haptic Feedback (Requires Full Access)" = "Retour haptique (nécessite \"Accès complet\")";
+"Show affricate tie bar in toolbar" = "Afficher ⟨◌͡◌⟩ et ⟨◌͜◌⟩ dans la barre d'outils";
