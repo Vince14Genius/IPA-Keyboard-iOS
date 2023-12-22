@@ -9,7 +9,7 @@
 import SwiftUI
 import UIKit
 
-fileprivate let interactableClearOpacity = Double.leastNonzeroMagnitude
+fileprivate let interactableClearOpacity = 0.001
 
 extension Color {
     static var clearInteractable: Color {
