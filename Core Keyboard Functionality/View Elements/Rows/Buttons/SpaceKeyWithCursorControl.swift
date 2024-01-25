@@ -61,8 +61,9 @@ struct SpaceKeyWithCursorControl: View {
                         previousCursorTranslation = currentCursorTranslation
                     }
                     .onEnded { _ in
-                        Timer.scheduledTimer(withTimeInterval: .leastNonzeroMagnitude, repeats: false) { _ in
-                            DispatchQueue.main.async {
+                        Task {
+                            try await Task.sleep(nanoseconds: 1_000_000) // 1ms
+                            await MainActor.run {
                                 cursorGestureState.isMovingCursor = false
                             }
                         }

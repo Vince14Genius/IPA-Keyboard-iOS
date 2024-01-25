@@ -29,7 +29,7 @@ struct SupportUsPageWrapped: View {
             // the navigation title
             
             if isLinkCopiedBannerVisible {
-                LinkCopiedBanner()
+                LinkCopiedBanner(isVisible: $isLinkCopiedBannerVisible)
             }
         }
     }
@@ -50,7 +50,7 @@ struct SupportUsInnerPage: View {
             .zIndex(0)
             
             if isLinkCopiedBannerVisible {
-                LinkCopiedBanner()
+                LinkCopiedBanner(isVisible: $isLinkCopiedBannerVisible)
             }
         }
         .navigationBarTitle(Localized.navTitleSupportUs)
@@ -113,9 +113,6 @@ struct SupportUsVStack: View {
                     // show banner for 3 seconds
                     if !isLinkCopiedBannerVisible {
                         isLinkCopiedBannerVisible = true
-                        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
-                            isLinkCopiedBannerVisible = false
-                        }
                     }
                 } label: {
                     HStack {

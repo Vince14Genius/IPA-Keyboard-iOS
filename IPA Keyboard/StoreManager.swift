@@ -28,7 +28,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     @Published var refundMessage: String? {
         didSet {
             if refundMessage != nil {
-                DispatchQueue.main.async {
+                Task { @MainActor in
                     self.isShowingRefundAlert = true
                 }
             }
@@ -65,7 +65,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         if !response.products.isEmpty {
             for fetchedProduct in response.products {
-                DispatchQueue.main.async {
+                Task { @MainActor in
                     self.products.append(fetchedProduct)
                 }
             }
@@ -107,7 +107,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 // Nonconsumable Products
                 appGroupStorage?.set(false, forKey: storageKey)
                 print("Did set \(storageKey)")
-                DispatchQueue.main.async {
+                Task { @MainActor in
                     self.refundMessage = "We're notified of your refund for \(localized.localized()).\nYour access to paid keyboard layouts has been updated accordingly."
                 }
             } else if let storageKey = InAppPurchases.simpleIncrementProductIdToStorageKey[id] {
@@ -117,7 +117,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 }
                 let oldValue = appGroupStorage?.integer(forKey: storageKey) ?? 0
                 appGroupStorage?.set(oldValue - 1, forKey: storageKey)
-                DispatchQueue.main.async {
+                Task { @MainActor in
                     self.refundMessage = "We're notified of your refund for \(localized.localized()).\nYour contribution count has been updated accordingly."
                 }
             } else {
