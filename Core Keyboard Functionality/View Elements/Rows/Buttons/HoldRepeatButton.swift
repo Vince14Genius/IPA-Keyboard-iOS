@@ -43,3 +43,25 @@ struct HoldRepeatButton: View {
             .simultaneousGesture(touchEnded)
     }
 }
+
+struct HoldRepeatButtonTestView: View {
+    @State private var value = 0
+    
+    var body: some View {
+        VStack {
+            Text("Value: \(value)")
+            HStack {
+                HoldRepeatButton(label: Image(systemName: "minus")) {
+                    value -= 1
+                }
+                HoldRepeatButton(label: Image(systemName: "plus")) {
+                    value += 1
+                }
+            }
+        }
+    }
+}
+
+#Preview {
+    HoldRepeatButtonTestView()
+}

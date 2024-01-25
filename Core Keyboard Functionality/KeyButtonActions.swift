@@ -45,9 +45,13 @@ extension IPAKeyboardViewControllerTemplate {
     
     @objc func keyButtonRetract(from button: UIButton, with event: UIEvent) {
         if let keyButtonCell = button.superview?.superview as? KeyButtonCell {
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { [weak self] _ in
-                keyButtonCell.delegate.isPressed = false
-                self?.expandedKeyOverlay.hide()
+            Task {
+                // sleep for slightly longer than 1 frame
+                try await Task.sleep(nanoseconds: 40_000_000) // 0.04s
+                await MainActor.run { [weak self] in
+                    keyButtonCell.delegate.isPressed = false
+                    self?.expandedKeyOverlay.hide()
+                }
             }
         } else {
             fatalError("Incorrect button setup.")

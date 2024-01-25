@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LinkCopiedBanner: View {
     @Environment(\.colorScheme) var colorScheme
+    @Binding var isVisible: Bool
     
     var body: some View {
         VStack {
@@ -17,34 +18,37 @@ struct LinkCopiedBanner: View {
                 Image(systemName: "link")
                 Text(Localized.linkCopiedBanner)
             }
-                .padding()
-                .padding([.leading, .trailing])
-                .background(colorScheme == .light ? Color(.systemBackground) : Color(.secondarySystemBackground))
-                .cornerRadius(32)
-                .shadow(color: Color(white: 0, opacity: 0.2), radius: 10, x: 0, y: 2)
+            .padding()
+            .padding([.leading, .trailing])
+            .background(colorScheme == .light ? Color(.systemBackground) : Color(.secondarySystemBackground))
+            .cornerRadius(32)
+            .shadow(color: Color(white: 0, opacity: 0.2), radius: 10, x: 0, y: 2)
             Spacer()
         }
-            .transition(.move(edge: .top))
-            .transition(.opacity.animation(.easeInOut.speed(0.25)))
-            .animation(.easeInOut.speed(0.25))
-            .zIndex(1)
+        .transition(.move(edge: .top))
+        .transition(.opacity.animation(.easeInOut.speed(0.25)))
+        .animation(.easeInOut.speed(0.25))
+        .zIndex(1)
+        .onAppear {
+            Task {
+                try await Task.sleep(nanoseconds: 3_000_000_000) // 3s
+                await MainActor.run { isVisible = false }
+            }
+        }
     }
 }
 
 struct LinkCopiedBannerTest: View {
-    @State var isBannerVisible = false
+    @State private var isBannerVisible = false
     
     var body: some View {
         ZStack {
             if isBannerVisible {
-                LinkCopiedBanner()
+                LinkCopiedBanner(isVisible: $isBannerVisible)
             }
             Button("Show") {
                 if !isBannerVisible {
                     isBannerVisible = true
-                    Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
-                        isBannerVisible = false
-                    }
                 }
             }
         }
