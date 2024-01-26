@@ -13,6 +13,7 @@ class SectionHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        label.accessibilityTraits.insert(.header)
         addSubview(label)
     }
     

@@ -8,6 +8,8 @@
 
 /* Pinned Keys */
 "SpaceBarText" = "space";
+"Narrow Transcription Brackets" = "Narrow Transcription Brackets";
+"Broad Transcription Brackets" = "Broad Transcription Slashes";
 
 /* Keyboard Layouts */
 "Standard" = "Standard";

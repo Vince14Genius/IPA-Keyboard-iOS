@@ -82,6 +82,8 @@ struct SectionScroller: View {
                             SystemSound.playInputClick()
                             dataSource.sectionIconTapAction?(element.id)
                         }
+                        .accessibilityLabel(dataSource.sectionAccessibilityLabels[element.id])
+                        .accessibilityAddTraits(.isButton)
                         Spacer(minLength: 0)
                     }
                 }

@@ -17,9 +17,11 @@ struct PinnedSymbolKeys: View {
             Button("[ ]") {
                 inputViewController?.typeSandwich(Symbols.squareBrackets)
             }
+            .accessibilityLabel(Text("Narrow Transcription Brackets"))
             Button("/ /") {
                 inputViewController?.typeSandwich(Symbols.forwardSlashes)
             }
+            .accessibilityLabel(Text("Broad Transcription Brackets"))
         }
     }
     
