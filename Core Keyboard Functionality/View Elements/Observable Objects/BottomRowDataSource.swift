@@ -11,13 +11,15 @@ import SwiftUI
 class BottomRowDataSource: ObservableObject {
     @Published var highlightedSectionIndex = 0
     @Published var sectionGlyphs: [String] = []
+    @Published var sectionAccessibilityLabels: [String] = []
     @Published var sectionIconTapAction: ((_ section: Int) -> ())?
     @Published var dragScrollAction: ((_ section: Int, _ fraction: Double) -> ())?
     
     init() {}
     
-    convenience init(sectionGlyphs: [String]) {
+    convenience init(sectionGlyphs: [String], sectionAccessibilityLabels: [String]) {
         self.init()
         self.sectionGlyphs = sectionGlyphs
+        self.sectionAccessibilityLabels = sectionAccessibilityLabels
     }
 }

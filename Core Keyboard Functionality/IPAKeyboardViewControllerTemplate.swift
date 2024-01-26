@@ -42,6 +42,9 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         bottomBarDataSource.sectionGlyphs = currentLayout.sectionNames.map {
             currentLayout.sectionData[$0]!.sectionGlyph
         }
+        bottomBarDataSource.sectionAccessibilityLabels = currentLayout.sectionNames.map {
+            NSLocalizedString($0, comment: "Localized versions of the section names.")
+        }
     }
     
     private var shouldShowInputModeSwitchKey: Bool = false

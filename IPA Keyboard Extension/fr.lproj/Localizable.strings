@@ -8,6 +8,8 @@
 
 /* Pinned Keys */
 "SpaceBarText" = "espace";
+"Narrow Transcription Brackets" = "crochets pour les transcriptions phonétiques";
+"Broad Transcription Brackets" = "barres obliques pour les transcriptions phonologiques";
 
 /* Keyboard Layouts */
 "Standard" = "API";

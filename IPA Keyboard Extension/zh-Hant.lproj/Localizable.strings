@@ -8,6 +8,8 @@
 
 /* Pinned Keys */
 "SpaceBarText" = "空格";
+"Narrow Transcription Brackets" = "嚴式標音括弧";
+"Broad Transcription Brackets" = "寬式標音括弧";
 
 /* Keyboard Layouts */
 "Standard" = "IPA(標準)";

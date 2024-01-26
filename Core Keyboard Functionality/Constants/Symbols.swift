@@ -38,7 +38,7 @@ struct Symbols {
     - returns: the original string, with all dotted circles removed
     */
     static func removedDottedCircles(_ originalString: String) -> String {
-        return String(originalString.unicodeScalars.filter { unicodeScalar in unicodeScalar != Symbols.dottedCircleUnicodeScalar })
+        return String(originalString.unicodeScalars.filter { $0 != Symbols.dottedCircleUnicodeScalar })
     }
     
 }

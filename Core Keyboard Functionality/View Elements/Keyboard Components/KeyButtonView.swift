@@ -45,6 +45,12 @@ struct KeyButtonView: View {
                     .foregroundColor(Color(.label))
             }
             .opacity(delegate.isPressed ? 0.5 : 1.0)
+            .accessibilityLabel(Symbols.removedDottedCircles(titleText))
+            .accessibilityAddTraits(.isKeyboardKey)
+        } else {
+            Rectangle()
+                .opacity(.leastNonzeroMagnitude)
+                .accessibilityLabel("")
         }
     }
 }

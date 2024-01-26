@@ -83,7 +83,11 @@ struct BottomRow_Previews: PreviewProvider {
             Spacer()
             HStack {
                 Spacer()
-                let dataSource = BottomRowDataSource(sectionGlyphs: ["a", "b", "c", "1", "2", "3", "/"])
+                let sampleGlyphs = ["a", "b", "c", "1", "2", "3", "/"]
+                let dataSource = BottomRowDataSource(
+                    sectionGlyphs: sampleGlyphs,
+                    sectionAccessibilityLabels: sampleGlyphs.map { "section \($0)" }
+                )
                 BottomRow(needsInputModeSwitchKey: false, dataSource: dataSource, cursorGestureState: .init(), layoutSwitcherState: .init())
                     .background(Color(.secondarySystemBackground))
             }

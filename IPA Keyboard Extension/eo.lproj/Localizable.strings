@@ -8,6 +8,8 @@
 
 /* Pinned Keys */
 "SpaceBarText" = "spaceto";
+"Narrow Transcription Brackets" = "rektaj krampoj";
+"Broad Transcription Brackets" = "suprenstrekoj";
 
 /* Keyboard Layouts */
 "Standard" = "Standard";
