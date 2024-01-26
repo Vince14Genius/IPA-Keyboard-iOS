@@ -10,6 +10,10 @@
 
 /* Basics */
 "alert-dismiss" = "Bone.";
+"Restoring Purchases..." = "Restariganta aĉetojn...";
+"Refund Processed" = "Refund Processed";
+"Purchases Restored" = "La aĉetoj estas restarigitaj!";
+"Restore Failed" = "Ne eblis restarigi";
 
 /* title = "IPA Keyboard"; */
 "ipakeyboard.title" = "IFA Klavaro";

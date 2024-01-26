@@ -10,6 +10,10 @@
 
 /* Basics */
 "alert-dismiss" = "OK";
+"Restoring Purchases..." = "購入履歴復元中...";
+"Refund Processed" = "返金処理済み";
+"Purchases Restored" = "購入履歴復元済み";
+"Restore Failed" = "購入履歴を復元できませんでした";
 
 /* title = "IPA Keyboard"; */
 "ipakeyboard.title" = "IPAキーボード";

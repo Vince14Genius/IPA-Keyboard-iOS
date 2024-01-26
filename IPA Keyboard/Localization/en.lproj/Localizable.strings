@@ -10,6 +10,10 @@
 
 /* Basics */
 "alert-dismiss" = "Got it!";
+"Restoring Purchases..." = "Restoring Purchases...";
+"Refund Processed" = "Refund Processed";
+"Purchases Restored" = "Purchases Restored!";
+"Restore Failed" = "Restore Failed";
 
 /* title = "IPA Keyboard"; */
 "ipakeyboard.title" = "IPA Keyboard";

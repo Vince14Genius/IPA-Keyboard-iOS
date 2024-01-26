@@ -10,6 +10,10 @@
 
 /* Basics */
 "alert-dismiss" = "OK";
+"Restoring Purchases..." = "正在恢复购买记录...";
+"Refund Processed" = "退款已处理";
+"Purchases Restored" = "已恢复购买记录！";
+"Restore Failed" = "恢复购买记录失败";
 
 /* title = "IPA Keyboard"; */
 "ipakeyboard.title" = "IPA音标键盘";

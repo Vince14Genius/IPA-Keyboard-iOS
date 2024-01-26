@@ -32,7 +32,7 @@ struct IPAKeyboardApp: App {
                                 case .refundAlert(_):
                                     "Refund Processed"
                                 case .restoredAlert:
-                                    "Purchase Restored"
+                                    "Purchases Restored"
                                 case .restoreFailedAlert(_):
                                     "Restore Failed"
                                 }

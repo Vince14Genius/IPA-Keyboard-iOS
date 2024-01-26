@@ -9,7 +9,11 @@
 "localized-ipa-wikipedia-url" = "https://es.wikipedia.org/wiki/Alfabeto_Fonético_Internacional";
 
 /* Basics */
-"alert-dismiss" = "Got it!";
+"alert-dismiss" = "OK";
+"Restoring Purchases..." = "Restaurando las compras...";
+"Refund Processed" = "Un reembolso fue procesado";
+"Purchases Restored" = "Se restablecen las compras!";
+"Restore Failed" = "La restauración falló";
 
 /* title = "IPA Keyboard"; */
 "ipakeyboard.title" = "Teclado AFI";
