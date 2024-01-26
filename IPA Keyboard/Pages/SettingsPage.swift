@@ -75,6 +75,7 @@ struct SettingsForm: View {
     
     // Alert states
     @State private var showingComingSoonAlert = false
+    @State private var showClearIPADataConfirmation = false
     
     var body: some View {
         Form {
@@ -152,8 +153,18 @@ struct SettingsForm: View {
             }
             Section(header: Text("Debug")) {
                 Button("Clear on-device IAP data (use Restore Purchases to restore)") {
-                    isNonstandardCharsKeyboardUnlocked = false
-                    isCustomIPAKeyboardUnlocked = false
+                    showClearIPADataConfirmation = true
+                }
+                .foregroundColor(.red)
+                .alert(isPresented: $showClearIPADataConfirmation) {
+                    Alert(
+                        title: Text("Are you sure you want to clear on-device IAP data?"),
+                        primaryButton: .destructive(Text("Clear Data")) {
+                            isNonstandardCharsKeyboardUnlocked = false
+                            isCustomIPAKeyboardUnlocked = false
+                        },
+                        secondaryButton: .cancel()
+                    )
                 }
             }
         }
