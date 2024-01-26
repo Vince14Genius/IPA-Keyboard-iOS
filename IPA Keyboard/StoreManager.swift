@@ -24,12 +24,18 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     @Published var products = [SKProduct]()
     @Published var transactionState: SKPaymentTransactionState?
     
-    @Published var isShowingRefundAlert = false
-    @Published var refundMessage: String? {
+    @Published var isShowingAlert = false {
         didSet {
-            if refundMessage != nil {
+            if !isShowingAlert {
+                alert = nil
+            }
+        }
+    }
+    @Published private(set) var alert: StoreManager.Alert? {
+        didSet {
+            if alert != nil {
                 Task { @MainActor in
-                    self.isShowingRefundAlert = true
+                    self.isShowingAlert = true
                 }
             }
         }
@@ -86,7 +92,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 queue.finishTransaction(transaction)
                 transactionState = .purchased
             case .restored:
-                handlePurchaseSuccess(transaction: transaction)
+                handlePurchaseSuccess(transaction: transaction, isRestore: true)
                 queue.finishTransaction(transaction)
                 transactionState = .restored
             case .failed, .deferred:
@@ -108,7 +114,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 appGroupStorage?.set(false, forKey: storageKey)
                 print("Did set \(storageKey)")
                 Task { @MainActor in
-                    self.refundMessage = "We're notified of your refund for \(localized.localized()).\nYour access to paid keyboard layouts has been updated accordingly."
+                    self.alert = .refundAlert(message: "We're notified of your refund for \(localized.localized()).\nYour access to paid keyboard layouts has been updated accordingly.")
                 }
             } else if let storageKey = InAppPurchases.simpleIncrementProductIdToStorageKey[id] {
                 // Consumable products that are simple +1 increments
@@ -118,21 +124,38 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 let oldValue = appGroupStorage?.integer(forKey: storageKey) ?? 0
                 appGroupStorage?.set(oldValue - 1, forKey: storageKey)
                 Task { @MainActor in
-                    self.refundMessage = "We're notified of your refund for \(localized.localized()).\nYour contribution count has been updated accordingly."
+                    self.alert = .refundAlert(message: "We're notified of your refund for \(localized.localized()).\nYour contribution count has been updated accordingly.")
                 }
             } else {
                 print("Revokation did not require updating UserDefaults")
             }
         }
     }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        // restore failed, show error message
+        Task { @MainActor in
+            self.alert = .restoreFailedAlert(errorMessage: error.localizedDescription)
+        }
+    }
 }
 
 fileprivate extension StoreManager {
-    func handlePurchaseSuccess(transaction: SKPaymentTransaction) {
+    func handlePurchaseSuccess(transaction: SKPaymentTransaction, isRestore: Bool = false) {
         if let storageKey = InAppPurchases.nonconsumableProductIdToStorageKey[transaction.payment.productIdentifier] {
+            guard let appGroupStorage else { return }
             // Nonconsumable Products
-            appGroupStorage?.set(true, forKey: storageKey)
+            let prev = appGroupStorage.bool(forKey: storageKey)
+            appGroupStorage.set(true, forKey: storageKey)
             print("Did set \(storageKey)")
+            if isRestore, !prev {
+                Task {
+                    try await Task.sleep(nanoseconds: 400_000_000) // 0.4s
+                    await MainActor.run {
+                        self.alert = .restoredAlert
+                    }
+                }
+            }
         } else if let storageKey = InAppPurchases.simpleIncrementProductIdToStorageKey[transaction.payment.productIdentifier] {
             // Consumable products that are simple +1 increments
             let oldValue = appGroupStorage?.integer(forKey: storageKey) ?? 0

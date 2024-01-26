@@ -23,11 +23,34 @@ struct IPAKeyboardApp: App {
                 .onAppear {
                     SKPaymentQueue.default().add(StoreManager.instance)
                 }
-                .alert(isPresented: $storeManager.isShowingRefundAlert) {
-                    Alert(
-                        title: Text("Refund Processed"),
-                        message: Text(storeManager.refundMessage ?? "<error>")
-                    )
+                .alert(isPresented: $storeManager.isShowingAlert) {
+                    // using the old alert API for iOS 14 compatibility
+                    if let alert = storeManager.alert {
+                        Alert(
+                            title: Text({
+                                switch alert {
+                                case .refundAlert(_):
+                                    "Refund Processed"
+                                case .restoredAlert:
+                                    "Purchase Restored"
+                                case .restoreFailedAlert(_):
+                                    "Restore Failed"
+                                }
+                            }()),
+                            message: {
+                                switch alert {
+                                case .refundAlert(let message):
+                                    Text(message)
+                                case .restoredAlert:
+                                    nil
+                                case .restoreFailedAlert(let errorMessage):
+                                    Text(errorMessage)
+                                }
+                            }()
+                        )
+                    } else {
+                        Alert(title: Text("<error>"))
+                    }
                 }
         }
     }

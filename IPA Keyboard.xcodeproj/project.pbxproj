@@ -24,6 +24,7 @@
 		4E14C3BD261EAD6F001AE827 /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14C3BC261EAD6F001AE827 /* BlueButtonStyle.swift */; };
 		4E19A47A26EE8B6B008F3341 /* HoldRepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */; };
 		4E2148C429F220EC0037328C /* FAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2148C329F220EC0037328C /* FAQPage.swift */; };
+		4E221A352B6436EB00FC3299 /* StoreManager+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E221A342B6436EB00FC3299 /* StoreManager+Alert.swift */; };
 		4E34246A28448E7400DABC81 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34246928448E7400DABC81 /* Operators.swift */; };
 		4E34246B28448F5100DABC81 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34246928448E7400DABC81 /* Operators.swift */; };
 		4E34B55826F3F62E00323D23 /* KeyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DABF26F3CB9B00F88CD9 /* KeyButtonView.swift */; };
@@ -60,7 +61,7 @@
 		4E5D175B26EAED83003B5C5B /* SystemSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175A26EAED83003B5C5B /* SystemSounds.swift */; };
 		4E5D175C26EAED83003B5C5B /* SystemSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175A26EAED83003B5C5B /* SystemSounds.swift */; };
 		4E5D175F26EAF00E003B5C5B /* BottomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D175D26EAF00E003B5C5B /* BottomRow.swift */; };
-		4E65D9752724D20500E49DD7 /* LinkCopiedBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */; };
+		4E65D9752724D20500E49DD7 /* EventBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D9742724D20500E49DD7 /* EventBanner.swift */; };
 		4E6755F422EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */; };
 		4E6755F922EA0F0E00DA88BB /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6755F822EA0F0E00DA88BB /* Symbols.swift */; };
 		4E7958EA2A7A752100C54EB4 /* BackwardsDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7958E92A7A752100C54EB4 /* BackwardsDeleteButton.swift */; };
@@ -98,6 +99,8 @@
 		4EB754CB26F526B300B34608 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754C926F526B300B34608 /* ColorConstants.swift */; };
 		4EB754CD26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
 		4EB754CE26F5361100B34608 /* ExpandedKeyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */; };
+		4EBBFDCF2B63360400EAF7D3 /* LinkCopiedBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBBFDCE2B63360400EAF7D3 /* LinkCopiedBanner.swift */; };
+		4EBBFDD12B6336A900EAF7D3 /* RestoringPurchasesBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBBFDD02B6336A900EAF7D3 /* RestoringPurchasesBanner.swift */; };
 		4ED8A73326A11C29001015B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8A73226A11C29001015B2 /* Constants.swift */; };
 		4EDF784D2A7DCF790020CFC0 /* KeyboardSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEE4D52A77A9DD0071E301 /* KeyboardSizeClass.swift */; };
 		4EDF78522A8720030020CFC0 /* NumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF78512A8720030020CFC0 /* NumberPad.swift */; };
@@ -174,6 +177,7 @@
 		4E14C3BC261EAD6F001AE827 /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
 		4E19A47826EE8B6B008F3341 /* HoldRepeatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldRepeatButton.swift; sourceTree = "<group>"; };
 		4E2148C329F220EC0037328C /* FAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQPage.swift; sourceTree = "<group>"; };
+		4E221A342B6436EB00FC3299 /* StoreManager+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreManager+Alert.swift"; sourceTree = "<group>"; };
 		4E34246928448E7400DABC81 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		4E3F5658269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCustomKeyboardPage.swift; sourceTree = "<group>"; };
 		4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationFunctions.swift; sourceTree = "<group>"; };
@@ -210,7 +214,7 @@
 		4E5D175726EAEB39003B5C5B /* RepeatTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTimer.swift; sourceTree = "<group>"; };
 		4E5D175A26EAED83003B5C5B /* SystemSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSounds.swift; sourceTree = "<group>"; };
 		4E5D175D26EAF00E003B5C5B /* BottomRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomRow.swift; sourceTree = "<group>"; };
-		4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCopiedBanner.swift; sourceTree = "<group>"; };
+		4E65D9742724D20500E49DD7 /* EventBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBanner.swift; sourceTree = "<group>"; };
 		4E6755F222EA062800DA88BB /* IPAKeyboardViewControllerTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAKeyboardViewControllerTemplate.swift; sourceTree = "<group>"; };
 		4E6755F822EA0F0E00DA88BB /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		4E7958E92A7A752100C54EB4 /* BackwardsDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackwardsDeleteButton.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 		4EB2E6F128373EAB0048C926 /* GlyphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphButton.swift; sourceTree = "<group>"; };
 		4EB754C926F526B300B34608 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		4EB754CC26F5361100B34608 /* ExpandedKeyOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedKeyOverlay.swift; sourceTree = "<group>"; };
+		4EBBFDCE2B63360400EAF7D3 /* LinkCopiedBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCopiedBanner.swift; sourceTree = "<group>"; };
+		4EBBFDD02B6336A900EAF7D3 /* RestoringPurchasesBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoringPurchasesBanner.swift; sourceTree = "<group>"; };
 		4ED8A73226A11C29001015B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4EDF78512A8720030020CFC0 /* NumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPad.swift; sourceTree = "<group>"; };
 		4EEEE4BF2A7774730071E301 /* KeyboardLayouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayouts.swift; sourceTree = "<group>"; };
@@ -311,12 +317,12 @@
 		4E0B7422269BD5210066345B /* View Elements */ = {
 			isa = PBXGroup;
 			children = (
+				4EBBFDCD2B6335EB00EAF7D3 /* Event Banners */,
 				4E14C3BC261EAD6F001AE827 /* BlueButtonStyle.swift */,
 				4E0B7423269BD5380066345B /* InstructionsListItem.swift */,
 				4E7F12112A8CC21000230B29 /* SettingsLinkButton.swift */,
 				4EAFA34D26E1A86700344131 /* UserTipView.swift */,
 				4E4030EF269D456D0081E3FD /* SupportUsPageButtons.swift */,
-				4E65D9742724D20500E49DD7 /* LinkCopiedBanner.swift */,
 				4E4D98FB2743086D001E701B /* HorizontalIAPButton.swift */,
 			);
 			path = "View Elements";
@@ -495,6 +501,7 @@
 				4E4030E9269C584C0081E3FD /* UIApplicationFunctions.swift */,
 				4ED8A73226A11C29001015B2 /* Constants.swift */,
 				4E4D98F92742FAE2001E701B /* StoreManager.swift */,
+				4E221A342B6436EB00FC3299 /* StoreManager+Alert.swift */,
 				4EEEE4E12A79D3DE0071E301 /* IPA Phonetic Keyboard.storekit */,
 				4E0B7425269C215F0066345B /* Pages */,
 				4E0B7422269BD5210066345B /* View Elements */,
@@ -549,6 +556,16 @@
 				4EB2E6E32836E2E90048C926 /* InputSwitchButton.swift */,
 			);
 			path = "UIKit Components";
+			sourceTree = "<group>";
+		};
+		4EBBFDCD2B6335EB00EAF7D3 /* Event Banners */ = {
+			isa = PBXGroup;
+			children = (
+				4E65D9742724D20500E49DD7 /* EventBanner.swift */,
+				4EBBFDCE2B63360400EAF7D3 /* LinkCopiedBanner.swift */,
+				4EBBFDD02B6336A900EAF7D3 /* RestoringPurchasesBanner.swift */,
+			);
+			path = "Event Banners";
 			sourceTree = "<group>";
 		};
 		4EEEE4D12A77A86F0071E301 /* Buttons */ = {
@@ -747,6 +764,7 @@
 				4EEEE4C02A7774730071E301 /* KeyboardLayouts.swift in Sources */,
 				4EB754C726F4310300B34608 /* SectionHeader.swift in Sources */,
 				4E14C384261E864C001AE827 /* MainTabView.swift in Sources */,
+				4EBBFDD12B6336A900EAF7D3 /* RestoringPurchasesBanner.swift in Sources */,
 				4EEEE4D92A7881D00071E301 /* SectionScroller.swift in Sources */,
 				4E4993E02A76882800616B4E /* FakeKeyCollection.swift in Sources */,
 				4E408CE827110E6700D52CE6 /* BottomRowDataSource.swift in Sources */,
@@ -768,11 +786,13 @@
 				4EB754C826F4310300B34608 /* KeyButtonCell.swift in Sources */,
 				4E7F12122A8CC21000230B29 /* SettingsLinkButton.swift in Sources */,
 				4E5D175B26EAED83003B5C5B /* SystemSounds.swift in Sources */,
+				4EBBFDCF2B63360400EAF7D3 /* LinkCopiedBanner.swift in Sources */,
 				4EB2E6EE28372F420048C926 /* UIKitHelperFunctions.swift in Sources */,
 				4E3F5659269C45E4002B91A6 /* SettingsCustomKeyboardPage.swift in Sources */,
 				4E4030F4269FE0530081E3FD /* View+makeStackNavigationPage.swift in Sources */,
+				4E221A352B6436EB00FC3299 /* StoreManager+Alert.swift in Sources */,
 				4E0B7424269BD5380066345B /* InstructionsListItem.swift in Sources */,
-				4E65D9752724D20500E49DD7 /* LinkCopiedBanner.swift in Sources */,
+				4E65D9752724D20500E49DD7 /* EventBanner.swift in Sources */,
 				4ED8A73326A11C29001015B2 /* Constants.swift in Sources */,
 				4E34B56526F3FB8B00323D23 /* ExpandedKeyBezierPath.swift in Sources */,
 				4E34B56226F3FB8B00323D23 /* RepeatTimer.swift in Sources */,

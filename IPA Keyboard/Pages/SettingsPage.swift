@@ -26,13 +26,36 @@ struct KeyboardListRow: View {
 }
 
 struct SettingsPageWrapped: View {
+    @State private var isRestoringPurchasesBannerVisible = false
     var body: some View {
-        SettingsInnerPage()
-            .makeStackNavigationPage()
+        ZStack {
+            SettingsForm(isRestoringPurchasesBannerVisible: $isRestoringPurchasesBannerVisible)
+                .makeStackNavigationPage()
+                .zIndex(0)
+            
+            if isRestoringPurchasesBannerVisible {
+                RestoringPurchasesBanner(isVisible: $isRestoringPurchasesBannerVisible)
+            }
+        }
     }
 }
 
 struct SettingsInnerPage: View {
+    @State private var isRestoringPurchasesBannerVisible = false
+    var body: some View {
+        ZStack {
+            SettingsForm(isRestoringPurchasesBannerVisible: $isRestoringPurchasesBannerVisible)
+                .zIndex(0)
+            
+            if isRestoringPurchasesBannerVisible {
+                RestoringPurchasesBanner(isVisible: $isRestoringPurchasesBannerVisible)
+            }
+        }
+    }
+}
+
+struct SettingsForm: View {
+    @Binding var isRestoringPurchasesBannerVisible: Bool
     
     @StateObject var storeManager = StoreManager.instance
     
@@ -127,6 +150,12 @@ struct SettingsInnerPage: View {
                     }
                 }
             }
+            Section(header: Text("Debug")) {
+                Button("Clear on-device IAP data (use Restore Purchases to restore)") {
+                    isNonstandardCharsKeyboardUnlocked = false
+                    isCustomIPAKeyboardUnlocked = false
+                }
+            }
         }
         .alert(isPresented: $showingComingSoonAlert, content: {
             Alert(title: Text(Localized.alertComingSoon), message: nil, dismissButton: .default(Text(Localized.alertDismiss)))
@@ -135,6 +164,7 @@ struct SettingsInnerPage: View {
         .toolbar {
             Button(Localized.restorePurchases) {
                 storeManager.restoreProducts()
+                isRestoringPurchasesBannerVisible = true
             }
         }
         .onAppear {
