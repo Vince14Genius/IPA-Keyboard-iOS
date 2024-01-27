@@ -133,13 +133,12 @@ struct SupportUsVStack: View {
                         Text("Dynamic Dungeon! (game)")
                     }
                 }
-                Button {} label: {
+                Link(destination: URL(string: URLs.friendLinkCheckSplitter)!) {
                     HStack {
                         Image(systemName: "arrow.up.forward.app")
-                        Text(Localized.supportUsFriendsAppsTBD)
+                        Text("Check Splitter - Divide!")
                     }
                 }
-                .disabled(true)
             }
             
             Divider()
