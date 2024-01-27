@@ -9,7 +9,11 @@
 "localized-ipa-wikipedia-url" = "https://fr.wikipedia.org/wiki/Alphabet_phonétique_international";
 
 /* Basics */
-"alert-dismiss" = "Got it!";
+"alert-dismiss" = "OK";
+"Restoring Purchases..." = "En train de restaurer...";
+"Refund Processed" = "Le remboursement a été traité";
+"Purchases Restored" = "Les achats ont été restaurés!";
+"Restore Failed" = "La restauration a échoué";
 
 /* title = "IPA Keyboard"; */
 "ipakeyboard.title" = "Clavier API";

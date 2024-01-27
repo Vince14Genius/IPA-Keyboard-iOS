@@ -10,7 +10,7 @@ import SwiftUI
 import StoreKit
 
 struct SupportUsPageWrapped: View {
-    @State var isLinkCopiedBannerVisible = false
+    @State private var isLinkCopiedBannerVisible = false
     
     var body: some View {
         ZStack {
@@ -36,7 +36,7 @@ struct SupportUsPageWrapped: View {
 }
 
 struct SupportUsInnerPage: View {
-    @State var isLinkCopiedBannerVisible = false
+    @State private var isLinkCopiedBannerVisible = false
     
     var body: some View {
         ZStack {
@@ -133,19 +133,12 @@ struct SupportUsVStack: View {
                         Text("Dynamic Dungeon! (game)")
                     }
                 }
-//                Link(destination: URL(string: URLs.friendLinkGoLingo)!) {
-//                    HStack {
-//                        Image(systemName: "arrow.up.forward.app")
-//                        Text(Localized.supportUsFriendsAppsGoLingo)
-//                    }
-//                }
-                Button {} label: {
+                Link(destination: URL(string: URLs.friendLinkCheckSplitter)!) {
                     HStack {
                         Image(systemName: "arrow.up.forward.app")
-                        Text(Localized.supportUsFriendsAppsTBD)
+                        Text("Check Splitter - Divide!")
                     }
                 }
-                .disabled(true)
             }
             
             Divider()
