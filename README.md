@@ -1,37 +1,50 @@
-# IPA-Keyboard-iOS
+# Thai IPA Keyboard for iOS
 
-<img src="IPA%20Keyboard/Assets.xcassets/AppIcon.appiconset/Icon-60%403x.png" alt="app icon">
+This is a custom iOS keyboard specialized for Thai phonetic symbols.
+It is based on the following repository:
+https://github.com/Vince14Genius/IPA-Keyboard-iOS
 
-An iOS keyboard for typing symbols in the International Phonetic Alphabet. 
+## Features
 
-| [App Store ✅](https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497) | [TestFlight ✈️](https://testflight.apple.com/join/lPas1HHg) |
-|-|-|
+It contains only the necessary Thai phonetic symbols for Thai language learning and linguistic purposes.
 
-## Purpose
+## Supported Symbols
 
-- Most IPA symbols cannot be typed using regular keyboards
+### Consonants
 
-- Full Unicode keyboards are too hard to navigate; an IPA-specific keyboard would have demand among linguistics hobbyists
+| Class | Symbols |
+| :--- | :--- |
+| **Middle** | k, c, d, t, b, p, ʔ |
+| **High** | kh, ch, th, ph, f, s, h |
+| **Low** | kh, ch, th, ph, f, s, h, ŋ, n, m, y, r, l, w |
 
-- All IPA Keyboards on the App Store before mine was released were either...
-  - non-free
-  - full of ads
-  - poorly designed, or
-  - only included the subset of the IPA that's relevant to English (as opposed to the full IPA chart)
+### Vowels
 
-- This project aimed to solve *all* of the problems highlighted above. And according to many, it has done so *very* successfully.
+| Type | Symbols |
+| :--- | :--- |
+| **Long** | aa, ii, ɯɯ, uu, ee, ɛɛ, oo, ɔɔ, əə |
+| **Short** | a, i, w, u, e, ɛ, o, ɔ, ə |
+| **Diphthongs** | ia, ɯa, ua |
+| **Excess** | ay, am, aw |
 
-- A relatively easily accomplishable project to boost my previously negative self-esteem
+### Tones
 
-## TODO List
+| Tone | Symbol | Key input |
+| :--- | :--- | :--- |
+| **Mid** | ◌̄ | - |
+| **Low** | ◌̀ | \ |
+| **Falling** | ◌̂ | ^ |
+| **High** | ◌́ | / |
+| **Rising** | ◌̌ | v |
 
-See [Issues](https://github.com/Vince14Genius/IPA-Keyboard-iOS/issues).
+## Usage Note regarding Tones
 
-## Translation help
+To input a tone on a long vowel (e.g., `àa`), type the long vowel first, then the tone key.
+Example: `aa` + `\` (Low Tone key) -> `àa`
 
-Files to translate:
+## License
 
-- `InfoPlist.strings` in IPA Keyboard (main app)
-- `Localizable.strings` in IPA Keyboard (main app)
-- `InfoPlist.strings` in IPA Keyboard Extension
-- `Localizable.strings` in IPA Keyboard Extension
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+Based on [IPA-Keyboard-iOS](https://github.com/Vince14Genius/IPA-Keyboard-iOS) by Vince14Genius.
+

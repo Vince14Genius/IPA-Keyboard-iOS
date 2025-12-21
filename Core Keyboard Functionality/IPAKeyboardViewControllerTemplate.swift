@@ -10,34 +10,34 @@ import UIKit
 import SwiftUI
 
 class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionViewDelegateFlowLayout, LayoutSwitcherDelegate {
-    
+
     // MARK: - UI Elements
-    
+
     @IBOutlet var keyCollection: UICollectionView!
     @IBOutlet var bottomStack: UIStackView!
-    
+
     var toolbarRow: UIHostingController<ToolbarRow>!
     var bottomRow: UIHostingController<BottomRow>!
-    
+
     var expandedKeyOverlay: ExpandedKeyOverlay!
     var fakeKeyCollection: UIHostingController<FakeKeyCollection>!
-    
+
     @IBOutlet var nextKeyboardButton: InputSwitchButton?
-    
+
     // MARK: - States
-    
+
     let bottomBarDataSource = BottomRowDataSource()
     let cursorGestureState = CursorGestureState()
     let layoutSwitcherState = LayoutSwitcherState()
-    
-    var currentLayout: KeyboardLayout.Type = IPASymbols.self {
+
+    var currentLayout: KeyboardLayout.Type = ThaiIPASymbols.self {
         didSet {
             keyCollection.reloadData()
             refreshBottomBarDataSource()
             scrollTo(section: 0, fraction: 0)
         }
     }
-    
+
     func refreshBottomBarDataSource() {
         bottomBarDataSource.sectionGlyphs = currentLayout.sectionNames.map {
             currentLayout.sectionData[$0]!.sectionGlyph
@@ -46,19 +46,19 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             NSLocalizedString($0, comment: "Localized versions of the section names.")
         }
     }
-    
+
     private var shouldShowInputModeSwitchKey: Bool = false
-    
+
     // MARK: - viewDidLoad()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         shouldShowInputModeSwitchKey ||= needsInputModeSwitchKey
         shouldShowInputModeSwitchKey ||= UIDevice.current.userInterfaceIdiom != .phone
-        
+
         // MARK: - Set up hosting controllers
-        
+
         func addHostingController<T>(_ controllerToAdd: UIHostingController<T>) {
             view.addSubview(controllerToAdd.view)
             addChild(controllerToAdd)
@@ -66,7 +66,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             controllerToAdd.view.sizeToFit()
             controllerToAdd.view.translatesAutoresizingMaskIntoConstraints = false
         }
-        
+
         toolbarRow = UIHostingController(rootView: ToolbarRow(
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState,
@@ -74,7 +74,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             needsInputModeSwitchKey: shouldShowInputModeSwitchKey
         ))
         addHostingController(toolbarRow)
-        
+
         bottomRow = UIHostingController(rootView: BottomRow(
             inputViewController: self,
             needsInputModeSwitchKey: shouldShowInputModeSwitchKey,
@@ -83,34 +83,34 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             layoutSwitcherState: layoutSwitcherState
         ))
         addHostingController(bottomRow)
-        
+
         fakeKeyCollection = UIHostingController(rootView: FakeKeyCollection(cursorGestureState: cursorGestureState))
         addHostingController(fakeKeyCollection)
         fakeKeyCollection.view?.layer.zPosition = -1
-        
+
         layoutSwitcherState.controller = self
-        
+
         // MARK: - Set up the collection view
-        
+
         // setup flow layout
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionHeadersPinToVisibleBounds = true
-        
+
         // make UICollectionView
         keyCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
         view.addSubview(keyCollection)
         keyCollection.translatesAutoresizingMaskIntoConstraints = false
-        
+
         // UICollectionView settings
         keyCollection.backgroundColor = .clearInteractable
         keyCollection.isDirectionalLockEnabled = false
         keyCollection.isPrefetchingEnabled = true
-        
+
         // register reusable views
         keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: CollectionViewConstants.reuseIdentifier)
         keyCollection.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewConstants.reuseIdentifier)
-        
+
         // setup show/hide for the cursor gesture
         cursorGestureState.showKeyCollection = { [weak self] in
             self?.keyCollection.isHidden = false
@@ -118,11 +118,11 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         cursorGestureState.hideKeyCollection = { [weak self] in
             self?.keyCollection.isHidden = true
         }
-        
+
         // MARK: - Set up constraints
-        
+
         keyCollection.heightAnchor.constraint(equalToConstant: Layout.keyCollectionHeight).isActive = true
-        
+
         Constraints.applyEqual(hPairs: [
             (toolbarRow.view.leadingAnchor, view.leadingAnchor),
             (toolbarRow.view.trailingAnchor, view.trailingAnchor),
@@ -140,36 +140,36 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             (fakeKeyCollection.view.topAnchor, keyCollection.topAnchor),
             (fakeKeyCollection.view.bottomAnchor, keyCollection.bottomAnchor),
         ])
-        
+
         // MARK: - Set up input mode switch button if needed
-        
+
         // check isInputSwitchKeyAlwaysOn
         if let isInputSwitchKeyAlwaysOn = UserDefaults(suiteName: SharedIdentifiers.appGroup)?.bool(forKey: SettingsKey.isInputSwitchKeyAlwaysOn) {
             shouldShowInputModeSwitchKey ||= isInputSwitchKeyAlwaysOn
         }
-        
+
         // bottom row bottom anchor constraint
         bottomRow.view.bottomAnchor.constraint(
             equalTo: view.bottomAnchor,
             constant: shouldShowInputModeSwitchKey ? -8 : 0
         ).isActive = true
-        
+
         if shouldShowInputModeSwitchKey {
             nextKeyboardButton = .init()
             let button = nextKeyboardButton!.button
-            
+
             view.addSubview(button)
             nextKeyboardButton!.updateInsets(inputViewController: self)
-                
+
             button.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allEvents) // cannot implement in SwiftUI
-            
+
             Constraints.applyEqual(hPairs: [
                 (button.leadingAnchor, view.leadingAnchor),
                 (bottomRow.view.leadingAnchor, button.trailingAnchor),
             ], vPairs: [
                 (button.topAnchor, keyCollection.bottomAnchor),
             ])
-            
+
             button.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor,
                 constant: -8
@@ -177,28 +177,28 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         } else {
             Constraints.applyEqual(bottomRow.view.leadingAnchor, view.leadingAnchor)
         }
-        
+
         // MARK: - Set up the expanded key overlay
-        
+
         expandedKeyOverlay = ExpandedKeyOverlay()
         view.addSubview(expandedKeyOverlay)
     }
-    
+
     // MARK: - re-render hosting controllers
-    
+
     private func rerenderHostingControllers() {
         print("rerenderHostingControllers() called")
-        
+
         // update the UIKit elements first, then let SwiftUI respond
         nextKeyboardButton?.updateInsets(inputViewController: self)
-        
+
         toolbarRow.rootView = ToolbarRow(
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState,
             inputViewController: self,
             needsInputModeSwitchKey: shouldShowInputModeSwitchKey
         )
-        
+
         bottomRow.rootView = BottomRow(
             inputViewController: self,
             needsInputModeSwitchKey: shouldShowInputModeSwitchKey,
@@ -206,37 +206,37 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             cursorGestureState: cursorGestureState,
             layoutSwitcherState: layoutSwitcherState
         )
-        
+
         toolbarRow.view.sizeToFit()
         bottomRow.view.sizeToFit()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         rerenderHostingControllers()
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         rerenderHostingControllers()
     }
-    
+
     // MARK: - Other Boilerplate Code
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
     }
-    
+
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        
+
         // Add custom view sizing constraints here
         rerenderHostingControllers()
     }
-    
+
     // MARK: - Helper Methods
-    
+
     /**
     Update the colors of all section header text, based on the system keyboard color.
     - Parameters:
@@ -245,22 +245,22 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
     func setSectionHeaderColor(_ header: SectionHeader) {
         header.label.textColor = .secondaryLabel
     }
-    
+
     func updateBottomButtons() {
         let visibleItems = keyCollection.indexPathsForVisibleItems.sorted {
             return $0.section < $1.section
         }
-        
+
         let medianSectionIndex = visibleItems.count == 0 ? 0 : visibleItems[visibleItems.count / 2].section
         bottomBarDataSource.highlightedSectionIndex = medianSectionIndex
     }
-    
+
     func scrollTo(section: Int, keyboardLayout: KeyboardLayout.Type) {
         let middleIndex = (keyboardLayout.getKeySet(section: section)?.count ?? 0) / 2
-        
+
         // Calculate columns on screen
         let visibleItemsCount = keyCollection.indexPathsForVisibleItems.count
-        
+
         if middleIndex > visibleItemsCount / 2 + Layout.cellsPerColumn {
             // big section
             keyCollection.scrollToItem(at: [section, visibleItemsCount / 2 - Layout.cellsPerColumn], at: .centeredHorizontally, animated: true)
@@ -269,7 +269,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
             keyCollection.scrollToItem(at: [section, middleIndex], at: .centeredHorizontally, animated: true)
         }
     }
-    
+
     func scrollTo(section: Int, fraction: Double) {
         guard
             0 <= section,
@@ -279,9 +279,9 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         else {
             return
         }
-        
+
         let fractionIndex = Double(keyCollection.numberOfItems(inSection: section)) * fraction
-        
+
         keyCollection.scrollToItem(
             at: [section, Int(fractionIndex)],
             at: .left,

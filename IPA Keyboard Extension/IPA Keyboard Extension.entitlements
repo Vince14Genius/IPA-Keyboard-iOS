@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.Vince14Genius.IPA-Keyboard</string>
+		<string>group.com.norikt.IPA-Keyboard</string>
 	</array>
 </dict>
 </plist>

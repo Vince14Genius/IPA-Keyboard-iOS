@@ -25,7 +25,7 @@ enum LocalStorage {
 }
 
 enum SharedIdentifiers {
-    static let appGroup = "group.com.Vince14Genius.IPA-Keyboard"
+    static let appGroup = "group.com.norikt.IPA-Keyboard"
 }
 
 enum SettingsKey {

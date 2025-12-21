@@ -4,18 +4,17 @@
 //
 //  Created by Vincent C. on 7/30/23.
 //  Copyright © 2023 Vince14Genius. All rights reserved.
+//  Modified by norikt in 2025.
 //
 
 import SwiftUI
 
 enum KeyboardLayouts {
     static let allLayouts: [KeyboardLayout.Type] = [
-        IPASymbols.self,
-        ExtIPASymbols.self,
-        NonstandardSymbols.self,
+        ThaiIPASymbols.self,
         NumberPad.self,
     ]
-    
+
     enum Localized {
         static let shortenedIPAStandard: LocalizedStringKey = "Standard"
         static let fullIPAStandard: LocalizedStringKey = "IPA (Standard)"

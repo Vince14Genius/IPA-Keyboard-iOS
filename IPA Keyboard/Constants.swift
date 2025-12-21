@@ -19,7 +19,7 @@ enum URLs {
     static let feedback = "https://vince14genius.github.io/support/"
     static let shareLink = "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497"
     static let appStoreReview = "https://apps.apple.com/app/ipa-phonetic-keyboard/id1440241497?action=write-review"
-    static let githubRepo = "https://github.com/Vince14Genius/IPA-Keyboard-iOS"
+    static let githubRepo = "https://github.com.norikt/IPA-Keyboard-iOS"
     static let friendLinkDynamicDungeon = "https://apps.apple.com/app/dynamic-dungeon/id6449023174"
     static let friendLinkCheckSplitter = "https://apps.apple.com/app/check-splitter-divide/id1586694735"
 }

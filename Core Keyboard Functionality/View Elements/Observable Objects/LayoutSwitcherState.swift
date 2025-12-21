@@ -13,9 +13,9 @@ protocol LayoutSwitcherDelegate: AnyObject {
 }
 
 class LayoutSwitcherState: ObservableObject {
-    @Published private(set) var currentLayout: KeyboardLayout.Type = IPASymbols.self
+    @Published private(set) var currentLayout: KeyboardLayout.Type = ThaiIPASymbols.self
     weak var controller: LayoutSwitcherDelegate?
-    
+
     func updateCurrentLayout(to newLayout: KeyboardLayout.Type) {
         currentLayout = newLayout // SwiftUI side update
         controller?.currentLayout = newLayout // UIKit side update
