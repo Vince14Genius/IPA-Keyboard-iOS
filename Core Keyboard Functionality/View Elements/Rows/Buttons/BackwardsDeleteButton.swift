@@ -21,10 +21,10 @@ struct BackwardsDeleteButton: View {
             inputViewController?.deleteBackwardByOne()
             SystemSound.delete.play()
         }
-        .frame(width: BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass), height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass))
-        .foregroundColor(Color(.label))
+        .frame(width: BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) + 4.0, height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass))
+        .foregroundColor(.primary.opacity(0.75))
         .background(Color.clearInteractable)
         .buttonStyle(BackwardDeleteButtonStyle())
-        .font(keyboardSizeClass.isWide ? .system(size: GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass) * padTextSizeMultiplier) : .body)
+        .font(keyboardSizeClass.isWide ? .system(size: GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass) * padTextSizeMultiplier) : .system(size: 20.0))
     }
 }

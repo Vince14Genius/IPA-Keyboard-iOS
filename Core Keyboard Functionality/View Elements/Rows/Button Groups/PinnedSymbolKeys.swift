@@ -70,7 +70,7 @@ struct PinnedSymbolKeys: View {
                     Image(systemName: "ellipsis.circle")
                         .offset(y: 2)
                 }
-                .foregroundColor(Color(.label))
+                .foregroundColor(.primary)
                 .background(Color.clearInteractable)
             }
         }

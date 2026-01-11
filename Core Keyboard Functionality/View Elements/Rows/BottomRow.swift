@@ -24,7 +24,7 @@ struct BottomRow: View {
     }
     
     static func buttonWidth(keyboardSizeClass: KeyboardSizeClass) -> Double {
-        rowHeight(keyboardSizeClass: keyboardSizeClass)
+        rowHeight(keyboardSizeClass: keyboardSizeClass) - 4.0
     }
     
     @Environment(\.colorScheme) var colorScheme

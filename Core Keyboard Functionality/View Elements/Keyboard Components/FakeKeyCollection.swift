@@ -13,7 +13,7 @@ private struct FakeKeyButton: View {
     
     var body: some View {
         Text(" ")
-            .foregroundColor(Color(.label))
+            .foregroundColor(.primary)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(colorScheme == .dark ? Color.darkModeKeyBackground : Color(.tertiarySystemBackground))
             .cornerRadius(4)

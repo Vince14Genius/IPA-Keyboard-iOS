@@ -11,7 +11,7 @@ import SwiftUI
 public struct ToolbarButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .foregroundColor(Color(.label))
+            .foregroundColor(.primary.opacity(0.75))
             .opacity(configuration.isPressed ? 0.33 : 1)
             .padding([.top, .bottom])
             .padding([.leading, .trailing], Layout.leftInsetRaw)

@@ -49,9 +49,9 @@ struct GlyphButton_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
             Spacer()
-            GlyphButton(label: Text("x"), foregroundColor: Color(.label), keyboardSizeClass: .fullCompact) {}
+            GlyphButton(label: Text("x"), foregroundColor: .primary, keyboardSizeClass: .fullCompact) {}
             Spacer()
-            GlyphButton(label: Text("x"), foregroundColor: Color(.secondaryLabel), keyboardSizeClass: .fullCompact) {}
+            GlyphButton(label: Text("x"), foregroundColor: .secondary, keyboardSizeClass: .fullCompact) {}
             Spacer()
         }
         .padding([.leading, .trailing], 6)

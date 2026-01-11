@@ -20,7 +20,7 @@ extension Color {
         Color(white: 1, opacity: 0.3)
     }
     
-    static let darkModeKeyBackgroundOpacity = 0.3
+    static let darkModeKeyBackgroundOpacity = 0.15
 }
 
 extension UIColor {

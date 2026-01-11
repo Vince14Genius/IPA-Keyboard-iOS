@@ -63,6 +63,7 @@ struct SectionScroller: View {
                     BottomRow.underlayColor(colorScheme: colorScheme)
                         .cornerRadius(.infinity)
                         .frame(maxWidth: isScrolling ? .infinity : BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass))
+                        .padding(.vertical, 2.0)
                         .offset(x: isScrolling ? 0.0 : offset)
                 }
                 

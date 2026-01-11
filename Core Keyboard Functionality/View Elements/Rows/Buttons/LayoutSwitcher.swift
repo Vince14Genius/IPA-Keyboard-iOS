@@ -45,7 +45,7 @@ struct LayoutSwitcher: View {
                 }
                 .font(keyboardSizeClass.isWide ? .body : .footnote)
             }
-            .foregroundColor(.primary)
+            .foregroundColor(.primary.opacity(0.75))
             .padding(.horizontal, keyboardSizeClass.isWide ? 16 : 8)
             .frame(
                 height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass) - 6

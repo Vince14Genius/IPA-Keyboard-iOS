@@ -31,18 +31,18 @@ struct KeyButtonView: View {
         if let titleText = delegate.title {
             ZStack {
                 ZStack {
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(.black)
-                        .offset(y: 1)
-                        .opacity(colorScheme == .dark ? 1.0 : 0.3)
+//                    RoundedRectangle(cornerRadius: cornerRadius)
+//                        .fill(.black)
+//                        .offset(y: 1)
+//                        .opacity(colorScheme == .dark ? 1.0 : 0.3)
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .fill(.white)
                 }
                 .compositingGroup()
-                .opacity(colorScheme == .dark ? Color.darkModeKeyBackgroundOpacity : 1.0)
+                .opacity(colorScheme == .dark ? Color.darkModeKeyBackgroundOpacity : 0.75)
                 Text(titleText)
                     .font(.system(size: Symbols.hasDottedCircle(titleText) ? complexKeyFontSize : defaultKeyFontSize))
-                    .foregroundColor(Color(.label))
+                    .foregroundColor(.primary)
             }
             .opacity(delegate.isPressed ? 0.5 : 1.0)
             .accessibilityLabel(Symbols.removedDottedCircles(titleText))
