@@ -10,15 +10,25 @@ import SwiftUI
 
 public struct BlueButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .font(Font.system(.headline))
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .padding()
-            .background(Color.blue)
-            .opacity(configuration.isPressed ? 0.67 : 1)
-            .cornerRadius(12)
-            .padding([.leading, .trailing], 8)
+        if #available(iOS 26.0, *) {
+            configuration.label
+                .font(.body.weight(.semibold))
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .foregroundColor(Color.white)
+                .padding()
+                .glassEffect(.regular.tint(.blue).interactive())
+        } else {
+            // Fallback on earlier versions
+            configuration.label
+                .font(.body.weight(.semibold))
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .foregroundColor(Color.white)
+                .padding()
+                .background(Color.blue)
+                .opacity(configuration.isPressed ? 0.67 : 1)
+                .cornerRadius(.infinity)
+                .padding([.leading, .trailing], 8)
+        }
     }
 }
 

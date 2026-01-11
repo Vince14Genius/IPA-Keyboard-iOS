@@ -39,28 +39,41 @@ struct GettingStartedInnerPage: View {
 struct GettingStartedVStack: View {
     @State private var textFieldText: String = ""
     
-    private let animationDelay = 0.2
+    private let animationDelay = 0.12
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(Localized.gettingStartedDescription)
-                .font(.title2)
-                .padding(.bottom)
-            ForEach(Localized.gettingStartedRange, id: \.self) { i in
-                InstructionsListItem(index: i, bodyText: Localized.gettingStartedKey(i), transitionAfter: Double(i) * animationDelay)
-            }
             Group {
-                SettingsLinkButton(appearAfter: Double(Localized.gettingStartedRange.upperBound + 1) * animationDelay)
-                UserTipView(bodyText: Localized.gettingStartedNote)
-                TextField(Localized.gettingStartedTextField, text: $textFieldText)
-                    .padding(.top)
-                Divider()
-                    .padding([.bottom])
-                UserTipView(bodyText: Localized.gettingStartedNoteFullAccess)
+                Text(Localized.gettingStartedDescription)
+                    .font(.title2)
+                    .padding(.bottom)
+                ForEach(Localized.gettingStartedRange, id: \.self) { i in
+                    InstructionsListItem(index: i, bodyText: Localized.gettingStartedKey(i), transitionAfter: Double(i) * animationDelay)
+                }
+                VStack(alignment: .leading, spacing: 20.0) {
+                    SettingsLinkButton(appearAfter: Double(Localized.gettingStartedRange.upperBound + 1) * animationDelay)
+                    UserTipView(bodyText: Localized.gettingStartedNote)
+                    gettingStartedTextField()
+                    UserTipView(bodyText: Localized.gettingStartedNoteFullAccess)
+                }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func gettingStartedTextField() -> some View {
+        if #available(iOS 26.0, *) {
+            VStack(alignment: .leading) {
+                TextField(Localized.gettingStartedTextField, text: $textFieldText, axis: .vertical)
+                    .lineLimit(5)
+                    .padding()
+            }
+            .glassEffect(.clear.interactive(), in: .rect(cornerRadius: 32.0))
+        } else {
+            TextField(Localized.gettingStartedTextField, text: $textFieldText)
+                .lineLimit(5)
             Divider()
                 .padding([.bottom])
-            Spacer()
         }
     }
 }

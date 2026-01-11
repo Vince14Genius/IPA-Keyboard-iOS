@@ -40,7 +40,8 @@ enum Localized {
     static let titleSettings: LocalizedStringKey = "localized-title-settings"
 
     /* Navigation titles */
-    static let navTitleSupportUs: LocalizedStringKey = "localized-title-support-us-exclamation"
+    static let navTitleSupportUs: LocalizedStringKey = "localized-title-support-us"
+//    static let navTitleSupportUs: LocalizedStringKey = "localized-title-support-us-exclamation"
 
     /* Getting Started - About IPA */
     static let aboutIPA: LocalizedStringKey = "about.ipa.title"

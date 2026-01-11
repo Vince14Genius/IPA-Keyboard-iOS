@@ -68,12 +68,9 @@ struct SectionScroller: View {
                 
                 HStack(spacing: 0) {
                     ForEach(glyphs) { element in
-                        let isSelected = element.id == dataSource.highlightedSectionIndex
-                        let foregroundColor = (isSelected || isScrolling) ? Color(.label) : Color(.secondaryLabel)
-                        
                         GlyphButton(
                             label: Text(dataSource.sectionGlyphs[element.id]),
-                            foregroundColor: foregroundColor,
+                            foregroundColor: colorScheme == .dark ? Color.white : Color(#colorLiteral(red: 0.3176470588, green: 0.3333333333, blue: 0.3568627451, alpha: 1)),
                             keyboardSizeClass: keyboardSizeClass
                         ) {
                             Haptics.play {

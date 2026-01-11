@@ -18,19 +18,25 @@ struct InstructionsListItem: View {
     @State private var isVisible = false
     
     var body: some View {
-        HStack(alignment: .top) {
-            Text("\(index).")
-                .font(.title2.monospacedDigit().weight(.semibold))
+        HStack(alignment: .center, spacing: 14.0) {
+            ZStack {
+                Circle()
+                    .fill(Color(colorScheme == .dark ? .systemBackground : .secondarySystemBackground))
+                Text("\(index)")
+                    .opacity(0.65)
+                    .font(.system(size: 24.0).monospacedDigit().weight(.light))
+                    .padding(12.0)
+            }
+            .fixedSize()
             Text(bodyText)
-                .padding([.top], 5)
-            Spacer()
+            Spacer(minLength: 0)
         }
         .padding()
-        .background(Color(colorScheme == .light ? .systemBackground : .secondarySystemBackground))
-        .cornerRadius(12.0)
+        .background(Color(colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
+        .cornerRadius(32.0)
         .padding([.top, .bottom], 4)
-        .padding([.leading, .trailing], 8)
-        .shadow(color: colorScheme == .light ? Color(red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear, radius: 16, x: 0, y: 4)
+//        .padding([.leading, .trailing], 8)
+        .shadow(color: colorScheme == .dark ? Color.clear : Color(red: 0, green: 0, blue: 0, opacity: 0.06), radius: 16, x: 0, y: 4)
         .opacity(isVisible ? 1.0 : 0.0)
         .offset(x: isVisible ? 0.0 : -300.0)
         .onAppear {
@@ -38,7 +44,7 @@ struct InstructionsListItem: View {
                 isVisible = true
                 return
             }
-            withAnimation(.easeOut(duration: 0.8).delay(transitionAfter)) {
+            withAnimation(.bouncy(duration: 0.65).delay(transitionAfter)) {
                 isVisible = true
             }
         }

@@ -51,6 +51,7 @@ struct LayoutSwitcher: View {
                 height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass) - 6
             )
             .lineLimit(1)
+            .fixedSize(horizontal: true, vertical: false)
             .truncationMode(.tail)
             .background(keyboardSizeClass.isWide ? BottomRow.underlayColor(colorScheme: colorScheme) : .clearInteractable)
             .cornerRadius(.infinity)

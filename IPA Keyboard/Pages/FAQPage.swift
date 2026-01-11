@@ -70,8 +70,8 @@ struct FAQVStack: View {
             }
             
         }
-            .buttonStyle(SupportUsButtonStyle())
-            .navigationBarTitle("FAQ")
+        .buttonStyle(SupportUsButtonStyle())
+        .navigationBarTitle("FAQ")
     }
 }
 

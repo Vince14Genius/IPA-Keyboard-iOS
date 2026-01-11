@@ -30,7 +30,7 @@
 "about.ipa.title" = "IPAとは";
 
 /* Getting Started Description */
-"getting-started-description" = "このキーボードを追加するには：";
+"getting-started-description" = "初期セットアップ手順：";
 
 /* Getting Started Instructions */
 "getting-started-1" = "「設定」アプリを開けて、";
@@ -44,10 +44,10 @@
 /* Getting Started Note */
 "getting-started-note-bullet-point" = "※";
 "getting-started-note" = "リストに「IPAキーボード」がない場合は、アプリを削除して再インストールし、またはデバイスを再起動してみてください。";
-"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "「フルアクセス」はオンにしなくても大丈夫ですが、オフの場合は触覚フィードバックが作動しませんのでご了承ください。どちらにしても本キーボードはデータを一切収集しておりません。";
+"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "「フルアクセス」はオフのままでもお気軽にご使用いただけますが、オフの場合は技術的な原因で触覚フィードバックが作動しませんのでご了承ください。いずれの場合にもかかわらず、本キーボードはデータを一切収集しておりません。";
 
 /* Getting Started TextField */
-"keyboardtest.textfield.placeholder" = "追加した後はこちらでお試しいただけます";
+"keyboardtest.textfield.placeholder" = "キーボードを追加したあと、こちらでお試しいただけます";
 
 /* FAQ Page - Globe Key */
 "The globe key / switch keyboards key doesn't show up! What do I do???" = "キーボードを切り替えるボタンが消えた場合";
@@ -55,7 +55,7 @@
 "There used to be a bug where on certain devices the globe key disappears for no reason.
 
 We made a fix already, but if the problem still occurs, follow these steps:" =
-"過去、あるデバイスの機種ではキーボードを切り替えるボタンが消えてしまう不具合がございましたが、それは既に直されたはずです。
+"過去、いずれかの機種ではキーボードを切り替えるボタンが消えてしまう不具合がございましたが、既に直されたはずです。
 
 もしその不具合がまた現れてしまう場合がございましたら、下記の手順に従ってください：";
 
@@ -81,7 +81,7 @@ The characters you type out will show up correctly on systems that support rende
 Unfortunately there's nothing we could do about it." =
 "これはiOSの他社製キーボードがたまに遭う、オペレーティングシステム自身の不具合でございます。
 
-残念ですが我々開発者側からは解決策を提供できませんので申し訳ございません。";
+残念ですが開発者側からは修正できませんので申し訳ございません。";
 
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "開発者に寄贈";
