@@ -47,7 +47,7 @@
 "You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "「フルアクセス」はオフのままでもお気軽にご使用いただけますが、オフの場合は技術的な原因で触覚フィードバックが作動しませんのでご了承ください。いずれの場合にもかかわらず、本キーボードはデータを一切収集しておりません。";
 
 /* Getting Started TextField */
-"keyboardtest.textfield.placeholder" = "キーボードを追加したあと、こちらでお試しいただけます";
+"keyboardtest.textfield.placeholder" = "追加した後、こちらでお試しいただけます";
 
 /* FAQ Page - Globe Key */
 "The globe key / switch keyboards key doesn't show up! What do I do???" = "キーボードを切り替えるボタンが消えた場合";
