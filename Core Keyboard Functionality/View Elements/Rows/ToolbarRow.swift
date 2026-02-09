@@ -65,10 +65,12 @@ struct ToolbarRow: View {
                     inputViewController: inputViewController
                 )
             }
+            .font(.system(size: 17.0)) // prevent resizing via Dynamic Type
             .padding([.leading, .trailing], 6)
             .opacity(cursorGestureState.isMovingCursor ? CursorGestureState.movingOpacity : 1.0)
             .allowsHitTesting(!cursorGestureState.isMovingCursor)
         }
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 

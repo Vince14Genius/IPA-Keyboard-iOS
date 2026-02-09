@@ -187,6 +187,8 @@
 		4E4030EF269D456D0081E3FD /* SupportUsPageButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportUsPageButtons.swift; sourceTree = "<group>"; };
 		4E4030F3269FE0520081E3FD /* View+makeStackNavigationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+makeStackNavigationPage.swift"; sourceTree = "<group>"; };
 		4E408CE727110E6700D52CE6 /* BottomRowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomRowDataSource.swift; sourceTree = "<group>"; };
+		4E48A67C2F397FFB00AD39B8 /* icon-github-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-github-light.png"; sourceTree = "<group>"; };
+		4E48A67D2F39800600AD39B8 /* icon-github-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-github-dark.png"; sourceTree = "<group>"; };
 		4E48DABF26F3CB9B00F88CD9 /* KeyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonView.swift; sourceTree = "<group>"; };
 		4E48DAC126F3D2CC00F88CD9 /* ExpandedKeyBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedKeyBezierPath.swift; sourceTree = "<group>"; };
 		4E48DAC626F3ED6900F88CD9 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
@@ -471,6 +473,8 @@
 			isa = PBXGroup;
 			children = (
 				4E4C51692462C28200B9AC43 /* README.md */,
+				4E48A67C2F397FFB00AD39B8 /* icon-github-light.png */,
+				4E48A67D2F39800600AD39B8 /* icon-github-dark.png */,
 				4E6755F122EA060700DA88BB /* Core Keyboard Functionality */,
 				4E13CE8B2727802700DB5CB0 /* Keyboard Layouts */,
 				4E84B1542140E92F0078AC4B /* IPA Keyboard */,

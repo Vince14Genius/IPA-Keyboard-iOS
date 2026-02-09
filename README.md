@@ -1,6 +1,6 @@
 # IPA-Keyboard-iOS
 
-<img src="IPA%20Keyboard/Assets.xcassets/AppIcon.appiconset/Icon-60%403x.png" alt="app icon">
+<img src="icon-github-light.png" alt="app icon"> <img src="icon-github-dark.png" alt="app icon">
 
 An iOS keyboard for typing symbols in the International Phonetic Alphabet. 
 

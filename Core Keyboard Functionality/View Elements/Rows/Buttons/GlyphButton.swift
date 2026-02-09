@@ -34,7 +34,7 @@ struct GlyphButton: View {
     var body: some View {
         let textSideLength = GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass)
         label
-            .font(keyboardSizeClass.isWide ? .system(size: textSideLength * padTextSizeMultiplier) : .body)
+            .font(keyboardSizeClass.isWide ? .system(size: textSideLength * padTextSizeMultiplier) : .system(size: 17.0))
             .foregroundColor(foregroundColor)
             .frame(minWidth: textSideLength, minHeight: textSideLength)
             .padding(.horizontal, horizontalPadding)

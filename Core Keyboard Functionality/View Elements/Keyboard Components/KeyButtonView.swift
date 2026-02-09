@@ -27,7 +27,7 @@ struct KeyButtonView: View {
     @ObservedObject var delegate: KeyButtonViewDelegate
     
     var body: some View {
-        let cornerRadius = 5.0
+        let cornerRadius = 8.0
         if let titleText = delegate.title {
             ZStack {
                 ZStack {
@@ -39,7 +39,7 @@ struct KeyButtonView: View {
                         .fill(.white)
                 }
                 .compositingGroup()
-                .opacity(colorScheme == .dark ? Color.darkModeKeyBackgroundOpacity : 0.75)
+                .opacity(colorScheme == .light ? 1.0 : Color.darkModeKeyBackgroundOpacity)
                 Text(titleText)
                     .font(.system(size: Symbols.hasDottedCircle(titleText) ? complexKeyFontSize : defaultKeyFontSize))
                     .foregroundColor(.primary)

@@ -44,7 +44,7 @@ struct BottomRow: View {
     @AppStorage(SettingsKey.isInputSwitchKeyAlwaysOn, store: appGroupStorage) private var isInputSwitchKeyAlwaysOn: Bool = false
     
     static func underlayColor(colorScheme: ColorScheme) -> Color {
-        .init(white: colorScheme == .light ? 0 : 1, opacity: 0.15)
+        .init(white: colorScheme == .light ? 0 : 1, opacity: 0.11)
     }
     
     var body: some View {
@@ -60,9 +60,9 @@ struct BottomRow: View {
                     .padding(.trailing, keyboardSizeClass.isWide ? 8 : 4)
             }
             
-            if keyboardSizeClass.isWide {
+//            if keyboardSizeClass.isWide {
                 Spacer()
-            }
+//            }
             
             SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
             
@@ -71,6 +71,7 @@ struct BottomRow: View {
                 BackwardsDeleteButton(inputViewController: inputViewController, keyboardSizeClass: keyboardSizeClass)
             }
         }
+        .font(.system(size: 17.0)) // prevent resizing via Dynamic Type
         .padding([.leading, .trailing], 6)
         .opacity(cursorGestureState.isMovingCursor ? CursorGestureState.movingOpacity : 1.0)
         .allowsHitTesting(!cursorGestureState.isMovingCursor)

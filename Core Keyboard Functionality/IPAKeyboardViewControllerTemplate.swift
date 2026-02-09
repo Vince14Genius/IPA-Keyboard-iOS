@@ -87,6 +87,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         fakeKeyCollection = UIHostingController(rootView: FakeKeyCollection(cursorGestureState: cursorGestureState))
         addHostingController(fakeKeyCollection)
         fakeKeyCollection.view?.layer.zPosition = -1
+        fakeKeyCollection.view.clipsToBounds = false
         
         layoutSwitcherState.controller = self
         
@@ -106,6 +107,7 @@ class IPAKeyboardViewControllerTemplate: UIInputViewController, UICollectionView
         keyCollection.backgroundColor = .clearInteractable
         keyCollection.isDirectionalLockEnabled = false
         keyCollection.isPrefetchingEnabled = true
+        keyCollection.showsHorizontalScrollIndicator = false
         
         // register reusable views
         keyCollection.register(KeyButtonCell.self, forCellWithReuseIdentifier: CollectionViewConstants.reuseIdentifier)

@@ -30,12 +30,12 @@
 "about.ipa.title" = "IPAとは";
 
 /* Getting Started Description */
-"getting-started-description" = "初期セットアップ手順：";
+"getting-started-description" = "初期セットアップの手順：";
 
 /* Getting Started Instructions */
-"getting-started-1" = "「設定」アプリを開けて、";
-"getting-started-2" = "「一般」＞「キーボード」＞「キーボード」＞「新しいキーボードを追加...」と選択し、";
-"getting-started-3" = "「他社製キーボード」のリストから「IPAキーボード」を選んでください";
+"getting-started-1" = "「設定」アプリを開けます。";
+"getting-started-2" = "「一般」>「キーボード」>「キーボード」>「新しいキーボードを追加...」の順に選択します。";
+"getting-started-3" = "「他社製キーボード」のリストから「IPAキーボード」を選んでください。";
 "getting-started-4" = "IPAキーボードを使い始めましょう！";
 
 /* Getting Started Settings Link Button */

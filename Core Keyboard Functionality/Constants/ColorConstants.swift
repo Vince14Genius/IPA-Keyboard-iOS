@@ -17,7 +17,7 @@ extension Color {
     }
     
     static var darkModeKeyBackground: Color {
-        Color(white: 1, opacity: 0.3)
+        Color(white: 1, opacity: darkModeKeyBackgroundOpacity)
     }
     
     static let darkModeKeyBackgroundOpacity = 0.15

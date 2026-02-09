@@ -20,7 +20,7 @@ struct UserTipView: View {
         }
         .padding()
         .background(Color(.secondarySystemBackground))
-        .cornerRadius(4.0)
+        .cornerRadius(32.0)
     }
 }
 

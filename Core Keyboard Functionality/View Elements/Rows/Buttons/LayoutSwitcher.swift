@@ -39,11 +39,12 @@ struct LayoutSwitcher: View {
                 }
             } label: {
                 HStack(spacing: 0) {
-                    Text(state.currentLayout.shortenedDisplayName)
+                    //Text(state.currentLayout.shortenedDisplayName)
+                    Image(systemName: "text.book.closed")
                     Label("Layout Switch Menu", systemImage: "chevron.up.chevron.down")
                         .labelStyle(.iconOnly)
                 }
-                .font(keyboardSizeClass.isWide ? .body : .footnote)
+                .font(keyboardSizeClass.isWide ? .system(size: GlyphButton.textSideLength(keyboardSizeClass: keyboardSizeClass) * BackwardsDeleteButton.padTextSizeMultiplier) : .system(size: 18.0))
             }
             .foregroundColor(.primary.opacity(0.75))
             .padding(.horizontal, keyboardSizeClass.isWide ? 16 : 8)

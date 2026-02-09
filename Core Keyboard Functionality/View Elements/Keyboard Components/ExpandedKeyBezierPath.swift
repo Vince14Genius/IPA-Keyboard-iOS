@@ -44,23 +44,21 @@ struct ExpandedKeyBezierPathView: View {
     
     var body: some View {
         ZStack {
-            ExpandedKeyBezierPath()
-                .stroke(Color(white: 0, opacity: 0.5), lineWidth: 0.5)
-                .background(
-                    ZStack {
-                        if colorScheme == .dark {
-                            VisualEffectView(effect: UIBlurEffect(style: .regular))
-                            .clipShape(
-                                ExpandedKeyBezierPath()
-                            )
-                        }
+            ZStack {
+                if colorScheme == .dark {
+                    VisualEffectView(effect: UIBlurEffect(style: .regular))
+                    .clipShape(
                         ExpandedKeyBezierPath()
-                            .fill(colorScheme == .dark ? Color.darkModeKeyBackground : .white)
-                    }
-                )
-                .frame(width: baseWidth * 2, height: baseHeight * 3, alignment: .bottom)
-                .transformEffect(.init(translationX: 0, y: -baseHeight))
-                .shadow(color: Color(white: 0, opacity: 0.3), radius: baseWidth * 0.25, x: 0, y: 0)
+                    )
+                }
+                ExpandedKeyBezierPath()
+                    .fill(colorScheme == .dark ? Color.darkModeKeyBackground : .white)
+            }
+            .frame(width: baseWidth * 2, height: baseHeight * 3, alignment: .bottom)
+            .transformEffect(.init(translationX: 0, y: -baseHeight))
+            .shadow(color: Color(white: 0, opacity: 0.3), radius: baseWidth * 0.25, x: 0, y: 0)
+            .ignoresSafeArea()
+            
             Text(titleText)
                 .font(.system(size: baseHeight * 1.25))
                 .transformEffect(.init(translationX: 0, y: -baseHeight * 1.65))

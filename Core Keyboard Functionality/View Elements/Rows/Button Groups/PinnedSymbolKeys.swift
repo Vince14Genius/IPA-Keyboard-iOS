@@ -69,6 +69,7 @@ struct PinnedSymbolKeys: View {
                 } label: {
                     Image(systemName: "ellipsis.circle")
                         .offset(y: 2)
+                        .font(.system(size: 20.0))
                 }
                 .foregroundColor(.primary)
                 .background(Color.clearInteractable)

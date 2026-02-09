@@ -22,10 +22,18 @@ struct InstructionsListItem: View {
             ZStack {
                 Circle()
                     .fill(Color(colorScheme == .dark ? .systemBackground : .secondarySystemBackground))
-                Text("\(index)")
-                    .opacity(0.65)
-                    .font(.system(size: 24.0).monospacedDigit().weight(.light))
-                    .padding(12.0)
+                if #available(iOS 16.1, *) {
+                    Text("\(index)")
+                        .opacity(0.65)
+                        .font(.system(size: 22.0).monospacedDigit().weight(.regular))
+                        .fontDesign(.rounded)
+                        .padding(12.0)
+                } else {
+                    Text("\(index)")
+                        .opacity(0.65)
+                        .font(.system(size: 22.0).monospacedDigit().weight(.light))
+                        .padding(12.0)
+                }
             }
             .fixedSize()
             Text(bodyText)
