@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias RepeatableCallback = (_ isRepeat: Bool) -> ()
+
 class RepeatTimer {
     private var timer: Timer?
     private let repeatInterval: TimeInterval
@@ -22,11 +24,11 @@ class RepeatTimer {
         self.repeatInterval = repeatInterval
     }
     
-    func schedule(repeatCallback: @escaping () -> ()) {
+    func schedule(repeatCallback: @escaping RepeatableCallback) {
         guard !isTimerActive else { return }
-        repeatCallback()
+        repeatCallback(true)
         timer = Timer.scheduledTimer(withTimeInterval: repeatInterval, repeats: true) { _ in
-            repeatCallback()
+            repeatCallback(true)
         }
     }
     

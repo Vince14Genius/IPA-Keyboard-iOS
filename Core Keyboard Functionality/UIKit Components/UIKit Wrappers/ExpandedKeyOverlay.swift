@@ -29,6 +29,9 @@ class ExpandedKeyOverlay: UIView {
         let hostingController = UIHostingController(rootView: ExpandedKeyBezierPathView(titleText: titleText, baseWidth: frame.width, baseHeight: frame.height))
         addSubview(hostingController.view)
         
+        Haptics.play {
+            UISelectionFeedbackGenerator().selectionChanged()
+        }
         SystemSound.playInputClick()
     }
     

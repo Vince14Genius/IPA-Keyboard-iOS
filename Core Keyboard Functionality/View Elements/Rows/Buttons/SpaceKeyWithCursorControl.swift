@@ -31,6 +31,10 @@ struct SpaceKeyWithCursorControl: View {
             if cursorGestureState.isMovingCursor {
                 cursorGestureState.isMovingCursor = false
             } else {
+                Haptics.play {
+                    UISelectionFeedbackGenerator().selectionChanged()
+                }
+                SystemSound.modify.play()
                 inputViewController?.type(text: " ")
             }
         } label: {

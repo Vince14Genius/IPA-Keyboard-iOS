@@ -17,9 +17,17 @@ struct BackwardsDeleteButton: View {
     var body: some View {
         HoldRepeatButton(
             label: Image(systemName: "delete.left")
-        ) {
+        ) { isRepeat in
             inputViewController?.deleteBackwardByOne()
-            SystemSound.delete.play()
+            Haptics.play {
+                UISelectionFeedbackGenerator().selectionChanged()
+            }
+            
+            // disable sound on repeats as a workaround for the glitch where overlapping system
+            // audio plays are extremely loud
+            if !isRepeat {
+                SystemSound.delete.play()
+            }
         }
         .frame(width: BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) + 4.0, height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass))
         .foregroundColor(.primary.opacity(0.75))

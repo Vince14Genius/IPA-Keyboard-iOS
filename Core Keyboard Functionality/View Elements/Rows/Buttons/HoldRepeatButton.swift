@@ -10,14 +10,14 @@ import SwiftUI
 
 struct HoldRepeatButton: View {
     var label: Image
-    var repeatCallback: () -> ()
+    var repeatCallback: RepeatableCallback
     
     let repeatTimer = RepeatTimer(repeatInterval: 0.07)
     
     var tap: some Gesture {
         LongPressGesture(minimumDuration: 0)
             .onEnded { _ in
-                repeatCallback()
+                repeatCallback(false)
                 repeatTimer.cancel()
             }
     }
@@ -25,6 +25,7 @@ struct HoldRepeatButton: View {
     var longHold: some Gesture {
         LongPressGesture(minimumDuration: 0.5)
             .onEnded { _ in
+                repeatCallback(true)
                 repeatTimer.schedule(repeatCallback: repeatCallback)
             }
     }
@@ -51,10 +52,10 @@ struct HoldRepeatButtonTestView: View {
         VStack {
             Text("Value: \(value)")
             HStack {
-                HoldRepeatButton(label: Image(systemName: "minus")) {
+                HoldRepeatButton(label: Image(systemName: "minus")) { _ in
                     value -= 1
                 }
-                HoldRepeatButton(label: Image(systemName: "plus")) {
+                HoldRepeatButton(label: Image(systemName: "plus")) { _ in
                     value += 1
                 }
             }
