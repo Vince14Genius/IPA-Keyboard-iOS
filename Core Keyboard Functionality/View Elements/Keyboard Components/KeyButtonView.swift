@@ -39,7 +39,7 @@ struct KeyButtonView: View {
                         .fill(.white)
                 }
                 .compositingGroup()
-                .opacity(colorScheme == .light ? 1.0 : Color.darkModeKeyBackgroundOpacity)
+                .opacity(colorScheme == .light ? 0.85 : Color.darkModeKeyBackgroundOpacity)
                 Text(titleText)
                     .font(.system(size: Symbols.hasDottedCircle(titleText) ? complexKeyFontSize : defaultKeyFontSize))
                     .foregroundColor(.primary)
