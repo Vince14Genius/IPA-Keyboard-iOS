@@ -43,8 +43,8 @@
 
 /* Getting Started Note */
 "getting-started-note-bullet-point" = "※";
-"getting-started-note" = "リストに「IPAキーボード」がない場合は、アプリを削除して再インストールし、またはデバイスを再起動してみてください。";
-"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "「フルアクセス」はオフのままでもお気軽にご使用いただけますが、オフの場合は技術的な原因で触覚フィードバックが作動しませんのでご了承ください。いずれの場合にもかかわらず、本キーボードはデータを一切収集しておりません。";
+"getting-started-note" = "極めて珍しい事例として、リストに「IPAキーボード」が出ないケースもございます。その場合アプリを削除して再インストールし、またはデバイスを再起動してみてください。";
+"You don't have to enable full access, but haptic feedback does not work without full access. This keyboard does not collect user data regardless." = "「フルアクセス」はオフのままでもお気軽にご使用いただけますが、オフの場合は技術的な原因で触覚フィードバックが作動しませんのでご了承ください。いずれの場合にもかかわらず、本キーボードはデータの収集を一切行っておりません。";
 
 /* Getting Started TextField */
 "keyboardtest.textfield.placeholder" = "追加した後、こちらでお試しいただけます";
@@ -69,9 +69,9 @@ We made a fix already, but if the problem still occurs, follow these steps:" =
 It's just that (your version of) iOS doesn't support rendering some of the characters yet.
 
 The characters you type out will show up correctly on systems that support rendering them." =
-"お使いのバージョンのiOSの内蔵しているフォントにこの文字が含まれていないのが原因です。
+"お使いのバージョンのiOSのシステムフォントに該当の文字が含まれていないのが原因です。
 
-本キーボードは国際音声記号を公式Unicode文字として入力する仕組みになっておりますので、入力された文字は実装されているデバイスでさえあれば正しく表示されます。ご安心ください。";
+本キーボードはIPA記号を公式Unicode文字として入力する仕組みになっておりますので、入力された文字は実装されているデバイスでさえあれば正しく表示されます。";
 
 /* FAQ Page - Doesn't show up */
 "The keyboard doesn't show up in the list, even after I tried reinstalling and restarting!" = "再インストール・再起動してもキーボードがリストに現れない場合";
@@ -79,19 +79,19 @@ The characters you type out will show up correctly on systems that support rende
 "Sometimes (in very rare cases) this does happen with third-party keyboards on iOS.
 
 Unfortunately there's nothing we could do about it." =
-"これはiOSの他社製キーボードがたまに遭う、オペレーティングシステム自身の不具合でございます。
+"これはiOSの他社製キーボードがたまに遭う、システム自身の不具合でございます。
 
 残念ですが開発者側からは修正できませんので申し訳ございません。";
 
 /* Support Us - Donate to the developer */
 "support-us-donate-title" = "開発者に寄贈";
-"support-us-donate-subtitle" = "このIPAキーボードはこれからも皆様に無料で提供し続けますので、寄贈していただけると大変助かります。";
-"support-us-donate-buy-drink" = "🧋 飲み物をおごってあげる";
-"support-us-donate-buy-meal" = "🍱 食事代をおごってあげる";
-"support-us-donate-total-count: %lld" = "%lld回ご寄贈いただき、誠にありがとうございました！";
+"support-us-donate-subtitle" = "このIPAキーボードは皆様に永久に無償で提供し続けますが、ご寄贈いただければ大変感謝申し上げます。";
+"support-us-donate-buy-drink" = "🧋 飲み物をおごる";
+"support-us-donate-buy-meal" = "🍱 食事代をおごる";
+"support-us-donate-total-count: %lld" = "%lld回ご寄贈いただき、誠にありがとうございます！";
 
 /* Support Us - Rate the app if you haven't */
-"support-us-rate-title" = "評価もお願い致します";
+"support-us-rate-title" = "ご評価もお願いいたします";
 "support-us-rate-button" = "App Storeで評価";
 
 /* Support Us - Spread the word on social media */
@@ -100,7 +100,7 @@ Unfortunately there's nothing we could do about it." =
 "link-copied-banner" = "コピー済み";
 
 /* Support Us - Check out our friends' apps */
-"support-us-friends-apps-title" = "友人たちのアプリも試してご覧";
+"support-us-friends-apps-title" = "友人たちのアプリも試してみて";
 "support-us-friends-apps-golingo" = "GoLingo";
 "support-us-friends-apps-tbd" = "近日公開";
 

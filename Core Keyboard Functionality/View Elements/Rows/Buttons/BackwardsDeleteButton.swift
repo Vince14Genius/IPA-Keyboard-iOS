@@ -29,7 +29,9 @@ struct BackwardsDeleteButton: View {
                 SystemSound.delete.play()
             }
         }
-        .frame(width: BottomRow.buttonWidth(keyboardSizeClass: keyboardSizeClass) + 4.0, height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass))
+        .padding(.horizontal, 2.0)
+        .fixedSize(horizontal: true, vertical: false)
+        .frame(height: BottomRow.rowHeight(keyboardSizeClass: keyboardSizeClass))
         .foregroundColor(.primary.opacity(0.75))
         .background(Color.clearInteractable)
         .buttonStyle(BackwardDeleteButtonStyle())

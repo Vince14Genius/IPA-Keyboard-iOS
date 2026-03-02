@@ -18,50 +18,49 @@ struct FAQPageWrapped: View {
 struct FAQInnerPage: View {
     var body: some View {
         ScrollView {
-            HStack {
-                FAQVStack()
-                Spacer()
-            }
-            .padding()
+            FAQVStack()
+                .padding()
         }
     }
 }
 
 struct FAQVStack: View {
+    @Environment(\.colorScheme) private var colorScheme
+    
     var body: some View {
-        //TODO: localize
-        
         VStack(alignment: .leading, spacing: 12.0) {
-            Group {
-                Divider()
+            sectionBubble {
                 Text(Localized.faqGlobeKeyHeading)
-                    .font(.title2)
+                    .font(.headline)
                 Text(Localized.faqGlobeKeyDescription)
                     .foregroundColor(.secondary)
-                InstructionsListItem(index: 1, bodyText: Localized.faqGlobeKeyStep1)
-                InstructionsListItem(index: 2, bodyText: Localized.faqGlobeKeyStep2)
+                    .lineLimit(nil)
+                InstructionsListItem(index: 1, bodyText: Localized.faqGlobeKeyStep1, isEmbedded: true)
+                InstructionsListItem(index: 2, bodyText: Localized.faqGlobeKeyStep2, isEmbedded: true)
             }
-            .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
             
-            Group {
-                Divider()
+            sectionBubble {
                 Text(Localized.faqUnicodeHeading)
-                    .font(.title2)
+                    .font(.headline)
                 Text(Localized.faqUnicodeBody)
                     .foregroundColor(.secondary)
+                    .lineLimit(nil)
             }
-            .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
             
-            Group {
-                Divider()
+            sectionBubble {
                 Text(Localized.faqDoesntShowUpHeading)
-                    .font(.title2)
+                    .font(.headline)
                 Text(Localized.faqDoesntShowUpBody)
                     .foregroundColor(.secondary)
+                    .lineLimit(nil)
+                Link(destination: URL(string: "https://feedbackassistant.apple.com")!) {
+                    HStack {
+                        Image(systemName: "link")
+                        Text("feedbackassistant.apple.com")
+                    }
+                }
             }
-            .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
             
-            Divider()
             Link(destination: URL(string: URLs.feedback)!) {
                 HStack {
                     Image(systemName: "link")
@@ -72,6 +71,22 @@ struct FAQVStack: View {
         }
         .buttonStyle(SupportUsButtonStyle())
         .navigationBarTitle("FAQ")
+    }
+    
+    @ViewBuilder
+    private func sectionBubble(@ViewBuilder content: () -> some View) -> some View {
+        HStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 12.0) {
+                content()
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 0)
+        }
+        .padding()
+        .background(Color(colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
+        .cornerRadius(32.0)
+        .padding([.top, .bottom], 4)
+        .shadow(color: colorScheme == .dark ? Color.clear : Color(red: 0, green: 0, blue: 0, opacity: 0.1), radius: 16, x: 0, y: 4)
     }
 }
 

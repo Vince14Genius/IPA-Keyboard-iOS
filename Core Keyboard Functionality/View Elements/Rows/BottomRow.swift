@@ -60,9 +60,7 @@ struct BottomRow: View {
                     .padding(.trailing, keyboardSizeClass.isWide ? 8 : 4)
             }
             
-//            if keyboardSizeClass.isWide {
-                Spacer()
-//            }
+            Spacer()
             
             SectionScroller(isScrolling: $isScrolling, dataSource: dataSource, keyboardSizeClass: keyboardSizeClass)
             

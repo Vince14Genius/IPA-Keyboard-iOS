@@ -68,7 +68,7 @@ struct SupportUsVStack: View {
             Divider()
             Group {
                 Text(Localized.supportUsDonateTitle)
-                    .font(.title2)
+                    .font(.headline)
                 Text(Localized.supportUsDonateSubtitle)
                     .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true) // SwiftUI text truncation bug workaround
@@ -93,7 +93,7 @@ struct SupportUsVStack: View {
                 .padding(.top, 8.0)
             Group {
                 Text(Localized.supportUsRateTitle)
-                    .font(.title2)
+                    .font(.headline)
                 Link(destination: URL(string: URLs.appStoreReview)!) {
                     HStack {
                         Image(systemName: "star.fill")
@@ -105,7 +105,7 @@ struct SupportUsVStack: View {
                 .padding(.top, 8.0)
             Group {
                 Text(Localized.supportUsShareTitle)
-                    .font(.title2)
+                    .font(.headline)
                 Button {
                     // copy share link
                     UIPasteboard.general.string = URLs.shareLink
@@ -126,7 +126,7 @@ struct SupportUsVStack: View {
                 .padding(.top, 8.0)
             Group {
                 Text(Localized.supportUsFriendsAppsTitle)
-                    .font(.title2)
+                    .font(.headline)
                 Link(destination: URL(string: URLs.friendLinkDynamicDungeon)!) {
                     HStack {
                         Image(systemName: "arrow.up.forward.app")

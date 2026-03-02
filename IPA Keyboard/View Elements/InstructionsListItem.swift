@@ -14,6 +14,7 @@ struct InstructionsListItem: View {
     var index: Int
     var bodyText: LocalizedStringKey
     var transitionAfter: TimeInterval?
+    var isEmbedded: Bool = false
     
     @State private var isVisible = false
     
@@ -25,26 +26,37 @@ struct InstructionsListItem: View {
                 if #available(iOS 16.1, *) {
                     Text("\(index)")
                         .opacity(0.65)
-                        .font(.system(size: 22.0).monospacedDigit().weight(.regular))
+                        .font(.system(size: isEmbedded ? 16.0 : 22.0)
+                            .monospacedDigit()
+                            .weight(isEmbedded ? .semibold : .regular))
                         .fontDesign(.rounded)
-                        .padding(12.0)
+                        .padding(isEmbedded ? 9.0 : 12.0)
                 } else {
                     Text("\(index)")
                         .opacity(0.65)
-                        .font(.system(size: 22.0).monospacedDigit().weight(.light))
-                        .padding(12.0)
+                        .font(.system(size: isEmbedded ? 16.0 : 22.0)
+                            .monospacedDigit()
+                            .weight(isEmbedded ? .semibold : .light))
+                        .padding(isEmbedded ? 9.0 : 12.0)
                 }
             }
             .fixedSize()
             Text(bodyText)
             Spacer(minLength: 0)
         }
-        .padding()
-        .background(Color(colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
+        .padding(isEmbedded ? 0 : 20.0)
+        .background(isEmbedded ? .clear : Color(colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
         .cornerRadius(32.0)
-        .padding([.top, .bottom], 4)
-//        .padding([.leading, .trailing], 8)
-        .shadow(color: colorScheme == .dark ? Color.clear : Color(red: 0, green: 0, blue: 0, opacity: 0.06), radius: 16, x: 0, y: 4)
+        .padding([.top, .bottom], isEmbedded ? 0 : 4)
+        .drawingGroup()
+        .shadow(
+            color: {
+                colorScheme == .dark || isEmbedded ? .clear : .init(red: 0, green: 0, blue: 0, opacity: 0.06)
+            }(),
+            radius: 16,
+            x: 0,
+            y: 4
+        )
         .opacity(isVisible ? 1.0 : 0.0)
         .offset(x: isVisible ? 0.0 : -300.0)
         .onAppear {
